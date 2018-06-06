@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-6-7 0:44:34 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.xnjcpt.domain.DO.xnjcpt_disk" table="XNJCPT_DISK">
+        <id name="disk_id" type="java.lang.String">
+            <column name="DISK_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="disk_computer" type="java.lang.String">
+            <column name="DISK_COMPUTER" />
+        </property>
+        <property name="disk_size" type="java.lang.String">
+            <column name="DISK_SIZE" />
+        </property>
+        <property name="disk_gmt_create" type="java.lang.String">
+            <column name="DISK_GMT_CREATE" />
+        </property>
+        <property name="disk_gmt_modified" type="java.lang.String">
+            <column name="DISK_GMT_MODIFIED" />
+        </property>
+    </class>
+</hibernate-mapping>

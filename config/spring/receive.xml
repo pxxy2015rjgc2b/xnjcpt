@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="receiveAction" class="com.xnjcpt.action.receive.ReceiveAction"
+		scope="prototype">
+		<property name="receiveService" ref="receiveService"></property>
+	</bean>
+	<bean id="receiveService" class="com.xnjcpt.service.impl.receive.ReceiveServiceImpl">
+		<property name="receiveDao" ref="receiveDao"></property>
+	</bean>
+	<bean id="receiveDao" class="com.xnjcpt.dao.impl.receive.ReceiveDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+</beans>
