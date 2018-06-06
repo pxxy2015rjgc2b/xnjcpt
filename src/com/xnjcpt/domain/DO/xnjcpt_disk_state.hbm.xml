@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-6-7 0:44:34 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.xnjcpt.domain.DO.xnjcpt_disk_state" table="XNJCPT_DISK_STATE">
+        <id name="disk_state_id" type="java.lang.String">
+            <column name="DISK_STATE_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="disk_state_computer" type="java.lang.String">
+            <column name="DISK_STATE_COMPUTER" />
+        </property>
+        <property name="disk_state_time" type="java.lang.String">
+            <column name="DISK_STATE_TIME" />
+        </property>
+        <property name="disk_state_use_size" type="java.lang.String">
+            <column name="DISK_STATE_USE_SIZE" />
+        </property>
+        <property name="disk_state_tps" type="java.lang.String">
+            <column name="DISK_STATE_TPS" />
+        </property>
+        <property name="disk_state_r" type="java.lang.String">
+            <column name="DISK_STATE_R" />
+        </property>
+        <property name="disk_state_w" type="java.lang.String">
+            <column name="DISK_STATE_W" />
+        </property>
+        <property name="disk_state_gmt_create" type="java.lang.String">
+            <column name="DISK_STATE_GMT_CREATE" />
+        </property>
+        <property name="disk_state_gmt_modified" type="java.lang.String">
+            <column name="DISK_STATE_GMT_MODIFIED" />
+        </property>
+    </class>
+</hibernate-mapping>

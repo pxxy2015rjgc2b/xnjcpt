@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-6-7 0:44:34 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.xnjcpt.domain.DO.xnjcpt_user" table="XNJCPT_USER">
+        <id name="user_id" type="java.lang.String">
+            <column name="USER_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="user_name" type="java.lang.String">
+            <column name="USER_NAME" />
+        </property>
+        <property name="user_username" type="java.lang.String">
+            <column name="USER_USERNAME" />
+        </property>
+        <property name="user_email" type="java.lang.String">
+            <column name="USER_EMAIL" />
+        </property>
+        <property name="user_password" type="java.lang.String">
+            <column name="USER_PASSWORD" />
+        </property>
+        <property name="user_phone" type="java.lang.String">
+            <column name="USER_PHONE" />
+        </property>
+        <property name="user_status" type="java.lang.String">
+            <column name="USER_STATUS" />
+        </property>
+        <property name="user_role" type="java.lang.String">
+            <column name="USER_ROLE" />
+        </property>
+        <property name="user_gmt_creat" type="java.lang.String">
+            <column name="USER_GMT_CREAT" />
+        </property>
+        <property name="user_gmt_modified" type="java.lang.String">
+            <column name="USER_GMT_MODIFIED" />
+        </property>
+    </class>
+</hibernate-mapping>
