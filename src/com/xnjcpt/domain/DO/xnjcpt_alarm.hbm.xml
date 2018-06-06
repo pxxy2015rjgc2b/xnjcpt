@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-6-7 0:44:34 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.xnjcpt.domain.DO.xnjcpt_alarm" table="XNJCPT_ALARM">
+        <id name="alarm_id" type="java.lang.String">
+            <column name="ALARM_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="alarm_computer" type="java.lang.String">
+            <column name="ALARM_COMPUTER" />
+        </property>
+        <property name="alarm_user" type="java.lang.String">
+            <column name="ALARM_USER" />
+        </property>
+        <property name="alarm_threshold_value" type="java.lang.String">
+            <column name="ALARM_THRESHOLD_VALUE" />
+        </property>
+        <property name="alarm_type" type="java.lang.String">
+            <column name="ALARM_TYPE" />
+        </property>
+        <property name="alarm_state" type="java.lang.String">
+            <column name="ALARM_STATE" />
+        </property>
+        <property name="alarm_gmt_create" type="java.lang.String">
+            <column name="ALARM_GMT_CREATE" />
+        </property>
+        <property name="alarm_gmt_modified" type="java.lang.String">
+            <column name="ALARM_GMT_MODIFIED" />
+        </property>
+    </class>
+</hibernate-mapping>

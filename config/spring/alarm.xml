@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="alarmAction" class="com.xnjcpt.action.alarm.AlarmAction"
+		scope="prototype">
+		<property name="alarmService" ref="alarmService"></property>
+	</bean>
+	<bean id="alarmService" class="com.xnjcpt.service.impl.alarm.AlarmServiceImpl">
+		<property name="alarmDao" ref="alarmDao"></property>
+	</bean>
+	<bean id="alarmDao" class="com.xnjcpt.dao.impl.alarm.AlarmDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+</beans>
