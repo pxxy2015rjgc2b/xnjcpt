@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="computerAction" class="com.xnjcpt.action.computer.ComputerAction"
+		scope="prototype">
+		<property name="computerService" ref="computerService"></property>
+	</bean>
+	<bean id="computerService" class="com.xnjcpt.service.impl.computer.ComputerServiceImpl">
+		<property name="computerDao" ref="computerDao"></property>
+	</bean>
+	<bean id="computerDao" class="com.xnjcpt.dao.impl.computer.ComputerDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+</beans>
