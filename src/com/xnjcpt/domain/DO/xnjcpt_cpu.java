@@ -1,22 +1,26 @@
 package com.xnjcpt.domain.DO;
 
 /**
- * cpu信息的实体类
+ * cpu淇℃伅鐨勫疄浣撶被
  *
  */
 public class xnjcpt_cpu {
 	
-	//cpu主键
+	//cpu涓婚敭
 	private String cpu_id;
-	//主机主键
+	//涓绘満涓婚敭
 	private String cpu_computer;
-	//型号
+	//鍨嬪彿
 	private String cpu_model;
-	//主频
+	//涓婚
 	private String cpu_basic_frequency;
-	//创建时间
+	//缂撳瓨澶у皬
+	private String cpu_catch_size;
+	//cpu鏍告暟
+	private String cpu_cores;
+	//鍒涘缓鏃堕棿
 	private String cpu_gmt_creat;
-	//修改时间
+	//淇敼鏃堕棿
 	private String cpu_gmt_modified;
 	public String getCpu_id() {
 		return cpu_id;
@@ -41,6 +45,19 @@ public class xnjcpt_cpu {
 	}
 	public void setCpu_basic_frequency(String cpu_basic_frequency) {
 		this.cpu_basic_frequency = cpu_basic_frequency;
+	}
+	
+	public String getCpu_catch_size() {
+		return cpu_catch_size;
+	}
+	public void setCpu_catch_size(String cpu_catch_size) {
+		this.cpu_catch_size = cpu_catch_size;
+	}
+	public String getCpu_cores() {
+		return cpu_cores;
+	}
+	public void setCpu_cores(String cpu_cores) {
+		this.cpu_cores = cpu_cores;
 	}
 	public String getCpu_gmt_creat() {
 		return cpu_gmt_creat;

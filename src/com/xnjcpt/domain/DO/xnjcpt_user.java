@@ -1,29 +1,31 @@
 package com.xnjcpt.domain.DO;
 
+import java.util.Date;
+
 /**
- * ÓÃ»§ĞÅÏ¢µÄÊµÌåÀà
+ * ï¿½Ã»ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½Êµï¿½ï¿½ï¿½
  *
  */
 public class xnjcpt_user {
-	//ÓÃ»§Ö÷¼ü
+	//ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½
 	private String user_id;
-	//ÓÃ»§ĞÕÃû
+	//ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½
 	private String user_name;
-	//ÓÃ»§Ãû
+	//ï¿½Ã»ï¿½ï¿½ï¿½
 	private String user_username;
-	//ÓÃ»§ÓÊÏä
+	//ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½
 	private String user_email;
-	//ÓÃ»§ÃÜÂë
+	//ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½
 	private String user_password;
-	//ÓÃ»§ÊÖ»úºÅÂë
+	//ï¿½Ã»ï¿½ï¿½Ö»ï¿½ï¿½ï¿½ï¿½ï¿½
 	private String user_phone;
-	//ÓÃ»§×´Ì¬
+	//ï¿½Ã»ï¿½×´Ì¬
 	private String user_status;
-	//ÓÃ»§½ÇÉ«
+	//ï¿½Ã»ï¿½ï¿½ï¿½É«
 	private String user_role;
-	//´´½¨Ê±¼ä
+	//ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
 	private String user_gmt_creat;
-	//ĞŞ¸ÄÊ±¼ä
+	//ï¿½Ş¸ï¿½Ê±ï¿½ï¿½
 	private String user_gmt_modified;
 	public String getUser_id() {
 		return user_id;
@@ -85,6 +87,8 @@ public class xnjcpt_user {
 	public void setUser_gmt_modified(String user_gmt_modified) {
 		this.user_gmt_modified = user_gmt_modified;
 	}
+
+	
 	
 	
 
