@@ -14,6 +14,10 @@ public class xnjcpt_cpu {
 	private String cpu_model;
 	//主频
 	private String cpu_basic_frequency;
+	//缓存大小
+	private String cpu_catch_size;
+	//cpu核数
+	private String cpu_cores;
 	//创建时间
 	private String cpu_gmt_creat;
 	//修改时间
@@ -41,6 +45,19 @@ public class xnjcpt_cpu {
 	}
 	public void setCpu_basic_frequency(String cpu_basic_frequency) {
 		this.cpu_basic_frequency = cpu_basic_frequency;
+	}
+	
+	public String getCpu_catch_size() {
+		return cpu_catch_size;
+	}
+	public void setCpu_catch_size(String cpu_catch_size) {
+		this.cpu_catch_size = cpu_catch_size;
+	}
+	public String getCpu_cores() {
+		return cpu_cores;
+	}
+	public void setCpu_cores(String cpu_cores) {
+		this.cpu_cores = cpu_cores;
 	}
 	public String getCpu_gmt_creat() {
 		return cpu_gmt_creat;
