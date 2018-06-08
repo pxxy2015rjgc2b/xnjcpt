@@ -81,4 +81,26 @@ public class UserDaoImpl implements UserDao {
 		} else {
 			return true; // 查找的用户大于0，返回true
 		}}
+	
+	@Override
+	public xnjcpt_user getUserByUserEmail(String user_email){
+		String hql = "from xnjcpt_user where user_email = '" + user_email + "'";
+		Query query = getSession().createQuery(hql);
+		xnjcpt_user user = (xnjcpt_user) query.uniqueResult();
+		return user;
+	}
+
+	@Override
+	public xnjcpt_user getUserByUserId(String user_id) {
+		// TODO Auto-generated method stub
+		return (xnjcpt_user) getSession().get(xnjcpt_user.class, user_id);
+	}
+
+	@Override
+	public void updateuser(xnjcpt_user user) {
+		// TODO Auto-generated method stub
+		getSession().update(user);
+	}
+
+	
 }

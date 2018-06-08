@@ -41,6 +41,30 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return userDao.judgeUserByUsername(user_name);
 	}
+
+	@Override
+	public xnjcpt_user getUserByUserEmail(String user_email) {
+		// TODO Auto-generated method stub
+		return userDao.getUserByUserEmail(user_email);
+	}
+
+	@Override
+	public boolean judgeUserByUserEmail(String user_email) {
+		// TODO Auto-generated method stub
+		return userDao.judgeUserByUseremail(user_email);
+	}
+
+	@Override
+	public xnjcpt_user getUserByUserId(String user_id) {
+		// TODO Auto-generated method stub
+		return userDao.getUserByUserId(user_id);
+	}
+
+	@Override
+	public void updateuser(xnjcpt_user user) {
+		// TODO Auto-generated method stub
+		userDao.updateuser(user);
+	}
 	
 
 }
