@@ -45,16 +45,16 @@
 				     	<div>的性能监控与应用管理系统</div>
 				     	<div class="enter_button"><a>立即监测</a></div>
 				  	</div>
-				  	<div class="login_box">
+				  	<form id="login_box" class="login_box">
 				  		<div class="login_content">
 				  		  <div class="login_title">登陆</div>
-				  		  <input class="usename" type="text" placeholder="邮箱/用户名"/>
-				  	      <input class="password" type="password" placeholder="登录密码"/>
+				  		  <input class="usename" type="text" placeholder="邮箱/用户名" name="user.user_username"/>
+				  	      <input class="password" type="password" placeholder="登录密码" name="user.user_password"/>
 				 		  <div class="login_button">登录</div>
 				 		  <a>免费注册</a>
 				 		  <a>忘记密码</a>
 				 		</div>
-				  	</div>
+				  	</form>
 				</div>
 			</div>
 			<div class="footer">
