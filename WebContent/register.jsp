@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
@@ -28,16 +29,18 @@
 					<span>已有账户？</span> <a>立即登陆</a>
 				</div>
 			</div>
-			<div class="register_content">
-				<input type="text" placeholder="邮箱地址" /> <input type="password"
-					placeholder="密码" /> <input type="password" placeholder="确认密码" /> <input
-					type="text" placeholder="验证码" style="width: 200px;" />
-				<div class="identify_code">获取验证码</div>
-				<div class="register_button">注册</div>
-			</div>
+			<form id="register" class="register_content">
+				    <input type="text" placeholder="用户名" name="user.user_username"/>
+				   <input type="text" placeholder="邮箱地址" name="user.user_email"/>
+					<input type="password" placeholder="密码" name="user.user_password"/>
+					<input type="password" placeholder="确认密码" />
+					<div class="register_button">注册</div>
+			</form>
 		</div>
 		<div class="reg_footer">Copyright @ 2018-2019 PingXiangXueYuan
 			All Right Reserve 萍乡学院版权所有</div>
 	</div>
+	<script type="text/javascript" src="<%=basePath %>js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="<%=basePath %>js/user/register.js"></script>
 </body>
 </html>
