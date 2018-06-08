@@ -1,11 +1,12 @@
 package com.xnjcpt.action.skip;
 
+
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
  * 
- * @author ËïÒã
- *ÓÃÓÚÌø×ªÒ³Ãæ
+ * @author ï¿½ï¿½ï¿½ï¿½
+ *ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªÒ³ï¿½ï¿½
  */
 public class SkipAction extends ActionSupport{
 
@@ -15,24 +16,25 @@ public class SkipAction extends ActionSupport{
 	public String intoSlider(){
 		return "intoSlider";
 	}
-	//½øÈë¾¯¸æ¹ÜÀí
+	//ï¿½ï¿½ï¿½ë¾¯ï¿½ï¿½ï¿½ï¿½ï¿½
 	public String intoAlarm(){
 		return "intoAlarm";
 	}
-	//½øÈëÓÃ»§
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½
 	public String intoUser(){
 		return "intoUser";
 	}
-	//½øÈëÖ÷»ú¹ÜÀí
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public String intoComputer(){
 		return "intoComputer";
 	}
-	//½øÈëĞÔÄÜ¼à²â
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü¼ï¿½ï¿½
 	public String intoMonitor(){
 		return "intoMonitor";
 	}
-	//½øÈë¸öÈËĞÅÏ¢¹ÜÀí
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½
 	public String intoPerson(){
 		return "intoPerson";
 	}
+
 }

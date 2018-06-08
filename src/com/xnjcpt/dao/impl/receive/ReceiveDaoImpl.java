@@ -35,7 +35,7 @@ public class ReceiveDaoImpl implements ReceiveDao {
 		return sessionFactory.getCurrentSession();
 	}
 	/**
-	 * Ö÷»úÐÅÏ¢±£´æ¡¢¸üÐÂµÄÖ´ÐÐ·½·¨
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½æ¡¢ï¿½ï¿½ï¿½Âµï¿½Ö´ï¿½Ð·ï¿½ï¿½ï¿½
 	 */
 	@Override
 	public void updateComputerInfor(xnjcpt_computer xnjcpt_computer) {
@@ -49,7 +49,7 @@ public class ReceiveDaoImpl implements ReceiveDao {
 			+"'where computer_ip = '" + xnjcpt_computer.getComputer_ip() + "'";
 			getSession().createQuery(hql2).executeUpdate();
 		}else{
-			System.out.println("Ö´ÐÐ±£´æ");
+			System.out.println("Ö´ï¿½Ð±ï¿½ï¿½ï¿½");
 			xnjcpt_computer.setComputer_gmt_create(TeamUtil.getStringSecond());
 			xnjcpt_computer.setComputer_gmt_modified(TeamUtil.getStringSecond());
 			xnjcpt_computer.setComputer_id(TeamUtil.getUuid());
@@ -59,13 +59,13 @@ public class ReceiveDaoImpl implements ReceiveDao {
 	}
 	
 	/**
-	 * cpuÐÅÏ¢¸üÐÂ¡¢±£´æµÄ·½·¨
+	 * cpuï¿½ï¿½Ï¢ï¿½ï¿½ï¿½Â¡ï¿½ï¿½ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½
 	 */
 	@Override
 	public void updateCpuInfo(String ip,xnjcpt_cpu xnjcpt_cpu) {
 		// TODO Auto-generated method stub
 		/**
-		 * ¸ù¾Ýip²éÕÒcomputerµÄlist¼¯ºÏ
+		 * ï¿½ï¿½ï¿½ï¿½ipï¿½ï¿½ï¿½ï¿½computerï¿½ï¿½listï¿½ï¿½ï¿½ï¿½
 		 */
 		System.out.println(ip);
 		String hql="from xnjcpt_computer where computer_ip='"+ip+"'";
@@ -73,7 +73,7 @@ public class ReceiveDaoImpl implements ReceiveDao {
 		List<xnjcpt_computer> computer_list = query.list();
 		if(computer_list.size()>0){
 			/**
-			 * ¸ù¾Ýcomputer_id²éÕÒcpuµÄÐÅÏ¢¼¯ºÏ£¬cpu_computer=computer_id
+			 * ï¿½ï¿½ï¿½ï¿½computer_idï¿½ï¿½ï¿½ï¿½cpuï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½Ï£ï¿½cpu_computer=computer_id
 			 */
 			String hql2="from xnjcpt_cpu where cpu_computer='"+computer_list.get(0).getComputer_id()+"'";
 			query = getSession().createQuery(hql2);
@@ -88,7 +88,7 @@ public class ReceiveDaoImpl implements ReceiveDao {
 				getSession().createQuery(hql3).executeUpdate();
 				
 			}else{
-				System.out.println("CPUÖ´ÐÐ±£´æ£¡");
+				System.out.println("CPUÖ´ï¿½Ð±ï¿½ï¿½æ£¡");
 				xnjcpt_cpu.setCpu_gmt_create(TeamUtil.getStringSecond());
 				xnjcpt_cpu.setCpu_gmt_modified(TeamUtil.getStringSecond());
 				xnjcpt_cpu.setCpu_id(TeamUtil.getUuid());
@@ -102,19 +102,19 @@ public class ReceiveDaoImpl implements ReceiveDao {
 	}
 	
 	/**
-	 * ÄÚ´æÐÅÏ¢±£´æ¡¢¸üÐÂµÄ·½·¨
+	 * ï¿½Ú´ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½æ¡¢ï¿½ï¿½ï¿½ÂµÄ·ï¿½ï¿½ï¿½
 	 */
 	@Override
 	public void updateMemoryInfor(String ip, xnjcpt_memory xnjcpt_memory) {
 		// TODO Auto-generated method stub
 		/**
-		 * ¸ù¾Ýip²éÕÒcomputerµÄlist ¼¯ºÏ
+		 * ï¿½ï¿½ï¿½ï¿½ipï¿½ï¿½ï¿½ï¿½computerï¿½ï¿½list ï¿½ï¿½ï¿½ï¿½
 		 */
 		String hql="from xnjcpt_computer where computer_ip='"+ip+"'";
 		Query query=getSession().createQuery(hql);
 		List<xnjcpt_computer> computer_list=query.list();
 		/**
-		 * ¸ù¾Ýcomputer_id²éÕÒÄÚ´æÐÅÏ¢µÄ¼¯ºÏ£¬computer_id=memory_computer
+		 * ï¿½ï¿½ï¿½ï¿½computer_idï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½ï¿½ï¿½Ï¢ï¿½Ä¼ï¿½ï¿½Ï£ï¿½computer_id=memory_computer
 		 */
 		if(computer_list.size()>0){
 			String hql2="from xnjcpt_memory where memory_computer='"+computer_list.get(0).getComputer_id()+"'";
@@ -129,7 +129,7 @@ public class ReceiveDaoImpl implements ReceiveDao {
 				getSession().createQuery(hql3).executeUpdate();
 				
 			}else{
-				System.out.println("ÄÚ´æÖ´ÐÐ±£´æ£¡");
+				System.out.println("ï¿½Ú´ï¿½Ö´ï¿½Ð±ï¿½ï¿½æ£¡");
 				xnjcpt_memory.setMemory_gmt_create(TeamUtil.getStringSecond());
 				xnjcpt_memory.setMemory_gmt_modified(TeamUtil.getStringSecond());
 				xnjcpt_memory.setMemory_id(TeamUtil.getUuid());
@@ -145,19 +145,19 @@ public class ReceiveDaoImpl implements ReceiveDao {
 	}
 
 	/**
-	 * ´ÅÅÌÐÅÏ¢¸ü¸Ä¡¢±£´æµÄ·½·¨
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½
 	 */
 	@Override
 	public void updateDiskInfor(String ip, xnjcpt_disk xnjcpt_disk) {
 		// TODO Auto-generated method stub
 		/**
-		 * ¸ù¾Ýip²éÕÒcomputerµÄlist¼¯ºÏ
+		 * ï¿½ï¿½ï¿½ï¿½ipï¿½ï¿½ï¿½ï¿½computerï¿½ï¿½listï¿½ï¿½ï¿½ï¿½
 		 */
 		String hql="from xnjcpt_computer where computer_ip='"+ip+"'";
 		Query query=getSession().createQuery(hql);
 		List<xnjcpt_computer> computer_list=query.list();
 		/**
-		 * ¸ù¾Ýcomputer_id²éÕÒ´ÅÅÌÐÅÏ¢µÄ¼¯ºÏ£¬disk_computer=computer_id
+		 * ï¿½ï¿½ï¿½ï¿½computer_idï¿½ï¿½ï¿½Ò´ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½Ä¼ï¿½ï¿½Ï£ï¿½disk_computer=computer_id
 		 */
 		if(computer_list.size()>0){
 			String hql2="from xnjcpt_disk where disk_computer='"+computer_list.get(0).getComputer_id()+"'";
@@ -184,19 +184,19 @@ public class ReceiveDaoImpl implements ReceiveDao {
 	}
 	
 	/**
-	 * ÍøÂçÐÅÏ¢¸ü¸Ä¡¢±£´æµÄ·½·¨
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½
 	 */
 	@Override
 	public void updateNetInfor(String ip, xnjcpt_net xnjcpt_net) {
 		// TODO Auto-generated method stub
 		/**
-		 * ¸ù¾Ýip²éÕÒcomputerµÄlist¼¯ºÏ
+		 * ï¿½ï¿½ï¿½ï¿½ipï¿½ï¿½ï¿½ï¿½computerï¿½ï¿½listï¿½ï¿½ï¿½ï¿½
 		 */
 		String hql="from xnjcpt_computer where computer_ip='"+ip+"'";
 		Query query=getSession().createQuery(hql);
 		List<xnjcpt_computer> computer_list=query.list();
 		/**
-		 * ¸ù¾Ýcomputer_id²éÕÒÍøÂçÐÅÏ¢µÄ¼¯ºÏ£¬computer_id=net_computer
+		 * ï¿½ï¿½ï¿½ï¿½computer_idï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½Ä¼ï¿½ï¿½Ï£ï¿½computer_id=net_computer
 		 */
 		if(computer_list.size()>0){
 			String hql2="from xnjcpt_net where net_computer='"+computer_list.get(0).getComputer_id()+"'";
@@ -223,13 +223,13 @@ public class ReceiveDaoImpl implements ReceiveDao {
 	}
 
 	/**
-	 * cpu×´Ì¬ÐÅÏ¢±£´æµÄÊµÏÖ·½·¨
+	 * cpu×´Ì¬ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½Ö·ï¿½ï¿½ï¿½
 	 */
 	@Override
 	public void saveCpuStateInfor(String ip, xnjcpt_cpu_state xnjcpt_cpu_state) {
 		// TODO Auto-generated method stub
 		/**
-		 * ¸ù¾Ýip²éÕÒcomputerµÄlist¼¯ºÏ
+		 * ï¿½ï¿½ï¿½ï¿½ipï¿½ï¿½ï¿½ï¿½computerï¿½ï¿½listï¿½ï¿½ï¿½ï¿½
 		 */
 		String hql="from xnjcpt_computer where computer_ip='"+ip+"'";
 		Query query=getSession().createQuery(hql);
@@ -249,19 +249,19 @@ public class ReceiveDaoImpl implements ReceiveDao {
 	}
 
 	/**
-	 * ÄÚ´æ×´Ì¬ÐÅÏ¢±£´æµÄÊµÏÖ·½·¨
+	 * ï¿½Ú´ï¿½×´Ì¬ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½Ö·ï¿½ï¿½ï¿½
 	 */
 	@Override
 	public void saveMemoryStateInfor(String ip, xnjcpt_memory_state xnjcpt_memory_state) {
 		// TODO Auto-generated method stub
 		/**
-		 * ¸ù¾Ýip²éÕÒcomputerµÄlist¼¯ºÏ
+		 * ï¿½ï¿½ï¿½ï¿½ipï¿½ï¿½ï¿½ï¿½computerï¿½ï¿½listï¿½ï¿½ï¿½ï¿½
 		 */
 		String hql="from xnjcpt_computer where computer_ip='"+ip+"'";
 		Query query=getSession().createQuery(hql);
 		List<xnjcpt_computer> computer_list=query.list();
 		if(computer_list.size()>0){
-			System.out.println("ÄÚ´æ×´Ì¬ÐÅÏ¢±£´æ£¡");
+			System.out.println("ï¿½Ú´ï¿½×´Ì¬ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½æ£¡");
 			xnjcpt_memory_state.setMemory_state_computer(computer_list.get(0).getComputer_id());
 			xnjcpt_memory_state.setMemory_state_gmt_create(TeamUtil.getStringSecond());
 			xnjcpt_memory_state.setMemory_state_gmt_modified(TeamUtil.getStringSecond());
@@ -271,19 +271,19 @@ public class ReceiveDaoImpl implements ReceiveDao {
 	}
 
 	/**
-	 * io×´Ì¬ÐÅÏ¢Êµ±£´æµÄ·½·¨
+	 * io×´Ì¬ï¿½ï¿½Ï¢Êµï¿½ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½
 	 */
 	@Override
 	public void saveIoStateInfor(String ip, xnjcpt_io_state xnjcpt_io_state) {
 		// TODO Auto-generated method stub
 		/**
-		 * ¸ù¾Ýip²éÕÒcompu_listµÄ¼¯ºÏ
+		 * ï¿½ï¿½ï¿½ï¿½ipï¿½ï¿½ï¿½ï¿½compu_listï¿½Ä¼ï¿½ï¿½ï¿½
 		 */
 		String hql="from xnjcpt_computer where computer_ip='"+ip+"'";
 		Query query=getSession().createQuery(hql);
 		List<xnjcpt_computer> computer_list=query.list();
 		if(computer_list.size()>0){
-			System.out.println("io×´Ì¬ÐÅÏ¢±£´æ£¡");
+			System.out.println("io×´Ì¬ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½æ£¡");
 			xnjcpt_io_state.setIo_state_computer(computer_list.get(0).getComputer_id());
 			xnjcpt_io_state.setIo_state_gmt_create(TeamUtil.getStringSecond());
 			xnjcpt_io_state.setIo_state_gmt_modified(TeamUtil.getStringSecond());
@@ -293,7 +293,7 @@ public class ReceiveDaoImpl implements ReceiveDao {
 	}
 
 	/**
-	 * ´ÅÅÌ×´Ì¬ÐÅÏ¢±£´æµÄÊµÏÖ·½·¨
+	 * ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½Ö·ï¿½ï¿½ï¿½
 	 */
 	@Override
 	public void saveDiskInfor(String ip, xnjcpt_disk_state xnjcpt_disk_state) {
@@ -311,7 +311,7 @@ public class ReceiveDaoImpl implements ReceiveDao {
 	}
 
 	/**
-	 * ÍøÂç×´Ì¬ÐÅÏ¢±£´æµÄÊµÏÖ·½·¨
+	 * ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½Ö·ï¿½ï¿½ï¿½
 	 */
 	@Override
 	public void saveNetInfor(String ip, xnjcpt_net_state xnjcpt_net_state) {

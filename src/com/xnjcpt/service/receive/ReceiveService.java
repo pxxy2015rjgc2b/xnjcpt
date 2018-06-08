@@ -24,7 +24,5 @@ public interface ReceiveService {
 
 	void saveNetStateInfor(String ip, com.xnjcpt.domain.DO.xnjcpt_net_state xnjcpt_net_state);
 
-	
-
 
 }
