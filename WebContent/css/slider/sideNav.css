@@ -1,0 +1,44 @@
+html,
+body,
+div,
+table,
+span,
+img,
+ul,
+li ,input,a{
+	margin: 0px;
+	padding: 0px;
+}
+/*渚ц竟鏍�*/
+.side_navBox{
+	width: 200px;
+	height:100%;
+	position: fixed;
+	font:bold 16px/50px "寰蒋闆呴粦";
+	color: white;
+	float: left;
+	text-indent:20px;
+	background:black;
+}
+.side_navBox>.side_nav{
+	position: relative;
+	top:0px;
+	left: 0px;
+	bottom: 0px;
+	list-style: none;
+	text-indent:20px;
+	
+}
+.side_navBox>.side_nav>li{
+	height:35px;
+}
+.side_navBox>.side_nav>li>a{
+	color:#AEB7C2;
+	display: block;
+	font:13px/35px "寰蒋闆呴粦";
+}
+.side_navBox>.side_nav a:hover{
+	background: #252c35;
+	color:#ffffff;
+	
+}

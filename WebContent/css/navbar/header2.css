@@ -1,0 +1,63 @@
+html,
+body,
+div,
+table,
+span,
+img,
+ul,
+li ,input{
+	margin: 0px;
+	padding: 0px;
+}
+a{
+	
+}
+a:hover{
+	color:#3d91ff;
+	cursor: pointer;
+	text-decoration: none;
+}
+.header_box{
+	width:100%;
+	height: 70px;
+	overflow: hidden;
+	position: fixed;
+	background:black;
+	color: #566374;
+	z-index: 99999;
+	box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
+	-moz-box-shadow:1px 2px 3px rgba(0, 0, 0, 0.1);/*firefox*/
+    -webkit-box-shadow:1px 2px 3px rgba(0, 0, 0, 0.1)/*safari鎴朿hrome*/
+	
+}
+.header_left{
+	float: left;
+}
+.header_left .logo{
+	display: inline-block;
+     margin: 20px 20px;
+}
+/*瀵艰埅鏉′腑闂�*/
+.header_center{
+	height: 70px;
+	float: left;
+	
+}
+.header_center a{
+	display: inline-block;
+	margin:10px 20px;
+	color:white;
+	font: 14px/50px "寰蒋闆呴粦";
+}
+/*瀵艰埅鏉″彸杈�*/
+.header_right{
+	width: 100px;
+float: right;
+text-align: right;
+display: inline-block;
+margin: 20px 30px;
+}
+.search{
+	display: inline-block;
+margin-right: 10px;
+}
