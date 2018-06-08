@@ -4,8 +4,8 @@ public class xnjcpt_net_state {
 	private String net_state_id;//网络状态表主键	
 	private String disk_state_computer;	//主机表主键	
 	private String disk_state_time;//时间	
-	private String net_state_obandwith;	//出带宽		
-	private String net_state_ibandwith;	//入带宽		
+	private String net_state_obandwidth;	//出带宽		
+	private String net_state_ibandwidth;	//入带宽		
 	private String net_state_opackage;//出包量	
 	private String net_state_ipackage;//入包量	
 	private String net_state_tcp_number;//tcp连接个数
@@ -30,17 +30,18 @@ public class xnjcpt_net_state {
 	public void setDisk_state_time(String disk_state_time) {
 		this.disk_state_time = disk_state_time;
 	}
-	public String getNet_state_obandwith() {
-		return net_state_obandwith;
+	
+	public String getNet_state_obandwidth() {
+		return net_state_obandwidth;
 	}
-	public void setNet_state_obandwith(String net_state_obandwith) {
-		this.net_state_obandwith = net_state_obandwith;
+	public void setNet_state_obandwidth(String net_state_obandwidth) {
+		this.net_state_obandwidth = net_state_obandwidth;
 	}
-	public String getNet_state_ibandwith() {
-		return net_state_ibandwith;
+	public String getNet_state_ibandwidth() {
+		return net_state_ibandwidth;
 	}
-	public void setNet_state_ibandwith(String net_state_ibandwith) {
-		this.net_state_ibandwith = net_state_ibandwith;
+	public void setNet_state_ibandwidth(String net_state_ibandwidth) {
+		this.net_state_ibandwidth = net_state_ibandwidth;
 	}
 	public String getNet_state_opackage() {
 		return net_state_opackage;

@@ -14,11 +14,11 @@
         <property name="disk_state_time" type="java.lang.String">
             <column name="DISK_STATE_TIME" />
         </property>
-        <property name="net_state_obandwith" type="java.lang.String">
-            <column name="NET_STATE_OBANDWITH" />
+        <property name="net_state_obandwidth" type="java.lang.String">
+            <column name="NET_STATE_OBANDWIDTH" />
         </property>
-        <property name="net_state_ibandwith" type="java.lang.String">
-            <column name="NET_STATE_IBANDWITH" />
+        <property name="net_state_ibandwidth" type="java.lang.String">
+            <column name="NET_STATE_IBANDWIDTH" />
         </property>
         <property name="net_state_opackage" type="java.lang.String">
             <column name="NET_STATE_OPACKAGE" />
