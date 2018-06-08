@@ -47,7 +47,9 @@ public class UserDaoImpl implements UserDao {
 		String hql = "from xnjcpt_user where user_name = '" + user_name + "'";
 		Query query = getSession().createQuery(hql);
 		List<xnjcpt_user> list = query.list();
+		if(list.size()>0){
 		return list.get(0);
+		}return null;
 	}
 
 	@Override

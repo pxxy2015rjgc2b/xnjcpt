@@ -41,29 +41,41 @@ public class UserAction{
 	//用户登陆
 	public void login() throws IOException{
 		HttpServletResponse response = ServletActionContext.getResponse();
-		response.setHeader("Access-Control-Allow-Origin", "*");
-		response.setHeader("Access-Control-Allow-Methods", "GET,POST");
+		/*response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Access-Control-Allow-Methods", "GET,POST");*/
 		response.setContentType("text/html;charset=utf-8");
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpSession session = request.getSession();
 		PrintWriter pw = response.getWriter();
 		xnjcpt_user xu = userService.login(user);
+		xnjcpt_user xu2=userService.getUserByUserEmail(user.getUser_email());
 		//System.out.println(xu);
-		if (xu != null) {
+		System.out.println(xu);
+		System.out.println(xu2);
+		if(xu != null){
 			if (xu.getUser_password().equals(user.getUser_password())){
 				pw.write("success");
 				System.out.println("密码输入正确");
-				String st="0";
-				xu.setUser_status(st);
+				/*String st="0";
+				xu.setUser_status(st);*/
 				session.setAttribute("user_name", xu.getUser_name());
+			}
+		}
+		else if (xu2!=null) {
+			if (xu2.getUser_password().equals(user.getUser_password())){
+				pw.write("success");
+				System.out.println("密码输入正确");
+				/*String st="0";
+				xu.setUser_status(st);*/
+				session.setAttribute("user_name", xu2.getUser_name());
 			}else{
 				pw.write("password_error");
 				System.out.println("密码输入错误");
-			}
-		} else {
+			}}
+		else {
 			pw.write("name_error");
-			System.out.println("用户名输入错误");
-			System.out.println(user.getUser_name());
+			System.out.println("用户名或邮箱账户输入错误");
+			System.out.println(xu2.getUser_email());
 		}
 		pw.flush();
 		pw.close();
@@ -72,8 +84,8 @@ public class UserAction{
 	//用户注册
 	public void register() throws IOException{
 		HttpServletResponse response = ServletActionContext.getResponse();
-		response.setHeader("Access-Control-Allow-Origin", "*");
-		response.setHeader("Access-Control-Allow-Methods", "GET,POST");
+		/*response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Access-Control-Allow-Methods", "GET,POST");*/
 		response.setContentType("text/html;charset=utf-8");
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpSession session = request.getSession();
