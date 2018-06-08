@@ -14,8 +14,12 @@ public class xnjcpt_cpu {
 	private String cpu_model;
 	//主频
 	private String cpu_basic_frequency;
+	//cpu缓存大小
+	private String cpu_catch_size;
+	//核数
+	private String cpu_cores;
 	//创建时间
-	private String cpu_gmt_creat;
+	private String cpu_gmt_create;
 	//修改时间
 	private String cpu_gmt_modified;
 	public String getCpu_id() {
@@ -42,11 +46,24 @@ public class xnjcpt_cpu {
 	public void setCpu_basic_frequency(String cpu_basic_frequency) {
 		this.cpu_basic_frequency = cpu_basic_frequency;
 	}
-	public String getCpu_gmt_creat() {
-		return cpu_gmt_creat;
+	public String getCpu_catch_size() {
+		return cpu_catch_size;
 	}
-	public void setCpu_gmt_creat(String cpu_gmt_creat) {
-		this.cpu_gmt_creat = cpu_gmt_creat;
+	public void setCpu_catch_size(String cpu_catch_size) {
+		this.cpu_catch_size = cpu_catch_size;
+	}
+	public String getCpu_cores() {
+		return cpu_cores;
+	}
+	public void setCpu_cores(String cpu_cores) {
+		this.cpu_cores = cpu_cores;
+	}
+
+	public String getCpu_gmt_create() {
+		return cpu_gmt_create;
+	}
+	public void setCpu_gmt_create(String cpu_gmt_create) {
+		this.cpu_gmt_create = cpu_gmt_create;
 	}
 	public String getCpu_gmt_modified() {
 		return cpu_gmt_modified;

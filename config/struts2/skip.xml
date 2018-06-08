@@ -4,8 +4,14 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 	<package name="skip" namespace="/skip" extends="struts-default">
-		<action name="skip_*" class="com.xnjcpt.action.skip.SkipAction">
-		
+		<action name="skip_*" class="com.xnjcpt.action.skip.SkipAction" method="{1}">
+			<result name="intoNavbar">/WEB-INF/view/navbar.jsp</result>
+			<result name="intoSlider">/WEB-INF/view/slider.jsp</result>
+			<result name="intoAlarm">/WEB-INF/view/alarm/alarmList.jsp</result>
+			<result name="intoUser">/WEB-INF/view/user/userList.jsp</result>
+			<result name="intoComputer">/WEB-INF/view/computer/computerList.jsp</result>
+			<result name="intoMonitor">/WEB-INF/view/monitor/monitor.jsp</result>
+			<result name="intoPerson">/WEB-INF/view/user/personInfor.jsp</result>
 		</action>
 	</package>
 </struts>

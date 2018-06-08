@@ -29,8 +29,8 @@
         <property name="user_role" type="java.lang.String">
             <column name="USER_ROLE" />
         </property>
-        <property name="user_gmt_creat" type="java.lang.String">
-            <column name="USER_GMT_CREAT" />
+        <property name="user_gmt_create" type="java.lang.String">
+            <column name="USER_GMT_CREATE" />
         </property>
         <property name="user_gmt_modified" type="java.lang.String">
             <column name="USER_GMT_MODIFIED" />
