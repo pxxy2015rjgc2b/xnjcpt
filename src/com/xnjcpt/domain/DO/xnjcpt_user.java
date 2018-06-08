@@ -1,9 +1,7 @@
 package com.xnjcpt.domain.DO;
 
-import java.util.Date;
-
 /**
- * �û���Ϣ��ʵ���
+ * �û���Ϣ��ʵ����
  *
  */
 public class xnjcpt_user {
@@ -24,7 +22,7 @@ public class xnjcpt_user {
 	//�û���ɫ
 	private String user_role;
 	//����ʱ��
-	private String user_gmt_creat;
+	private String user_gmt_create;
 	//�޸�ʱ��
 	private String user_gmt_modified;
 	public String getUser_id() {
@@ -75,11 +73,12 @@ public class xnjcpt_user {
 	public void setUser_role(String user_role) {
 		this.user_role = user_role;
 	}
-	public String getUser_gmt_creat() {
-		return user_gmt_creat;
+	
+	public String getUser_gmt_create() {
+		return user_gmt_create;
 	}
-	public void setUser_gmt_creat(String user_gmt_creat) {
-		this.user_gmt_creat = user_gmt_creat;
+	public void setUser_gmt_create(String user_gmt_create) {
+		this.user_gmt_create = user_gmt_create;
 	}
 	public String getUser_gmt_modified() {
 		return user_gmt_modified;
@@ -87,8 +86,6 @@ public class xnjcpt_user {
 	public void setUser_gmt_modified(String user_gmt_modified) {
 		this.user_gmt_modified = user_gmt_modified;
 	}
-
-	
 	
 	
 

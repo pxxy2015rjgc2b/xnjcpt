@@ -1,0 +1,103 @@
+html,
+body,
+div,
+table,
+span,
+img,
+ul,
+li ,input{
+	margin: 0px;
+	padding: 0px;
+	vertical-align:top;
+}
+.wrapper{
+	background:#eeeeee;
+	overflow: hidden;
+}
+/*header*/
+.register_logo{
+	width: 150px;
+	height: 48px;
+	margin:40px auto;
+}
+.register_logo>span{
+	font: 40px/48px "微软雅黑";
+    margin-left: 10px;
+	
+}
+/*center*/
+/* center header*/
+.register_box{
+	width: 1200px;
+	height: 500px;
+    background: white;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.email_title{
+	width: 1100px;
+    height: 52px;
+    margin: 50px auto;
+    margin-bottom: 0px;
+    border-bottom: 1px solid #e7e7e7;
+}
+.email_title span{
+	font-size: 24px;
+	vertical-align: bottom;
+}
+.email_title i{
+	color: #1296db;
+}
+.title_right{
+	float: right;
+   
+}
+.title_right span{
+	font: 14px/52px "微软雅黑";
+}
+.title_right a{
+	color: #00a4ff;
+	font: 14px/52px "微软雅黑";
+}
+/*center centers*/
+.register_content{
+	width: 420px;
+	height: 600px;
+	margin: 30px auto;
+	font: 14px/45px "微软雅黑";
+}
+.register_content input{
+	width:100%;
+	text-indent: 20px;
+	display: inline-block;
+	height: 45px;margin: 10px 0px;
+	border: 1px solid #ddd;
+}
+.register_content .identify_code{
+	width: 200px;
+	height: 45px;
+	float: right;
+	border:1px solid #d1d2d4;
+	margin: 10px 0px;
+    text-align: center;
+	background: #f4f4f4;
+}
+.register_button{
+	width: 100%;
+	height: 45px;
+	color: white;
+	margin: 10px 0px;
+	font-size: 20px;
+	text-align: center;
+	background: #0097ee;
+}
+/*footer*/
+.reg_footer{
+	width: 1200px;
+	text-align: center;
+	margin: 40px auto;
+	margin-bottom: 30px;
+	font-size:14px;
+	color: #999;
+	
+}

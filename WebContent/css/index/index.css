@@ -1,0 +1,73 @@
+
+/*中间背景*/
+.center_box{
+	width: 100%;
+	background-image: url(../../img/background.png);
+	background-size: cover;
+}
+.center_content{
+	width: 1200px;
+	height: 565px;
+	margin: 0 auto;
+	color: white;
+	overflow: hidden;
+}
+.center_content>.center_word{
+	width: 580px;
+	height: 170px;
+	margin-top: 150px;
+	font: 46px/85px "微软雅黑";
+	float: left;
+}
+.center_content>.center_word>.enter_button{
+	width: 207px;
+	height: 45px;
+	text-align: center;
+	font: 14px/45px "微软雅黑";
+	border: 1px solid #FFFFFF;
+}
+.center_content>.login_box{
+	width: 380px;
+	height: 265px;
+	margin-top: 150px;
+	background: white;
+	float: right;
+	color: black;
+}
+.login_box>.login_content{
+	width: 328px;
+	height: 205px;
+	margin: 30px auto;
+}
+.login_content>.login_title{
+	font: 23px/23px "微软雅黑";
+	color: black;
+	margin-bottom:15px;
+}
+.login_content>input{
+	width:328px;
+	height: 38px;
+	margin: 10px 0px;
+	text-indent: 10px;
+	font-size: 14px;
+	border: 1px solid #d7d8d9;
+}
+.login_content>.login_button{
+	width: 328px;
+	height: 36px;
+	margin-top: 10px;
+	color: white;
+	text-align: center;
+	font:bold 14px/36px "微软雅黑";
+	background: #00c1de;
+}
+.login_content>a{
+	float: right;
+	margin-left: 10px;
+	color:#9b9ea0 ;
+	font:12px/25px "微软雅黑";
+}
+.login_content>a:hover{
+    cursor: pointer;
+	color: #00C1DE;
+}
