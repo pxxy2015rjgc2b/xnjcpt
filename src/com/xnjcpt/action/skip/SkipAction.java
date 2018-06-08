@@ -7,8 +7,7 @@ import com.opensymphony.xwork2.ActionSupport;
  * @author 孙毅
  *用于跳转页面
  */
-public class SkipAction extends ActionSupport{
-
+public class SkipAction extends ActionSupport{	 
 	public String intoNavbar(){
 		return "intoNavbar";
 	}

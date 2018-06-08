@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="<%=basePath%>css/index/index.css" />
 <link rel="stylesheet" href="<%=basePath%>css/index/footer.css" />
 <link rel="stylesheet" href="<%=basePath%>css/index/header.css" />
+<link rel="stylesheet" href="<%=basePath %>css/navbar/font-awesome.css">
 </head>
 <body>
 <div class="wrapper">
@@ -24,7 +25,6 @@
 						<span>云栖</span>
 					</div>
 					<div class="header_right">
-						<img class="search" src="<%=basePath %>img/search.png" />
 						<a>注册</a>
 						<img class="user" src="<%=basePath %>img/user.png" />
 					</div>
