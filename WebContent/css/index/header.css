@@ -1,0 +1,105 @@
+/*导航栏*/
+html,
+body,
+div,
+table,
+span,
+img,
+ul,
+li ,input{
+	margin: 0px;
+	padding: 0px;
+}
+
+.header_box img {
+	position: absolute;
+	margin: auto;
+	top: 0px;
+	bottom: 0px;
+}
+
+a:hover {
+	cursor: pointer;
+	color: #00a4ff;
+}
+
+.header_box {
+	width: 100%;
+	height: 64px;
+	background: #2a303c;
+}
+
+.header_content {
+	margin: 0 auto;
+	width: 1200px;
+	color: white;
+}
+
+
+/*右边*/
+
+.header_right {
+	width: 140px;
+	margin-right: 6px;
+	float: right;
+	position: relative;
+	font: 14px/64px "微软雅黑";
+	z-index: 100;
+}
+
+.header_right a {
+	position: relative;
+	right: -70px;
+}
+
+.header_right .search {
+	right: 90px;
+}
+
+.header_right .user {
+	right: 0px;
+}
+
+
+/*用户信息*/
+
+.user_info {
+	display: none;
+	width: 150px;
+	height: 200px;
+	list-style: none;
+	position: relative;
+	top: 60px;
+	right: -850px;
+	font: 15px/60px "微软雅黑";
+	color: #000;
+	background: white;
+}
+
+.user_info li {
+	text-align: left;
+}
+
+.user_info img {
+	top: -200px;
+	right: 5px
+}
+
+
+/*左边*/
+
+.header_left {
+	width: 80px;
+	float: left;
+	position: relative;
+	font: bold 20px/64px "微软雅黑";
+}
+
+.header_left span {
+	position: relative;
+	left: 37px;
+}
+
+.header_left .logo {
+	left: 0px;
+}

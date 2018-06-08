@@ -33,6 +33,6 @@ public interface ReceiveDao {
 
 	void saveNetInfor(String ip, xnjcpt_net_state xnjcpt_net_state);
 
-	
+
 
 }
