@@ -7,7 +7,7 @@ public class xnjcpt_cpu_state {
 	private String cpu_state_user;//用户空间占用cpu百分比	
 	private String cpu_state_nice;//用户进程空间内改变过优先级百分比	
 	private String cpu_state_system;//内和空间占用cpu百分比	
-	private String cpu_state_lowait;//等待输入输出的cpu时间百分比	
+	private String cpu_state_iowait;//等待输入输出的cpu时间百分比	
 	private String cpu_state_idle;//空闲cpu百分比	
 	private String cpu_state_gmt_create;//字段创建时间		
 	private String cpu_state_gmt_modified;//字段修改时间		
@@ -47,11 +47,12 @@ public class xnjcpt_cpu_state {
 	public void setCpu_state_system(String cpu_state_system) {
 		this.cpu_state_system = cpu_state_system;
 	}
-	public String getCpu_state_lowait() {
-		return cpu_state_lowait;
+
+	public String getCpu_state_iowait() {
+		return cpu_state_iowait;
 	}
-	public void setCpu_state_lowait(String cpu_state_lowait) {
-		this.cpu_state_lowait = cpu_state_lowait;
+	public void setCpu_state_iowait(String cpu_state_iowait) {
+		this.cpu_state_iowait = cpu_state_iowait;
 	}
 	public String getCpu_state_idle() {
 		return cpu_state_idle;

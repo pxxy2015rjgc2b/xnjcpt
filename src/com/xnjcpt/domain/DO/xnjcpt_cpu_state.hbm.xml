@@ -23,8 +23,8 @@
         <property name="cpu_state_system" type="java.lang.String">
             <column name="CPU_STATE_SYSTEM" />
         </property>
-        <property name="cpu_state_lowait" type="java.lang.String">
-            <column name="CPU_STATE_LOWAIT" />
+        <property name="cpu_state_iowait" type="java.lang.String">
+            <column name="CPU_STATE_IOWAIT" />
         </property>
         <property name="cpu_state_idle" type="java.lang.String">
             <column name="CPU_STATE_IDLE" />
