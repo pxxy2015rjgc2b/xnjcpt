@@ -2,6 +2,8 @@ package com.xnjcpt.dao.impl.computer;
 
 import java.sql.SQLException;
 
+
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +19,6 @@ import com.xnjcpt.dao.computer.ComputerDao;
 import com.xnjcpt.domain.DO.xnjcpt_computer;
 import com.xnjcpt.domain.DO.xnjcpt_user;
 import com.xnjcpt.domain.DO.xnjcpt_user_computer;
-import com.xnjcpt.domain.VO.page_list_user_computerVO;
 
 
 import util.TeamUtil;
@@ -87,53 +88,60 @@ String hql ="from xnjcpt_user_computer where user_computer_id = '" + user_comput
 String hql ="from xnjcpt_computer where computer_id = '" + xuc.getUser_computer_computer() + "' ";
 		
 		Query query=getSession().createQuery(hql);
-		List<xnjcpt_computer> usercomputerList=query.list();
-System.out.println(usercomputerList);
+		List<xnjcpt_computer> computerList=query.list();
+System.out.println(computerList);
+
 		return xuc;
 		
 	}
 
 	
 
-	
-
-	/*@Override
-	
 	@Override
-	public int getCountByCondition(page_list_user_computerVO computerVO) {
-		String hql = "select count(*) from xnjcpt_computer where 1=1";
-		if (computerVO.getQueryContent() != null && !"".equals(computerVO.getQueryContent()))
-			hql = hql + " and (user_computer_id	 like '%" + computerVO.getQueryContent() + "%' or "
-					+ "user_computer_user		 like '%" + computerVO.getQueryContent() + "%'or "
-					+ "user_computer_computer			 like '%" + computerVO.getQueryContent() + "%')";
-		if (computerVO.getQuery_time_start() != null && !"".equals(computerVO.getQuery_time_start()))
-			hql = hql + " and user_computer_gmt_create >='" + computerVO.getQuery_time_start() + "'";
-		if (computerVO.getQuery_time_end() != null && !"".equals(computerVO.getQuery_time_start()))
-			hql = hql + " and user_computer_gmt_modified<='" + computerVO.getQuery_time_end() + "'";
-
-		Session session = this.getSession();
-		long count = (long) session.createQuery(hql).uniqueResult();
-		return new Long(count).intValue();
+	public int getUserComputerCount(String queryString, int currPage) {
+		String query = "%" + queryString + "%";
+		String hql = "select count(*) from xnjcpt_user_computer where user_computer_user like '" + query + "' or user_computer_computer like '"
+				+ query + "' or user_computer_id like '" + query + "' ";
+		System.out.println(hql);
+		int count = ((Number) getSession().createQuery(hql).uniqueResult()).intValue();
+		return count;
 	}
 
 	@Override
-	public void getComputerByPage(page_list_user_computerVO computerVO) {
-		String hql = "from xnjcpt_user_computer where 1=1";
-		if (computerVO.getQueryContent() != null && !"".equals(computerVO.getQueryContent()))
-			hql = hql + " and (user_computer_id	 like '%" + computerVO.getQueryContent() + "%' or "
-					+ "user_computer_user		 like '%" + computerVO.getQueryContent() + "%'or "
-					+ "user_computer_computer			 like '%" + computerVO.getQueryContent() + "%')";
-		if (computerVO.getQuery_time_start() != null && !"".equals(computerVO.getQuery_time_start()))
-			hql = hql + " and user_computer_gmt_create		 >='" + computerVO.getQuery_time_start() + "'";
-		if (computerVO.getQuery_time_end() != null && !"".equals(computerVO.getQuery_time_start()))
-			hql = hql + " and user_computer_gmt_modified		<='" + computerVO.getQuery_time_end() + "'";
-		hql = hql + " order by user_computer_gmt_create		 " +computerVO.getQuery_time_sort();
-		Session session = this.getSession();
-		List<xnjcpt_user_computer> computerList = session.createQuery(hql)
-				.setFirstResult((computerVO.getCurrPage() - 1) * computerVO.getPageSize())
-				.setMaxResults(computerVO.getPageSize()).list();
-		computerVO.setUsercomputerList(computerList);
+	public List<xnjcpt_user_computer> getUserComputerByPage(String queryString, int currPage) {
+		String query = "%" + queryString + "%";
+		String hql = "from xnjcpt_user_computer where user_computer_user like '" + query + "' or user_computer_computer		 like '"
+				+ query + "' or user_computer_id like '" + query + "' order by user_computer_gmt_create	 desc";
+		System.out.println(hql);
+		List<xnjcpt_user_computer> list = getSession().createQuery(hql).setFirstResult((currPage - 1) * 10).setMaxResults(10).list();
+		return list;
 	}
-*/
+
+	@Override
+	public int getComputerCount(String queryString, int currPage) {
+		String query = "%" + queryString + "%";
+		String hql = "select count(*) from xnjcpt_computer where computer_name like '" + query + "' or computer_ip	 like '"
+				+ query + "' or computer_id like '" + query + "' ";
+		System.out.println(hql);
+		int count = ((Number) getSession().createQuery(hql).uniqueResult()).intValue();
+		return count;
+	}
+
+	@Override
+	public List<xnjcpt_computer> getComputerByPage(String queryString, int currPage) {
+		String query = "%" + queryString + "%";
+		String hql = "from xnjcpt_computer where computer_name like '" + query + "' or computer_ip	 like '"
+				+ query + "' or computer_id like '" + query + "' order by user_computer_gmt_create	 desc";
+		System.out.println(hql);
+		List<xnjcpt_computer> list = getSession().createQuery(hql).setFirstResult((currPage - 1) * 10).setMaxResults(10).list();
+		return list;
+	}
+
 	
+	
+
+	
+
+	
+
 }

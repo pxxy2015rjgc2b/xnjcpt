@@ -22,18 +22,23 @@ public interface ComputerDao {
 
 	void updateComputer(String user_computer_id, xnjcpt_computer xc);
 
-	public xnjcpt_user_computer getUser_computerById(String user_computer_id);
+
+	
+
+	public  xnjcpt_user_computer  getUser_computerById(String user_computer_id);
+
+	public int getUserComputerCount(String queryString, int currPage);
+
+	public List<xnjcpt_user_computer> getUserComputerByPage(String queryString, int currPage);
+
+	public int getComputerCount(String queryString, int currPage);
+
+	public List<xnjcpt_computer> getComputerByPage(String queryString, int currPage);
 
 	
 	
 	
 	
 
-	/*
 	
-	int getCountByCondition(page_list_user_computerVO computerVO);
-
-	void getComputerByPage(page_list_user_computerVO computerVO);
-	
-*/
 }
