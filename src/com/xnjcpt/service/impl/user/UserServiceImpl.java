@@ -65,6 +65,12 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		userDao.updateuser(user);
 	}
+
+	@Override
+	public void deleteuser(String user_id) {
+		// TODO Auto-generated method stub
+		userDao.deleteuser(user_id);
+	}
 	
 
 }

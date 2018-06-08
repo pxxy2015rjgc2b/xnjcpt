@@ -64,7 +64,7 @@ public class SendEmail {
 
 			// 7. Content: 邮件正文（可以使用html标签）（内容有广告嫌疑，避免被邮件服务器误认为是滥发广告以至返回失败，请修改发送内容）
 			//message.setContent(username + "用户你好,您的提供操作的验证码是" + verifyCode, "text/html;charset=UTF-8");
-			message.setContent(username + "<H1>用户你好,云栖系统激活邮件！点击以下链接进行账户激活</H1> <h3><a href='http:// 192.168.233.1:8080/xnjcpt/user/user_activate?user.user_id="+verifyCode+"'>http:// 192.168.233.1:8080/xnjcpt/user/user_activate?code="+verifyCode+"</a></h3>", "text/html;charset=UTF-8");
+			message.setContent(username + "<H1>用户你好,云栖系统激活邮件！点击以下链接进行账户激活</H1> <h3><a href='http://192.168.233.1:8080/xnjcpt/user/user_activate?user.user_id="+verifyCode+"'>http:// 192.168.233.1:8080/xnjcpt/user/user_activate?user.user_id="+verifyCode+"</a></h3>", "text/html;charset=UTF-8");
 			// 8. 设置发件时间
 			message.setSentDate(new Date());
 

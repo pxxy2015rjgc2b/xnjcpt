@@ -41,6 +41,8 @@ public class UserAction{
 	//用户登陆
 	public void login() throws IOException{
 		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Access-Control-Allow-Methods", "GET,POST");
 		response.setContentType("text/html;charset=utf-8");
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpSession session = request.getSession();
@@ -70,6 +72,8 @@ public class UserAction{
 	//用户注册
 	public void register() throws IOException{
 		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Access-Control-Allow-Methods", "GET,POST");
 		response.setContentType("text/html;charset=utf-8");
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpSession session = request.getSession();
@@ -91,7 +95,7 @@ public class UserAction{
 			st="0";
 			xu.setUser_status(st);
 			userService.register(xu);
-			pw.write("success");
+			pw.write("register_success");
 		}}
 		pw.flush();
 		pw.close();	
@@ -114,6 +118,8 @@ public class UserAction{
 	//邮件激活
 	public void activate() throws IOException{
 		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Access-Control-Allow-Methods", "GET,POST");
 		response.setContentType("text/html;charset=utf-8");
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpSession session = request.getSession();
@@ -132,7 +138,30 @@ public class UserAction{
 		}
 	}
 	
-	/*public void resetPassword() throws IOException{
+	//注销用户
+	public String logout() {
+		ActionContext.getContext().getSession().remove("user_id");
+		ActionContext.getContext().getSession().remove("user_name");
+		return "logoutSuccess";
+	}
+	
+	//用户删除
+	public void deleteUser() throws IOException {
+		userService.deleteuser(user_id);
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Access-Control-Allow-Methods", "GET,POST");
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter pw = response.getWriter();
+		pw.write("delete_user");
+		pw.flush();
+		pw.close();
+	}
+	
+	
+	/*
+	 *密码修改
+	 * public void resetPassword() throws IOException{
 		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setContentType("text/html;charset=utf-8");
 		HttpServletRequest request = ServletActionContext.getRequest();

@@ -99,7 +99,15 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public void updateuser(xnjcpt_user user) {
 		// TODO Auto-generated method stub
-		getSession().update(user);
+		getSession().update(user);		//更新用户
+	}
+
+	@Override
+	public void deleteuser(String user_id) {
+		// TODO Auto-generated method stub
+		String hql = "delete from xnjcpt_user where user_id = '" + user_id + "'";
+		getSession().createQuery(hql).executeUpdate();	
+		//根据id删除用户
 	}
 
 	
