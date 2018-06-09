@@ -86,6 +86,7 @@ public class UserAction{
 	
 	//用户注册
 	public void register() throws IOException{
+		System.out.println("dffdf=--");
 		HttpServletResponse response = ServletActionContext.getResponse();
 		/*response.setHeader("Access-Control-Allow-Origin", "*");
 		response.setHeader("Access-Control-Allow-Methods", "GET,POST");*/

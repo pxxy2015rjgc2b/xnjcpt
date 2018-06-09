@@ -6,7 +6,7 @@ public class PageBean_user<T> {
 	
 	private int currentPage; //当前页码
 	private int pageSize; 	//每页显示条数
-	private int count;		//商品数量
+	private int count;		//用户数量
 	private int totalPage;	//总页数
 	private List<T> list;	//当前页的信息集合数据
 	public int getCurrentPage() {

@@ -16,7 +16,7 @@ function register_ajax(){
 	formData.append("user.user_password",user_password);
 	formData.append("user.user_email",user_email);
 	 $.ajax({
-		    url: "xnjcpt/user/user_register",
+		    url: "user/user_register",
 	        type: "post",
 	        data:formData,
 	        dataType:"json",

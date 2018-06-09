@@ -112,5 +112,35 @@ public class UserDaoImpl implements UserDao {
 		//根据id删除用户
 	}
 
+	@Override
+	public int getUserCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public xnjcpt_user findUserByUserId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<xnjcpt_user> findPageBy(int currentPage, int pageSize) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<xnjcpt_user> findPageByKeyword(int currentPage, int pageSize, String keyword) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getUserKeyCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 	
 }
