@@ -49,8 +49,8 @@
 				  	<form id="login_box" class="login_box">
 				  		<div class="login_content">
 				  		  <div class="login_title">登陆</div>
-				  		  <input class="usename" type="text" placeholder="邮箱/用户名" name="user.user_username"/>
-				  	      <input class="password" type="password" placeholder="登录密码" name="user.user_password"/>
+				  		  <input class="usename" type="text" placeholder="邮箱/用户名" name="user_username"/>
+				  	      <input class="password" type="password" placeholder="登录密码" name="user_password"/>
 				 		  <div class="login_button">登录</div>
 				 		  <a>免费注册</a>
 				 		  <a>忘记密码</a>
@@ -65,5 +65,8 @@
 			    </div>
 			</div>
 		</div>
+		<script type="text/javascript" src="<%=basePath %>/js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="<%=basePath %>/js/toastr.js/"></script>
+	    <script type="text/javascript" src="<%=basePath %>js/user/login.js"></script>
 </body>
 </html>
