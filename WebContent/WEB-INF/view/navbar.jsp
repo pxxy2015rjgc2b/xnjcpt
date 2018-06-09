@@ -15,6 +15,7 @@
 
 <!-- 所有页面共用js -->
 <script type="text/javascript" src="<%=basePath%>js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>js/login/loginInterceptor.js"></script>
 <script type="text/javascript" src="<%=basePath%>js/bootstrap-select.js"></script>
 <script type="text/javascript" src="<%=basePath%>js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>js/icheck.js"></script>
