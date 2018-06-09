@@ -91,6 +91,9 @@ li ,input{
 	text-align: center;
 	background: #0097ee;
 }
+.register_button:hover{
+	cursor:pointer;
+}
 /*footer*/
 .reg_footer{
 	width: 1200px;
