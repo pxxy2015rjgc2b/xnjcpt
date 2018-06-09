@@ -1,4 +1,5 @@
 window.onload=function(){
+
 	console.log("register");
 	$(".register_button").click(function(){
 		console.log("click");

@@ -3,6 +3,7 @@ package com.xnjcpt.action.user;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -59,6 +60,7 @@ public class UserAction{
 				/*String st="0";
 				xu.setUser_status(st);*/
 				session.setAttribute("user_name", xu.getUser_name());
+				session.setAttribute("user_id", xu.getUser_id());//session存user_id
 			}
 		}
 		else if (xu2!=null) {
@@ -68,6 +70,7 @@ public class UserAction{
 				/*String st="0";
 				xu.setUser_status(st);*/
 				session.setAttribute("user_name", xu2.getUser_name());
+				session.setAttribute("user_id", xu2.getUser_id());  //session存user_id
 			}else{
 				pw.write("password_error");
 				System.out.println("密码输入错误");
@@ -104,6 +107,7 @@ public class UserAction{
 			xu.setUser_email(user.getUser_email());
 			xu.setUser_name(user.getUser_name());
 			xu.setUser_password(user.getUser_password());
+			xu.setUser_id(UUID.randomUUID().toString());
 			st="0";
 			xu.setUser_status(st);
 			userService.register(xu);
