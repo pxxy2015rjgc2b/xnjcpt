@@ -14,7 +14,7 @@ window.onload=function(){
 //show_userList_ajax
 function show_userList(){
 	 $.ajax({
-		    url: "xnjcpt/user/user_register",
+		    url: "user/user_register",
 	        type: "post",
 	        data:formData,
 	        dataType:"json",

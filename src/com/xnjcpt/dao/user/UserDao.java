@@ -25,10 +25,9 @@ public interface UserDao {
 	xnjcpt_user getUserByUserId(String user_id);
 	//根据id查找用户
 	
-	int getUserCount();		//得到用户总数
-	xnjcpt_user findUserByUserId();		//根据id查找user
+	int getUserCount(String keyword, int currPage);//查询xx用户总数
+
 	List<xnjcpt_user> findPageBy(int currentPage, int pageSize);
 	List<xnjcpt_user> findPageByKeyword(int currentPage, int pageSize,String keyword);
 	//根据关键字查找
-	int getUserKeyCount();		//关键字查找得到用户总数
 }

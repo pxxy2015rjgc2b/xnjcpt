@@ -5,13 +5,13 @@ window.onload=function(){
 	});
 }
 function login_ajax(){
-	var user_username=$("input[name='user_username']").val();
+	var user_name=$("input[name='user_name']").val();
 	var user_password=$("input[name='user_password']").val();
 	var formData=new FormData();
-	formData.append("user.user_username",user_username);
+	formData.append("user.user_name",user_name);
 	formData.append("user.user_password",user_password);
 	$.ajax({
-		    url: "xnjcpt/user/user_login",
+		    url: "user/user_login",
 	        type: "post",
 	        data:formData,
 	        dataType:"json",

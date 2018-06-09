@@ -1,13 +1,18 @@
 package com.xnjcpt.dao.impl.user;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 
 import com.xnjcpt.dao.user.UserDao;
 import com.xnjcpt.domain.DO.xnjcpt_user;
+
 
 
 public class UserDaoImpl implements UserDao {
@@ -113,34 +118,40 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public int getUserCount() {
+	public int getUserCount(String keyword, int currPage) {
 		// TODO Auto-generated method stub
-		return 0;
+		String query = "%" + keyword + "%";
+		String hql = "select count(*) from xnjcpt_user where (user_name like '" + query + "' or user_username like ''" + query + "')";
+		System.out.println(hql);
+		int count = ((Number) getSession().createQuery(hql).uniqueResult()).intValue();
+		return count;
 	}
 
-	@Override
-	public xnjcpt_user findUserByUserId() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public List<xnjcpt_user> findPageBy(int currentPage, int pageSize) {
 		// TODO Auto-generated method stub
-		return null;
+		String hql="from xnjcpt_user";
+		return (List<xnjcpt_user>) getSession().createQuery(hql)
+		.setFirstResult((currentPage-1)*pageSize).setMaxResults(pageSize).list();
+		//查找分页信息
 	}
 
 	@Override
 	public List<xnjcpt_user> findPageByKeyword(int currentPage, int pageSize, String keyword) {
-		// TODO Auto-generated method stub
+		/*// TODO Auto-generated method stub
+		DetachedCriteria criteria = DetachedCriteria.forClass(xnjcpt_user.class);
+		if(keyword !=null && keyword.length()>0){
+			criteria.add(Restrictions.like("title", "%"+keyword+"%"));  
+		}
+		return (List<xnjcpt_user>) hibernateTemplate.findByCriteria(criteria , (currentPage-1)*pageSize, pageSize);
+		//根据关键字查询分页信息
+		 *
+*/	
 		return null;
-	}
+		}
 
-	@Override
-	public int getUserKeyCount() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
+	
+	
 	
 }

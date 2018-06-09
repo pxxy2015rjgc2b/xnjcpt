@@ -12,7 +12,7 @@ function register_ajax(){
 	var user_password=$("input[name='user_password']").val();
 	var user_email=$("input[name='user_email']").val();
 	var formData=new FormData();
-	formData.append("user.user_username",user_username);
+	formData.append("user.user_name",user_username);
 	formData.append("user.user_password",user_password);
 	formData.append("user.user_email",user_email);
 	 $.ajax({
