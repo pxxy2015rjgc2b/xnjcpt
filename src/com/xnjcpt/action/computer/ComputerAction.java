@@ -12,13 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.ServletActionContext;
 public class ComputerAction {
-	//注入业务层的类
 	private ComputerService computerService;
 
 	public void setComputerService(ComputerService computerService) {
 		this.computerService = computerService;
 	}
-	//获得用户所有主机
+	//閫氳繃鐢ㄦ埛id鑾峰緱涓绘満
 	public void getComputerByUserId(){
 //		ActionContext.getContext().getSession().put("user_id", "1");
 		String user_id = (String) ActionContext.getContext().getSession().get("user_id");

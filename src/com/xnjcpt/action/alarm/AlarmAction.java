@@ -11,15 +11,15 @@ import com.xnjcpt.domain.DO.xnjcpt_alarm;
 import com.xnjcpt.service.alarm.AlarmService;
 /**
  * 
- * @author 孙毅
- *警报管理
+ * @author 瀛欐瘏
+ *璀︽姤绠＄悊
  */
 public class AlarmAction {
-	//注入业务层的类
+	//注锟斤拷业锟斤拷锟斤拷锟斤拷
 	private AlarmService alarmService;
 
 	private xnjcpt_alarm xnjcpt_alarm;
-	//保存警报
+	//淇濆瓨璀︽姤
 	public void saveAlarm(){
 		String user_id = (String) ActionContext.getContext().getSession().get("user_id");
 		xnjcpt_alarm.setAlarm_user(user_id);
@@ -48,7 +48,7 @@ public class AlarmAction {
 			}
 		}
 	}
-	//分页获得警报
+	//鍒嗛〉鑾峰緱璀︽姤
 	
 	public void getAlarmByPage(){
 		
