@@ -42,6 +42,11 @@
 <link rel="stylesheet" href="<%=basePath %>css/chartist-custom.css">
 <link rel="stylesheet" href="<%=basePath %>css/navbar/font-awesome.min.css">
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<style type="text/css">
+	.pageOperation {
+		cursor: pointer;
+	}
+</style>
 <%-- <link rel="stylesheet" href="<%=basePath%>css/main.css"> --%>
 <!-- 暂时不知道需不需要 -->
 <%-- <link rel="stylesheet" href="<%=basePath%>css/style.css"> --%>

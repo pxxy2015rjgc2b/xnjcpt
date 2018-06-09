@@ -1,26 +1,26 @@
 package com.xnjcpt.domain.DO;
 
 /**
- * cpu信息的实体类
+ * cpu淇℃伅鐨勫疄浣撶被
  *
  */
 public class xnjcpt_cpu {
 	
-	//cpu主键
+	//cpu涓婚敭
 	private String cpu_id;
-	//主机主键
+	//涓绘満涓婚敭
 	private String cpu_computer;
-	//型号
+	//鍨嬪彿
 	private String cpu_model;
-	//主频
+	//涓婚
 	private String cpu_basic_frequency;
-	//cpu缓存大小
+	//cpu缂撳瓨澶у皬
 	private String cpu_catch_size;
-	//核数
+	//鏍告暟
 	private String cpu_cores;
-	//创建时间
+	//鍒涘缓鏃堕棿
 	private String cpu_gmt_create;
-	//修改时间
+	//淇敼鏃堕棿
 	private String cpu_gmt_modified;
 	public String getCpu_id() {
 		return cpu_id;

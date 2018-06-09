@@ -1,12 +1,12 @@
 package com.xnjcpt.domain.DO;
-/*¾¯±¨Í¨Öª±í*/
+/*è­¦æŠ¥é€šçŸ¥è¡¨*/
 public class xnjcpt_alarm_message {
-	private String message_id;//¾¯±¨Í¨Öª±íÖ÷¼ü	
-	private String message_user;//ÓÃ»§±íÖ÷¼ü	
-	private String message_info;//¾¯±¨Í¨ÖªÄÚÈİ	
-	private String message_status;//¾¯±¨Í¨Öª×´Ì¬	
-	private String message_gmt_create;//×Ö¶Î´´½¨Ê±¼ä		
-	private String message_gmt_modified;//×Ö¶ÎĞŞ¸ÄÊ±¼ä		
+	private String message_id;//è­¦æŠ¥é€šçŸ¥è¡¨ä¸»é”®	
+	private String message_user;//ç”¨æˆ·è¡¨ä¸»é”®	
+	private String message_info;//è­¦æŠ¥é€šçŸ¥å†…å®¹	
+	private String message_status;//è­¦æŠ¥é€šçŸ¥çŠ¶æ€	
+	private String message_gmt_create;//å­—æ®µåˆ›å»ºæ—¶é—´		
+	private String message_gmt_modified;//å­—æ®µä¿®æ”¹æ—¶é—´		
 	public String getMessage_id() {
 		return message_id;
 	}

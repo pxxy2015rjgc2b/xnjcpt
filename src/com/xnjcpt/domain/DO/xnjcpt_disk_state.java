@@ -1,15 +1,15 @@
 package com.xnjcpt.domain.DO;
-/*´ÅÅÌ×´Ì¬±í*/
+/*ç£ç›˜çŠ¶æ€è¡¨*/
 public class xnjcpt_disk_state {
-	private String disk_state_id;//´ÅÅÌ×´Ì¬±íÖ÷¼ü	
-	private String disk_state_computer;//Ö÷»ú±íÖ÷¼ü	
-	private String disk_state_time;//Ê±¼ä	
-	private String disk_state_use_size;//ÒÑÊ¹ÓÃ´ÅÅÌ´óĞ¡	
-	private String disk_state_tps;//Ã¿Ãë´«Êä´ÎÊı	
-	private String disk_state_r;//Ã¿Ãë¶ÁÈ¡´ÎÊı	
-	private String disk_state_w;//Ã¿ÃëĞ´Èë´ÎÊı	
-	private String disk_state_gmt_create;//×Ö¶Î´´½¨Ê±¼ä		
-	private String disk_state_gmt_modified;//×Ö¶ÎĞŞ¸ÄÊ±¼ä		
+	private String disk_state_id;//ç£ç›˜çŠ¶æ€è¡¨ä¸»é”®	
+	private String disk_state_computer;//ä¸»æœºè¡¨ä¸»é”®	
+	private String disk_state_time;//æ—¶é—´	
+	private String disk_state_use_size;//å·²ä½¿ç”¨ç£ç›˜å¤§å°	
+	private String disk_state_tps;//æ¯ç§’ä¼ è¾“æ¬¡æ•°	
+	private String disk_state_r;//æ¯ç§’è¯»å–æ¬¡æ•°	
+	private String disk_state_w;//æ¯ç§’å†™å…¥æ¬¡æ•°	
+	private String disk_state_gmt_create;//å­—æ®µåˆ›å»ºæ—¶é—´		
+	private String disk_state_gmt_modified;//å­—æ®µä¿®æ”¹æ—¶é—´		
 	public String getDisk_state_id() {
 		return disk_state_id;
 	}

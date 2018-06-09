@@ -1,13 +1,13 @@
 package com.xnjcpt.domain.DO;
-/*ÄÚ´æ×´Ì¬±í*/
+/*å†…å­˜çŠ¶æ€è¡¨*/
 public class xnjcpt_memory_state {
-	private String memory_state_id;//ÄÚ´æ×´Ì¬±íÖ÷¼ü	
-	private String memory_state_computer;//Ö÷»ú±íÖ÷¼ü	
-	private String memory_state_time;//Ê±¼ä	
-	private String memory_state_swap_rate;//½»»»ÇøÊ¹ÓÃÂÊ	
-	private String memory_state_mem_rate;//ÎïÀíÄÚ´æÊ¹ÓÃÂÊ	
-	private String memory_state_gmt_create;//×Ö¶Î´´½¨Ê±¼ä		
-	private String memory_state_gmt_modified;//×Ö¶ÎĞŞ¸ÄÊ±¼ä		
+	private String memory_state_id;//å†…å­˜çŠ¶æ€è¡¨ä¸»é”®	
+	private String memory_state_computer;//ä¸»æœºè¡¨ä¸»é”®	
+	private String memory_state_time;//æ—¶é—´	
+	private String memory_state_swap_rate;//äº¤æ¢åŒºä½¿ç”¨ç‡	
+	private String memory_state_mem_rate;//ç‰©ç†å†…å­˜ä½¿ç”¨ç‡	
+	private String memory_state_gmt_create;//å­—æ®µåˆ›å»ºæ—¶é—´		
+	private String memory_state_gmt_modified;//å­—æ®µä¿®æ”¹æ—¶é—´		
 	public String getMemory_state_id() {
 		return memory_state_id;
 	}

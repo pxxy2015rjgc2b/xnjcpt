@@ -1,29 +1,29 @@
 package com.xnjcpt.domain.DO;
 
 /**
- * ÓÃ»§ĞÅÏ¢µÄÊµÌåÀà
+ * ç”¨æˆ·ä¿¡æ¯çš„å®ä½“ç±»
  *
  */
 public class xnjcpt_user {
-	//ÓÃ»§Ö÷¼ü
+	//ç”¨æˆ·ä¸»é”®
 	private String user_id;
-	//ÓÃ»§ĞÕÃû
+	//ç”¨æˆ·å§“å
 	private String user_name;
-	//ÓÃ»§Ãû
+	//ç”¨æˆ·å
 	private String user_username;
-	//ÓÃ»§ÓÊÏä
+	//ç”¨æˆ·é‚®ç®±
 	private String user_email;
-	//ÓÃ»§ÃÜÂë
+	//ç”¨æˆ·å¯†ç 
 	private String user_password;
-	//ÓÃ»§ÊÖ»úºÅÂë
+	//ç”¨æˆ·æ‰‹æœºå·ç 
 	private String user_phone;
-	//ÓÃ»§×´Ì¬
+	//ç”¨æˆ·çŠ¶æ€
 	private String user_status;
-	//ÓÃ»§½ÇÉ«
+	//ç”¨æˆ·è§’è‰²
 	private String user_role;
-	//´´½¨Ê±¼ä
+	//åˆ›å»ºæ—¶é—´
 	private String user_gmt_create;
-	//ĞŞ¸ÄÊ±¼ä
+	//ä¿®æ”¹æ—¶é—´
 	private String user_gmt_modified;
 	public String getUser_id() {
 		return user_id;

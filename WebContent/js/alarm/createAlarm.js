@@ -46,11 +46,14 @@ function createAlarm() {
 										if (data != "noLOgin") {
 											if(data=="saveSuccess"){
 												toastr.success("保存成功！");
+												queryTemp.currPage = "1";
+												loadData();
 											}else{
 												toastr.error("保存失败！请联系管理员");
 											}
 										} else {
 											// 登录验证
+											loginIntercptor();
 										}
 									}
 								})

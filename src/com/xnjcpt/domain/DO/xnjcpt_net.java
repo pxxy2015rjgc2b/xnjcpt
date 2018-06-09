@@ -1,22 +1,22 @@
 package com.xnjcpt.domain.DO;
 
 /**
- *ÍøÂçĞÅÏ¢±í
+ *ç½‘ç»œä¿¡æ¯è¡¨
  *
  */
 public class xnjcpt_net {
-	//ÍøÂçÖ÷¼ü
+	//ç½‘ç»œä¸»é”®
 	private String net_id;
 	
-	//Ö÷»úÖ÷¼ü
+	//ä¸»æœºä¸»é”®
 	private String net_computer;
-	//MACµØÖ·
+	//MACåœ°å€
 	private String net_mac;
 	//IPV6
 	private String net_ipv6;
-	//´´½¨Ê±¼ä
+	//åˆ›å»ºæ—¶é—´
 	private String net_gmt_create;
-	//ĞŞ¸ÄÊ±¼ä
+	//ä¿®æ”¹æ—¶é—´
 	private String net_gmt_modified;
 	public String getNet_id() {
 		return net_id;

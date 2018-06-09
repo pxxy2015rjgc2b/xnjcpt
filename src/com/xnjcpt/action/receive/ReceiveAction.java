@@ -4,7 +4,7 @@ import com.xnjcpt.domain.DO.*;
 import com.xnjcpt.service.receive.ReceiveService;
 
 public class ReceiveAction {
-	//×¢ÈëÒµÎñ²ãµÄÀà
+	//æ³¨å…¥ä¸šåŠ¡å±‚çš„ç±»
 	private ReceiveService receiveService;
 
 	public void setReceiveService(ReceiveService receiveService) {
@@ -24,7 +24,7 @@ public class ReceiveAction {
 	
 	
 	/**
-	 * »ñÈ¡Ö÷»úĞÅÏ¢£¬´æÈëÊı¾İ¿â
+	 * è·å–ä¸»æœºä¿¡æ¯ï¼Œå­˜å…¥æ•°æ®åº“
 	 */
 	public void getComputerInfor(){
 		System.out.println(xnjcpt_computer.getComputer_name()+"sunyi");
@@ -33,88 +33,88 @@ public class ReceiveAction {
 	
 	/**
 	 * 
-	 * »ñÈ¡CPUĞÅÏ¢£¬¸ü¸Ä»ò´æ´¢cpuĞÅÏ¢
+	 * è·å–CPUä¿¡æ¯ï¼Œæ›´æ”¹æˆ–å­˜å‚¨cpuä¿¡æ¯
 	 */
 	public void getCpuInfo(){
-		System.out.println("getCpuInfoÖ´ĞĞ£¡");
+		System.out.println("getCpuInfoæ‰§è¡Œï¼");
 		String ip = xnjcpt_computer.getComputer_ip();
 		receiveService.updateCpuInfor(ip,xnjcpt_cpu);
 		
 	}
 	
 	/**
-	 * »ñÈ¡ÄÚ´æĞÅÏ¢£¬¸ü¸Ä»ò´æ´¢ÄÚ´æĞÅÏ¢
+	 * è·å–å†…å­˜ä¿¡æ¯ï¼Œæ›´æ”¹æˆ–å­˜å‚¨å†…å­˜ä¿¡æ¯
 	 * @return
 	 */
 	public void getMemoryInfor(){
-		System.out.println("getMemoryInfoÖ´ĞĞ£¡");
+		System.out.println("getMemoryInfoæ‰§è¡Œï¼");
 		String ip = xnjcpt_computer.getComputer_ip();
 		receiveService.updateMemoryInfor(ip,xnjcpt_memory);
 	}
 	
 	/**
-	 * »ñÈ¡´ÅÅÌĞÅÏ¢£¬¸ü¸Ä»ò´æ´¢´ÅÅÌĞÅÏ¢
+	 * è·å–ç£ç›˜ä¿¡æ¯ï¼Œæ›´æ”¹æˆ–å­˜å‚¨ç£ç›˜ä¿¡æ¯
 	 * @return
 	 */
 	public void getDiskInfor(){
-		System.out.println("getDiskInforÖ´ĞĞ£¡");
+		System.out.println("getDiskInforæ‰§è¡Œï¼");
 		String ip = xnjcpt_computer.getComputer_ip();
 		receiveService.updateDiskInfor(ip,xnjcpt_disk);
 	}
 	
 	/**
-	 * »ñÈ¡ÍøÂçĞÅÏ¢£¬¸ü¸Ä»ò´æ´¢ÍøÂçĞÅÏ¢
+	 * è·å–ç½‘ç»œä¿¡æ¯ï¼Œæ›´æ”¹æˆ–å­˜å‚¨ç½‘ç»œä¿¡æ¯
 	 * @return
 	 */
 	public void getNetInfor(){
-		System.out.println("getNetInforÖ´ĞĞ£¡");
+		System.out.println("getNetInforæ‰§è¡Œï¼");
 		String ip = xnjcpt_computer.getComputer_ip();
 		receiveService.updateNetInfor(ip,xnjcpt_net);
 	}
 	
 	/**
-	 * »ñÈ¡cpuµÄ×´Ì¬ĞÅÏ¢£¬´æ´¢cpu×´Ì¬ĞÅÏ¢
+	 * è·å–cpuçš„çŠ¶æ€ä¿¡æ¯ï¼Œå­˜å‚¨cpuçŠ¶æ€ä¿¡æ¯
 	 * @return
 	 */
 	public void getCpuStateInfor(){
-		System.out.println("getCpuStateInforÖ´ĞĞ£¡");
+		System.out.println("getCpuStateInforæ‰§è¡Œï¼");
 		String ip=xnjcpt_computer.getComputer_ip();
 		receiveService.saveCpuStateInfor(ip,xnjcpt_cpu_state);
 	}
 	/**
-	 * »ñÈ¡ÄÚ´æĞÅÏ¢×´Ì¬£¬´æ´¢ÄÚ´æ×´Ì¬ĞÅÏ¢
+	 * è·å–å†…å­˜ä¿¡æ¯çŠ¶æ€ï¼Œå­˜å‚¨å†…å­˜çŠ¶æ€ä¿¡æ¯
 	 * @return
 	 */
 	public void getMemoryStateInfor(){
-		System.out.println("getMemoryInforÖ´ĞĞ£¡");
+		System.out.println("getMemoryInforæ‰§è¡Œï¼");
 		String ip=xnjcpt_computer.getComputer_ip();
 		receiveService.saveMemoryStateInfor(ip,xnjcpt_memory_state);
 	}
 	/**
-	 * »ñÈ¡io×´Ì¬ĞÅÏ¢£¬´æ´¢io×´Ì¬ĞÅÏ¢
+	 * è·å–ioçŠ¶æ€ä¿¡æ¯ï¼Œå­˜å‚¨ioçŠ¶æ€ä¿¡æ¯
 	 * @return
 	 */
 	public void getIoStateInfor(){
-		System.out.println("getIoStateInforÖ´ĞĞ£¡");
+		System.out.println("getIoStateInforæ‰§è¡Œï¼");
 		String ip=xnjcpt_computer.getComputer_ip();
 		receiveService.saveIoStateInfor(ip,xnjcpt_io_state);
 	}
 	/**
-	 * »ñÈ¡´ÅÅÌ×´Ì¬ĞÅÏ¢£¬´æ´¢´ÅÅÌ×´Ì¬ĞÅÏ¢
+	 * è·å–ç£ç›˜çŠ¶æ€ä¿¡æ¯ï¼Œå­˜å‚¨ç£ç›˜çŠ¶æ€ä¿¡æ¯
 	 * @return
 	 */
 	public void getDiskStateInfor(){
-		System.out.println("getDiskStateInforÖ´ĞĞ£¡");
+		System.out.println("getDiskStateInforæ‰§è¡Œï¼");
 		String ip=xnjcpt_computer.getComputer_ip();
 		receiveService.saveDiskInfor(ip,xnjcpt_disk_state);
 	}
 	
 	/**
-	 * »ñÈ¡ÍøÂç×´Ì¬ĞÅÏ¢£¬±£´æÍøÂç×´Ì¬ĞÅÏ¢
+	 * è·å–ç½‘ç»œçŠ¶æ€ä¿¡æ¯ï¼Œä¿å­˜ç½‘ç»œçŠ¶æ€ä¿¡æ¯
 	 * @return
 	 */
 	public void getNetStateInfor(){
-		System.out.println("getNetStateInforÖ´ĞĞ£¡");
+		System.out.println("getNetStateInforæ‰§è¡Œï¼");
 		String ip=xnjcpt_computer.getComputer_ip();
 		receiveService.saveNetStateInfor(ip,xnjcpt_net_state);
 	}

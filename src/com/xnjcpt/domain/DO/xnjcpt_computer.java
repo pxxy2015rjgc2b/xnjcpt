@@ -1,19 +1,19 @@
 package com.xnjcpt.domain.DO;
 
 /**
- * Ö÷»úµÄÊµÌåÀà
+ * ä¸»æœºçš„å®ä½“ç±»
  *
  */
 public class xnjcpt_computer {
-	//Ö÷»úÖ÷¼ü
+	//ä¸»æœºä¸»é”®
 	private String computer_id;
-	//Ö÷»úÃû
+	//ä¸»æœºå
 	private String computer_name;
-	//Ö÷»úip
+	//ä¸»æœºip
 	private String computer_ip;
-	//´´½¨Ê±¼ä
+	//åˆ›å»ºæ—¶é—´
 	private String computer_gmt_create;
-	//ĞŞ¸ÄÊ±¼ä
+	//ä¿®æ”¹æ—¶é—´
 	private String computer_gmt_modified;
 	
 	public String getComputer_id() {
