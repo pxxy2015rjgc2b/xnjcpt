@@ -60,7 +60,7 @@ public class UserAction{
 				/*String st="0";
 				xu.setUser_status(st);*/
 				session.setAttribute("user_name", xu.getUser_name());
-				session.setAttribute("user_id", xu.getUser_id());
+				session.setAttribute("user_id", xu.getUser_id());//session存user_id
 			}
 		}
 		else if (xu2!=null) {
@@ -70,7 +70,7 @@ public class UserAction{
 				/*String st="0";
 				xu.setUser_status(st);*/
 				session.setAttribute("user_name", xu2.getUser_name());
-				session.setAttribute("user_id", xu2.getUser_id());
+				session.setAttribute("user_id", xu2.getUser_id());  //session存user_id
 			}else{
 				pw.write("password_error");
 				System.out.println("密码输入错误");
