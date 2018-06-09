@@ -24,7 +24,8 @@
 				executeResult="true"></s:action>
 			<div class="show_box">
 				<div class="show_content">
-				
+					<div><h3>主机管理</h3></div>
+					<div></div>
 				</div>
 			</div>
 		</div>

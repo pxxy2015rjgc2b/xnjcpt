@@ -15,6 +15,7 @@
 
 <!-- 所有页面共用js -->
 <script type="text/javascript" src="<%=basePath%>js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>js/login/loginInterceptor.js"></script>
 <script type="text/javascript" src="<%=basePath%>js/bootstrap-select.js"></script>
 <script type="text/javascript" src="<%=basePath%>js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>js/icheck.js"></script>
@@ -36,13 +37,11 @@
 <link rel="stylesheet" href="<%=basePath %>css/bootstrap.min.css">
 <link rel="stylesheet" href="<%=basePath %>css/jquery-confirm.css">
 <link rel="stylesheet" href="<%=basePath %>css/jquery.datetimepicker.css">
-<link rel="stylesheet" href="<%=basePath %>css/login.css">
 <link rel="stylesheet" href="<%=basePath %>css/multi-select.css">
-<link rel="stylesheet" href="<%=basePath %>css/table.css">
 <link rel="stylesheet" href="<%=basePath %>css/toastr.css">
 <link rel="stylesheet" href="<%=basePath %>css/chartist-custom.css">
-<link rel="stylesheet" href="<%=basePath %>css/navbar/font-awesome.css">
 <link rel="stylesheet" href="<%=basePath %>css/navbar/font-awesome.min.css">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <%-- <link rel="stylesheet" href="<%=basePath%>css/main.css"> --%>
 <!-- 暂时不知道需不需要 -->
 <%-- <link rel="stylesheet" href="<%=basePath%>css/style.css"> --%>

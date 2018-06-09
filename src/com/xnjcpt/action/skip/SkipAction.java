@@ -8,8 +8,7 @@ import com.opensymphony.xwork2.ActionSupport;
  * @author ����
  *������תҳ��
  */
-public class SkipAction extends ActionSupport{
-
+public class SkipAction extends ActionSupport{	 
 	public String intoNavbar(){
 		return "intoNavbar";
 	}
