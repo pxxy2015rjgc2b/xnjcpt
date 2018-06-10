@@ -5,14 +5,15 @@ var user_paginationQuery={
 		"totalCount ":'',
 }
 window.onload=function(){
+	console.log("list");
 	var userPage=new Vue({
 		el:'#userVue',
 		data:{
 			"currPage" :'1',
-			"totalPage" :'',
+			"totalPage" :'1',
 			"pageCount" :'6',
-			"totalCount ":'',
-			"users":"",
+			"totalCount ":'1',
+			"users":""
 		
 		}
 	})
@@ -20,8 +21,9 @@ window.onload=function(){
 }
 //show_userList_ajax
 function show_userList(){
+	console.log("list_ajax");
 	 $.ajax({
-		    url: "xnjcpt/user/user_register",
+		    url: "xnjcpt/user/user_getUser",
 	        type: "post",
 	        data:user_paginationQuery,
 	        dataType:"json",
@@ -32,15 +34,20 @@ function show_userList(){
 	        success: function(data){
 	        	var result=JSON.parse(data);
 	        	//存入vue对象
-	        	userPage.users=result.users;
-	        	userPage.currPage=result.currPage;
+	        	userPage.users=result.list;
+	        	/*userPage.currPage=result.currPage;
 	        	userPage.totalPage=result.totalPage;
 	        	userPage.pageCount=result.pageCount;
+	        	userPage.totalCount=result.totalCount;*/
+	        	userPage.currPage=3;
+	        	userPage.totalPage=5;
+	        	userPage.pageCount=6;
+	        	userPage.totalCount=55;
 	        	//存入分页查询
-	        	user_paginationQuery.currPage=result.currPage;
-	        	user_paginationQuery.totalPage=result.totalPage;
-	        	user_paginationQuery.pageCount=result.pageCount;
-	        	user_paginationQuery.totalCount =result.totalCount ;
+	        	user_paginationQuery.currPage=3;
+	        	user_paginationQuery.totalPage=5;
+	        	user_paginationQuery.pageCount=6;
+	        	user_paginationQuery.totalCount =55 ;
 	        }
 	    });
 }

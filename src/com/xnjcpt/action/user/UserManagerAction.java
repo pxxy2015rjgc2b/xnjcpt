@@ -52,9 +52,9 @@ public class UserManagerAction {
 	
 	//得到用户列表
 	public void getUser() throws IOException {
-		List<xnjcpt_user> suv = userManagerService.findPageByKeyword(currentPage, pageSize, keyword);
+		List<xnjcpt_user> pb = userManagerService.findPageByKeyword(currentPage, pageSize, keyword);
 		Gson gson = new Gson();//用来转换JSON数据类型的
-		String result = gson.toJson(suv);
+		String result = gson.toJson(pb);
 		System.out.println(result);
 		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setContentType("text/html;charset=utf-8");

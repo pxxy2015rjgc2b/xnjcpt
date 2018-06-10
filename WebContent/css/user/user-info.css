@@ -36,14 +36,28 @@
 	margin: 10px 20px;
 }
 .show_content>.uesr_info li{
-	width: 300px;
+	width: 400px;
 	height: 50px;
 	font: 13px/50px "微软雅黑";
 	list-style: none;
 	
 }
-.show_content>.uesr_info li span{
+.show_content>.uesr_info .userInfo{
 	margin-left: 20px;
+}
+.show_content>.uesr_info li input{
+	height: 30px;
+}
+/*编辑用户信息的div包裹着input和a*/
+.edit_nameBox,.edit_photoBox{
+	display: none;
+	height: 30px;
+	
+}
+.uesr_info a{
+   font: 14px/30px "微软雅黑";
+   color: #00C1DE;
+   margin-left: 10px;
 }
 .show_content>.uesr_info li i{
 	color: #888888;
