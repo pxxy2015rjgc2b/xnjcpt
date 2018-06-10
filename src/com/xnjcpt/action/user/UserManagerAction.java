@@ -90,6 +90,21 @@ public class UserManagerAction {
 		pw.flush();
 		pw.close();
 	}
+	
+	//修改用户信息
+		public void updateUser() throws IOException {
+			xnjcpt_user user=userManagerService.getUserByUserId(user_id);
+			user.setUser_name(user_name);
+			user.setUser_username(user_username);
+			user.setUser_phone(user_phone);
+			userManagerService.updateuser(user);
+			HttpServletResponse response = ServletActionContext.getResponse();
+			response.setContentType("text/html;charset=utf-8");
+			PrintWriter pw = response.getWriter();
+			pw.write("修改用户");
+			pw.flush();
+			pw.close();
+		}
 
 	//删除用户
 	public void deleteUser() throws IOException {
@@ -123,6 +138,7 @@ public class UserManagerAction {
 	private String user_name;
 	private String user_id;
 	private String user_username;
+	private String user_phone;
 	private PageBean_user<xnjcpt_user> pb;
 	public String getKeyword() {
 		return keyword;
@@ -140,8 +156,13 @@ public class UserManagerAction {
 		this.keyword = keyword;
 	}
 
+	public String getUser_phone() {
+		return user_phone;
+	}
 
-
+	public void setUser_phone(String user_phone) {
+		this.user_phone = user_phone;
+	}
 
 	public String getOldPassword() {
 		return oldPassword;
