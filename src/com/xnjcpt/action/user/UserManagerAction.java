@@ -50,11 +50,11 @@ public class UserManagerAction {
 		}
 	}
 	
-	//得到用户列表
+	//得到用户搜索列表
 	public void getUser() throws IOException {
-		List<xnjcpt_user> suv = userManagerService.findPageByKeyword(currentPage, pageSize, keyword);
+		List<xnjcpt_user> pb = userManagerService.findPageByKeyword(currentPage, pageSize, keyword);
 		Gson gson = new Gson();//用来转换JSON数据类型的
-		String result = gson.toJson(suv);
+		String result = gson.toJson(pb);
 		System.out.println(result);
 		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setContentType("text/html;charset=utf-8");
@@ -63,6 +63,20 @@ public class UserManagerAction {
 		pw.flush();
 		pw.close();
 	}
+	
+	//用户列表
+		public void getUserlist() throws IOException {
+			List<xnjcpt_user> pb = userManagerService.findPageBy(currentPage, pageSize);
+			Gson gson = new Gson();//用来转换JSON数据类型的
+			String result = gson.toJson(pb);
+			System.out.println(result);
+			HttpServletResponse response = ServletActionContext.getResponse();
+			response.setContentType("text/html;charset=utf-8");
+			PrintWriter pw = response.getWriter();
+			pw.write(result);
+			pw.flush();
+			pw.close();
+		}
 	
 	//根据id得到用户
 	public void getUserById() throws IOException {
@@ -109,6 +123,7 @@ public class UserManagerAction {
 	private String user_name;
 	private String user_id;
 	private String user_username;
+	private PageBean_user<xnjcpt_user> pb;
 	public String getKeyword() {
 		return keyword;
 	}
@@ -126,7 +141,7 @@ public class UserManagerAction {
 	}
 
 
-	private PageBean_user<xnjcpt_user> pb;
+
 
 	public String getOldPassword() {
 		return oldPassword;
