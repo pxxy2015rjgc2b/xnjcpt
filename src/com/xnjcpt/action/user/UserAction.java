@@ -162,7 +162,7 @@ public class UserAction{
 		return "logoutSuccess";
 	}
 	
-	//用户删除
+/*	//用户删除
 	public void deleteUser() throws IOException {
 		userService.deleteuser(user_id);
 		HttpServletResponse response = ServletActionContext.getResponse();
@@ -173,7 +173,7 @@ public class UserAction{
 		pw.write("delete_user");
 		pw.flush();
 		pw.close();
-	}
+	}*/
 	
 	
 	/*
