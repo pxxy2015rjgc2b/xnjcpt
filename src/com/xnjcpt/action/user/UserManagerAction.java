@@ -50,7 +50,7 @@ public class UserManagerAction {
 		}
 	}
 	
-	//得到用户列表
+	//得到用户搜索列表
 	public void getUser() throws IOException {
 		List<xnjcpt_user> pb = userManagerService.findPageByKeyword(currentPage, pageSize, keyword);
 		Gson gson = new Gson();//用来转换JSON数据类型的
@@ -64,6 +64,20 @@ public class UserManagerAction {
 		pw.close();
 	}
 	
+	//用户列表
+		public void getUserlist() throws IOException {
+			List<xnjcpt_user> pb = userManagerService.findPageBy(currentPage, pageSize);
+			Gson gson = new Gson();//用来转换JSON数据类型的
+			String result = gson.toJson(pb);
+			System.out.println(result);
+			HttpServletResponse response = ServletActionContext.getResponse();
+			response.setContentType("text/html;charset=utf-8");
+			PrintWriter pw = response.getWriter();
+			pw.write(result);
+			pw.flush();
+			pw.close();
+		}
+	
 	//根据id得到用户
 	public void getUserById() throws IOException {
 		xnjcpt_user xu = userManagerService.getUserByUserId(user_id);
@@ -76,6 +90,21 @@ public class UserManagerAction {
 		pw.flush();
 		pw.close();
 	}
+	
+	//修改用户信息
+		public void updateUser() throws IOException {
+			xnjcpt_user user=userManagerService.getUserByUserId(user_id);
+			user.setUser_name(user_name);
+			user.setUser_username(user_username);
+			user.setUser_phone(user_phone);
+			userManagerService.updateuser(user);
+			HttpServletResponse response = ServletActionContext.getResponse();
+			response.setContentType("text/html;charset=utf-8");
+			PrintWriter pw = response.getWriter();
+			pw.write("修改用户");
+			pw.flush();
+			pw.close();
+		}
 
 	//删除用户
 	public void deleteUser() throws IOException {
@@ -109,6 +138,8 @@ public class UserManagerAction {
 	private String user_name;
 	private String user_id;
 	private String user_username;
+	private String user_phone;
+	private PageBean_user<xnjcpt_user> pb;
 	public String getKeyword() {
 		return keyword;
 	}
@@ -125,8 +156,13 @@ public class UserManagerAction {
 		this.keyword = keyword;
 	}
 
+	public String getUser_phone() {
+		return user_phone;
+	}
 
-	private PageBean_user<xnjcpt_user> pb;
+	public void setUser_phone(String user_phone) {
+		this.user_phone = user_phone;
+	}
 
 	public String getOldPassword() {
 		return oldPassword;
