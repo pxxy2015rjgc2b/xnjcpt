@@ -41,7 +41,6 @@
 			All Right Reserve 萍乡学院版权所有</div>
 	</div>
 	<script type="text/javascript" src="<%=basePath %>/js/jquery-3.1.1.min.js"></script>
-	<script type="text/javascript" src="<%=basePath %>/js/toastr.js/"></script>
 	<script type="text/javascript" src="<%=basePath %>js/user/register.js"></script>
 </body>
 </html>

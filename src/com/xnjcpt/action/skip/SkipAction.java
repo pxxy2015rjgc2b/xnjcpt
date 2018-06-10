@@ -23,6 +23,10 @@ public class SkipAction extends ActionSupport{
 	public String intoUser(){
 		return "intoUser";
 	}
+	//进入用户详情
+	public String intoUserInfo(){
+		return "intoUserInfo";
+	}
 	//进入主机
 	public String intoComputer(){
 		return "intoComputer";

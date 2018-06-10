@@ -8,29 +8,33 @@ window.onload=function(){
 }
 //注册ajax
 function register_ajax(){
-	var user_username=$("input[name='user_username']").val();
+	console.log("ajax");
+	var user_name=$("input[name='user_name']").val();
 	var user_password=$("input[name='user_password']").val();
 	var user_email=$("input[name='user_email']").val();
 	var formData=new FormData();
-	formData.append("user.user_name",user_username);
+	formData.append("user.user_name",user_name);
 	formData.append("user.user_password",user_password);
 	formData.append("user.user_email",user_email);
 	 $.ajax({
 		    url: "user/user_register",
 	        type: "post",
 	        data:formData,
-	        dataType:"json",
 	        //报错请加入以下三行，则ajax提交无问题
 	        cache: false,  
 	        processData: false,  
 	        contentType: false,
 	        success: function(result){
+	        	console.log(result);
 	        	 if(result=="register_success"){
-	  			   toastr.success("注册成功！");
+	        		 console.log("注册成功");
+	  			   //toastr.success("注册成功！");
+	  			   //注册完后跳到首页
+                   window.location.href="/xnjcpt/index.jsp"
 	  		   }else if(result=="name_error"){
-	  			   toastr.error("用户名已存在！");
+	  			 console.log("用户名已存在");
 	  		   }else if(result=="email_error"){
-	  			   toastr.error("该邮箱已注册，请重新输入");
+	  			 console.log("该邮箱已注册，请重新输入");
 	  		   }
 	        }
 	    });
