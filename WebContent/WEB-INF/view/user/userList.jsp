@@ -28,10 +28,7 @@
 						<span>用户管理</span>
 					</div>
 					<div class="operation_button">
-						<button class="btn btn-primary add_button" type="submit">
-							<i class="fa fa-plus" aria-hidden="true"> </i> 新建
-						</button>
-						<button class="btn btn-danger delete_button" type="submit">
+						<button class="btn btn-danger delete_button" onclick="delete_user()" type="submit">
 							<i class="fa fa-trash-o" aria-hidden="true"></i> 删除
 						</button>
 						<div class="search_cloud">
@@ -43,7 +40,7 @@
 						<table class="table cloudList_tabel">
 							<thead>
 								<tr>
-									<th style="text-align: center;"><input type="checkbox" /></th>
+									<th style="text-align: center;"><input name="delete_checkAll" onclick="allcheck()" id="checkAll" type="checkbox" /></th>
 									<th>用户姓名</th>
 									<th>用户名</th>
 									<th>用户邮箱</th>
@@ -53,13 +50,14 @@
 							</thead>
 							<tbody>
 								<tr v-for="user in users">
-									<td><input type="checkbox" /></td>
+									<td><input name="delete_check" :id="user.user_id" onclick="cancle_all()" type="checkbox" /></td>
 									<td style="display: none;"><a :id="user.user_id"></a></td>
-									<td>{{ user.user_name }}</td>
+									<td><a>{{ user.user_name }}</a></td>
 									<td>{{ user.user_username }}</td>
 									<td>{{ user.user_email }}</td>
 									<td>{{ user.user_phone }}</td>
-									<td>{{ user.user_statuss }}</td>
+									<td v-if="user.user_status==0"><a class="chang_status" :id="user.user_id" onclick="openSure()">封禁</a></td>
+									<td v-if="user.user_status==1"><a class="chang_status" :id="user.user_id" onclick="cloSure()">解禁</a></td>
 								</tr>
 							</tbody>
 						</table>
@@ -70,8 +68,8 @@
 								<a onclick="prePage()"><i class="fa fa-angle-left"></i>上一页</a>&nbsp;&nbsp;&nbsp;&nbsp;
 								<a onclick="nextPage()">下一页<i class="fa fa-angle-right"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
 								<a onclick="lastPage()">尾页<i class="fa fa-angle-double-right"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
-								<input type="text" class="page-go" id="jumpInput" />&nbsp;&nbsp;&nbsp;&nbsp;
-								<a onclick="jumpPage()">GO</a>
+								<input type="text" style="width: 50px;" id="goInput" />&nbsp;&nbsp;&nbsp;&nbsp;
+								<a onclick="goPage()">GO</a>
 							</div>
 							<div style="width: 100px;height: 70px;margin: 0px auto;text-align: center;">
 								<span>当前第{{ currPage }}页</span><br> <span>共{{
