@@ -27,21 +27,16 @@ public class UserManagerDaoImpl implements UserManagerDao {
 	@Override
 	public int getUserCount(String keyword, int currPage) {
 		// TODO Auto-generated method stub
-		String hql =null;
-		if(keyword!=""||keyword!=null){
 		String query = "%" + keyword + "%";
-		hql = "select count(*) from xnjcpt_user where (user_name like '" + query + "' or user_username like ''" + query + "')";
-		System.out.println(hql);}
-		else{
-		hql = "select count(*) from xnjcpt_user where 1=1";
-		}
+		String hql = "select count(*) from xnjcpt_user where (user_name like '" + query + "' or user_username like ''" + query + "')";
+		System.out.println(hql);
 		int count = ((Number) getSession().createQuery(hql).uniqueResult()).intValue();
 		return count;
 }
 
 
 	@Override
-	public List<xnjcpt_user> findPageBy(int currentPage, int pageSize,String keyword) {
+	public List<xnjcpt_user> findPageBy(int currentPage, int pageSize) {
 		// TODO Auto-generated method stub
 		String hql="from xnjcpt_user";
 		return (List<xnjcpt_user>) getSession().createQuery(hql)
@@ -120,5 +115,13 @@ public class UserManagerDaoImpl implements UserManagerDao {
 		Query query = getSession().createQuery(hql);
 		xnjcpt_user user = (xnjcpt_user) query.uniqueResult();
 		return user;
+	}
+
+	@Override
+	public int getUserCount() {
+		// TODO Auto-generated method stub
+		String hql = "select count(*) from xnjcpt_user where 1=1";
+		int count = ((Number) getSession().createQuery(hql).uniqueResult()).intValue();
+		return count;
 	}
 }
