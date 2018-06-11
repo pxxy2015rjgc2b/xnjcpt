@@ -61,6 +61,9 @@
 	font:bold 14px/36px "微软雅黑";
 	background: #00c1de;
 }
+.login_content>.login_button:hover{
+	cursor:pointer;
+}
 .login_content>a{
 	float: right;
 	margin-left: 10px;

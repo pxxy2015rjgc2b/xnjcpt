@@ -2,7 +2,6 @@ package com.xnjcpt.domain.DO;
 /*用户机器表*/
 public class xnjcpt_user_computer {
 	private String user_computer_id;//用户机器表主键
-	
 	private String user_computer_user;//用户表主键	
 	private String user_computer_computer;//主机表主键
 	private String user_computer_gmt_create;	//字段创建时间		

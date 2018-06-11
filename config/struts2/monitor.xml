@@ -4,9 +4,18 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 	<package name="monitor" namespace="/monitor" extends="struts-default">
+		<interceptors>
+			<interceptor name="sessionout" class="com.xnjcpt.interceptor.AjaxUserLogin"></interceptor>
+			<interceptor-stack name="mystack">
+				<interceptor-ref name="defaultStack" />
+				<!-- 权限拦截 <interceptor-ref name="authority" /> -->
+				<!-- session拦截 -->
+				<interceptor-ref name="sessionout" />
+			</interceptor-stack>
+		</interceptors>
 		<action name="monitor_*" class="com.xnjcpt.action.monitor.MonitorAction"
 			method="{1}">
-		
+			<interceptor-ref name="mystack"></interceptor-ref>
 		</action>
 	</package>
 </struts>
