@@ -19,7 +19,7 @@
 			<ul class="side_nav">
 				<li><a href="<%=basePath %>skip/skip_intoComputer">主机管理</a></li>
 				<li><a>集群总揽</a></li>
-				<li><a>性能检测</a></li>
+<!-- 				<li><a>性能检测</a></li> -->
 				<li><a href="<%=basePath %>skip/skip_intoAlarm">设置警报</a></li>
 			</ul>
 		</div>	

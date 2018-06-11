@@ -45,7 +45,7 @@ public class AlarmDaoImpl implements AlarmDao {
 		String hql = "select count(*) from xnjcpt_alarm as a , xnjcpt_computer as c  where a.alarm_computer = c.computer_id and  1=1 and a.alarm_user = '"
 				+ user_id + "'";
 		if (alarmPageVO.getSearchContent() != null && !"".equals(alarmPageVO.getSearchContent().trim())) {
-			hql = hql + " and c.computer_ip like '" + alarmPageVO.getSearchContent() + "'";
+			hql = hql + " and c.computer_ip like '%" + alarmPageVO.getSearchContent() + "%'";
 		}
 		if (alarmPageVO.getSearchAlarmType() != null && !"".equals(alarmPageVO.getSearchAlarmType().trim())) {
 			hql = hql + " and a.alarm_type = '" + alarmPageVO.getSearchAlarmType() + "'";
@@ -62,7 +62,7 @@ public class AlarmDaoImpl implements AlarmDao {
 		String hql = "select new com.xnjcpt.domain.DTO.AlarmPageDTO(a.alarm_id,c.computer_ip,a.alarm_type,a.alarm_threshold_value,a.alarm_state) from xnjcpt_alarm as a , xnjcpt_computer as c  where a.alarm_computer = c.computer_id and  1=1 and a.alarm_user = '"
 				+ user_id + "'";
 		if (alarmPageVO.getSearchContent() != null && !"".equals(alarmPageVO.getSearchContent().trim())) {
-			hql = hql + " and c.computer_ip like '" + alarmPageVO.getSearchContent() + "'";
+			hql = hql + " and c.computer_ip like '%" + alarmPageVO.getSearchContent() + "%'";
 		}
 		if (alarmPageVO.getSearchAlarmType() != null && !"".equals(alarmPageVO.getSearchAlarmType().trim())) {
 			hql = hql + " and a.alarm_type = '" + alarmPageVO.getSearchAlarmType() + "'";

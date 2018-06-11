@@ -14,108 +14,101 @@ import com.xnjcpt.domain.DO.xnjcpt_net_state;
 import com.xnjcpt.service.receive.ReceiveService;
 
 public class ReceiveServiceImpl implements ReceiveService {
-	//×¢Èëdao²ãµÄÀà
+	// æ³¨å…¥daoå±‚çš„ç±»
 	private ReceiveDao receiveDao;
 
 	public void setReceiveDao(ReceiveDao receiveDao) {
 		this.receiveDao = receiveDao;
 	}
-	
+
 	/**
-	 * service²ã¸ü¸ÄÖ÷»úĞÅÏ¢µÄ·½·¨
+	 * serviceå±‚æ›´æ”¹ä¸»æœºä¿¡æ¯çš„æ–¹æ³•
 	 */
 	@Override
 	public void updateComputerInfor(xnjcpt_computer xnjcpt_computer) {
 		// TODO Auto-generated method stub
 		receiveDao.updateComputerInfor(xnjcpt_computer);
 	}
-	
+
 	/**
-	 * service²ã¸ü¸ÄcpuĞÅÏ¢µÄ·½·¨
+	 * serviceå±‚æ›´æ”¹cpuä¿¡æ¯çš„æ–¹æ³•
 	 */
 	@Override
-	public void updateCpuInfor(String ip,xnjcpt_cpu xnjcpt_cpu) {
+	public void updateCpuInfor(String ip, xnjcpt_cpu xnjcpt_cpu) {
 		// TODO Auto-generated method stub
-		receiveDao.updateCpuInfo(ip,xnjcpt_cpu);
+		receiveDao.updateCpuInfo(ip, xnjcpt_cpu);
 	}
-	
+
 	/**
-	 * service²ã¸ü¸ÄÄÚ´æĞÅÏ¢µÄ·½·¨
+	 * serviceå±‚æ›´æ”¹å†…å­˜ä¿¡æ¯çš„æ–¹æ³•
 	 */
 	@Override
 	public void updateMemoryInfor(String ip, xnjcpt_memory xnjcpt_memory) {
 		// TODO Auto-generated method stub
-		receiveDao.updateMemoryInfor(ip,xnjcpt_memory);
+		receiveDao.updateMemoryInfor(ip, xnjcpt_memory);
 	}
 
 	/**
-	 * service²ã¸ü¸Ä´ÅÅÌĞÅÏ¢µÄ·½·¨
+	 * serviceå±‚æ›´æ”¹ç£ç›˜ä¿¡æ¯çš„æ–¹æ³•
 	 */
 	@Override
 	public void updateDiskInfor(String ip, xnjcpt_disk xnjcpt_disk) {
 		// TODO Auto-generated method stub
-		receiveDao.updateDiskInfor(ip,xnjcpt_disk);
+		receiveDao.updateDiskInfor(ip, xnjcpt_disk);
 	}
 
 	/**
-	 * service²ã¸ü¸ÄÍøÂçĞÅÏ¢µÄ·½·¨
+	 * serviceå±‚æ›´æ”¹ç½‘ç»œä¿¡æ¯çš„æ–¹æ³•
 	 */
 	@Override
 	public void updateNetInfor(String ip, xnjcpt_net xnjcpt_net) {
 		// TODO Auto-generated method stub
-		receiveDao.updateNetInfor(ip,xnjcpt_net);
+		receiveDao.updateNetInfor(ip, xnjcpt_net);
 	}
 
 	/**
-	 * service²ã±£´æcpu×´Ì¬µÄ·½·¨
+	 * serviceå±‚ä¿å­˜cpuçŠ¶æ€çš„æ–¹æ³•
 	 */
 	@Override
 	public void saveCpuStateInfor(String ip, xnjcpt_cpu_state xnjcpt_cpu_state) {
 		// TODO Auto-generated method stub
-		receiveDao.saveCpuStateInfor(ip,xnjcpt_cpu_state);
+		receiveDao.saveCpuStateInfor(ip, xnjcpt_cpu_state);
 	}
 
 	/**
-	 * service²ã±£´æÄÚ´æ×´Ì¬µÄ·½·¨
+	 * serviceå±‚ä¿å­˜å†…å­˜çŠ¶æ€çš„æ–¹æ³•
 	 */
 	@Override
 	public void saveMemoryStateInfor(String ip, xnjcpt_memory_state xnjcpt_memory_state) {
 		// TODO Auto-generated method stub
-		receiveDao.saveMemoryStateInfor(ip,xnjcpt_memory_state);
+		receiveDao.saveMemoryStateInfor(ip, xnjcpt_memory_state);
 	}
 
 	/**
-	 * service²ã±£´æio×´Ì¬µÄ·½·¨
+	 * serviceå±‚ä¿å­˜ioçŠ¶æ€çš„æ–¹æ³•
 	 */
 	@Override
 	public void saveIoStateInfor(String ip, xnjcpt_io_state xnjcpt_io_state) {
 		// TODO Auto-generated method stub
-		receiveDao.saveIoStateInfor(ip,xnjcpt_io_state);
+		receiveDao.saveIoStateInfor(ip, xnjcpt_io_state);
 	}
 
 	/**
-	 * service²ã±£´æ´ÅÅÌ×´Ì¬ĞÅÏ¢µÄ·½·¨
+	 * serviceå±‚ä¿å­˜ç£ç›˜çŠ¶æ€ä¿¡æ¯çš„æ–¹æ³•
 	 */
 	@Override
 	public void saveDiskInfor(String ip, xnjcpt_disk_state xnjcpt_disk_state) {
 		// TODO Auto-generated method stub
-		receiveDao.saveDiskInfor(ip,xnjcpt_disk_state);
+		receiveDao.saveDiskInfor(ip, xnjcpt_disk_state);
 	}
 
 	/**
-	 * service²ã±£´æÍøÂç×´Ì¬ĞÅÏ¢µÄ·½·¨
+	 * serviceå±‚ä¿å­˜ç½‘ç»œçŠ¶æ€ä¿¡æ¯çš„æ–¹æ³•
 	 */
 	@Override
 	public void saveNetStateInfor(String ip, xnjcpt_net_state xnjcpt_net_state) {
 		// TODO Auto-generated method stub
-		receiveDao.saveNetInfor(ip,xnjcpt_net_state);
+		receiveDao.saveNetInfor(ip, xnjcpt_net_state);
 	}
-
-	
-
-	
-	
-	
-	
 
 }

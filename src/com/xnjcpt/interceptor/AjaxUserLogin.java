@@ -10,30 +10,29 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 
-public class AjaxUserLogin extends AbstractInterceptor{
+public class AjaxUserLogin extends AbstractInterceptor {
 
 	@Override
 	public String intercept(ActionInvocation arg0) throws Exception {
 		// TODO Auto-generated method stub
-		ActionContext actionContext  = arg0.getInvocationContext();
+		ActionContext actionContext = arg0.getInvocationContext();
 		HttpServletResponse response = (HttpServletResponse) actionContext.get(StrutsStatics.HTTP_RESPONSE);
 		HttpServletRequest request = (HttpServletRequest) actionContext.get(StrutsStatics.HTTP_REQUEST);
 		HttpSession session = request.getSession();
+		session.setAttribute("user_id", "1");
 		String user_id = (String) session.getAttribute("user_id");
 		response.setContentType("text/html;charset=utf-8");
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		response.setHeader("Access-Control-Allow-Methods", "GET,POST");
-		if(user_id == null){
+		if (user_id == null) {
 			response.getWriter().write("noLogin");
 			response.getWriter().flush();
 			response.getWriter().close();
 			return null;
-		}
-		else{
+		} else {
 			return arg0.invoke();
 		}
-		
-	}
 
+	}
 
 }

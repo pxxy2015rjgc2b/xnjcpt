@@ -21,6 +21,7 @@
 <script type="text/javascript" src="<%=basePath%>js/icheck.js"></script>
 <script type="text/javascript" src="<%=basePath%>js/Input_Select.js"></script>
 <script type="text/javascript" src="<%=basePath%>js/jquery-confirm.js"></script>
+<script type="text/javascript" src="<%=basePath%>js/echarts.min.js"></script>
 <script type="text/javascript"
 	src="<%=basePath%>js/jquery.bootstrap.wizard.js"></script>
 <script type="text/javascript"
