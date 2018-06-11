@@ -140,8 +140,7 @@ function delete_user() {
 		function(i) {
 			if ($(this).is(':checked')) {
 				formData.append(
-					'user_id['
-					+ index + ']', $(this)
+					'user_id', $(this)
 						.attr('id'));
 				console.log( "要删除的id"+$(this)
 						.attr('id'));

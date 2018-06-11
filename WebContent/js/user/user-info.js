@@ -30,29 +30,63 @@ function userShow_ajax(user_id){
 	});
 }
 //修改用户资料
+function editName(){
+	console.log("点击编辑name");
+	$(".user_name").css("display","none");
+	$(".editName").css("display","none");
+	$(".edit_nameBox").css("display","inline");
+	var user_username=$("input[name=user_username]").val();
+	$.ajax({
+		url:"/xnjcpt/userManager/userManager_updateUser",
+		type:"POST",
+		data:user_username,
+		success:function(data){
+			console.log(data);
+			console.log("修改用户姓名");
+			if(data=="修改用户姓名成功"){
+				toastr.suceess("修改用户姓名成功");
+				userShow_ajax();
+			}else{
+				toastr.error("修改用户姓名失败");
+			}		
+		}
+	});
+	
+}
+function editPhoto(){
+	console.log("点击编辑photo");
+	$(".user_photo").css("display","none");
+	$(".editPhoto").css("display","none");
+	$(".edit_photoBox").css("display","inline");
+	var user_photo=$("input[name=user_photo]").val();
+	$.ajax({
+		url:"/xnjcpt/userManager/userManager_updateUser",
+		type:"POST",
+		data:user_photo,
+		success:function(data){
+			console.log(data);
+			if(data=="修改用户电话成功"){
+				toastr.suceess("修改用户电话成功");
+			}else{
+				toastr.error("修改用户电话失败");
+			}		
+		}
+	});
+}
+/*点击保存或取消显示用户信息*/
+function user_nameCancle(){
+	$(".user_name").css("display","inline");
+	$(".editName").css("display","inline");
+	$(".edit_nameBox").css("display","none");
+}
+function user_photoCancle(){
+	$(".user_photo").css("display","inline");
+	$(".editPhoto").css("display","inline");
+	$(".edit_photoBox").css("display","none");
+}
 function userEdit_ajax(user_id){
-	/*点击编辑按钮，显示输入框*/
-	$(".editName").click(function(){
-		$(".user_name").css("display","none");
-		$(".editName").css("display","none");
-		$(".edit_nameBox").css("display","inline");
-	});
-	$(".editPhoto").click(function(){
-		$(".user_photo").css("display","none");
-		$(".editPhoto").css("display","none");
-		$(".edit_photoBox").css("display","inline");
-	});
-	/*点击保存或取消显示用户信息*/
-	$(".user_nameCancle").click(function(){
-		$(".user_name").css("display","inline");
-		$(".editName").css("display","inline");
-		$(".edit_nameBox").css("display","none");
-	});
-	$(".user_photoCancle").click(function(){
-		$(".user_photo").css("display","inline");
-		$(".editPhoto").css("display","inline");
-		$(".edit_photoBox").css("display","none");
-	});
+	console.log("修改用户资料");
+	
 	$.ajax({
 		url: "",
 		type:"post",
