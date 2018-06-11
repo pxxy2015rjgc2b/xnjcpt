@@ -1,36 +1,75 @@
 var user_paginationQuery={
-		"currPage" :'1',
-		"totalPage" :'4',
-		"pageCount" :'10',
-		"totalCount ":'',
+		"currPage" :"1",
+		"totalPage" :'',
+		"pageCount" :'',
+		"totalCount ":''
 }
+var userPage;
 window.onload=function(){
 	console.log("list");
-	var userPage=new Vue({
+    userPage=new Vue({
 		el:'#userVue',
 		data:{
 			"currPage" :'1',
-			"totalPage" :'4',
-			"pageCount" :'6',
-			"totalCount":"",
+			"totalPage" :'1',
+			"pageCount" :'0',
+			"totalCount":'0',
 			"users":""
 		
 		}
 	})
     show_userList();
+    $(".search_button").click(function(){
+    	var keyword=$(".search_input").val();
+    	console.log(keyword);
+    	iquery_userList(keyword);
+    });
 }
 //show_userList_ajax
 function show_userList(){
-	console.log("list_ajax");
+	var user_paginationQueryAjax={
+			"pb.currentPage" :user_paginationQuery.currPage,
+			"pb.totalPage" :user_paginationQuery.totalPage,
+			"pb.pageSize" :user_paginationQuery.pageCount,
+			"pb.count":user_paginationQuery.totalCount,
+	}
+	console.log(user_paginationQueryAjax);
 	 $.ajax({
 		    url: "/xnjcpt/userManager/userManager_getUserlist",
 	        type: "post",
-	        data:user_paginationQuery,
-	        dataType:"json",
+	        data:user_paginationQueryAjax,
+	        success: function(data){
+	        	//console.log(data);
+	        	var result=JSON.parse(data);
+	        	//存入vue对象
+	        	userPage.users=result.list;
+	        	userPage.currPage=result.currentPage;
+	        	console.log(userPage.currPage);
+	        	userPage.totalPage=result.totalPage;
+	        	userPage.pageCount=result.pageSize;
+	        	userPage.totalCount=result.count;
+	        	//存入分页查询
+	        	user_paginationQuery.currPage=result.currentPage;
+	        	console.log(user_paginationQuery.currPage);
+	        	console.log(user_paginationQuery.currPage);
+	        	user_paginationQuery.totalPage=result.totalPage;
+	        	user_paginationQuery.pageCount=result.pageSize;
+	        	user_paginationQuery.totalCount=result.count;
+	        }
+	    });
+}
+//按关键字搜索列表
+function iquery_userList(keyword){
+	console.log("按关键字搜索");
+	var iquery_keyword={
+			"keyword":keyword,
+	}
+	 $.ajax({
+		    url: "/xnjcpt/userManager/userManager_getUser",
+	        type: "post",
+	        data:iquery_keyword,
+	        
 	        //报错请加入以下三行，则ajax提交无问题
-	        cache: false,  
-	        processData: false,  
-	        contentType: false,
 	        success: function(data){
 	        	console.log(data);
 	        	var result=JSON.parse(data);
@@ -42,10 +81,10 @@ function show_userList(){
 	        	userPage.pageCount=result.pageCount;
 	        	userPage.totalCount=result.totalCount;
 	        	//存入分页查询
-	        	user_paginationQuery.currPage=result.currPage;
+	        	user_paginationQuery.currPage=result.currentPage;
 	        	user_paginationQuery.totalPage=result.totalPage;
-	        	user_paginationQuery.pageCount=result.pageCount;
-	        	user_paginationQuery.totalCount=result.totalCount;
+	        	user_paginationQuery.pageCount=result.pageSize;
+	        	user_paginationQuery.totalCount=result.count;
 	        }
 	    });
 }
@@ -60,6 +99,7 @@ function firstPage(){
 	    show_userList();
 	}
 } 
+
 //上一页
 function prePage(){
 	console.log("上一页");
@@ -67,6 +107,7 @@ function prePage(){
 		toastr.error("已经是第一页了哦!");
 	}else{
      	user_paginationQuery.currPage=--user_paginationQuery.currPage;
+     	console.log("当前页"+user_paginationQuery.currPage);
 	    show_userList();
 	}
 }
@@ -77,6 +118,7 @@ function nextPage(){
 		toastr.error("没有下一页了哦!");
 	}else{
      	user_paginationQuery.currPage=++user_paginationQuery.currPage;
+     	console.log("当前页"+user_paginationQuery.currPage);
 	    show_userList();
 	}
 }

@@ -36,6 +36,7 @@
 						</button>
 						<div class="search_cloud">
 							<input class="search_input" type="text" placeholder="搜索云主机名或IP地址" />
+							<a class="search_button"><img src="<%=basePath %>img/search.png"/></a>
 						</div>
 					</div>
 					<div class="show_content1">
@@ -58,7 +59,7 @@
 									<td>{{ user.user_username }}</td>
 									<td>{{ user.user_email }}</td>
 									<td>{{ user.user_phone }}</td>
-									<td>{{ user.user_username }}</td>
+									<td>{{ user.user_statuss }}</td>
 								</tr>
 							</tbody>
 						</table>

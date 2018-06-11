@@ -46,6 +46,10 @@
 	background: url(../img/search.png) 270px no-repeat;
 	
 }
+.search_button{
+	position: relative;
+    right: 30px;
+}
 /*琛ㄦ牸*/
 .show_content1>.cloudList_tabel{
 	font-size: 12px;

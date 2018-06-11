@@ -76,11 +76,11 @@ public class UserManagerServiceImpl implements UserManagerService {
 	}
 
 	@Override
-	public PageBean_user<xnjcpt_user> findPageBy(int currentPage, int pageSize,String keyword) {
+	public PageBean_user<xnjcpt_user> findPageBy(int currentPage, int pageSize) {
 		// TODO Auto-generated method stub
-		int count = userManagerDao.getUserCount(keyword, currentPage); //求当前类别信息数量
+		int count = userManagerDao.getUserCount(); //求当前类别信息数量
 		int totalPage = (int) Math.ceil(count*1.0/pageSize);//求总页数
-		List<xnjcpt_user> list = userManagerDao.findPageByKeyword(currentPage, pageSize, keyword); //求当前页的集合数据
+		List<xnjcpt_user> list = userManagerDao.findPageBy(currentPage, pageSize); //求当前页的集合数据
 		PageBean_user<xnjcpt_user> pb = new PageBean_user<>();
 		pb.setCount(count);
 		if(currentPage==0)currentPage=1;

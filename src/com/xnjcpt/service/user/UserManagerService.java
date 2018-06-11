@@ -18,7 +18,7 @@ public interface UserManagerService {
 	xnjcpt_user getUserByuser_name(String user_name);//根据user_name查找
 	
 	int getUserCount(String keyword, int currPage);//查询xx用户总数
-	PageBean_user<xnjcpt_user> findPageBy(int currentPage, int pageSize,String keyword);
+	PageBean_user<xnjcpt_user> findPageBy(int currentPage, int pageSize);
 	PageBean_user<xnjcpt_user> findPageByKeyword(int currentPage, int pageSize,String keyword);
 	//根据关键字查找
 }
