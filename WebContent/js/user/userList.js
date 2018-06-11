@@ -85,14 +85,14 @@ function openSure(){
 	var id=$(".chang_status").attr("id");
 	formData.append("user.user_id",id);
 	$.ajax({
-		url : "/xnjcpt/userManager/userManager_banUser",
+		url : "/xnjcpt/userManager/userManager_liftUser",
 		type : "post",
 		data : formData,
 		processData: false,
 		contentType: false,
 		success:function(data){
 			console.log(data);
-			toastr.success("封禁用户");
+			toastr.success("解禁用户");
 			show_userList();
 		}
 	});
