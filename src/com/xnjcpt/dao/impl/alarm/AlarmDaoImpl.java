@@ -1,5 +1,7 @@
 package com.xnjcpt.dao.impl.alarm;
 
+import java.util.List;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -8,6 +10,9 @@ import org.hibernate.SessionFactory;
 import com.opensymphony.xwork2.ActionContext;
 import com.xnjcpt.dao.alarm.AlarmDao;
 import com.xnjcpt.domain.DO.xnjcpt_alarm;
+import com.xnjcpt.domain.DO.xnjcpt_alarm_message;
+import com.xnjcpt.domain.DO.xnjcpt_computer;
+import com.xnjcpt.domain.DO.xnjcpt_user_computer;
 import com.xnjcpt.domain.VO.AlarmPageVO;
 
 public class AlarmDaoImpl implements AlarmDao {
@@ -106,5 +111,44 @@ public class AlarmDaoImpl implements AlarmDao {
 			// TODO: handle exception
 			return false;
 		}
+	}
+
+	@Override
+	public xnjcpt_computer getComputerByIp(String ip) {
+		// TODO Auto-generated method stub
+
+		String hql = " from xnjcpt_computer where computer_ip = '" + ip + "'";
+
+		List<xnjcpt_computer> list = this.getSession().createQuery(hql).list();
+		if (list != null && list.size() > 0)
+			return list.get(0);
+		else {
+			return null;
+		}
+	}
+
+	@Override
+	public List<xnjcpt_alarm> getAlarm(String computer_id, String string) {
+		// TODO Auto-generated method stub
+
+		String hql = "from xnjcpt_alarm where alarm_computer = '" + computer_id + "' and alarm_type ='" + string
+				+ "' and alarm_state ='1' order by alarm_threshold_value desc";
+
+		return this.getSession().createQuery(hql).list();
+	}
+
+	@Override
+	public xnjcpt_user_computer getUserById(String computer_id) {
+		// TODO Auto-generated method stub
+
+		String hql = "from xnjcpt_user_computer where user_computer_computer ='" + computer_id + "'";
+
+		return (xnjcpt_user_computer) this.getSession().createQuery(hql).list().get(0);
+	}
+
+	@Override
+	public void saveMessage(xnjcpt_alarm_message xam) {
+		// TODO Auto-generated method stub
+		this.getSession().save(xam);
 	}
 }

@@ -1,16 +1,35 @@
 package com.xnjcpt.action.receive;
 
-import com.xnjcpt.domain.DO.*;
+import com.xnjcpt.domain.DO.xnjcpt_computer;
+import com.xnjcpt.domain.DO.xnjcpt_cpu;
+import com.xnjcpt.domain.DO.xnjcpt_cpu_state;
+import com.xnjcpt.domain.DO.xnjcpt_disk;
+import com.xnjcpt.domain.DO.xnjcpt_disk_state;
+import com.xnjcpt.domain.DO.xnjcpt_io_state;
+import com.xnjcpt.domain.DO.xnjcpt_memory;
+import com.xnjcpt.domain.DO.xnjcpt_memory_state;
+import com.xnjcpt.domain.DO.xnjcpt_net;
+import com.xnjcpt.domain.DO.xnjcpt_net_state;
+import com.xnjcpt.service.alarm.AlarmService;
 import com.xnjcpt.service.receive.ReceiveService;
 
 public class ReceiveAction {
-	//注入业务层的类
+	// 注入业务层的类
 	private ReceiveService receiveService;
+	private AlarmService alarmService;
+
+	public AlarmService getAlarmService() {
+		return alarmService;
+	}
+
+	public void setAlarmService(AlarmService alarmService) {
+		this.alarmService = alarmService;
+	}
 
 	public void setReceiveService(ReceiveService receiveService) {
 		this.receiveService = receiveService;
 	}
-	
+
 	private xnjcpt_computer xnjcpt_computer;
 	private xnjcpt_cpu xnjcpt_cpu;
 	private xnjcpt_memory xnjcpt_memory;
@@ -21,103 +40,114 @@ public class ReceiveAction {
 	private xnjcpt_io_state xnjcpt_io_state;
 	private xnjcpt_disk_state xnjcpt_disk_state;
 	private xnjcpt_net_state xnjcpt_net_state;
-	
-	
+
 	/**
 	 * 获取主机信息，存入数据库
 	 */
-	public void getComputerInfor(){
-		System.out.println(xnjcpt_computer.getComputer_name()+"sunyi");
+	public void getComputerInfor() {
+		System.out.println(xnjcpt_computer.getComputer_name() + "sunyi");
 		receiveService.updateComputerInfor(xnjcpt_computer);
 	}
-	
+
 	/**
 	 * 
 	 * 获取CPU信息，更改或存储cpu信息
 	 */
-	public void getCpuInfo(){
+	public void getCpuInfo() {
 		System.out.println("getCpuInfo执行！");
 		String ip = xnjcpt_computer.getComputer_ip();
-		receiveService.updateCpuInfor(ip,xnjcpt_cpu);
-		
+		receiveService.updateCpuInfor(ip, xnjcpt_cpu);
+
 	}
-	
+
 	/**
 	 * 获取内存信息，更改或存储内存信息
+	 * 
 	 * @return
 	 */
-	public void getMemoryInfor(){
-		System.out.println("getMemoryInfo执行！");
+	public void getMemoryInfor() {
 		String ip = xnjcpt_computer.getComputer_ip();
-		receiveService.updateMemoryInfor(ip,xnjcpt_memory);
+		receiveService.updateMemoryInfor(ip, xnjcpt_memory);
 	}
-	
+
 	/**
 	 * 获取磁盘信息，更改或存储磁盘信息
+	 * 
 	 * @return
 	 */
-	public void getDiskInfor(){
-		System.out.println("getDiskInfor执行！");
+	public void getDiskInfor() {
 		String ip = xnjcpt_computer.getComputer_ip();
-		receiveService.updateDiskInfor(ip,xnjcpt_disk);
+		receiveService.updateDiskInfor(ip, xnjcpt_disk);
 	}
-	
+
 	/**
 	 * 获取网络信息，更改或存储网络信息
+	 * 
 	 * @return
 	 */
-	public void getNetInfor(){
-		System.out.println("getNetInfor执行！");
+	public void getNetInfor() {
 		String ip = xnjcpt_computer.getComputer_ip();
-		receiveService.updateNetInfor(ip,xnjcpt_net);
+		receiveService.updateNetInfor(ip, xnjcpt_net);
 	}
-	
+
 	/**
 	 * 获取cpu的状态信息，存储cpu状态信息
+	 * 
 	 * @return
 	 */
-	public void getCpuStateInfor(){
-		System.out.println("getCpuStateInfor执行！");
-		String ip=xnjcpt_computer.getComputer_ip();
-		receiveService.saveCpuStateInfor(ip,xnjcpt_cpu_state);
+	public void getCpuStateInfor() {
+		String ip = xnjcpt_computer.getComputer_ip();
+		receiveService.saveCpuStateInfor(ip, xnjcpt_cpu_state);
+		// 查看警报
+		alarmService.issueCpuUtilAlarm(ip, xnjcpt_cpu_state);
+
 	}
+
 	/**
 	 * 获取内存信息状态，存储内存状态信息
+	 * 
 	 * @return
 	 */
-	public void getMemoryStateInfor(){
-		System.out.println("getMemoryInfor执行！");
-		String ip=xnjcpt_computer.getComputer_ip();
-		receiveService.saveMemoryStateInfor(ip,xnjcpt_memory_state);
+	public void getMemoryStateInfor() {
+		String ip = xnjcpt_computer.getComputer_ip();
+		receiveService.saveMemoryStateInfor(ip, xnjcpt_memory_state);
+		alarmService.issueMemoryUtilAlarm(ip, xnjcpt_memory_state);
 	}
+
 	/**
 	 * 获取io状态信息，存储io状态信息
+	 * 
 	 * @return
 	 */
-	public void getIoStateInfor(){
-		System.out.println("getIoStateInfor执行！");
-		String ip=xnjcpt_computer.getComputer_ip();
-		receiveService.saveIoStateInfor(ip,xnjcpt_io_state);
+	public void getIoStateInfor() {
+		String ip = xnjcpt_computer.getComputer_ip();
+		receiveService.saveIoStateInfor(ip, xnjcpt_io_state);
 	}
+
 	/**
 	 * 获取磁盘状态信息，存储磁盘状态信息
+	 * 
 	 * @return
 	 */
-	public void getDiskStateInfor(){
-		System.out.println("getDiskStateInfor执行！");
-		String ip=xnjcpt_computer.getComputer_ip();
-		receiveService.saveDiskInfor(ip,xnjcpt_disk_state);
+	public void getDiskStateInfor() {
+		String ip = xnjcpt_computer.getComputer_ip();
+		receiveService.saveDiskInfor(ip, xnjcpt_disk_state);
 	}
-	
+
 	/**
 	 * 获取网络状态信息，保存网络状态信息
+	 * 
 	 * @return
 	 */
-	public void getNetStateInfor(){
-		System.out.println("getNetStateInfor执行！");
-		String ip=xnjcpt_computer.getComputer_ip();
-		receiveService.saveNetStateInfor(ip,xnjcpt_net_state);
+	public void getNetStateInfor() {
+		String ip = xnjcpt_computer.getComputer_ip();
+		receiveService.saveNetStateInfor(ip, xnjcpt_net_state);
+		alarmService.issueOutObandAlarm(ip, xnjcpt_net_state);
+		alarmService.issueInObandAlarm(ip, xnjcpt_net_state);
+		alarmService.issueOutPackageAlarm(ip, xnjcpt_net_state);
+		alarmService.issueInPackageAlarm(ip, xnjcpt_net_state);
 	}
+
 	public xnjcpt_computer getXnjcpt_computer() {
 		return xnjcpt_computer;
 	}
@@ -149,7 +179,6 @@ public class ReceiveAction {
 	public xnjcpt_disk getXnjcpt_disk() {
 		return xnjcpt_disk;
 	}
-	
 
 	public void setXnjcpt_disk(xnjcpt_disk xnjcpt_disk) {
 		this.xnjcpt_disk = xnjcpt_disk;
@@ -202,10 +231,5 @@ public class ReceiveAction {
 	public void setXnjcpt_net_state(xnjcpt_net_state xnjcpt_net_state) {
 		this.xnjcpt_net_state = xnjcpt_net_state;
 	}
-	
-	
-	
-	
-	
 
 }

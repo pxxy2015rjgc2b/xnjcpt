@@ -1,7 +1,5 @@
 package com.xnjcpt.service.receive;
 
-import com.xnjcpt.domain.DO.xnjcpt_computer;
-
 public interface ReceiveService {
 
 	void updateComputerInfor(com.xnjcpt.domain.DO.xnjcpt_computer xnjcpt_computer);
@@ -23,8 +21,5 @@ public interface ReceiveService {
 	void saveDiskInfor(String ip, com.xnjcpt.domain.DO.xnjcpt_disk_state xnjcpt_disk_state);
 
 	void saveNetStateInfor(String ip, com.xnjcpt.domain.DO.xnjcpt_net_state xnjcpt_net_state);
-
-	
-
 
 }

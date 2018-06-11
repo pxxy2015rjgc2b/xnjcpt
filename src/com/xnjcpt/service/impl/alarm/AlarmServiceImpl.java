@@ -1,7 +1,15 @@
 package com.xnjcpt.service.impl.alarm;
 
+import java.util.List;
+
 import com.xnjcpt.dao.alarm.AlarmDao;
 import com.xnjcpt.domain.DO.xnjcpt_alarm;
+import com.xnjcpt.domain.DO.xnjcpt_alarm_message;
+import com.xnjcpt.domain.DO.xnjcpt_computer;
+import com.xnjcpt.domain.DO.xnjcpt_cpu_state;
+import com.xnjcpt.domain.DO.xnjcpt_memory_state;
+import com.xnjcpt.domain.DO.xnjcpt_net_state;
+import com.xnjcpt.domain.DO.xnjcpt_user_computer;
 import com.xnjcpt.domain.VO.AlarmPageVO;
 import com.xnjcpt.service.alarm.AlarmService;
 
@@ -61,6 +69,158 @@ public class AlarmServiceImpl implements AlarmService {
 		xnjcpt_alarm.setAlarm_gmt_modified(TeamUtil.getStringSecond());
 
 		return alarmDao.updateAlarmById(xnjcpt_alarm);
+	}
+
+	@Override
+	public void issueCpuUtilAlarm(String ip, xnjcpt_cpu_state xnjcpt_cpu_state) {
+		// TODO Auto-generated method stub
+		xnjcpt_computer xc = alarmDao.getComputerByIp(ip);
+
+		if (xc != null) {
+			xnjcpt_user_computer xuc = alarmDao.getUserById(xc.getComputer_id());
+			List<xnjcpt_alarm> list = alarmDao.getAlarm(xc.getComputer_id(), "CPU利用率");
+			if (list != null && list.size() > 0) {
+				for (xnjcpt_alarm xnjcpt_alarm : list) {
+					if ((1 - Float.parseFloat(xnjcpt_cpu_state.getCpu_state_idle())) > Float
+							.parseFloat(xnjcpt_alarm.getAlarm_threshold_value())) {
+						xnjcpt_alarm_message xam = new xnjcpt_alarm_message();
+						xam.setMessage_id(TeamUtil.getUuid());
+						xam.setMessage_gmt_create(TeamUtil.getStringSecond());
+						xam.setMessage_gmt_modified(TeamUtil.getStringSecond());
+						xam.setMessage_status("0");
+						xam.setMessage_user(xuc.getUser_computer_user());
+						xam.setMessage_info("您ip为" + ip + "的主机CPU利用率超过了您设定的警告值！请注意！");
+						alarmDao.saveMessage(xam);
+					}
+				}
+			}
+		}
+
+	}
+
+	@Override
+	public void issueMemoryUtilAlarm(String ip, xnjcpt_memory_state xnjcpt_memory_state) {
+		// TODO Auto-generated method stub
+		xnjcpt_computer xc = alarmDao.getComputerByIp(ip);
+		if (xc != null) {
+			xnjcpt_user_computer xuc = alarmDao.getUserById(xc.getComputer_id());
+			List<xnjcpt_alarm> list = alarmDao.getAlarm(xc.getComputer_id(), "内存利用率");
+			if (list != null && list.size() > 0) {
+				for (xnjcpt_alarm xnjcpt_alarm : list) {
+					if ((Float.parseFloat(xnjcpt_memory_state.getMemory_state_mem_rate())) > Float
+							.parseFloat(xnjcpt_alarm.getAlarm_threshold_value())) {
+						xnjcpt_alarm_message xam = new xnjcpt_alarm_message();
+						xam.setMessage_id(TeamUtil.getUuid());
+						xam.setMessage_gmt_create(TeamUtil.getStringSecond());
+						xam.setMessage_gmt_modified(TeamUtil.getStringSecond());
+						xam.setMessage_status("0");
+						xam.setMessage_user(xuc.getUser_computer_user());
+						xam.setMessage_info("您ip为" + ip + "的主机内存使用率超过了您设定的警告值！请注意！");
+						alarmDao.saveMessage(xam);
+					}
+				}
+			}
+		}
+	}
+
+	@Override
+	public void issueOutObandAlarm(String ip, xnjcpt_net_state xnjcpt_net_state) {
+		// TODO Auto-generated method stub
+		xnjcpt_computer xc = alarmDao.getComputerByIp(ip);
+		if (xc != null) {
+			xnjcpt_user_computer xuc = alarmDao.getUserById(xc.getComputer_id());
+			List<xnjcpt_alarm> list = alarmDao.getAlarm(xc.getComputer_id(), "出带宽");
+			if (list != null && list.size() > 0) {
+				for (xnjcpt_alarm xnjcpt_alarm : list) {
+					if ((Float.parseFloat(xnjcpt_net_state.getNet_state_obandwidth())) > Float
+							.parseFloat(xnjcpt_alarm.getAlarm_threshold_value())) {
+						xnjcpt_alarm_message xam = new xnjcpt_alarm_message();
+						xam.setMessage_id(TeamUtil.getUuid());
+						xam.setMessage_gmt_create(TeamUtil.getStringSecond());
+						xam.setMessage_gmt_modified(TeamUtil.getStringSecond());
+						xam.setMessage_status("0");
+						xam.setMessage_user(xuc.getUser_computer_user());
+						xam.setMessage_info("您ip为" + ip + "的主机出带宽超过了您设定的警告值！请注意！");
+						alarmDao.saveMessage(xam);
+					}
+				}
+			}
+		}
+	}
+
+	@Override
+	public void issueInObandAlarm(String ip, xnjcpt_net_state xnjcpt_net_state) {
+		// TODO Auto-generated method stub
+		xnjcpt_computer xc = alarmDao.getComputerByIp(ip);
+		if (xc != null) {
+			xnjcpt_user_computer xuc = alarmDao.getUserById(xc.getComputer_id());
+			List<xnjcpt_alarm> list = alarmDao.getAlarm(xc.getComputer_id(), "入带宽");
+			if (list != null && list.size() > 0) {
+				for (xnjcpt_alarm xnjcpt_alarm : list) {
+					if ((Float.parseFloat(xnjcpt_net_state.getNet_state_ibandwidth())) > Float
+							.parseFloat(xnjcpt_alarm.getAlarm_threshold_value())) {
+						xnjcpt_alarm_message xam = new xnjcpt_alarm_message();
+						xam.setMessage_id(TeamUtil.getUuid());
+						xam.setMessage_gmt_create(TeamUtil.getStringSecond());
+						xam.setMessage_gmt_modified(TeamUtil.getStringSecond());
+						xam.setMessage_status("0");
+						xam.setMessage_user(xuc.getUser_computer_user());
+						xam.setMessage_info("您ip为" + ip + "的主机入带宽超过了您设定的警告值！请注意！");
+						alarmDao.saveMessage(xam);
+					}
+				}
+			}
+		}
+	}
+
+	@Override
+	public void issueOutPackageAlarm(String ip, xnjcpt_net_state xnjcpt_net_state) {
+		// TODO Auto-generated method stub
+		xnjcpt_computer xc = alarmDao.getComputerByIp(ip);
+		if (xc != null) {
+			xnjcpt_user_computer xuc = alarmDao.getUserById(xc.getComputer_id());
+			List<xnjcpt_alarm> list = alarmDao.getAlarm(xc.getComputer_id(), "出包量");
+			if (list != null && list.size() > 0) {
+				for (xnjcpt_alarm xnjcpt_alarm : list) {
+					if ((Float.parseFloat(xnjcpt_net_state.getNet_state_opackage())) > Float
+							.parseFloat(xnjcpt_alarm.getAlarm_threshold_value())) {
+						xnjcpt_alarm_message xam = new xnjcpt_alarm_message();
+						xam.setMessage_id(TeamUtil.getUuid());
+						xam.setMessage_gmt_create(TeamUtil.getStringSecond());
+						xam.setMessage_gmt_modified(TeamUtil.getStringSecond());
+						xam.setMessage_status("0");
+						xam.setMessage_user(xuc.getUser_computer_user());
+						xam.setMessage_info("您ip为" + ip + "的主机出包量超过了您设定的警告值！请注意！");
+						alarmDao.saveMessage(xam);
+					}
+				}
+			}
+		}
+	}
+
+	@Override
+	public void issueInPackageAlarm(String ip, xnjcpt_net_state xnjcpt_net_state) {
+		// TODO Auto-generated method stub
+		xnjcpt_computer xc = alarmDao.getComputerByIp(ip);
+		if (xc != null) {
+			xnjcpt_user_computer xuc = alarmDao.getUserById(xc.getComputer_id());
+			List<xnjcpt_alarm> list = alarmDao.getAlarm(xc.getComputer_id(), "入包量");
+			if (list != null && list.size() > 0) {
+				for (xnjcpt_alarm xnjcpt_alarm : list) {
+					if ((Float.parseFloat(xnjcpt_net_state.getNet_state_ipackage())) > Float
+							.parseFloat(xnjcpt_alarm.getAlarm_threshold_value())) {
+						xnjcpt_alarm_message xam = new xnjcpt_alarm_message();
+						xam.setMessage_id(TeamUtil.getUuid());
+						xam.setMessage_gmt_create(TeamUtil.getStringSecond());
+						xam.setMessage_gmt_modified(TeamUtil.getStringSecond());
+						xam.setMessage_status("0");
+						xam.setMessage_user(xuc.getUser_computer_user());
+						xam.setMessage_info("您ip为" + ip + "的主机入包量超过了您设定的警告值！请注意！");
+						alarmDao.saveMessage(xam);
+					}
+				}
+			}
+		}
 	}
 
 }
