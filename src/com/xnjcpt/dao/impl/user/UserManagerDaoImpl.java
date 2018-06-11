@@ -28,7 +28,8 @@ public class UserManagerDaoImpl implements UserManagerDao {
 	public int getUserCount(String keyword, int currPage) {
 		// TODO Auto-generated method stub
 		String query = "%" + keyword + "%";
-		String hql = "select count(*) from xnjcpt_user where (user_name like '" + query + "' or user_username like ''" + query + "')";
+		String hql = "select count(*) from xnjcpt_user where (user_name like '" + query + "' or user_username like '" + query
+				+ "' or user_email like '" + query+ "')";
 		System.out.println(hql);
 		int count = ((Number) getSession().createQuery(hql).uniqueResult()).intValue();
 		return count;
@@ -49,9 +50,9 @@ public class UserManagerDaoImpl implements UserManagerDao {
 		// TODO Auto-generated method stub
 		String query = "%" + keyword + "%";
 		String hql = "from xnjcpt_user where (user_name like '" + query + "' or user_username like '" + query
-				+ "' or user_email like '" + query+ "') order by user_gmt_create desc";
-		List<xnjcpt_user> list = getSession().createQuery(hql).setFirstResult((currentPage - 1) * pageSize).setMaxResults(10)
-				.list();
+				+ "' or user_email like '" + query+ "')";
+		List<xnjcpt_user> list = getSession().createQuery(hql).setFirstResult((currentPage - 1) * pageSize).setMaxResults(pageSize).list();
+				
 		System.out.println("当前查询的信息:" + list.size());
 		return list;
 		//根据关键字查询分页信息

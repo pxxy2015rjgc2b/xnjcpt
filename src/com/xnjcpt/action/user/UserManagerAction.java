@@ -74,7 +74,7 @@ public class UserManagerAction {
 			PageBean_user<xnjcpt_user> pb = userManagerService.findPageBy(currentPage, pageSize);
 			Gson gson = new Gson();//用来转换JSON数据类型的
 			String result = gson.toJson(pb);
-			System.out.println(result);
+			System.out.println(result); 
 			HttpServletResponse response = ServletActionContext.getResponse();
 			response.setContentType("text/html;charset=utf-8");
 			PrintWriter pw = response.getWriter();
