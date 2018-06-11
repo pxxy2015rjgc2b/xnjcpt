@@ -14,6 +14,8 @@ import com.xnjcpt.domain.DO.xnjcpt_user;
 import com.xnjcpt.domain.VO.PageBean_user;
 import com.xnjcpt.service.user.UserManagerService;
 
+import util.TeamUtil;
+
 public class UserManagerAction {
 	
 	/*
@@ -36,7 +38,7 @@ public class UserManagerAction {
 		return "skipToUser";
 	}
 
-	//更新用户密码
+	//通过旧密码更新用户密码
 	public void updatePassword() throws IOException {
 		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setContentType("text/html;charset=utf-8");
@@ -46,12 +48,29 @@ public class UserManagerAction {
 			xnjcpt_user xu = userManagerService.getUserByUserId(user_id);
 			if (xu.getUser_password().equals(oldPassword)) {
 				userManagerService.updatePassword(user_id, newPassword);
+				xu.setUser_gmt_modified(TeamUtil.getStringSecond());
 				pw.write("updateSuccess");
 			} else {
 				pw.write("oldPasswordError");
 			}
 		} else{
 			pw.write("updateFail");
+		}
+	}
+	
+	//通过邮箱发送修改旧密码
+	public void updatePasswordbyemail() throws IOException {
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter pw = response.getWriter();
+		xnjcpt_user existuser=new xnjcpt_user();
+		existuser=userManagerService.getUserByUserId(user_id);
+		if(existuser==null){
+			System.out.println("修改密码失败");
+			pw.write("findpassword_error");
+		}else{
+			userManagerService.updatePassword(user_id, newPassword);
+			pw.write("updatesuccess");
 		}
 	}
 	
@@ -104,6 +123,7 @@ public class UserManagerAction {
 			user.setUser_name(user_name);
 			user.setUser_username(user_username);
 			user.setUser_phone(user_phone);
+			user.setUser_gmt_create(TeamUtil.getStringSecond());//保存修改时间信息
 			userManagerService.updateuser(user);
 			HttpServletResponse response = ServletActionContext.getResponse();
 			response.setContentType("text/html;charset=utf-8");
@@ -115,20 +135,26 @@ public class UserManagerAction {
 
 	//删除用户
 	public void deleteUser() throws IOException {
-		String user_id = (String) ActionContext.getContext().getSession().get("user_id");
-		userManagerService.deleteuser(user_id);
 		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter pw = response.getWriter();
+		xnjcpt_user user=userManagerService.getUserByUserId(user_id);
+		if(user.getUser_id()!=null){
+		userManagerService.deleteuser(user_id);
 		pw.write("删除用户");
 		pw.flush();
 		pw.close();
-	}
+	}else{
+		pw.write("删除失败");
+		pw.flush();
+		pw.close();
+	}}
 	
 	//封禁用户
 	public void banUser() throws IOException{
 		xnjcpt_user user=userManagerService.getUserByUserId(user_id);
 		user.setUser_status("0");
+		user.setUser_gmt_modified(TeamUtil.getStringSecond());
 		userManagerService.updateuser(user);
 		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setContentType("text/html;charset=utf-8");
@@ -137,6 +163,20 @@ public class UserManagerAction {
 		pw.flush();
 		pw.close();
 	}
+	
+	//解禁用户
+		public void liftUser() throws IOException{
+			xnjcpt_user user=userManagerService.getUserByUserId(user_id);
+			user.setUser_status("1");
+			user.setUser_gmt_modified(TeamUtil.getStringSecond());
+			userManagerService.updateuser(user);
+			HttpServletResponse response = ServletActionContext.getResponse();
+			response.setContentType("text/html;charset=utf-8");
+			PrintWriter pw = response.getWriter();
+			pw.write("解禁用户");
+			pw.flush();
+			pw.close();
+		}
 	
 	private String oldPassword;
 	private String newPassword;
