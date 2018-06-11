@@ -15,8 +15,9 @@ public interface UserManagerDao {
 	xnjcpt_user getUserByUseruser_username(String user_username);//根据user_username查找
 	xnjcpt_user getUserByuser_name(String user_name);//根据user_name查找
 	
+	int getUserCount();//查询xx用户总数
 	int getUserCount(String keyword, int currPage);//查询xx用户总数
-	List<xnjcpt_user> findPageBy(int currentPage, int pageSize,String keyword);
+	List<xnjcpt_user> findPageBy(int currentPage, int pageSize);
 	List<xnjcpt_user> findPageByKeyword(int currentPage, int pageSize,String keyword);
 	//根据关键字查找
 
