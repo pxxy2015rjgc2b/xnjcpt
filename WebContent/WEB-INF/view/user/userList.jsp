@@ -56,8 +56,8 @@
 									<td>{{ user.user_username }}</td>
 									<td>{{ user.user_email }}</td>
 									<td>{{ user.user_phone }}</td>
-									<td v-if="user.user_status==0"><a class="chang_status" :id="user.user_id" onclick="openSure()">封禁</a></td>
-									<td v-if="user.user_status==1"><a class="chang_status" :id="user.user_id" onclick="cloSure()">解禁</a></td>
+									<td v-if="user.user_status==0"><a class="chang_status" :id="user.user_id" onClick="openSure(this)">封禁</a></td>
+									<td v-if="user.user_status==1"><a class="chang_status" :id="user.user_id" onClick="cloSure(this)">解禁</a></td>
 								</tr>
 							</tbody>
 						</table>

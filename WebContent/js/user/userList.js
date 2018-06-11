@@ -60,11 +60,11 @@ function show_userList() {
 	});
 }
 //封禁
-function cloSure(){
+function cloSure(obj){
 	console.log("封禁操作");
 	var formData=new FormData();
-	var id=$(".chang_status").attr("id");
-	formData.append("user.user_id",id);
+	var id= obj.id;
+	formData.append("user_id",id);
 	$.ajax({
 		url : "/xnjcpt/userManager/userManager_banUser",
 		type : "post",
@@ -79,11 +79,12 @@ function cloSure(){
 	});
 }
 //解禁
-function openSure(){
-	console.log("封禁操作");
+function openSure(obj){
+	//console.log("解禁操作");
 	var formData=new FormData();
-	var id=$(".chang_status").attr("id");
-	formData.append("user.user_id",id);
+	var id= obj.id;
+	
+	formData.append("user_id",id);
 	$.ajax({
 		url : "/xnjcpt/userManager/userManager_liftUser",
 		type : "post",
@@ -139,7 +140,7 @@ function delete_user() {
 		function(i) {
 			if ($(this).is(':checked')) {
 				formData.append(
-					'user.user_id['
+					'user_id['
 					+ index + ']', $(this)
 						.attr('id'));
 				console.log( "要删除的id"+$(this)

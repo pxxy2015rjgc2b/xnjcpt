@@ -166,6 +166,7 @@ public class UserManagerAction {
 	
 	//解禁用户
 		public void liftUser() throws IOException{
+			System.out.println("p");
 			xnjcpt_user user=userManagerService.getUserByUserId(user_id);
 			user.setUser_status("1");
 			user.setUser_gmt_modified(TeamUtil.getStringSecond());
