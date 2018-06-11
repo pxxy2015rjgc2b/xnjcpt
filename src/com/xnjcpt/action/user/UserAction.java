@@ -127,30 +127,45 @@ public class UserAction{
 	}
 	
 	//邮箱发送激活用户
-	public void sendEmail(){
+	public void sendEmail() throws Exception{
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Access-Control-Allow-Methods", "GET,POST");
+		response.setContentType("text/html;charset=utf-8");
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpSession session = request.getSession();
+		PrintWriter pw = response.getWriter();
 		String receiveEmailAccount = user.getUser_email();// 用户邮箱
 		xnjcpt_user ux=userService.getUserByUserEmail(receiveEmailAccount);
+		
+		if(ux!=null){
 		String verifyCode=ux.getUser_id();
 		String username=ux.getUser_name();
-		try {
-			SendEmail.sendEmail(receiveEmailAccount, username, verifyCode);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		SendEmail.sendEmail(receiveEmailAccount, username, verifyCode);
+		pw.write("激活邮件发送成功");
+		}else{
+		pw.write("激活邮件发送成功");	
 		}
 	}
 	
 	//邮箱发送修改密码
-	public void sendEmailtoUpdatePassword(){
+	public void sendEmailtoUpdatePassword() throws Exception{
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Access-Control-Allow-Methods", "GET,POST");
+		response.setContentType("text/html;charset=utf-8");
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpSession session = request.getSession();
+		PrintWriter pw = response.getWriter();
 		String receiveEmailAccount = user.getUser_email();// 用户邮箱
 		xnjcpt_user ux=userService.getUserByUserEmail(receiveEmailAccount);
+		if(ux!=null){
 		String verifyCode=ux.getUser_id();
 		String username=ux.getUser_name();
-		try {
-			SendEmailUpdatePassword.sendEmail(receiveEmailAccount, username, verifyCode);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		SendEmailUpdatePassword.sendEmail(receiveEmailAccount, username, verifyCode);
+		pw.write("修改密码邮件发送成功");
+		}else{
+		pw.write("修改密码邮件发送失败");
 		}
 	
 	}
@@ -182,49 +197,10 @@ public class UserAction{
 	public String logout() {
 		ActionContext.getContext().getSession().remove("user_id");
 		ActionContext.getContext().getSession().remove("user_name");
+		ActionContext.getContext().getSession().remove("user_role");
 		return "logoutSuccess";
 	}
-	
-/*	//用户删除
-	public void deleteUser() throws IOException {
-		userService.deleteuser(user_id);
-		HttpServletResponse response = ServletActionContext.getResponse();
-		response.setHeader("Access-Control-Allow-Origin", "*");
-		response.setHeader("Access-Control-Allow-Methods", "GET,POST");
-		response.setContentType("text/html;charset=utf-8");
-		PrintWriter pw = response.getWriter();
-		pw.write("delete_user");
-		pw.flush();
-		pw.close();
-	}*/
-	
-	
-	/*
-	 *密码修改
-	 * public void resetPassword() throws IOException{
-		HttpServletResponse response = ServletActionContext.getResponse();
-		response.setContentType("text/html;charset=utf-8");
-		HttpServletRequest request = ServletActionContext.getRequest();
-		HttpSession session = request.getSession();
-		PrintWriter pw = response.getWriter();
-		String user_id = (String) ActionContext.getContext().getSession().get("user_id");
-		//~~~~~~~~
-		if (user_id != null || user_id != "") {
-			xnjcpt_user xu = userService.getUserByUserId(user_id);
-			if (xu.getUser_password().equals(anObject)) {
-				
-				pw.write("updateSuccess");
-			} else {
-				pw.write("oldPasswordError");
-			}
-		} else
 
-		{
-			pw.write("updateFail");
-		}
-	}
-*/
-	
 	
 	// --------------------------------------------------------�������--------------------------------------------------------------
 		/*
