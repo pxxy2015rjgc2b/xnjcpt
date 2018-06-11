@@ -80,6 +80,7 @@ public class UserManagerAction {
 	
 	//根据id得到用户
 	public void getUserById() throws IOException {
+		
 		xnjcpt_user xu = userManagerService.getUserByUserId(user_id);
 		Gson gson = new Gson();
 		String result = gson.toJson(xu);

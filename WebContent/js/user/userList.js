@@ -1,6 +1,6 @@
 var user_paginationQuery={
 		"currPage" :'1',
-		"totalPage" :'',
+		"totalPage" :'4',
 		"pageCount" :'10',
 		"totalCount ":'',
 }
@@ -10,9 +10,9 @@ window.onload=function(){
 		el:'#userVue',
 		data:{
 			"currPage" :'1',
-			"totalPage" :'1',
+			"totalPage" :'4',
 			"pageCount" :'6',
-			"totalCount ":'1',
+			"totalCount":"",
 			"users":""
 		
 		}
@@ -23,7 +23,7 @@ window.onload=function(){
 function show_userList(){
 	console.log("list_ajax");
 	 $.ajax({
-		    url: "xnjcpt/user/user_getUser",
+		    url: "/xnjcpt/userManager/userManager_getUserlist",
 	        type: "post",
 	        data:user_paginationQuery,
 	        dataType:"json",
@@ -32,33 +32,37 @@ function show_userList(){
 	        processData: false,  
 	        contentType: false,
 	        success: function(data){
+	        	console.log(data);
 	        	var result=JSON.parse(data);
 	        	//存入vue对象
 	        	userPage.users=result.list;
-	        	/*userPage.currPage=result.currPage;
+	        	console.log(userPage.users);
+	        	userPage.currPage=result.currPage;
 	        	userPage.totalPage=result.totalPage;
 	        	userPage.pageCount=result.pageCount;
-	        	userPage.totalCount=result.totalCount;*/
-	        	userPage.currPage=3;
-	        	userPage.totalPage=5;
-	        	userPage.pageCount=6;
-	        	userPage.totalCount=55;
+	        	userPage.totalCount=result.totalCount;
 	        	//存入分页查询
-	        	user_paginationQuery.currPage=3;
-	        	user_paginationQuery.totalPage=5;
-	        	user_paginationQuery.pageCount=6;
-	        	user_paginationQuery.totalCount =55 ;
+	        	user_paginationQuery.currPage=result.currPage;
+	        	user_paginationQuery.totalPage=result.totalPage;
+	        	user_paginationQuery.pageCount=result.pageCount;
+	        	user_paginationQuery.totalCount=result.totalCount;
 	        }
 	    });
 }
 //分页
 //首页
 function firstPage(){
+	console.log("首页");
+	if(user_paginationQuery.currPage=1){
+		toastr.error("已经是第一页了哦!");
+	}else{
 	    user_paginationQuery.currPage="1";
 	    show_userList();
+	}
 } 
 //上一页
-function perPage(){
+function prePage(){
+	console.log("上一页");
 	if(user_paginationQuery.currPage<=1){
 		toastr.error("已经是第一页了哦!");
 	}else{
@@ -68,6 +72,7 @@ function perPage(){
 }
 //下一页
 function nextPage(){
+	console.log("下一页");
 	if(user_paginationQuery.currPage>=user_paginationQuery.totalPage){
 		toastr.error("没有下一页了哦!");
 	}else{
@@ -77,6 +82,11 @@ function nextPage(){
 }
 //尾页
 function lastPage(){
+	console.log("尾页");
+	if(user_paginationQuery.currPage=user_paginationQuery.totalPage){
+		toastr.error("没有下一页了哦!");
+	}else{
 	user_paginationQuery.currPage=user_paginationQuery.totalPage;
 	show_userList();
+	}
 }

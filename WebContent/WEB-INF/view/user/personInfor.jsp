@@ -29,10 +29,10 @@
 							<div class="panel-body">
 								<ul >
 									<li><label>账号昵称：</label><span>{{ userInfo.user_name }}</span></li>
-									<li><label>用户姓名：</label><span>{{ userInfo.user_username }}</span><div class="edit_nameBox"><input type="text" /> <a class="user_nameSave">保存</a><a class="user_nameCancle">取消</a></div><i class="fa fa-pencil" aria-hidden="true"></i></li>
+									<li><label>用户姓名：</label><span class="user_name">{{ userInfo.user_username }}</span><div class="edit_nameBox"><input type="text" /> <a class="user_nameSave">保存</a><a class="user_nameCancle">取消</a></div><i class="fa fa-pencil editName" aria-hidden="true"></i></li>
 									<li><label>用户密码：</label><span>{{ userInfo.user_password }}</span></li>
 									<li><label>邮箱地址：</label><span>{{ userInfo.user_email }}</span></li>
-									<li><label>手机号码：</label><span>{{ userInfo.user_phone }}</span><div class="edit_photoBox"><input type="text" class="editPhoto_input"/><a class="user_photoSave">保存</a><a class="user_photoCancle">取消</a></div><i class="fa fa-pencil" aria-hidden="true"></i></li>
+									<li><label>手机号码：</label><span class="user_photo">{{ userInfo.user_phone }}</span><div class="edit_photoBox"><input type="text" class="editPhoto_input"/><a class="user_photoSave">保存</a><a class="user_photoCancle">取消</a></div><i class="fa fa-pencil editPhoto" aria-hidden="true"></i></li>
 									<li><label>用户状态：</label><span>{{ userInfo.user_status }}</span></li>
 									<li><label>用户角色：</label><span>{{ userInfo.user_role }}</span></li>
 								</ul>

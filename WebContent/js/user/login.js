@@ -5,6 +5,7 @@ window.onload=function(){
 	});
 }
 function login_ajax(){
+	console.log("login_ajax");
 	var user_name=$("input[name='user_name']").val();
 	var user_password=$("input[name='user_password']").val();
 	var formData=new FormData();

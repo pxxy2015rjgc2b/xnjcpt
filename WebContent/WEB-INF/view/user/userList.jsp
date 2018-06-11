@@ -85,7 +85,7 @@
 		</div>
 		
 	</div>
-	<script src="<%=basePath %>/js/toastr.js"></script>
-	<script src="<%=basePath %>/js/user/userList.js"></script>
+	<script src="<%=basePath %>js/toastr.js"></script>
+	<script src="<%=basePath %>js/user/userList.js"></script>
 </body>
 </html>
