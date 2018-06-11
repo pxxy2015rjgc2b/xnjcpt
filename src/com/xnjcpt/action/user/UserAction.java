@@ -60,6 +60,7 @@ public class UserAction{
 				/*String st="0";
 				xu.setUser_status(st);*/
 				session.setAttribute("user_name", xu.getUser_name());
+				session.setAttribute("user_role", xu.getUser_role());//存用户角色状态
 				session.setAttribute("user_id", xu.getUser_id());//session存user_id
 			}
 		}
@@ -86,10 +87,11 @@ public class UserAction{
 	
 	//用户注册
 	public void register() throws IOException{
-		System.out.println("dffdf=--");
+		//System.out.println("dffdf=--");
+		/*user.setUser_name(new String(user.getUser_name().getBytes("ISO-8859-1"),"utf-8"));*/
 		HttpServletResponse response = ServletActionContext.getResponse();
-		/*response.setHeader("Access-Control-Allow-Origin", "*");
-		response.setHeader("Access-Control-Allow-Methods", "GET,POST");*/
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Access-Control-Allow-Methods", "GET,POST");
 		response.setContentType("text/html;charset=utf-8");
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpSession session = request.getSession();
@@ -107,12 +109,15 @@ public class UserAction{
 			xnjcpt_user xu = new xnjcpt_user();
 			xu.setUser_email(user.getUser_email());
 			xu.setUser_name(user.getUser_name());
+			xu.setUser_role("0");
 			xu.setUser_password(user.getUser_password());
 			xu.setUser_id(UUID.randomUUID().toString());
 			st="0";
 			xu.setUser_status(st);
+			System.out.println(user.getUser_name());
 			userService.register(xu);
 			pw.write("register_success");
+		
 		}}
 		pw.flush();
 		pw.close();	
