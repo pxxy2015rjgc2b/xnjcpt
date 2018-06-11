@@ -4,8 +4,10 @@ import java.util.List;
 
 import com.xnjcpt.dao.user.UserManagerDao;
 import com.xnjcpt.domain.DO.xnjcpt_user;
+import com.xnjcpt.domain.VO.PageBean_user;
 import com.xnjcpt.service.user.UserManagerService;
 import com.xnjcpt.service.user.UserService;
+
 
 public class UserManagerServiceImpl implements UserManagerService {
 	//ע��dao�����
@@ -74,15 +76,35 @@ public class UserManagerServiceImpl implements UserManagerService {
 	}
 
 	@Override
-	public List<xnjcpt_user> findPageBy(int currentPage, int pageSize) {
+	public PageBean_user<xnjcpt_user> findPageBy(int currentPage, int pageSize,String keyword) {
 		// TODO Auto-generated method stub
-		return userManagerDao.findPageBy(currentPage, pageSize);
+		int count = userManagerDao.getUserCount(keyword, currentPage); //求当前类别信息数量
+		int totalPage = (int) Math.ceil(count*1.0/pageSize);//求总页数
+		List<xnjcpt_user> list = userManagerDao.findPageByKeyword(currentPage, pageSize, keyword); //求当前页的集合数据
+		PageBean_user<xnjcpt_user> pb = new PageBean_user<>();
+		pb.setCount(count);
+		if(currentPage==0)currentPage=1;
+		pb.setCurrentPage(currentPage);
+		pb.setList(list);
+		pb.setPageSize(pageSize);
+		pb.setTotalPage(totalPage);
+		return pb;
 	}
 
 	@Override
-	public List<xnjcpt_user> findPageByKeyword(int currentPage, int pageSize, String keyword) {
+	public PageBean_user<xnjcpt_user> findPageByKeyword(int currentPage, int pageSize, String keyword) {
 		// TODO Auto-generated method stub
-		return userManagerDao.findPageByKeyword(currentPage, pageSize, keyword);
+		int count = userManagerDao.getUserCount(keyword, currentPage); //求当前类别信息数量
+		int totalPage = (int) Math.ceil(count*1.0/pageSize);//求总页数
+		List<xnjcpt_user> list = userManagerDao.findPageByKeyword(currentPage, pageSize, keyword); //求当前页的集合数据
+		PageBean_user<xnjcpt_user> pb = new PageBean_user<>();
+		pb.setCount(count);
+		if(currentPage==0)currentPage=1;
+		pb.setCurrentPage(currentPage);
+		pb.setList(list);
+		pb.setPageSize(pageSize);
+		pb.setTotalPage(totalPage);
+		return pb;
 	}
 
 }
