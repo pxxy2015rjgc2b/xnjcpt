@@ -119,19 +119,32 @@ public class UserManagerAction {
 	
 	//修改用户信息
 		public void updateUser() throws IOException {
-			String user_id = (String) ActionContext.getContext().getSession().get("user_id");
-			xnjcpt_user user=userManagerService.getUserByUserId(user_id);
-			user.setUser_name(user_name);
-			user.setUser_username(user_username);
-			user.setUser_phone(user_phone);
-			user.setUser_gmt_create(TeamUtil.getStringSecond());//保存修改时间信息
-			userManagerService.updateuser(user);
 			HttpServletResponse response = ServletActionContext.getResponse();
 			response.setContentType("text/html;charset=utf-8");
 			PrintWriter pw = response.getWriter();
-			pw.write("修改用户");
+			String user_id = (String) ActionContext.getContext().getSession().get("user_id");
+			xnjcpt_user user=userManagerService.getUserByUserId(user_id);
+			if(user_username!=null && user_phone==null){
+			user.setUser_username(user_username);
+			user.setUser_gmt_modified(TeamUtil.getStringSecond());//保存修改时间信息
+			userManagerService.updateuser(user);
+			pw.write("修改用户姓名成功");
 			pw.flush();
 			pw.close();
+			}else if(user_phone!=null && user_username==null){
+				user.setUser_phone(user_phone);
+				user.setUser_gmt_modified(TeamUtil.getStringSecond());//保存修改时间信息
+				userManagerService.updateuser(user);
+				pw.write("修改用户电话成功");
+				pw.flush();
+				pw.close();
+			}
+			else{
+				pw.write("修改用户信息失败");
+				pw.flush();
+				pw.close();
+			}
+			
 		}
 
 	//删除用户
