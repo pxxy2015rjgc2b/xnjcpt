@@ -1,14 +1,36 @@
+var user;
 window.onload=function(){
-	userEdit_ajax();
-	var user=new Vue({
+	//得到user_id
+	var url = window.location.href;
+	var user_id = url.substring(url.indexOf("=") + 1);
+	console.log(user_id);
+	userShow_ajax(user_id);
+	userEdit_ajax(user_id);
+	user=new Vue({
 		el:"#user_info",
 		data:{
-		    "userInfo":"",
+		    "userInfo":""
+		}
+	})
+}
+//显示用户资料
+function userShow_ajax(user_id){
+	$.ajax({
+		url:"/xnjcpt/userManager/userManager_getUserById",
+		type:"POST",
+		data:user_id,
+		success:function(data){
+			console.log("用户列表显示");
+			console.log(data);
+			var userData= JSON.parse(data);
+			user.userInfo=userData;
+			
+			
 		}
 	});
 }
 //修改用户资料
-function userEdit_ajax(){
+function userEdit_ajax(user_id){
 	/*点击编辑按钮，显示输入框*/
 	$(".editName").click(function(){
 		$(".user_name").css("display","none");
