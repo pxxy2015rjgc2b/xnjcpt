@@ -14,8 +14,13 @@ import com.xnjcpt.domain.DO.xnjcpt_user;
 import com.xnjcpt.domain.VO.PageBean_user;
 import com.xnjcpt.service.user.UserManagerService;
 
-
 public class UserManagerAction {
+	
+	/*
+	 * author：叶凯
+	 * 
+	 * */
+	
 	//ע��ҵ������
 	private UserManagerService userManagerService;
 
@@ -52,7 +57,7 @@ public class UserManagerAction {
 	
 	//得到用户搜索列表
 	public void getUser() throws IOException {
-		List<xnjcpt_user> pb = userManagerService.findPageByKeyword(currentPage, pageSize, keyword);
+		PageBean_user<xnjcpt_user> pb = userManagerService.findPageByKeyword(currentPage, pageSize, keyword);
 		Gson gson = new Gson();//用来转换JSON数据类型的
 		String result = gson.toJson(pb);
 		System.out.println(result);
@@ -66,7 +71,7 @@ public class UserManagerAction {
 	
 	//用户列表
 		public void getUserlist() throws IOException {
-			List<xnjcpt_user> pb = userManagerService.findPageBy(currentPage, pageSize);
+			PageBean_user<xnjcpt_user> pb = userManagerService.findPageBy(currentPage, pageSize,keyword);
 			Gson gson = new Gson();//用来转换JSON数据类型的
 			String result = gson.toJson(pb);
 			System.out.println(result);
@@ -80,6 +85,7 @@ public class UserManagerAction {
 	
 	//根据id得到用户
 	public void getUserById() throws IOException {
+		String user_id = (String) ActionContext.getContext().getSession().get("user_id");
 		xnjcpt_user xu = userManagerService.getUserByUserId(user_id);
 		Gson gson = new Gson();
 		String result = gson.toJson(xu);
@@ -93,6 +99,7 @@ public class UserManagerAction {
 	
 	//修改用户信息
 		public void updateUser() throws IOException {
+			String user_id = (String) ActionContext.getContext().getSession().get("user_id");
 			xnjcpt_user user=userManagerService.getUserByUserId(user_id);
 			user.setUser_name(user_name);
 			user.setUser_username(user_username);
@@ -108,6 +115,7 @@ public class UserManagerAction {
 
 	//删除用户
 	public void deleteUser() throws IOException {
+		String user_id = (String) ActionContext.getContext().getSession().get("user_id");
 		userManagerService.deleteuser(user_id);
 		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setContentType("text/html;charset=utf-8");
