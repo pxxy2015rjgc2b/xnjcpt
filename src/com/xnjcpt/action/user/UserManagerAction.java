@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.ServletActionContext;
@@ -136,11 +137,14 @@ public class UserManagerAction {
 	//删除用户
 	public void deleteUser() throws IOException {
 		HttpServletResponse response = ServletActionContext.getResponse();
+		 HttpServletRequest request = ServletActionContext.getRequest();
 		response.setContentType("text/html;charset=utf-8");
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Access-Control-Allow-Methods", "GET,POST");
 		PrintWriter pw = response.getWriter();
-		xnjcpt_user user=userManagerService.getUserByUserId(user_id);
-		if(user.getUser_id()!=null){
-		userManagerService.deleteuser(user_id);
+		String[] user_ids = request.getParameterValues("user_id");
+		if(user_ids!=null){
+			userManagerService.deleteuser(user_ids);
 		pw.write("删除用户");
 		pw.flush();
 		pw.close();

@@ -66,10 +66,18 @@ public class UserManagerDaoImpl implements UserManagerDao {
 	}
 
 	@Override
-	public void deleteuser(String user_id) {
+	public void deleteuser(String[] user_ids) {
 		// TODO Auto-generated method stub
-		String hql = "delete from xnjcpt_user where user_id = '" + user_id + "'";
-		getSession().createQuery(hql).executeUpdate();
+		String hql = "";
+        for(int i=0;i<user_ids.length;i++) {
+            if(i==0) {
+                hql = "user_id ='"+user_ids[i]+"'";
+            } else {
+                hql =hql + " or user_id ='"+user_ids[i]+"'";
+            }
+        }   
+        Query query= this.getSession().createQuery("delete from xnjcpt_user where "+hql);
+        query.executeUpdate();
 	}
 
 	@Override
