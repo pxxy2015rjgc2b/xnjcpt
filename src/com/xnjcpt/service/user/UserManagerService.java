@@ -21,4 +21,5 @@ public interface UserManagerService {
 	PageBean_user<xnjcpt_user> findPageBy(int currentPage, int pageSize);
 	PageBean_user<xnjcpt_user> findPageByKeyword(int currentPage, int pageSize,String keyword);
 	//根据关键字查找
+
 }
