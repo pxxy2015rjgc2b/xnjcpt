@@ -25,6 +25,12 @@
 			<div class="show_box">
 				<div class="show_content">
 					<!-- CPU相关性能 -->
+					<div id="head">
+						<h3>性能监测</h3>
+						<label>选择展示时间区间：</label>
+						<button class="btn btn-default">今日</button>
+						<button class="btn btn-default" style="margin-left: 20px;">七日内</button>
+					</div>
 					<div id="cpu">
 						<h3>CPU相关性能</h3>
 						<hr>
@@ -127,6 +133,6 @@
 		src="<%=basePath%>js/monitor/TcpNumber.js"></script>
 	<script type="text/javascript"
 		src="<%=basePath%>js/monitor/DiskSize.js"></script>
-		<script type="text/javascript" src="<%=basePath %>js/monitor/IoUtil.js"></script>
+	<script type="text/javascript" src="<%=basePath%>js/monitor/IoUtil.js"></script>
 </body>
 </html>

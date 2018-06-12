@@ -1,7 +1,11 @@
 package com.xnjcpt.action.computer;
 
+import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -18,6 +22,8 @@ public class ComputerAction {
 	private ComputerService computerService;
 	private xnjcpt_computer xnjcpt_computer;
 	private ComputerPageVO computerPageVO;
+	private String id;
+	private String pid;
 
 	public void setComputerService(ComputerService computerService) {
 		this.computerService = computerService;
@@ -142,6 +148,44 @@ public class ComputerAction {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	// 通过进程pid结束进程
+	public void stopProgress() {
+		xnjcpt_computer xnjcpt_computer = computerService.getComputerById(id);
+		computerService.deleteProgressByIdAndPid(id, pid);
+		try {
+			Socket socket = new Socket(xnjcpt_computer.getComputer_ip(), 8888);
+			StringBuilder sb = new StringBuilder();
+			sb.append("killProgress\n");
+			sb.append(pid + "\n");
+			BufferedWriter br = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+			br.write(sb.toString());
+			br.flush();
+			br.close();
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getPid() {
+		return pid;
+	}
+
+	public void setPid(String pid) {
+		this.pid = pid;
 	}
 
 	public xnjcpt_computer getXnjcpt_computer() {

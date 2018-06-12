@@ -110,4 +110,16 @@ public class ComputerServiceImpl implements ComputerService {
 		return flag;
 	}
 
+	@Override
+	public xnjcpt_computer getComputerById(String id) {
+		// TODO Auto-generated method stub
+		return computerDao.getComputerById(id);
+	}
+
+	@Override
+	public void deleteProgressByIdAndPid(String id, String pid) {
+		// TODO Auto-generated method stub
+		computerDao.deleteProgress(id, pid);
+	}
+
 }

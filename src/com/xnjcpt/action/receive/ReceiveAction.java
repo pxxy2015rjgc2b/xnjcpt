@@ -1,5 +1,7 @@
 package com.xnjcpt.action.receive;
 
+import java.util.List;
+
 import com.xnjcpt.domain.DO.xnjcpt_computer;
 import com.xnjcpt.domain.DO.xnjcpt_cpu;
 import com.xnjcpt.domain.DO.xnjcpt_cpu_state;
@@ -10,6 +12,8 @@ import com.xnjcpt.domain.DO.xnjcpt_memory;
 import com.xnjcpt.domain.DO.xnjcpt_memory_state;
 import com.xnjcpt.domain.DO.xnjcpt_net;
 import com.xnjcpt.domain.DO.xnjcpt_net_state;
+import com.xnjcpt.domain.DO.xnjcpt_progress;
+import com.xnjcpt.domain.DTO.ProgressDTO;
 import com.xnjcpt.service.alarm.AlarmService;
 import com.xnjcpt.service.receive.ReceiveService;
 
@@ -40,6 +44,9 @@ public class ReceiveAction {
 	private xnjcpt_io_state xnjcpt_io_state;
 	private xnjcpt_disk_state xnjcpt_disk_state;
 	private xnjcpt_net_state xnjcpt_net_state;
+	private ProgressDTO progressDTO;
+	private String ip;
+	private List<xnjcpt_progress> progressList;
 
 	/**
 	 * 获取主机信息，存入数据库
@@ -148,6 +155,17 @@ public class ReceiveAction {
 		alarmService.issueInPackageAlarm(ip, xnjcpt_net_state);
 	}
 
+	/**
+	 * 接收进程信息
+	 * 
+	 * @return
+	 */
+
+	public void getProgressInfor() {
+		System.out.println(progressList.size());
+		receiveService.saveProgressInfor(ip, progressList);
+	}
+
 	public xnjcpt_computer getXnjcpt_computer() {
 		return xnjcpt_computer;
 	}
@@ -230,6 +248,30 @@ public class ReceiveAction {
 
 	public void setXnjcpt_net_state(xnjcpt_net_state xnjcpt_net_state) {
 		this.xnjcpt_net_state = xnjcpt_net_state;
+	}
+
+	public ProgressDTO getProgressDTO() {
+		return progressDTO;
+	}
+
+	public void setProgressDTO(ProgressDTO progressDTO) {
+		this.progressDTO = progressDTO;
+	}
+
+	public List<xnjcpt_progress> getProgressList() {
+		return progressList;
+	}
+
+	public void setProgressList(List<xnjcpt_progress> progressList) {
+		this.progressList = progressList;
+	}
+
+	public String getIp() {
+		return ip;
+	}
+
+	public void setIp(String ip) {
+		this.ip = ip;
 	}
 
 }

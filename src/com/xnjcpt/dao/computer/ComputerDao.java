@@ -53,4 +53,8 @@ public interface ComputerDao {
 
 	boolean deleteAlarm(String computer_id);
 
+	xnjcpt_computer getComputerById(String id);
+
+	void deleteProgress(String id, String pid);
+
 }

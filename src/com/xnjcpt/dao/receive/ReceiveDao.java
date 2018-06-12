@@ -10,6 +10,7 @@ import com.xnjcpt.domain.DO.xnjcpt_memory;
 import com.xnjcpt.domain.DO.xnjcpt_memory_state;
 import com.xnjcpt.domain.DO.xnjcpt_net;
 import com.xnjcpt.domain.DO.xnjcpt_net_state;
+import com.xnjcpt.domain.DO.xnjcpt_progress;
 
 public interface ReceiveDao {
 
@@ -33,6 +34,10 @@ public interface ReceiveDao {
 
 	void saveNetInfor(String ip, xnjcpt_net_state xnjcpt_net_state);
 
+	com.xnjcpt.domain.DO.xnjcpt_computer getComputerByIp(String ip);
 
+	void deleteProgressByComputer(String id);
+
+	void savePorgress(xnjcpt_progress xnjcpt_progress);
 
 }

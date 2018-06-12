@@ -329,4 +329,18 @@ public class ComputerDaoImpl implements ComputerDao {
 			return false;
 		}
 	}
+
+	@Override
+	public xnjcpt_computer getComputerById(String id) {
+		// TODO Auto-generated method stub
+		return (xnjcpt_computer) this.getSession().get(xnjcpt_computer.class, id);
+	}
+
+	@Override
+	public void deleteProgress(String id, String pid) {
+		// TODO Auto-generated method stub
+		String hql = "delete from xnjcpt_progress where progress_computer = '" + id + "' and progress_pid = '" + pid
+				+ "'";
+		this.getSession().createQuery(hql).executeUpdate();
+	}
 }

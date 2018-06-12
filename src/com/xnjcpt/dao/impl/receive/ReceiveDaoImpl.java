@@ -17,6 +17,7 @@ import com.xnjcpt.domain.DO.xnjcpt_memory;
 import com.xnjcpt.domain.DO.xnjcpt_memory_state;
 import com.xnjcpt.domain.DO.xnjcpt_net;
 import com.xnjcpt.domain.DO.xnjcpt_net_state;
+import com.xnjcpt.domain.DO.xnjcpt_progress;
 
 import util.TeamUtil;
 
@@ -329,5 +330,34 @@ public class ReceiveDaoImpl implements ReceiveDao {
 			this.getSession().save(xnjcpt_net_state);
 		} else {
 		}
+	}
+
+	@Override
+	public xnjcpt_computer getComputerByIp(String ip) {
+		// TODO Auto-generated method stub
+
+		String hql = "from xnjcpt_computer where computer_ip = '" + ip + "'";
+		System.out.println(hql);
+		Query query = getSession().createQuery(hql);
+		List<xnjcpt_computer> list = query.list();
+		if (list != null && list.size() > 0) {
+			return list.get(0);
+		} else {
+			return null;
+		}
+
+	}
+
+	@Override
+	public void deleteProgressByComputer(String id) {
+		// TODO Auto-generated method stub
+		String hql = "delete from xnjcpt_progress where  progress_computer  = '" + id + "'";
+		this.getSession().createQuery(hql).executeUpdate();
+	}
+
+	@Override
+	public void savePorgress(xnjcpt_progress xnjcpt_progress) {
+		// TODO Auto-generated method stub
+		this.getSession().save(xnjcpt_progress);
 	}
 }

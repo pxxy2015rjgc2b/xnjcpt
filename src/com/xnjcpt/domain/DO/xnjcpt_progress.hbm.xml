@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-6-12 11:20:09 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.xnjcpt.domain.DO.xnjcpt_progress" table="XNJCPT_PROGRESS">
+        <id name="progress_id" type="java.lang.String">
+            <column name="PROGRESS_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="progress_computer" type="java.lang.String">
+            <column name="PROGRESS_COMPUTER" />
+        </property>
+        <property name="progress_pid" type="java.lang.String">
+            <column name="PROGRESS_PID" />
+        </property>
+        <property name="progress_name" type="java.lang.String">
+            <column name="PROGRESS_NAME" />
+        </property>
+        <property name="progress_gmt_create" type="java.lang.String">
+            <column name="PROGRESS_GMT_CREATE" />
+        </property>
+        <property name="progress_gmt_modified" type="java.lang.String">
+            <column name="PROGRESS_GMT_MODIFIED" />
+        </property>
+    </class>
+</hibernate-mapping>

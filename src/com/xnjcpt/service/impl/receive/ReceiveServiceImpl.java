@@ -1,5 +1,7 @@
 package com.xnjcpt.service.impl.receive;
 
+import java.util.List;
+
 import com.xnjcpt.dao.receive.ReceiveDao;
 import com.xnjcpt.domain.DO.xnjcpt_computer;
 import com.xnjcpt.domain.DO.xnjcpt_cpu;
@@ -11,7 +13,10 @@ import com.xnjcpt.domain.DO.xnjcpt_memory;
 import com.xnjcpt.domain.DO.xnjcpt_memory_state;
 import com.xnjcpt.domain.DO.xnjcpt_net;
 import com.xnjcpt.domain.DO.xnjcpt_net_state;
+import com.xnjcpt.domain.DO.xnjcpt_progress;
 import com.xnjcpt.service.receive.ReceiveService;
+
+import util.TeamUtil;
 
 public class ReceiveServiceImpl implements ReceiveService {
 	// 注入dao层的类
@@ -109,6 +114,23 @@ public class ReceiveServiceImpl implements ReceiveService {
 	public void saveNetStateInfor(String ip, xnjcpt_net_state xnjcpt_net_state) {
 		// TODO Auto-generated method stub
 		receiveDao.saveNetInfor(ip, xnjcpt_net_state);
+	}
+
+	@Override
+	public void saveProgressInfor(String ip, List<xnjcpt_progress> progressList) {
+		// TODO Auto-generated method stub
+		xnjcpt_computer xnjcpt_computer = receiveDao.getComputerByIp(ip);
+		if (xnjcpt_computer != null) {
+			System.out.println("进入了service");
+			receiveDao.deleteProgressByComputer(xnjcpt_computer.getComputer_id());
+			for (xnjcpt_progress xnjcpt_progress : progressList) {
+				xnjcpt_progress.setProgress_computer(xnjcpt_computer.getComputer_id());
+				xnjcpt_progress.setProgress_gmt_create(TeamUtil.getStringSecond());
+				xnjcpt_progress.setProgress_gmt_modified(TeamUtil.getStringSecond());
+				xnjcpt_progress.setProgress_id(TeamUtil.getUuid());
+				receiveDao.savePorgress(xnjcpt_progress);
+			}
+		}
 	}
 
 }

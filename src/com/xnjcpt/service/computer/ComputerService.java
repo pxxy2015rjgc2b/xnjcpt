@@ -17,4 +17,8 @@ public interface ComputerService {
 
 	boolean deleteComputerById(String computer_id);
 
+	com.xnjcpt.domain.DO.xnjcpt_computer getComputerById(String id);
+
+	void deleteProgressByIdAndPid(String id, String pid);
+
 }
