@@ -113,5 +113,10 @@ public class UserDaoImpl implements UserDao {
 		//根据id删除用户
 	}
 
-	
+	@Override
+	public void updatePassword(String user_id, String newPassword) {
+		// TODO Auto-generated method stub
+		String hql = "update xnjcpt_user set user_password ='" + newPassword + "' where user_id = '" + user_id + "'";
+		getSession().createQuery(hql).executeUpdate();
+	}
 }

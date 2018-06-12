@@ -59,24 +59,9 @@ public class UserManagerAction {
 		}
 	}
 	
-	//通过邮箱发送修改旧密码
-	public void updatePasswordbyverifyCode() throws IOException {
-		HttpServletResponse response = ServletActionContext.getResponse();
-		response.setContentType("text/html;charset=utf-8");
-		PrintWriter pw = response.getWriter();
-		xnjcpt_user existuser=new xnjcpt_user();
-		existuser=userManagerService.getUserByUserEmail(user_email);
-		if(existuser==null){
-			System.out.println("修改密码失败");
-			pw.write("findpassword_error");
-		}else{
-			userManagerService.updatePassword(user_id, newPassword);
-			pw.write("updatesuccess");
-		}
-	}
 	
 	//得到用户搜索列表
-	public void getUser() throws IOException {
+	public void getUsers() throws IOException {
 		PageBean_user<xnjcpt_user> pb = userManagerService.findPageByKeyword(currentPage, pageSize, keyword);
 		Gson gson = new Gson();//用来转换JSON数据类型的
 		String result = gson.toJson(pb);
