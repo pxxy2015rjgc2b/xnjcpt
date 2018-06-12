@@ -65,7 +65,7 @@ public class UserManagerAction {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter pw = response.getWriter();
 		xnjcpt_user existuser=new xnjcpt_user();
-		existuser=userManagerService.getUserByUserId(user_id);
+		existuser=userManagerService.getUserByUserEmail(user_email);
 		if(existuser==null){
 			System.out.println("修改密码失败");
 			pw.write("findpassword_error");
@@ -203,6 +203,7 @@ public class UserManagerAction {
 	private String keyword;
 	private String user_name;
 	private String user_id;
+	private String user_email;
 	private String user_username;
 	private String user_phone;
 	private PageBean_user<xnjcpt_user> pb2;
@@ -284,6 +285,14 @@ public class UserManagerAction {
 
 	public void setUser_username(String user_username) {
 		this.user_username = user_username;
+	}
+
+	public String getUser_email() {
+		return user_email;
+	}
+
+	public void setUser_email(String user_email) {
+		this.user_email = user_email;
 	}
 	
 	
