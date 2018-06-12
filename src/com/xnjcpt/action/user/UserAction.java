@@ -55,33 +55,45 @@ public class UserAction{
 		//System.out.println(xu);
 		System.out.println(xu);
 		System.out.println(xu2);
-		if(xu != null){
+		if(xu != null ){
 			if (xu.getUser_password().equals(user.getUser_password())){
-				pw.write("success");
+				String sst=xu.getUser_status();
+				System.out.println(sst);
+				if(sst.equals("1")){
 				System.out.println("密码输入正确");
-				/*String st="0";
-				xu.setUser_status(st);*/
+				pw.write("success");	
 				session.setAttribute("user_name", xu.getUser_name());
 				session.setAttribute("user_role", xu.getUser_role());//存用户角色状态
 				session.setAttribute("user_id", xu.getUser_id());//session存user_id
-			}
+			}else{
+			pw.write("该账户已被封禁");
+				}}else{
+				pw.write("password_error");
+			}			
 		}
+			
 		else if (xu2!=null) {
 			if (xu2.getUser_password().equals(user.getUser_password())){
+				String sst=xu.getUser_status();
+				System.out.println(sst);
+				if(sst.equals("1")){
 				pw.write("success");
 				System.out.println("密码输入正确");
 				/*String st="0";
 				xu.setUser_status(st);*/
 				session.setAttribute("user_name", xu2.getUser_name());
+				session.setAttribute("user_role", xu.getUser_role());//存用户角色状态
 				session.setAttribute("user_id", xu2.getUser_id());  //session存user_id
 			}else{
+				pw.write("该账户已被封禁");
+			}
+			}else{
 				pw.write("password_error");
-				System.out.println("密码输入错误");
+				System.out.println("密码输入错误");	
 			}}
 		else {
-			pw.write("name_error");
+			pw.write("用户名或邮箱账户输入错误");
 			System.out.println("用户名或邮箱账户输入错误");
-			System.out.println(xu2.getUser_email());
 		}
 		pw.flush();
 		pw.close();
@@ -126,7 +138,7 @@ public class UserAction{
 		pw.close();	
 	}
 	
-	//邮箱发送激活用户
+	//激活用户邮件发送
 	public void sendEmail() throws Exception{
 		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setHeader("Access-Control-Allow-Origin", "*");
@@ -148,7 +160,7 @@ public class UserAction{
 		}
 	}
 	
-	//邮箱发送修改密码
+	//修改密码邮件发送
 	public void sendEmailtoUpdatePassword() throws Exception{
 		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setHeader("Access-Control-Allow-Origin", "*");
@@ -160,12 +172,11 @@ public class UserAction{
 		String receiveEmailAccount = user.getUser_email();// 用户邮箱
 		xnjcpt_user ux=userService.getUserByUserEmail(receiveEmailAccount);
 		if(ux!=null){
-		String verifyCode=ux.getUser_id();
 		String username=ux.getUser_name();
-		SendEmailUpdatePassword.sendEmail(receiveEmailAccount, username, verifyCode);
-		pw.write("修改密码邮件发送成功");
+		String verifyCode=SendEmailUpdatePassword.sendEmail(receiveEmailAccount, username);
+		pw.write(verifyCode);
 		}else{
-		pw.write("修改密码邮件发送失败");
+		pw.write("验证码发送失败");
 		}
 	
 	}

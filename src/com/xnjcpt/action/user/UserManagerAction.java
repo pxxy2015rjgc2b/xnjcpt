@@ -20,7 +20,7 @@ import util.TeamUtil;
 public class UserManagerAction {
 	
 	/*
-	 * author：叶凯
+	 * @author：叶凯
 	 * 
 	 * */
 	
@@ -60,7 +60,7 @@ public class UserManagerAction {
 	}
 	
 	//通过邮箱发送修改旧密码
-	public void updatePasswordbyemail() throws IOException {
+	public void updatePasswordbyverifyCode() throws IOException {
 		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter pw = response.getWriter();
@@ -123,6 +123,7 @@ public class UserManagerAction {
 			response.setContentType("text/html;charset=utf-8");
 			PrintWriter pw = response.getWriter();
 			String user_id = (String) ActionContext.getContext().getSession().get("user_id");
+			System.out.println(user_id);
 			xnjcpt_user user=userManagerService.getUserByUserId(user_id);
 			if(user_username!=null && user_phone==null){
 			user.setUser_username(user_username);
