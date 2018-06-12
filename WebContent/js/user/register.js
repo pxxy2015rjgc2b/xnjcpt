@@ -1,10 +1,8 @@
 window.onload=function(){
-
-	console.log("register");
-	$(".register_button").click(function(){
+	/*$(".register_button").click(function(){
 		console.log("click");
 		register_ajax();
-	});
+	});*/
 }
 //注册ajax
 function register_ajax(){
@@ -41,7 +39,9 @@ function register_ajax(){
 }
 //通过邮箱找回密码
 function forgetPassword(){
-	var user_email=$("input[name='user_email]").val();
+	console.log($("input[name='user_email']").val());
+	var formData=new FormData();
+	formData.append("user.user_email",$("input[name='user_email']").val());
 	 $.ajax({
 		    url: "user/user_sendEmailtoUpdatePassword",
 	        type: "post",
@@ -51,17 +51,17 @@ function forgetPassword(){
 	        processData: false,  
 	        contentType: false,
 	        success: function(result){
-	        console.log(result);
-	        	 if(result=="register_success"){
+	        console.log("发送邮箱成功");
+	        /*	 if(result=="register_success"){
 	        		 console.log("注册成功");
 	  			   //toastr.success("注册成功！");
 	  			   //注册完后跳到首页
-             window.location.href="/xnjcpt/index.jsp"
+            // window.location.href="/xnjcpt/index.jsp"
 	  		   }else if(result=="name_error"){
 	  			 console.log("用户名已存在");
 	  		   }else if(result=="email_error"){
 	  			 console.log("该邮箱已注册，请重新输入");
-	  		   }
+	  		   }*/
 	        }
 	    });
 }

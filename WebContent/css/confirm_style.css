@@ -1,0 +1,10 @@
+.comfirm_box{
+	 height: 30px;
+     margin-bottom: 10px;
+}
+.comfirm_input{
+	width:100%;
+	 height: 30px;
+	text-indent:30px;
+	border: 1px solid #6ea1b6;
+}

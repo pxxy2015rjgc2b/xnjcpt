@@ -29,8 +29,7 @@
 					<span>记起密码？</span> <a href="/xnjcpt/index.jsp">立即登陆</a>
 				</div>
 			</div>
-			<form id="register" class="register_content">
-				   
+			<form id="register" class="register_content">   
 				    <input type="text" placeholder="邮箱地址" name="user_email"/>
 					<div class="register_button" onclick="forgetPassword()">通过邮箱找回密码</div>
 			</form>

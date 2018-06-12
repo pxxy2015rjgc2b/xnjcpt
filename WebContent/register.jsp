@@ -26,7 +26,7 @@
 			<div class="email_title">
 				<i class="fa fa-envelope-o fa-3x" aria-hidden="true"></i> <span>使用邮箱注册</span>
 				<div class="title_right">
-					<span>已有账户？</span> <a>立即登陆</a>
+					<span>已有账户？</span> <a href="index.jsp">立即登陆</a>
 				</div>
 			</div>
 			<form id="register" class="register_content">

@@ -20,15 +20,19 @@ function login_ajax(){
 	        processData: false,  
 	        contentType: false,
 	        success: function(result){
-	        	 if(result=="success"){
-	  			   console.log("登录成功！");
-	  			   //登录成功跳到云主机页面
-	  			   window.location.href="/xnjcpt/skip/skip_intoComputer"
-	  		   }else if(result=="password_error"){
-	  			   console.log("密码输入错误！");
-	  		   }else if(result=="password_error"){
-	  			   console.log("用户名或邮箱账户输入错误！");
-	  		   }
+	        	 if(result=="该账户已被封禁"){
+	        		 
+	        	 }else{
+	        	    if(result=="success"){
+	  			       console.log("登录成功！");
+	  			        //登录成功跳到云主机页面
+	  			       window.location.href="/xnjcpt/skip/skip_intoComputer"
+	  		         }else if(result=="password_error"){
+	  			         console.log("密码输入错误！");
+	  		         }else if(result=="password_error"){
+	  			         console.log("用户名或邮箱账户输入错误！");
+	  		         }
+	             }
 	        }
 	    });
 }
