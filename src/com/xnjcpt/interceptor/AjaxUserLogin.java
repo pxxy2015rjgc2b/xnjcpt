@@ -32,6 +32,7 @@ public class AjaxUserLogin extends AbstractInterceptor{
 		else{
 			return arg0.invoke();
 		}
+		 
 		
 	}
 

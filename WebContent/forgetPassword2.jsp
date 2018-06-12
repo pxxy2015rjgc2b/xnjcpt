@@ -30,11 +30,11 @@
 				</div>
 			</div>
 			<form id="register" class="register_content">   
-		        	<input type="text" placeholder="邮箱地址" name="user_email"/>
+			<input type="text" placeholder="邮箱地址" name="user_email"/>
 				    <input type="text" placeholder="新密码" name="user_password"/>
 				    <input type="text" placeholder="确认密码"/>
-				    <input type="text" placeholder="验证码" class="identify_codeInput"/><div class="identify_code" onclick="sendEmail()">验证码</div>
-					<div class="register_button" onclick="forgetPassword()">通过邮箱找回密码</div>
+				    <input type="text" placeholder="验证码" class="identify_codeInput"/><div class="identify_code">验证码</div>
+					<div class="register_button" onclick="forgetPassword2()">找回密码</div>
 			</form>
 		</div>
 		<div class="reg_footer">Copyright @ 2018-2019 PingXiangXueYuan

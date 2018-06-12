@@ -20,7 +20,7 @@ import util.TeamUtil;
 public class UserManagerAction {
 	
 	/*
-	 * author：叶凯
+	 * @author：叶凯
 	 * 
 	 * */
 	
@@ -60,7 +60,7 @@ public class UserManagerAction {
 	}
 	
 	//通过邮箱发送修改旧密码
-	public void updatePasswordbyemail() throws IOException {
+	public void updatePasswordbyverifyCode() throws IOException {
 		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter pw = response.getWriter();
@@ -76,7 +76,7 @@ public class UserManagerAction {
 	}
 	
 	//得到用户搜索列表
-	public void getUser() throws IOException {
+	public void getUsers() throws IOException {
 		PageBean_user<xnjcpt_user> pb = (PageBean_user<xnjcpt_user>) userManagerService.findPageByKeyword(currentPage, pageSize, keyword);
 		Gson gson = new Gson();//用来转换JSON数据类型的
 		String result = gson.toJson(pb);
@@ -123,12 +123,9 @@ public class UserManagerAction {
 			response.setContentType("text/html;charset=utf-8");
 			PrintWriter pw = response.getWriter();
 			String user_id = (String) ActionContext.getContext().getSession().get("user_id");
-			
-			System.out.println("用户修改id"+user_id);
-			xnjcpt_user user=userManagerService.getUserByUserId(user_id);
-			
-			if(user_username!=null){
-				
+			System.out.println(user_id);
+			xnjcpt_user user=userManagerService.getUserByUserId(user_id);		
+			if(user_username!=null){		
 			user.setUser_username(user_username);
 			user.setUser_gmt_modified(TeamUtil.getStringSecond());//保存修改时间信息
 			userManagerService.updateuser(user);

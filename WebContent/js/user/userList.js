@@ -105,7 +105,7 @@ function iquery_userList(keyword) {
 		"keyword" : keyword,
 	}
 	$.ajax({
-		url : "/xnjcpt/userManager/userManager_getUser",
+		url : "/xnjcpt/userManager/userManager_getUsers",
 		type : "post",
 		data : iquery_keyword,
 

@@ -71,10 +71,15 @@ li ,input{
 	height: 45px;margin: 10px 0px;
 	border: 1px solid #ddd;
 }
+.register_content .identify_codeInput{
+	width:200px;
+	height:45px;
+}
 .register_content .identify_code{
 	width: 200px;
 	height: 45px;
 	float: right;
+	margin-left:20px;
 	border:1px solid #d1d2d4;
 	margin: 10px 0px;
     text-align: center;
