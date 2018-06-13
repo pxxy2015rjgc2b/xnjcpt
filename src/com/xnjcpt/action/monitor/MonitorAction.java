@@ -3,7 +3,7 @@ package com.xnjcpt.action.monitor;
 import com.xnjcpt.service.monitor.MonitorService;
 
 public class MonitorAction {
-	//×¢ÈëÒµÎñ²ãµÄÀà
+	//æ³¨å…¥ä¸šåŠ¡å±‚çš„ç±»
 	private MonitorService monitorService;
 
 	public void setMonitorService(MonitorService monitorService) {

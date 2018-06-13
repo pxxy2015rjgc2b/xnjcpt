@@ -4,7 +4,7 @@ import com.xnjcpt.dao.receive.ReceiveDao;
 import com.xnjcpt.service.receive.ReceiveService;
 
 public class ReceiveServiceImpl implements ReceiveService {
-	//×¢Èëdao²ãµÄÀà
+	//æ³¨å…¥daoå±‚çš„ç±»
 	private ReceiveDao receiveDao;
 
 	public void setReceiveDao(ReceiveDao receiveDao) {

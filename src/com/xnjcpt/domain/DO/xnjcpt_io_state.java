@@ -1,17 +1,17 @@
 package com.xnjcpt.domain.DO;
-/*io×´Ì¬±í*/
+/*ioçŠ¶æ€è¡¨*/
 public class xnjcpt_io_state {
-	private String io_state_id;//io×´Ì¬±íÖ÷¼ü	
-	private String io_state_computer;//Ö÷»ú±íÖ÷¼ü	
-	private String io_state_time;//Ê±¼ä	
-	private String io_state_rsec;//Ã¿Ãë¶ÁÈ¡µÄÉÈÇøÊı	
-	private String io_state_wsec;//Ã¿ÃëĞ´ÈëµÄÉÈÇøÊı	
-	private String io_state_rkb;//Ã¿Ãë¶ÁÈ¡µÄÊı¾İ×ÜÁ¿	
-	private String io_state_wkb;//Ã¿ÃëĞ´ÈëµÄÊı¾İ×ÜÁ¿	
-	private String io_state_wait;//ioÇëÇóÆ½¾ù´¦ÀíÊ±¼ä	
-	private String io_state_util;//io´¦ÀíÊ±¼ä°Ù·Ö±È	
-	private String io_state_gmt_create;//×Ö¶Î´´½¨Ê±¼ä		
-	private String io_state_gmt_modified;//×Ö¶ÎĞŞ¸ÄÊ±¼ä		
+	private String io_state_id;//ioçŠ¶æ€è¡¨ä¸»é”®	
+	private String io_state_computer;//ä¸»æœºè¡¨ä¸»é”®	
+	private String io_state_time;//æ—¶é—´	
+	private String io_state_rsec;//æ¯ç§’è¯»å–çš„æ‰‡åŒºæ•°	
+	private String io_state_wsec;//æ¯ç§’å†™å…¥çš„æ‰‡åŒºæ•°	
+	private String io_state_rkb;//æ¯ç§’è¯»å–çš„æ•°æ®æ€»é‡	
+	private String io_state_wkb;//æ¯ç§’å†™å…¥çš„æ•°æ®æ€»é‡	
+	private String io_state_wait;//ioè¯·æ±‚å¹³å‡å¤„ç†æ—¶é—´	
+	private String io_state_util;//ioå¤„ç†æ—¶é—´ç™¾åˆ†æ¯”	
+	private String io_state_gmt_create;//å­—æ®µåˆ›å»ºæ—¶é—´		
+	private String io_state_gmt_modified;//å­—æ®µä¿®æ”¹æ—¶é—´		
 	public String getIo_state_id() {
 		return io_state_id;
 	}

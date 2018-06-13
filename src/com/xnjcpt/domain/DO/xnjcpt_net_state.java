@@ -1,17 +1,17 @@
 package com.xnjcpt.domain.DO;
-/*ÍøÂç×´Ì¬±í*/
+/*ç½‘ç»œçŠ¶æ€è¡¨*/
 public class xnjcpt_net_state {
-	private String net_state_id;//ÍøÂç×´Ì¬±íÖ÷¼ü	
-	private String disk_state_computer;	//Ö÷»ú±íÖ÷¼ü	
-	private String disk_state_time;//Ê±¼ä	
-	private String net_state_obandwith;	//³ö´ø¿í		
-	private String net_state_ibandwith;	//Èë´ø¿í		
-	private String net_state_opackage;//³ö°üÁ¿	
-	private String net_state_ipackage;//Èë°üÁ¿	
-	private String net_state_tcp_number;//tcpÁ¬½Ó¸öÊı
-	private String net_state_otraffic;//³öÁ÷Á¿	
-	private String net_state_gmt_create;//×Ö¶Î´´½¨Ê±¼ä
-	private String net_state_gmt_modified;//×Ö¶ÎĞŞ¸ÄÊ±¼ä
+	private String net_state_id;//ç½‘ç»œçŠ¶æ€è¡¨ä¸»é”®	
+	private String disk_state_computer;	//ä¸»æœºè¡¨ä¸»é”®	
+	private String disk_state_time;//æ—¶é—´	
+	private String net_state_obandwidth;	//å‡ºå¸¦å®½		
+	private String net_state_ibandwidth;	//å…¥å¸¦å®½		
+	private String net_state_opackage;//å‡ºåŒ…é‡	
+	private String net_state_ipackage;//å…¥åŒ…é‡	
+	private String net_state_tcp_number;//tcpè¿æ¥ä¸ªæ•°
+	private String net_state_otraffic;//å‡ºæµé‡	
+	private String net_state_gmt_create;//å­—æ®µåˆ›å»ºæ—¶é—´
+	private String net_state_gmt_modified;//å­—æ®µä¿®æ”¹æ—¶é—´
 	public String getNet_state_id() {
 		return net_state_id;
 	}
@@ -30,17 +30,18 @@ public class xnjcpt_net_state {
 	public void setDisk_state_time(String disk_state_time) {
 		this.disk_state_time = disk_state_time;
 	}
-	public String getNet_state_obandwith() {
-		return net_state_obandwith;
+	
+	public String getNet_state_obandwidth() {
+		return net_state_obandwidth;
 	}
-	public void setNet_state_obandwith(String net_state_obandwith) {
-		this.net_state_obandwith = net_state_obandwith;
+	public void setNet_state_obandwidth(String net_state_obandwidth) {
+		this.net_state_obandwidth = net_state_obandwidth;
 	}
-	public String getNet_state_ibandwith() {
-		return net_state_ibandwith;
+	public String getNet_state_ibandwidth() {
+		return net_state_ibandwidth;
 	}
-	public void setNet_state_ibandwith(String net_state_ibandwith) {
-		this.net_state_ibandwith = net_state_ibandwith;
+	public void setNet_state_ibandwidth(String net_state_ibandwidth) {
+		this.net_state_ibandwidth = net_state_ibandwidth;
 	}
 	public String getNet_state_opackage() {
 		return net_state_opackage;

@@ -4,8 +4,26 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 	<package name="skip" namespace="/skip" extends="struts-default">
-		<action name="skip_*" class="com.xnjcpt.action.skip.SkipAction">
-		
+		<interceptors>
+			<interceptor name="sessionout" class="com.xnjcpt.interceptor.HttpUserLogin"></interceptor>
+			<interceptor-stack name="mystackHttp">
+				<interceptor-ref name="defaultStack" />
+				<!-- 权限拦截 <interceptor-ref name="authority" /> -->
+				<!-- session拦截 -->
+				<interceptor-ref name="sessionout" />
+			</interceptor-stack>
+		</interceptors>
+		<action name="skip_*" class="com.xnjcpt.action.skip.SkipAction"
+			method="{1}">
+			<result name="intoNavbar">/WEB-INF/view/navbar.jsp</result>
+			<result name="intoSlider">/WEB-INF/view/slider.jsp</result>
+			<result name="intoAlarm">/WEB-INF/view/alarm/alarmList.jsp</result>
+			<result name="intoUser">/WEB-INF/view/user/userList.jsp</result>
+			<result name="intoComputer">/WEB-INF/view/computer/computerList.jsp</result>
+			<result name="intoMonitor">/WEB-INF/view/monitor/monitor.jsp</result>
+			<result name="intoPerson">/WEB-INF/view/user/personInfor.jsp</result>
+			<result name="login">/index.jsp</result>
+			<interceptor-ref name="mystackHttp" />
 		</action>
 	</package>
 </struts>

@@ -1,21 +1,21 @@
 package com.xnjcpt.domain.DO;
 
 /**
- * 磁盘信息的实体类
+ * 纾佺洏淇℃伅鐨勫疄浣撶被
  *
  */
 public class xnjcpt_disk {
 	
-	//磁盘主键
+	//纾佺洏涓婚敭
 	private String disk_id;
 	
-	//主机主键
+	//涓绘満涓婚敭
 	private String disk_computer;
-	//磁盘大小
+	//纾佺洏澶у皬
 	private String disk_size;
-	//创建时间
+	//鍒涘缓鏃堕棿
 	private String disk_gmt_create;
-	//修改时间
+	//淇敼鏃堕棿
 	private String disk_gmt_modified;
 	public String getDisk_id() {
 		return disk_id;

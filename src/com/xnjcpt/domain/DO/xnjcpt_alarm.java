@@ -1,21 +1,21 @@
 package com.xnjcpt.domain.DO;
 
 public class xnjcpt_alarm {
-	//¾¯±¨Ö÷¼ü
+	//è­¦æŠ¥ä¸»é”®
 	private String alarm_id;
-	//Ö÷»úÖ÷¼ü
+	//ä¸»æœºä¸»é”®
 	private String alarm_computer;
-	//ÓÃ»§Ö÷¼ü
+	//ç”¨æˆ·ä¸»é”®
 	private String alarm_user;
-	//¾¯±¨ãĞÖµ
+	//è­¦æŠ¥é˜ˆå€¼
 	private String alarm_threshold_value;
-	//¾¯±¨ÀàĞÍ
+	//è­¦æŠ¥ç±»å‹
 	private String alarm_type;
-	//¾¯±¨×´Ì¬
+	//è­¦æŠ¥çŠ¶æ€
 	private String alarm_state;
-	//´´½¨Ê±¼ä
+	//åˆ›å»ºæ—¶é—´
 	private String alarm_gmt_create;
-	//ĞŞ¸ÄÊ±¼ä
+	//ä¿®æ”¹æ—¶é—´
 	private String alarm_gmt_modified;
 	public String getAlarm_id() {
 		return alarm_id;

@@ -3,7 +3,8 @@ package com.xnjcpt.action.alarm;
 import com.xnjcpt.service.alarm.AlarmService;
 
 public class AlarmAction {
-	//×¢ÈëÒµÎñ²ãµÄÀà
+
+	//æ³¨å…¥ä¸šåŠ¡å±‚çš„ç±»
 	private AlarmService alarmService;
 
 	public void setAlarmService(AlarmService alarmService) {

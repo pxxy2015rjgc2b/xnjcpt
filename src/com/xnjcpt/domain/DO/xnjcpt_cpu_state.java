@@ -1,16 +1,16 @@
 package com.xnjcpt.domain.DO;
-/*cpu×´Ì¬±í*/
+/*cpuçŠ¶æ€è¡¨*/
 public class xnjcpt_cpu_state {
-	private String cpu_state_id;//cpu×´Ì¬±íÖ÷¼ü	
-	private String cpu_state_computer;//Ö÷»ú±íÖ÷¼ü	
-	private String cpu_state_time;//Ê±¼ä	
-	private String cpu_state_user;//ÓÃ»§¿Õ¼äÕ¼ÓÃcpu°Ù·Ö±È	
-	private String cpu_state_nice;//ÓÃ»§½ø³Ì¿Õ¼äÄÚ¸Ä±ä¹ıÓÅÏÈ¼¶°Ù·Ö±È	
-	private String cpu_state_system;//ÄÚºÍ¿Õ¼äÕ¼ÓÃcpu°Ù·Ö±È	
-	private String cpu_state_lowait;//µÈ´ıÊäÈëÊä³öµÄcpuÊ±¼ä°Ù·Ö±È	
-	private String cpu_state_idle;//¿ÕÏĞcpu°Ù·Ö±È	
-	private String cpu_state_gmt_create;//×Ö¶Î´´½¨Ê±¼ä		
-	private String cpu_state_gmt_modified;//×Ö¶ÎĞŞ¸ÄÊ±¼ä		
+	private String cpu_state_id;//cpuçŠ¶æ€è¡¨ä¸»é”®	
+	private String cpu_state_computer;//ä¸»æœºè¡¨ä¸»é”®	
+	private String cpu_state_time;//æ—¶é—´	
+	private String cpu_state_user;//ç”¨æˆ·ç©ºé—´å ç”¨cpuç™¾åˆ†æ¯”	
+	private String cpu_state_nice;//ç”¨æˆ·è¿›ç¨‹ç©ºé—´å†…æ”¹å˜è¿‡ä¼˜å…ˆçº§ç™¾åˆ†æ¯”	
+	private String cpu_state_system;//å†…å’Œç©ºé—´å ç”¨cpuç™¾åˆ†æ¯”	
+	private String cpu_state_iowait;//ç­‰å¾…è¾“å…¥è¾“å‡ºçš„cpuæ—¶é—´ç™¾åˆ†æ¯”	
+	private String cpu_state_idle;//ç©ºé—²cpuç™¾åˆ†æ¯”	
+	private String cpu_state_gmt_create;//å­—æ®µåˆ›å»ºæ—¶é—´		
+	private String cpu_state_gmt_modified;//å­—æ®µä¿®æ”¹æ—¶é—´		
 	public String getCpu_state_id() {
 		return cpu_state_id;
 	}
@@ -47,11 +47,12 @@ public class xnjcpt_cpu_state {
 	public void setCpu_state_system(String cpu_state_system) {
 		this.cpu_state_system = cpu_state_system;
 	}
-	public String getCpu_state_lowait() {
-		return cpu_state_lowait;
+
+	public String getCpu_state_iowait() {
+		return cpu_state_iowait;
 	}
-	public void setCpu_state_lowait(String cpu_state_lowait) {
-		this.cpu_state_lowait = cpu_state_lowait;
+	public void setCpu_state_iowait(String cpu_state_iowait) {
+		this.cpu_state_iowait = cpu_state_iowait;
 	}
 	public String getCpu_state_idle() {
 		return cpu_state_idle;

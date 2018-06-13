@@ -7,4 +7,5 @@
 	<import resource="spring/monitor.xml" /> 
 	<import resource="spring/receive.xml" /> 
 	<import resource="spring/user.xml" /> 
+	<import resource="spring/userManager.xml" />
 </beans>

@@ -1,22 +1,22 @@
 package com.xnjcpt.domain.DO;
 
 /**
- * ÄÚ´æĞÅÏ¢±í
+ * å†…å­˜ä¿¡æ¯è¡¨
  *
  */
 public class xnjcpt_memory {
 	
-	//ÄÚ´æÖ÷¼ü
+	//å†…å­˜ä¸»é”®
 	private String memory_id;
-	//Ö÷»úÖ÷¼ü
+	//ä¸»æœºä¸»é”®
 	private String memory_computer;
-	//ÄÚ´æ´óĞ¡
+	//å†…å­˜å¤§å°
 	private String memory_size;
-	//½»»»Çø´óĞ¡
+	//äº¤æ¢åŒºå¤§å°
 	private String memory_swap;
-	//´´½¨Ê±¼ä
+	//åˆ›å»ºæ—¶é—´
 	private String memory_gmt_create;
-	//ĞŞ¸ÄÊ±¼ä
+	//ä¿®æ”¹æ—¶é—´
 	private String memory_gmt_modified;
 	public String getMemory_id() {
 		return memory_id;

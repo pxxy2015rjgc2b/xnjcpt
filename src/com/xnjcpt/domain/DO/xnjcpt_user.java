@@ -1,29 +1,29 @@
 package com.xnjcpt.domain.DO;
 
 /**
- * ÓÃ»§ĞÅÏ¢µÄÊµÌåÀà
+ * ç”¨æˆ·ä¿¡æ¯çš„å®ä½“ç±»
  *
  */
 public class xnjcpt_user {
-	//ÓÃ»§Ö÷¼ü
+	//ç”¨æˆ·ä¸»é”®
 	private String user_id;
-	//ÓÃ»§ĞÕÃû
+	//ç”¨æˆ·å§“å
 	private String user_name;
-	//ÓÃ»§Ãû
+	//ç”¨æˆ·å
 	private String user_username;
-	//ÓÃ»§ÓÊÏä
+	//ç”¨æˆ·é‚®ç®±
 	private String user_email;
-	//ÓÃ»§ÃÜÂë
+	//ç”¨æˆ·å¯†ç 
 	private String user_password;
-	//ÓÃ»§ÊÖ»úºÅÂë
+	//ç”¨æˆ·æ‰‹æœºå·ç 
 	private String user_phone;
-	//ÓÃ»§×´Ì¬
+	//ç”¨æˆ·çŠ¶æ€
 	private String user_status;
-	//ÓÃ»§½ÇÉ«
+	//ç”¨æˆ·è§’è‰²
 	private String user_role;
-	//´´½¨Ê±¼ä
-	private String user_gmt_creat;
-	//ĞŞ¸ÄÊ±¼ä
+	//åˆ›å»ºæ—¶é—´
+	private String user_gmt_create;
+	//ä¿®æ”¹æ—¶é—´
 	private String user_gmt_modified;
 	public String getUser_id() {
 		return user_id;
@@ -73,11 +73,12 @@ public class xnjcpt_user {
 	public void setUser_role(String user_role) {
 		this.user_role = user_role;
 	}
-	public String getUser_gmt_creat() {
-		return user_gmt_creat;
+	
+	public String getUser_gmt_create() {
+		return user_gmt_create;
 	}
-	public void setUser_gmt_creat(String user_gmt_creat) {
-		this.user_gmt_creat = user_gmt_creat;
+	public void setUser_gmt_create(String user_gmt_create) {
+		this.user_gmt_create = user_gmt_create;
 	}
 	public String getUser_gmt_modified() {
 		return user_gmt_modified;

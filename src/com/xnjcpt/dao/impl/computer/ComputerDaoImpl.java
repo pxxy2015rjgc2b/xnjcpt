@@ -1,147 +1,184 @@
 package com.xnjcpt.dao.impl.computer;
 
-import java.sql.SQLException;
-
-
-
-import java.util.ArrayList;
 import java.util.List;
-
-import org.hibernate.HibernateException;
 import org.hibernate.Query;
-import org.springframework.orm.hibernate3.HibernateTemplate;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.springframework.orm.hibernate3.HibernateCallback;
-
+import com.opensymphony.xwork2.ActionContext;
 import com.xnjcpt.dao.computer.ComputerDao;
 import com.xnjcpt.domain.DO.xnjcpt_computer;
-import com.xnjcpt.domain.DO.xnjcpt_user;
 import com.xnjcpt.domain.DO.xnjcpt_user_computer;
-
-
+import com.xnjcpt.domain.DTO.UserComputerPageDTO;
+import com.xnjcpt.domain.VO.computerInformationVO;
 import util.TeamUtil;
-
-
-
 public class ComputerDaoImpl implements ComputerDao {
 	private SessionFactory sessionFactory;
-
+	private xnjcpt_computer xc;
+	private xnjcpt_user_computer xuc;
+	private  String user_id;
 	public SessionFactory getSessionFactory() {
 		return sessionFactory;
 	}
-
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
-	
 	public Session getSession(){
 		return sessionFactory.getCurrentSession();
 	}
-
 	@Override
-	public void addComputer(xnjcpt_computer xc,xnjcpt_user user,xnjcpt_user_computer xuc) {
-		xc.setComputer_gmt_create(TeamUtil.getStringSecond());
-		xc.setComputer_gmt_modified(TeamUtil.getStringSecond());
-		xc.setComputer_id(TeamUtil.getUuid());
-		xuc.setUser_computer_computer(xc.getComputer_id());
-		xuc.setUser_computer_user(user.getUser_id());
-		xuc.setUser_computer_gmt_create(TeamUtil.getStringSecond());
-		xuc.setUser_computer_gmt_modified(TeamUtil.getStringSecond());
-		xuc.setUser_computer_id(TeamUtil.getUuid());
-		getSession().save(xc);
-		getSession().save(xuc);
-		
+	public boolean addComputer(xnjcpt_computer xc) {
+		String hql = "from xnjcpt_computer where computer_ip like '" + xc.getComputer_ip() + "'";
+		System.out.println(hql);
+		List<xnjcpt_computer> list = getSession().createQuery(hql).list();
+		if(list.size()>0){
+		System.out.println("ip已存在，添加失败！");
+		return false;}else{	
+xc.setComputer_id(TeamUtil.getUuid());
+xc.setComputer_gmt_create(TeamUtil.getStringSecond());
+xc.setComputer_gmt_modified(TeamUtil.getStringSecond());
+getSession().save(xc);
+xnjcpt_user_computer xuc=new xnjcpt_user_computer();
+String user_id = (String) ActionContext.getContext().getSession().get("user_id");
+xuc.setUser_computer_id(TeamUtil.getUuid());
+xuc.setUser_computer_user(user_id);
+xuc.setUser_computer_computer(xc.getComputer_id());
+xuc.setUser_computer_gmt_create(TeamUtil.getStringSecond());
+xuc.setUser_computer_gmt_modified(TeamUtil.getStringSecond());
+getSession().save(xuc);	
+return true;}
 	}
-
 	@Override
-	public void deleteComputer(String user_computer_id) {
-		String hql ="from xnjcpt_user_computer where user_computer_id = '" + user_computer_id + "' ";
+	public void deleteComputerById(String[] strComputerIds) {
+		String hql="";
+		for(int i=0;i<strComputerIds.length;i++){
+			if(i==0){hql="computer_id='"+strComputerIds[i]+"'";}
+			else{hql=hql+"or computer_id='"+strComputerIds[i]+"'";}
+			String hql1="delete from xnjcpt_computer where "+hql;
+		Query query=this.getSession().createQuery(hql1);
+		query.executeUpdate();}
+		String hql1="";
+		for(int i=0;i<strComputerIds.length;i++){
+			if(i==0){hql1="user_computer_computer='"+strComputerIds[i]+"'";}
+			else{hql1=hql1+"or user_computer_computer='"+strComputerIds[i]+"'";}
+			String hql2="delete from xnjcpt_user_computer where "+hql1;
+		Query query=this.getSession().createQuery(hql2);
+		query.executeUpdate();}
+		String hql2="";
+		for(int i=0;i<strComputerIds.length;i++){
+			if(i==0){hql2="cpu_computer='"+strComputerIds[i]+"'";}
+			else{hql2=hql2+"or cpu_computer='"+strComputerIds[i]+"'";}
+			String hql3="delete from xnjcpt_cpu where "+hql2;
+		Query query=this.getSession().createQuery(hql3);
+		query.executeUpdate();}
+		String hql3="";
+		for(int i=0;i<strComputerIds.length;i++){
+			if(i==0){hql3="cpu_state_computer='"+strComputerIds[i]+"'";}
+			else{hql3=hql3+"or cpu_state_computer='"+strComputerIds[i]+"'";}
+			String hql4="delete from xnjcpt_cpu_state where "+hql3;
+		Query query=this.getSession().createQuery(hql4);
+		query.executeUpdate();}
+		String hql4="";
+		for(int i=0;i<strComputerIds.length;i++){
+			if(i==0){hql4="disk_computer='"+strComputerIds[i]+"'";}
+			else{hql4=hql4+"or disk_computer='"+strComputerIds[i]+"'";}
+			String hql5="delete from xnjcpt_disk where "+hql4;
+		Query query=this.getSession().createQuery(hql5);
+		query.executeUpdate();}
+		String hql5="";
+		for(int i=0;i<strComputerIds.length;i++){
+			if(i==0){hql5="disk_state_computer='"+strComputerIds[i]+"'";}
+			else{hql5=hql5+"or disk_state_computer='"+strComputerIds[i]+"'";}
+			String hql6="delete from xnjcpt_disk_state where "+hql5;
+		Query query=this.getSession().createQuery(hql6);
+		query.executeUpdate();}
+		String hql6="";
+		for(int i=0;i<strComputerIds.length;i++){
+			if(i==0){hql6="memory_computer='"+strComputerIds[i]+"'";}
+			else{hql6=hql6+"or memory_computer='"+strComputerIds[i]+"'";}
+			String hql7="delete from xnjcpt_memory where "+hql6;
+		Query query=this.getSession().createQuery(hql7);
+		query.executeUpdate();}
+		String hql7="";
+		for(int i=0;i<strComputerIds.length;i++){
+			if(i==0){hql7="memory_state_computer='"+strComputerIds[i]+"'";}
+			else{hql7=hql7+"or memory_state_computer='"+strComputerIds[i]+"'";}
+			String hql8="delete from xnjcpt_memory_state where "+hql7;
+		Query query=this.getSession().createQuery(hql8);
+		query.executeUpdate();}
+		String hql8="";
+		for(int i=0;i<strComputerIds.length;i++){
+			if(i==0){hql8="net_computer='"+strComputerIds[i]+"'";}
+			else{hql8=hql8+"or net_computer='"+strComputerIds[i]+"'";}
+			String hql9="delete from xnjcpt_net where "+hql8;
+		Query query=this.getSession().createQuery(hql9);
+		query.executeUpdate();}
+		String hql9="";
+		for(int i=0;i<strComputerIds.length;i++){
+			if(i==0){hql9="disk_state_computer='"+strComputerIds[i]+"'";}
+			else{hql9=hql9+"or disk_state_computer='"+strComputerIds[i]+"'";}
+			String hql10="delete from xnjcpt_net_state where "+hql9;
+		Query query=this.getSession().createQuery(hql10);
+		query.executeUpdate();}
+		String hql10="";
+		for(int i=0;i<strComputerIds.length;i++){
+			if(i==0){hql10="io_state_computer='"+strComputerIds[i]+"'";}
+			else{hql10=hql10+"or io_state_computer='"+strComputerIds[i]+"'";}
+			String hql11="delete from xnjcpt_io_state where "+hql10;
+		Query query=this.getSession().createQuery(hql11);
+		query.executeUpdate();}
+		}
+	@Override
+	public int getCountComputer(computerInformationVO cv) {
+		String user_id = (String) ActionContext.getContext().getSession().get("user_id");
+		String hql = "select count(*) from xnjcpt_computer as xc ,xnjcpt_user_computer as xuc , "
+				+ "xnjcpt_disk as disk , xnjcpt_cpu as cpu , xnjcpt_memory as memory "
+				+ "where xc.computer_id = xuc.user_computer_computer"
+				+ " and xc.computer_id = disk.disk_computer and xc.computer_id = cpu.cpu_computer and xc.computer_id=memory.memory_computer"
+				+ " and xuc.user_computer_user ='"+user_id+"'";
+		System.out.println(hql);
+		if (cv.getSearchContent() != null && !"".equals(cv.getSearchContent().trim())) {
+			hql = hql + " and xc.computer_ip like '%" + cv.getSearchContent().trim() + "%'";
+		}
 		
-		Query query=getSession().createQuery(hql);
-		List<xnjcpt_user_computer> usercomputerList=query.list();
-		
-				String hql1 = "delete from xnjcpt_user_computer where user_computer_id = '" + user_computer_id + "'";
-		getSession().createQuery(hql1).executeUpdate();
-		String hql2 = "delete from xnjcpt_computer where computer_id = '" + usercomputerList.get(0).getUser_computer_computer() + "'";
-		getSession().createQuery(hql2).executeUpdate();
+		Query query = this.getSession().createQuery(hql);
+		long count = (long) query.uniqueResult();
+		return (int) count;
 	}
-
 	@Override
-	public void updateComputer(String user_computer_id,xnjcpt_computer xc) {
-String hql ="from xnjcpt_user_computer where user_computer_id = '" + user_computer_id + "' ";
-		
-		Query query=getSession().createQuery(hql);
-		List<xnjcpt_user_computer> usercomputerList=query.list();
-		
-		String hql1 = "update xnjcpt_computer set computer_name='"+xc.getComputer_name()+"',computer_ip='"+xc.getComputer_ip()+"',computer_gmt_create='"+TeamUtil.getStringSecond()+"',computer_gmt_modified='"+TeamUtil.getStringSecond()+"'where computer_id = '" + usercomputerList.get(0).getUser_computer_computer() + "'";
-		getSession().createQuery(hql1).executeUpdate();
+	public void getComputerByPage(computerInformationVO cv) {
+		String user_id = (String) ActionContext.getContext().getSession().get("user_id");
+		String hql = "select new com.xnjcpt.domain.DTO.UserComputerPageDTO(xc.computer_id,xc.computer_ip,xc.computer_name,cpu.cpu_model,disk.disk_size,memory.memory_size) from xnjcpt_computer as xc ,xnjcpt_user_computer as xuc , "
+				+ "xnjcpt_disk as disk , xnjcpt_cpu as cpu , xnjcpt_memory as memory "
+				+ "where xc.computer_id = xuc.user_computer_computer"
+				+ " and xc.computer_id = disk.disk_computer and xc.computer_id = cpu.cpu_computer and xc.computer_id=memory.memory_computer"
+				+ " and xuc.user_computer_user = '"+user_id+"'";
+		if (cv.getSearchContent() != null && !"".equals(cv.getSearchContent().trim())) {
+			hql = hql + " and xc.computer_ip like '%" + cv.getSearchContent().trim() + "%'";
+		}
+		hql = hql + " order by xc.computer_gmt_create desc";
+		Query query = this.getSession().createQuery(hql)
+				.setFirstResult((cv.getCurrPage() - 1) * cv.getPageSize())
+				.setMaxResults(cv.getPageSize());
+		System.out.println(hql);
+		List<UserComputerPageDTO> list = query.list();
+		cv.setList(list);
 	}
-
-	@Override
-	public xnjcpt_user_computer getUser_computerById(String user_computer_id) {
-		// TODO Auto-generated method stub
-		Session session = this.getSession();
-		xnjcpt_user_computer xuc = (xnjcpt_user_computer) session.get(xnjcpt_user_computer.class,user_computer_id);
-	
-String hql ="from xnjcpt_computer where computer_id = '" + xuc.getUser_computer_computer() + "' ";
-		
-		Query query=getSession().createQuery(hql);
-		List<xnjcpt_computer> computerList=query.list();
-System.out.println(computerList);
-
+	public xnjcpt_computer getXc() {
+		return xc;
+	}
+	public void setXc(xnjcpt_computer xc) {
+		this.xc = xc;
+	}
+	public xnjcpt_user_computer getXuc() {
 		return xuc;
-		
 	}
-
-	
-
-	@Override
-	public int getUserComputerCount(String queryString, int currPage) {
-		String query = "%" + queryString + "%";
-		String hql = "select count(*) from xnjcpt_user_computer where user_computer_user like '" + query + "' or user_computer_computer like '"
-				+ query + "' or user_computer_id like '" + query + "' ";
-		System.out.println(hql);
-		int count = ((Number) getSession().createQuery(hql).uniqueResult()).intValue();
-		return count;
+	public void setXuc(xnjcpt_user_computer xuc) {
+		this.xuc = xuc;
 	}
-
-	@Override
-	public List<xnjcpt_user_computer> getUserComputerByPage(String queryString, int currPage) {
-		String query = "%" + queryString + "%";
-		String hql = "from xnjcpt_user_computer where user_computer_user like '" + query + "' or user_computer_computer		 like '"
-				+ query + "' or user_computer_id like '" + query + "' order by user_computer_gmt_create	 desc";
-		System.out.println(hql);
-		List<xnjcpt_user_computer> list = getSession().createQuery(hql).setFirstResult((currPage - 1) * 10).setMaxResults(10).list();
-		return list;
+	public String getUser_id() {
+		return user_id;
 	}
-
-	@Override
-	public int getComputerCount(String queryString, int currPage) {
-		String query = "%" + queryString + "%";
-		String hql = "select count(*) from xnjcpt_computer where computer_name like '" + query + "' or computer_ip	 like '"
-				+ query + "' or computer_id like '" + query + "' ";
-		System.out.println(hql);
-		int count = ((Number) getSession().createQuery(hql).uniqueResult()).intValue();
-		return count;
-	}
-
-	@Override
-	public List<xnjcpt_computer> getComputerByPage(String queryString, int currPage) {
-		String query = "%" + queryString + "%";
-		String hql = "from xnjcpt_computer where computer_name like '" + query + "' or computer_ip	 like '"
-				+ query + "' or computer_id like '" + query + "' order by user_computer_gmt_create	 desc";
-		System.out.println(hql);
-		List<xnjcpt_computer> list = getSession().createQuery(hql).setFirstResult((currPage - 1) * 10).setMaxResults(10).list();
-		return list;
-	}
-
-	
-	
-
-	
-
-	
-
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}	
 }

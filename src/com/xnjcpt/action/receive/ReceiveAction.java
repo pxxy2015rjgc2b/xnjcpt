@@ -3,7 +3,7 @@ package com.xnjcpt.action.receive;
 import com.xnjcpt.service.receive.ReceiveService;
 
 public class ReceiveAction {
-	//×¢ÈëÒµÎñ²ãµÄÀà
+	//æ³¨å…¥ä¸šåŠ¡å±‚çš„ç±»
 	private ReceiveService receiveService;
 
 	public void setReceiveService(ReceiveService receiveService) {

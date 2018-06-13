@@ -1,12 +1,12 @@
 package com.xnjcpt.domain.DO;
-/*ÓÃ»§»úÆ÷±í*/
+/*ç”¨æˆ·æœºå™¨è¡¨*/
 public class xnjcpt_user_computer {
-	private String user_computer_id;//ÓÃ»§»úÆ÷±íÖ÷¼ü
+	private String user_computer_id;//ç”¨æˆ·æœºå™¨è¡¨ä¸»é”®
 	
-	private String user_computer_user;//ÓÃ»§±íÖ÷¼ü	
-	private String user_computer_computer;//Ö÷»ú±íÖ÷¼ü
-	private String user_computer_gmt_create;	//×Ö¶Î´´½¨Ê±¼ä		
-	private String user_computer_gmt_modified;	//×Ö¶ÎÐÞ¸ÄÊ±¼ä	
+	private String user_computer_user;//ç”¨æˆ·è¡¨ä¸»é”®	
+	private String user_computer_computer;//ä¸»æœºè¡¨ä¸»é”®
+	private String user_computer_gmt_create;	//å­—æ®µåˆ›å»ºæ—¶é—´		
+	private String user_computer_gmt_modified;	//å­—æ®µä¿®æ”¹æ—¶é—´	
 	public String getUser_computer_id() {
 		return user_computer_id;
 	}

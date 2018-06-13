@@ -3,7 +3,7 @@ package com.xnjcpt.action.user;
 import com.xnjcpt.service.user.UserService;
 
 public class UserAction {
-	//×¢ÈëÒµÎñ²ãµÄÀà
+	//æ³¨å…¥ä¸šåŠ¡å±‚çš„ç±»
 	private UserService userService;
 
 	public void setUserService(UserService userService) {

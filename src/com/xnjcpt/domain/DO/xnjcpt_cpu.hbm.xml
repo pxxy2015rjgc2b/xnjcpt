@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2018-6-7 11:19:45 by Hibernate Tools 3.5.0.Final -->
+<!-- Generated 2018-6-7 0:44:34 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
     <class name="com.xnjcpt.domain.DO.xnjcpt_cpu" table="XNJCPT_CPU">
         <id name="cpu_id" type="java.lang.String">
@@ -18,13 +18,13 @@
             <column name="CPU_BASIC_FREQUENCY" />
         </property>
         <property name="cpu_catch_size" type="java.lang.String">
-            <column name="CPU_CATCH_SIZE" />
+        	<column name="CPU_CATCH_SIZE"></column>
         </property>
         <property name="cpu_cores" type="java.lang.String">
-            <column name="CPU_CORES" />
+        	<column name="CPU_CORES"></column>
         </property>
-        <property name="cpu_gmt_creat" type="java.lang.String">
-            <column name="CPU_GMT_CREAT" />
+        <property name="cpu_gmt_create" type="java.lang.String">
+            <column name="CPU_GMT_CREATE" />
         </property>
         <property name="cpu_gmt_modified" type="java.lang.String">
             <column name="CPU_GMT_MODIFIED" />
