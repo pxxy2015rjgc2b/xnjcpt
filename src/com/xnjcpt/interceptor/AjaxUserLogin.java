@@ -1,3 +1,4 @@
+
 package com.xnjcpt.interceptor;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,7 +33,6 @@ public class AjaxUserLogin extends AbstractInterceptor{
 		else{
 			return arg0.invoke();
 		}
-		 
 		
 	}
 

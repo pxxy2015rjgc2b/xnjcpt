@@ -10,18 +10,18 @@ window.onload=function(){
 function register_ajax(){
 	console.log("ajax");
 	var user_usersname=$("input[name='user_username']").val();
-	var user_photo=$("input[name='user_photo']").val();
+	var user_phone=$("input[name='user_phone']").val();
 	var user_name=$("input[name='user_name']").val();
 	var user_password=$("input[name='user_password']").val();
 	var user_email=$("input[name='user_email']").val();
 	var formData=new FormData();
 	formData.append("user.user_usersname",user_usersname);
-	formData.append("user.user_photo",user_photo);
+	formData.append("user.user_phone",user_phone);
 	formData.append("user.user_name",user_name);
 	formData.append("user.user_password",user_password);
 	formData.append("user.user_email",user_email);
 	 $.ajax({
-		    url: "xnjcpt/user/user_register",
+		    url: "/xnjcpt/user/user_register",
 	        type: "post",
 	        data:formData,
 	        //报错请加入以下三行，则ajax提交无问题

@@ -204,6 +204,24 @@ public class UserAction{
 		}
 	}
 	
+
+	//通过邮箱发送修改旧密码
+	public void updatePasswordbyverifyCode() throws IOException {
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter pw = response.getWriter();
+		xnjcpt_user existuser=new xnjcpt_user();
+		existuser=userService.getUserByUserEmail(user_email);
+		if(existuser==null){
+			System.out.println("修改密码失败");
+			pw.write("findpassword_error");
+		}else{
+			String user_id=existuser.getUser_id();
+			userService.updatePassword(user_id, newPassword);
+			pw.write("updatesuccess");
+		}
+	}
+	
 	//注销用户
 	public String logout() {
 		ActionContext.getContext().getSession().remove("user_id");
@@ -230,6 +248,7 @@ public class UserAction{
 	private String user_role;
 	private String user_gmt_creat;
 	private String user_gmt_modified;
+	private String newPassword;
 
 	public String getUser_id() {
 		return user_id;
@@ -309,6 +328,14 @@ public class UserAction{
 
 	public void setUser_gmt_modified(String user_gmt_modified) {
 		this.user_gmt_modified = user_gmt_modified;
+	}
+
+	public String getNewPassword() {
+		return newPassword;
+	}
+
+	public void setNewPassword(String newPassword) {
+		this.newPassword = newPassword;
 	}
 
 	
