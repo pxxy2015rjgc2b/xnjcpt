@@ -2,7 +2,6 @@ package com.xnjcpt.action.computer;
 import com.xnjcpt.service.computer.ComputerService;
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.struts2.ServletActionContext;
@@ -15,7 +14,6 @@ public class ComputerAction {
 	private xnjcpt_computer xc;
 	private String user_id;
 	private computerInformationVO cv;
-	
 	public void setComputerService(ComputerService computerService) {
 		this.computerService = computerService;
 	}
@@ -61,9 +59,8 @@ public class ComputerAction {
 						response.getWriter().close();
 			}
 			//分页显示主机信息
-			public void getComputerByPage() {
-				
-				computerService.getComputerByPage(cv);
+			public void getComputerIds() {
+				computerService.getComputerInformation(cv);
 				HttpServletResponse response = ServletActionContext.getResponse();
 				response.setContentType("text/html;charset=utf-8");
 				response.setHeader("Access-Control-Allow-Origin", "*");
