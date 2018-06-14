@@ -48,7 +48,7 @@
 				  	<form id="login_box" class="login_box">
 				  		<div class="login_content">
 				  		  <div class="login_title">登陆</div>
-				  		  <input class="usename" type="text" placeholder="邮箱/用户名" name="user_name"/>
+				  		  <input class="usename" type="text" placeholder="邮箱/用户名" name="user_username"/>
 				  	      <input class="password" type="password" placeholder="登录密码" name="user_password"/>
 				 		  <div class="login_button">登录</div>
 				 		  <a href="/xnjcpt/forgetPassword.jsp">忘记密码</a>

@@ -8,71 +8,97 @@
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<link rel="stylesheet" href="<%=basePath%>css/alarm/cloudList.css" />
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>设置警报</title>
-</head>
-<body>
-	<div class="wrapper">
-		<!--导航条放在下面-->
-		<s:action name="skip_intoNavbar" namespace="/skip"
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="<%=basePath%>css/alarm/List.css" />
+		<link rel="stylesheet" href="<%=basePath%>css/confirm_style.css" />
+		
+	</head>
+
+	<body>
+		<div class="wrapper">
+			<!--导航条放在下面-->
+		   <s:action name="skip_intoNavbar" namespace="/skip"
 			executeResult="true"></s:action>
-		<div class="manage">
-			<!--侧边栏放在下面-->
+			<div class="manage">
+				<!--侧边栏放在下面-->
 			<s:action name="skip_intoSlider" namespace="/skip"
 				executeResult="true"></s:action>
-			<div class="show_box">
-				<div class="show_content">
-					<div>
-						<h3>设置警报</h3>
+				<div class="show_box">
+					<div class="show_content">
+					<div class="show_title">
+						<span>设置警报</span>
 					</div>
-					<div id="searchContent">
-						<button class="btn btn-primary" onclick="createAlarm()">
-							<i class="fa fa-plus"></i>添加警报
-						</button>
-						<input style="width: 250px; float: right;" type="text"
-							class="form-control" placeholder="请输入搜索内容">
+					<div class="operation_button">
+						<button class="btn btn-primary add_button" type="submit" onclick="add_alarm()"><i class="fa fa-plus" aria-hidden="true"> </i> 添加警报</button>
+						<button class="btn btn-danger delete_button" type="submit"><i class="fa fa-trash-o" aria-hidden="true"></i> 删除警报</button>
+						<div class="search_cloud">
+							<input class="search_input" type="text" placeholder="搜索云主机名或IP地址" />
+						</div>
 					</div>
-					<div id="loadingLayer" style="margin: 0 auto; width: 45px;">
-						<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
-					</div>
-					<div id="showContent" style="margin-top: 20px;">
-						<table class="table table-hover" style="text-align: center;">
+					<div class="show_content1">
+						<table class="table cloudList_tabel">
+							<thead>
+								<tr>
+									<th style="text-align: center;"><input type="checkbox"/></th>
+									<th>主机IP</th>
+									<th>警报类型</th>
+									<th>警报阈值</th>
+									<th>警报状态</th>
+									<th>操作</th>
+								</tr>
+							</thead>
 							<tbody>
 								<tr>
-									<td>主机ip</td>
-									<td>警报类型</td>
-									<td>警报阈值</td>
-									<td>操作</td>
+									<td style="text-align: center;"><input  type="checkbox"/></td>
+									<td><a href="overview.html" style="font-size: 14px;">ins-8c0bgo5k（u672au547du540d）</a> </td>
+									<td>139.199.82.120 </td>
+									<td>2 GB </td>
+									<td>4 GB</td>
+									<td><i class="fa fa-pencil-square-o" onclick="edit_alarm()" style="margin-left: 7px;" aria-hidden="true"></i></td>
 								</tr>
 							</tbody>
-							<thead>
-
-							</thead>
 						</table>
-					</div>
-					<div id="bottomPage" style="padding: 20px;">
-						<span>当前页数:<span id="currPage">1</span></span> <span>共:<span
-							id="totalPage">2</span>页
-						</span> <span onclick="skipToIndexPage()" id="indexPage"
-							class="pageOperation">首页</span> <span
-							onclick="skipToPrimaryPage()" id="previousPage"
-							class="pageOperation">上一页</span> <span onclick="skipToNextPage()"
-							id="nextPage" class="pageOperation">下一页</span> <span
-							onclick="skipToLastPage()" id="lastPage" class="pageOperation">末页</span>
-						<span> <input id="skipPage" type="text"
-							style="text-align: center; width: 60px; height: 30px;"
-							class="queryInput">
-							<button onclick="skipToArbitrarilyPage()" class="btn btn-default"
-								style="height: 30px; vertical-align: middle; margin-bottom: 3px;">跳转</button>
-						</span>
+						<div class="pagination">
+							<nav aria-label="Page navigation">
+								<ul class="pagination pagination-sm">
+									<li>
+										<a href="#" aria-label="Previous">
+											<span aria-hidden="true">&laquo;</span>
+										</a>
+									</li>
+									<li class="active">
+										<a href="#">1</a>
+									</li>
+									<li>
+										<a href="#">2</a>
+									</li>
+									<li>
+										<a href="#">3</a>
+									</li>
+									<li>
+										<a href="#">4</a>
+									</li>
+									<li>
+										<a href="#">5</a>
+									</li>
+									<li>
+										<a href="#" aria-label="Next">
+											<span aria-hidden="true">&raquo;</span>
+										</a>
+									</li>
+								</ul>
+							</nav>
+						</div>
 					</div>
 				</div>
+					</div>
 			</div>
 		</div>
-	</div>
-	<script type="text/javascript"
-		src="<%=basePath%>js/alarm/createAlarm.js"></script>
-</body>
+		<script type="text/javascript" src="<%=basePath%>js/alarm/addAlarm.js" ></script>
+	</body>
+
 </html>
