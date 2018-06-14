@@ -16,7 +16,7 @@
 		<action name="skip_*" class="com.xnjcpt.action.skip.SkipAction"
 			method="{1}">
 			<result name="intoNavbar">/WEB-INF/view/navbar.jsp</result>
-			<result name="intoNavbar2">/WEB-INF/view/navbar_competer.jsp</result>
+			<result name="intoSlider2">/WEB-INF/view/slider_competer.jsp</result>
 			<result name="intoSlider">/WEB-INF/view/slider.jsp</result>
 			<result name="intoAlarm">/WEB-INF/view/alarm/alarmList.jsp</result>
 			<result name="intoUser">/WEB-INF/view/user/userList.jsp</result>

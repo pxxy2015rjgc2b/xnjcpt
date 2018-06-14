@@ -11,6 +11,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 
+
 public class AjaxUserLogin extends AbstractInterceptor{
 
 	@Override
@@ -38,3 +39,7 @@ public class AjaxUserLogin extends AbstractInterceptor{
 
 
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> f1f3757c1190e6cff017b6f6ff3e8b59cba8f998

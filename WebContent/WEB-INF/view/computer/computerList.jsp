@@ -9,18 +9,18 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="stylesheet" href="<%=basePath%>css/alarm/cloudList.css" />
+<link rel="stylesheet" href="<%=basePath%>css/alarm/List.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>主机管理</title>
 </head>
 <body>
 	<div class="wrapper">
 		<!--导航条放在下面-->
-		<s:action name="skip_intoNavbar2" namespace="/skip"
+		<s:action name="skip_intoNavbar" namespace="/skip"
 			executeResult="true"></s:action>
 		<div class="manage">
 			<!--侧边栏放在下面-->
-			<s:action name="skip_intoSlider" namespace="/skip"
+			<s:action name="skip_intoSlider2" namespace="/skip"
 				executeResult="true"></s:action>
 			<div class="show_box">
 				<div class="show_content">
