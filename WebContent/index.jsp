@@ -14,7 +14,6 @@
 <link rel="stylesheet" href="<%=basePath%>css/index/index.css" />
 <link rel="stylesheet" href="<%=basePath%>css/index/footer.css" />
 <link rel="stylesheet" href="<%=basePath%>css/index/header.css" />
-<link rel="stylesheet" href="<%=basePath %>css/navbar/font-awesome.css">
 </head>
 <body>
 <div class="wrapper">
@@ -25,6 +24,7 @@
 						<span>云栖</span>
 					</div>
 					<div class="header_right">
+						<img class="search" src="<%=basePath %>img/search.png" />
 						<a>注册</a>
 						<img class="user" src="<%=basePath %>img/user.png" />
 					</div>
@@ -45,16 +45,16 @@
 				     	<div>的性能监控与应用管理系统</div>
 				     	<div class="enter_button"><a>立即监测</a></div>
 				  	</div>
-				  	<div class="login_box">
+				  	<form id="login_box" class="login_box">
 				  		<div class="login_content">
 				  		  <div class="login_title">登陆</div>
-				  		  <input class="usename" type="text" placeholder="邮箱/用户名"/>
-				  	      <input class="password" type="password" placeholder="登录密码"/>
+				  		  <input class="usename" type="text" placeholder="邮箱/用户名" name="user_name"/>
+				  	      <input class="password" type="password" placeholder="登录密码" name="user_password"/>
 				 		  <div class="login_button">登录</div>
-				 		  <a>免费注册</a>
-				 		  <a>忘记密码</a>
+				 		  <a href="/xnjcpt/forgetPassword.jsp">忘记密码</a>
+				 		  <a href="/xnjcpt/register.jsp">免费注册</a>
 				 		</div>
-				  	</div>
+				  	</form>
 				</div>
 			</div>
 			<div class="footer">
@@ -64,5 +64,7 @@
 			    </div>
 			</div>
 		</div>
+		<script type="text/javascript" src="<%=basePath %>/js/jquery-3.1.1.min.js"></script>
+	    <script type="text/javascript" src="<%=basePath %>js/user/login.js"></script>
 </body>
 </html>

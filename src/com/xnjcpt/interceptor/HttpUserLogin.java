@@ -18,7 +18,6 @@ public class HttpUserLogin extends AbstractInterceptor{
 		ActionContext actionContext  = arg0.getInvocationContext();
 		HttpServletRequest request = (HttpServletRequest) actionContext.get(StrutsStatics.HTTP_REQUEST);
 		HttpSession session = request.getSession();
-		session.setAttribute("user_id", "1");
 		String user_id = (String) session.getAttribute("user_id");
 		if(user_id == null){
 			return "login";
