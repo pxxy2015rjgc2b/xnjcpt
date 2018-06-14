@@ -147,10 +147,10 @@ public class UserAction{
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpSession session = request.getSession();
 		PrintWriter pw = response.getWriter();
-		String receiveEmailAccount = user.getUser_email();// 用户邮箱
-		xnjcpt_user ux=userService.getUserByUserEmail(receiveEmailAccount);
-		
+		xnjcpt_user ux=userService.getUserByUserEmail(user.getUser_email());
+
 		if(ux!=null){
+		String receiveEmailAccount = ux.getUser_email();// 用户邮箱
 		String verifyCode=ux.getUser_id();
 		String username=ux.getUser_name();
 		SendEmail.sendEmail(receiveEmailAccount, username, verifyCode);
@@ -181,7 +181,8 @@ public class UserAction{
 	
 	}
 	//邮件激活
-	public void activate() throws IOException{
+	public String activate() throws IOException{
+		String ac=null;
 		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		response.setHeader("Access-Control-Allow-Methods", "GET,POST");
@@ -194,6 +195,7 @@ public class UserAction{
 		if(existuser==null){
 			System.out.println("激活失败");
 			pw.write("activate_error");
+			ac="activate_error";
 		}else{
 			st="1";
 			existuser.setUser_status(st);
@@ -201,25 +203,9 @@ public class UserAction{
 			userService.updateuser(existuser);
 			System.out.println("激活成功");
 			pw.write("activate_success");
+			ac="activate_success";
 		}
-	}
-	
-
-	//通过邮箱发送修改旧密码
-	public void updatePasswordbyverifyCode() throws IOException {
-		HttpServletResponse response = ServletActionContext.getResponse();
-		response.setContentType("text/html;charset=utf-8");
-		PrintWriter pw = response.getWriter();
-		xnjcpt_user existuser=new xnjcpt_user();
-		existuser=userService.getUserByUserEmail(user_email);
-		if(existuser==null){
-			System.out.println("修改密码失败");
-			pw.write("findpassword_error");
-		}else{
-			String user_id=existuser.getUser_id();
-			userService.updatePassword(user_id, newPassword);
-			pw.write("updatesuccess");
-		}
+		return ac;
 	}
 	
 	//注销用户
@@ -230,7 +216,7 @@ public class UserAction{
 		return "logoutSuccess";
 	}
 
-	
+
 	// --------------------------------------------------------�������--------------------------------------------------------------
 		/*
 		 *
@@ -248,7 +234,6 @@ public class UserAction{
 	private String user_role;
 	private String user_gmt_creat;
 	private String user_gmt_modified;
-	private String newPassword;
 
 	public String getUser_id() {
 		return user_id;
@@ -328,14 +313,6 @@ public class UserAction{
 
 	public void setUser_gmt_modified(String user_gmt_modified) {
 		this.user_gmt_modified = user_gmt_modified;
-	}
-
-	public String getNewPassword() {
-		return newPassword;
-	}
-
-	public void setNewPassword(String newPassword) {
-		this.newPassword = newPassword;
 	}
 
 	

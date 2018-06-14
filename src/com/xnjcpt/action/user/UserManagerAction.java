@@ -59,10 +59,27 @@ public class UserManagerAction {
 		}
 	}
 	
+	//通过邮箱发送修改旧密码
+	public void updatePasswordbyverifyCode() throws IOException {
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter pw = response.getWriter();
+		xnjcpt_user existuser=new xnjcpt_user();
+		existuser=userManagerService.getUserByUserEmail(user_email);
+		if(existuser==null){
+			System.out.println("修改密码失败");
+			pw.write("findpassword_error");
+		}else{
+			String user_id=existuser.getUser_id();
+			userManagerService.updatePassword(user_id, newPassword);
+			System.out.println(newPassword);
+			pw.write("updatesuccess");
+		}
+	}
 	
 	//得到用户搜索列表
 	public void getUsers() throws IOException {
-		PageBean_user<xnjcpt_user> pb = userManagerService.findPageByKeyword(currentPage, pageSize, keyword);
+		PageBean_user<xnjcpt_user> pb = (PageBean_user<xnjcpt_user>) userManagerService.findPageByKeyword(currentPage, pageSize, keyword);
 		Gson gson = new Gson();//用来转换JSON数据类型的
 		String result = gson.toJson(pb);
 		System.out.println(result);
@@ -109,15 +126,15 @@ public class UserManagerAction {
 			PrintWriter pw = response.getWriter();
 			String user_id = (String) ActionContext.getContext().getSession().get("user_id");
 			System.out.println(user_id);
-			xnjcpt_user user=userManagerService.getUserByUserId(user_id);
-			if(user_username!=null && user_phone==null){
+			xnjcpt_user user=userManagerService.getUserByUserId(user_id);		
+			if(user_username!=null){		
 			user.setUser_username(user_username);
 			user.setUser_gmt_modified(TeamUtil.getStringSecond());//保存修改时间信息
 			userManagerService.updateuser(user);
 			pw.write("修改用户姓名成功");
 			pw.flush();
 			pw.close();
-			}else if(user_phone!=null && user_username==null){
+			}else if(user_phone!=null){
 				user.setUser_phone(user_phone);
 				user.setUser_gmt_modified(TeamUtil.getStringSecond());//保存修改时间信息
 				userManagerService.updateuser(user);
@@ -169,6 +186,7 @@ public class UserManagerAction {
 	
 	//解禁用户
 		public void liftUser() throws IOException{
+			System.out.println("p");
 			xnjcpt_user user=userManagerService.getUserByUserId(user_id);
 			user.setUser_status("1");
 			user.setUser_gmt_modified(TeamUtil.getStringSecond());
