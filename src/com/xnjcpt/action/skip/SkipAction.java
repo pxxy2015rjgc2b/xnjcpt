@@ -35,6 +35,11 @@ public class SkipAction extends ActionSupport {
 		return "intoMonitor";
 	}
 
+	// 进入进程管理
+	public String intoProgress() {
+		return "intoProgress";
+	}
+
 	// 进入个人信息管理
 	public String intoPerson() {
 		return "intoPerson";
