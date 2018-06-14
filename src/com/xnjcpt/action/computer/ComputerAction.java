@@ -1,7 +1,9 @@
 package com.xnjcpt.action.computer;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
@@ -27,6 +29,7 @@ public class ComputerAction {
 	private String pid;
 	private String computer_id;
 	private ProgressPageVO progressPageVO;
+	private String command;
 
 	public void setComputerService(ComputerService computerService) {
 		this.computerService = computerService;
@@ -157,6 +160,10 @@ public class ComputerAction {
 	public void stopProgress() {
 		xnjcpt_computer xnjcpt_computer = computerService.getComputerById(id);
 		computerService.deleteProgressByIdAndPid(id, pid);
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setContentType("text/html;charset=utf-8");
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Access-Control-Allow-Methods", "GET,POST");
 		try {
 			Socket socket = new Socket(xnjcpt_computer.getComputer_ip(), 8888);
 			StringBuilder sb = new StringBuilder();
@@ -166,6 +173,10 @@ public class ComputerAction {
 			br.write(sb.toString());
 			br.flush();
 			br.close();
+			PrintWriter pw = response.getWriter();
+			pw.write("closeSuccess");
+			pw.flush();
+			pw.close();
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -191,6 +202,54 @@ public class ComputerAction {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+	}
+
+	// 执行命令行
+	// execCommand
+	// command
+	// socket传参数
+	// 主机id
+	// 孙毅技术贼强
+	public void execCommand() throws IOException {
+		xnjcpt_computer xnjcpt_computer = computerService.getComputerById(id);
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setContentType("text/html;charset=utf-8");
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Access-Control-Allow-Methods", "GET,POST");
+		PrintWriter pw = response.getWriter();
+		try {
+			Socket socket = new Socket(xnjcpt_computer.getComputer_ip(), 8888);
+			StringBuilder sb = new StringBuilder();
+			sb.append("execCommand\n");
+			sb.append(command + "\n");
+			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+			bw.write(sb.toString());
+			bw.flush();
+			BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			String line = null;
+			pw.write("\n");
+			while ((line = br.readLine()) != null) {
+				pw.write(new String(line.getBytes("gbk"), "utf-8") + "\n");
+
+			}
+			pw.write("$：");
+			pw.flush();
+			pw.close();
+			br.close();
+			bw.close();
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			pw.write("客户端未开启");
+			pw.write("$：");
+			pw.flush();
+			pw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			pw.write("客户端未开启");
+			pw.write("$：");
+			pw.flush();
+			pw.close();
 		}
 	}
 
@@ -244,6 +303,14 @@ public class ComputerAction {
 
 	public void setComputer_id(String computer_id) {
 		this.computer_id = computer_id;
+	}
+
+	public String getCommand() {
+		return command;
+	}
+
+	public void setCommand(String command) {
+		this.command = command;
 	}
 
 }

@@ -10,6 +10,7 @@ import com.xnjcpt.domain.DO.xnjcpt_cpu_state;
 import com.xnjcpt.domain.DO.xnjcpt_memory_state;
 import com.xnjcpt.domain.DO.xnjcpt_net_state;
 import com.xnjcpt.domain.DO.xnjcpt_user_computer;
+import com.xnjcpt.domain.VO.AlarmMessageVO;
 import com.xnjcpt.domain.VO.AlarmPageVO;
 import com.xnjcpt.service.alarm.AlarmService;
 
@@ -221,6 +222,34 @@ public class AlarmServiceImpl implements AlarmService {
 				}
 			}
 		}
+	}
+
+	@Override
+	public int getCountAlamrMessage() {
+		// TODO Auto-generated method stub
+		return alarmDao.getCountAlamrMessage();
+	}
+
+	@Override
+	public void getAlarmMessageByPage(AlarmMessageVO alarmMessageVO) {
+		// TODO Auto-generated method stub
+		int count = alarmDao.getCountAlamrMessage();
+		alarmMessageVO.setPageSize(10);
+		alarmMessageVO.setTotalCount(count);
+		alarmMessageVO.setTotalPage((int) Math.ceil((double) count / alarmMessageVO.getPageSize()));
+		alarmDao.getAlarmMessageByPage(alarmMessageVO);
+	}
+
+	@Override
+	public boolean updateStatus(String message_id) {
+		// TODO Auto-generated method stub
+		return alarmDao.updateStatus(message_id);
+	}
+
+	@Override
+	public boolean deleteMessage(String message_id) {
+		// TODO Auto-generated method stub
+		return alarmDao.deleteMessage(message_id);
 	}
 
 }

@@ -1,8 +1,7 @@
 /**
  * 
  */
-$(IoUtil())
-function IoUtil() {
+function IoUtil(startTime,endTime) {
 	var computer_id = getId();
 	getStartTime();
 	var myChart = echarts.init(document.getElementById('IoUtil'));
@@ -13,9 +12,9 @@ function IoUtil() {
 				url : '/xnjcpt/monitor/monitor_getIoDealTime?monitorPageVO.computer_id='
 						+ computer_id
 						+ '&monitorPageVO.time_start='
-						+ getStartTime()
+						+ startTime
 						+ '&monitorPageVO.time_end='
-						+ getEndTime(),
+						+ endTime,
 				type : 'GET',
 				async : false,
 				success : function(datas) {

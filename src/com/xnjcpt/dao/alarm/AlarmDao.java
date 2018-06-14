@@ -6,6 +6,7 @@ import com.xnjcpt.domain.DO.xnjcpt_alarm;
 import com.xnjcpt.domain.DO.xnjcpt_alarm_message;
 import com.xnjcpt.domain.DO.xnjcpt_computer;
 import com.xnjcpt.domain.DO.xnjcpt_user_computer;
+import com.xnjcpt.domain.VO.AlarmMessageVO;
 import com.xnjcpt.domain.VO.AlarmPageVO;
 
 public interface AlarmDao {
@@ -29,5 +30,13 @@ public interface AlarmDao {
 	xnjcpt_user_computer getUserById(String computer_id);
 
 	void saveMessage(xnjcpt_alarm_message xam);
+
+	int getCountAlamrMessage();
+
+	void getAlarmMessageByPage(AlarmMessageVO alarmMessageVO);
+
+	boolean updateStatus(String message_id);
+
+	boolean deleteMessage(String message_id);
 
 }

@@ -1,8 +1,7 @@
 /**
  * 
  */
-$(InBandwidth())
-function InBandwidth() {
+function InBandwidth(startTime,endTime) {
 	var computer_id = getId();
 	getStartTime();
 	var myChart = echarts.init(document.getElementById('InBandwidth'));
@@ -13,9 +12,9 @@ function InBandwidth() {
 				url : '/xnjcpt/monitor/monitor_getInBandwidthState?monitorPageVO.computer_id='
 						+ computer_id
 						+ '&monitorPageVO.time_start='
-						+ getStartTime()
+						+ startTime
 						+ '&monitorPageVO.time_end='
-						+ getEndTime(),
+						+ endTime,
 				type : 'GET',
 				async : false,
 				success : function(datas) {

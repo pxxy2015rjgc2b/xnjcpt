@@ -10,6 +10,8 @@ import org.apache.struts2.ServletActionContext;
 import com.google.gson.Gson;
 import com.opensymphony.xwork2.ActionContext;
 import com.xnjcpt.domain.DO.xnjcpt_alarm;
+import com.xnjcpt.domain.DO.xnjcpt_alarm_message;
+import com.xnjcpt.domain.VO.AlarmMessageVO;
 import com.xnjcpt.domain.VO.AlarmPageVO;
 import com.xnjcpt.service.alarm.AlarmService;
 
@@ -23,6 +25,8 @@ public class AlarmAction {
 	private xnjcpt_alarm xnjcpt_alarm;
 	private AlarmPageVO alarmPageVO;
 	private String alarm_id;
+	private AlarmMessageVO alarmMessageVO;
+	private xnjcpt_alarm_message xnjcpt_alarm_message;
 
 	// 保存警报
 	public void saveAlarm() {
@@ -139,6 +143,90 @@ public class AlarmAction {
 		}
 	}
 
+	// 获得通知总数
+	public void getCountAlamrMessage() {
+		int count = alarmService.getCountAlamrMessage();
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setContentType("text/html;charset=utf-8");
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Access-Control-Allow-Methods", "GET,POST");
+		try {
+			PrintWriter pw = response.getWriter();
+			pw.write(count + "");
+			pw.flush();
+			pw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	// 分页获得所有通知
+	public void getAlarmMessageByPage() {
+		alarmService.getAlarmMessageByPage(alarmMessageVO);
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setContentType("text/html;charset=utf-8");
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Access-Control-Allow-Methods", "GET,POST");
+		try {
+			PrintWriter pw = response.getWriter();
+			pw.write(new Gson().toJson(alarmMessageVO));
+			pw.flush();
+			pw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	// 修改通知状态
+	public void updateStatus() {
+		boolean flag = alarmService.updateStatus(xnjcpt_alarm_message.getMessage_id());
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setContentType("text/html;charset=utf-8");
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Access-Control-Allow-Methods", "GET,POST");
+		try {
+			PrintWriter pw = response.getWriter();
+			if (flag) {
+				pw.write("updateSuccess");
+				pw.flush();
+				pw.close();
+			} else {
+				pw.write("updateError");
+				pw.flush();
+				pw.close();
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	// 删除通知状态
+	public void deleteMessage() {
+		boolean flag = alarmService.deleteMessage(xnjcpt_alarm_message.getMessage_id());
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setContentType("text/html;charset=utf-8");
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Access-Control-Allow-Methods", "GET,POST");
+		try {
+			PrintWriter pw = response.getWriter();
+			if (flag) {
+				pw.write("deleteSuccess");
+				pw.flush();
+				pw.close();
+			} else {
+				pw.write("deleteError");
+				pw.flush();
+				pw.close();
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 	public void setAlarmService(AlarmService alarmService) {
 		this.alarmService = alarmService;
 	}
@@ -169,6 +257,22 @@ public class AlarmAction {
 
 	public void setAlarm_id(String alarm_id) {
 		this.alarm_id = alarm_id;
+	}
+
+	public AlarmMessageVO getAlarmMessageVO() {
+		return alarmMessageVO;
+	}
+
+	public void setAlarmMessageVO(AlarmMessageVO alarmMessageVO) {
+		this.alarmMessageVO = alarmMessageVO;
+	}
+
+	public xnjcpt_alarm_message getXnjcpt_alarm_message() {
+		return xnjcpt_alarm_message;
+	}
+
+	public void setXnjcpt_alarm_message(xnjcpt_alarm_message xnjcpt_alarm_message) {
+		this.xnjcpt_alarm_message = xnjcpt_alarm_message;
 	}
 
 }

@@ -1,8 +1,6 @@
 /**
  * 
  */
-
-$(DiskSize())
 function DiskSize() {
 	var computer_id = getId();
 	var myChart = echarts.init(document.getElementById('DiskSize'));

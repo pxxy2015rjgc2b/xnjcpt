@@ -3,7 +3,7 @@ package com.xnjcpt.domain.DO;
 public class xnjcpt_progress {
 	private String progress_id;
 	private String progress_computer;
-	private String progress_pid;
+	private Integer progress_pid;
 	private String progress_name;
 	private String progress_gmt_create;
 	private String progress_gmt_modified;
@@ -24,11 +24,11 @@ public class xnjcpt_progress {
 		this.progress_computer = progress_computer;
 	}
 
-	public String getProgress_pid() {
+	public Integer getProgress_pid() {
 		return progress_pid;
 	}
 
-	public void setProgress_pid(String progress_pid) {
+	public void setProgress_pid(Integer progress_pid) {
 		this.progress_pid = progress_pid;
 	}
 

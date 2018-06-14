@@ -13,6 +13,7 @@ import com.xnjcpt.domain.DO.xnjcpt_alarm;
 import com.xnjcpt.domain.DO.xnjcpt_alarm_message;
 import com.xnjcpt.domain.DO.xnjcpt_computer;
 import com.xnjcpt.domain.DO.xnjcpt_user_computer;
+import com.xnjcpt.domain.VO.AlarmMessageVO;
 import com.xnjcpt.domain.VO.AlarmPageVO;
 
 public class AlarmDaoImpl implements AlarmDao {
@@ -150,5 +151,54 @@ public class AlarmDaoImpl implements AlarmDao {
 	public void saveMessage(xnjcpt_alarm_message xam) {
 		// TODO Auto-generated method stub
 		this.getSession().save(xam);
+	}
+
+	@Override
+	public int getCountAlamrMessage() {
+		// TODO Auto-generated method stub
+		String user_id = (String) ActionContext.getContext().getSession().get("user_id");
+		String hql = "select count(*) from xnjcpt_alarm_message where message_user='" + user_id
+				+ "' and message_status = '" + 0 + "'";
+		long count = (long) this.getSession().createQuery(hql).uniqueResult();
+		return (int) count;
+	}
+
+	@Override
+	public void getAlarmMessageByPage(AlarmMessageVO alarmMessageVO) {
+		// TODO Auto-generated method stub
+		String user_id = (String) ActionContext.getContext().getSession().get("user_id");
+		String hql = "from xnjcpt_alarm_message where message_user='" + user_id + "' order by message_status asc";
+		List<xnjcpt_alarm_message> list = this.getSession().createQuery(hql)
+				.setFirstResult((alarmMessageVO.getCurrPage() - 1) * alarmMessageVO.getPageSize())
+				.setMaxResults(alarmMessageVO.getPageSize()).list();
+		alarmMessageVO.setList(list);
+	}
+
+	@Override
+	public boolean updateStatus(String message_id) {
+		// TODO Auto-generated method stub
+		String hql = "update xnjcpt_alarm_message set message_status = '1' where message_id = '" + message_id + "'";
+		try {
+			this.getSession().createQuery(hql).executeUpdate();
+			return true;
+		} catch (HibernateException e) {
+			// TODO: handle exception
+			return false;
+		}
+
+	}
+
+	@Override
+	public boolean deleteMessage(String message_id) {
+		// TODO Auto-generated method stub
+		String hql = "delete from xnjcpt_alarm_message where message_id = '" + message_id + "'";
+		try {
+			this.getSession().createQuery(hql).executeUpdate();
+			return true;
+		} catch (HibernateException e) {
+			// TODO: handle exception
+			return false;
+		}
+
 	}
 }

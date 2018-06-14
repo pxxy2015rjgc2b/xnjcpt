@@ -1,8 +1,7 @@
 /**
  * 
  */
-$(OutTraffic())
-function OutTraffic() {
+function OutTraffic(startTime,endTime) {
 	var computer_id = getId();
 	getStartTime();
 	var myChart = echarts.init(document.getElementById('OutTraffic'));
@@ -13,9 +12,9 @@ function OutTraffic() {
 				url : '/xnjcpt/monitor/monitor_getOutTraffic?monitorPageVO.computer_id='
 						+ computer_id
 						+ '&monitorPageVO.time_start='
-						+ getStartTime()
+						+ startTime
 						+ '&monitorPageVO.time_end='
-						+ getEndTime(),
+						+ endTime,
 				type : 'GET',
 				async : false,
 				success : function(datas) {

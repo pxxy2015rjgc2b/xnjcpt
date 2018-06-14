@@ -28,8 +28,8 @@
 					<div id="head">
 						<h3>性能监测</h3>
 						<label>选择展示时间区间：</label>
-						<button class="btn btn-default">今日</button>
-						<button class="btn btn-default" style="margin-left: 20px;">七日内</button>
+						<button class="btn btn-default" onclick="today()">今日</button>
+						<button class="btn btn-default" style="margin-left: 20px;" onclick="sevenDay()">七日内</button>
 					</div>
 					<div id="cpu">
 						<h3>CPU相关性能</h3>
@@ -107,6 +107,7 @@
 			</div>
 		</div>
 	</div>
+	
 	<script type="text/javascript"
 		src="<%=basePath%>js/monitor/CpuUserInfor.js"></script>
 	<script type="text/javascript"
@@ -132,5 +133,6 @@
 	<script type="text/javascript"
 		src="<%=basePath%>js/monitor/DiskSize.js"></script>
 	<script type="text/javascript" src="<%=basePath%>js/monitor/IoUtil.js"></script>
+		<script type="text/javascript" src="<%=basePath%>js/monitor/loadingData.js"></script>
 </body>
 </html>

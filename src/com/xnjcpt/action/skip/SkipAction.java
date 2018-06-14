@@ -40,9 +40,19 @@ public class SkipAction extends ActionSupport {
 		return "intoProgress";
 	}
 
+	// 进入远程控制
+	public String intoControl() {
+		return "intoControl";
+	}
+
 	// 进入个人信息管理
 	public String intoPerson() {
 		return "intoPerson";
+	}
+
+	// 进入警报通知页面
+	public String intoAlarmMessage() {
+		return "intoAlarmMessage";
 	}
 
 	// 进入主机主页的侧边栏

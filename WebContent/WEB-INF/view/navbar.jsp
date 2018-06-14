@@ -21,7 +21,6 @@
 <script type="text/javascript" src="<%=basePath%>js/icheck.js"></script>
 <script type="text/javascript" src="<%=basePath%>js/Input_Select.js"></script>
 <script type="text/javascript" src="<%=basePath%>js/jquery-confirm.js"></script>
-<script type="text/javascript" src="<%=basePath%>js/echarts.min.js"></script>
 <script type="text/javascript"
 	src="<%=basePath%>js/jquery.bootstrap.wizard.js"></script>
 <script type="text/javascript"
@@ -33,6 +32,7 @@
 <script type="text/javascript" src="<%=basePath %>js/klorofil-common.js"></script>
 <script type="text/javascript" src="<%=basePath %>js/toastr.js"></script>
 <script type="text/javascript" src="<%=basePath %>js/vue.js"></script>
+<script type="text/javascript" src="<%=basePath %>js/echarts.min.js"></script>
 <!-- 所有页面共用css -->
 <link rel="stylesheet" href="<%=basePath %>css/bootstrap-select.min.css">
 <link rel="stylesheet" href="<%=basePath %>css/bootstrap.min.css">
@@ -43,11 +43,6 @@
 <link rel="stylesheet" href="<%=basePath %>css/chartist-custom.css">
 <link rel="stylesheet" href="<%=basePath %>css/navbar/font-awesome.min.css">
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<style type="text/css">
-	.pageOperation {
-		cursor: pointer;
-	}
-</style>
 <%-- <link rel="stylesheet" href="<%=basePath%>css/main.css"> --%>
 <!-- 暂时不知道需不需要 -->
 <%-- <link rel="stylesheet" href="<%=basePath%>css/style.css"> --%>
@@ -63,13 +58,29 @@
 			<span style="color: white; font-size:26px; vertical-align:middle;"">云栖性能监测平台</span>
 		</div>
 		<div class="header_center">
-			<a>云主机</a> <a>个人信息</a> <a>后台管理</a>
+			<a href="/xnjcpt/skip/skip_intoComputer">云主机</a> <a class="enter_user">个人信息</a> <a class="enter_userList" href="/xnjcpt/skip/skip_intoUser">后台管理</a>
 		</div>
 		<div class="header_right">
-			<a><img class="search" align="absmiddle" src="<%=basePath %>img/search.png" /> <img
-				class="user" src="<%=basePath %>img/user.png" align="absmiddle" /></a>
+			<a href="/xnjcpt/skip/skip_intoAlarmMessage"><img src="<%=basePath %>img/message.png" align="absmiddle"/><span class="badge" id="messageCount" style="background-color: red; position:relative; left:-12px; top:-12px;">4</span></a>
+			<a><img	class="user" src="<%=basePath %>img/user.png" align="absmiddle" /></a>
 		</div>
 
 	</div>
+	<script type="text/javascript" src="<%=basePath%>js/navbar/navbar.js"></script>
+	<script type="text/javascript">
+	function getCountMessage(){
+		$.ajax({
+			url:'/xnjcpt/alarm/alarm_getCountAlamrMessage',
+			type:'GET',
+			success:function(data){
+				if(data!="noLogin"){
+					$('#messageCount').html(data);
+				}else{
+					loginIntercptor();
+				}
+			}
+		})}
+	getCountMessage();
+	</script>
 </body>
 </html>

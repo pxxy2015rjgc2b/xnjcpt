@@ -12,7 +12,7 @@ function login_ajax(){
 	formData.append("user.user_name",user_name);
 	formData.append("user.user_password",user_password);
 	$.ajax({
-		    url: "user/user_login",
+		    url: "/xnjcpt/user/user_login",
 	        type: "post",
 	        data:formData,
 	        //报错请加入以下三行，则ajax提交无问题

@@ -1,6 +1,7 @@
 package com.xnjcpt.service.alarm;
 
 import com.xnjcpt.domain.DO.xnjcpt_memory_state;
+import com.xnjcpt.domain.VO.AlarmMessageVO;
 import com.xnjcpt.domain.VO.AlarmPageVO;
 
 public interface AlarmService {
@@ -26,5 +27,13 @@ public interface AlarmService {
 	void issueOutPackageAlarm(String ip, com.xnjcpt.domain.DO.xnjcpt_net_state xnjcpt_net_state);
 
 	void issueInPackageAlarm(String ip, com.xnjcpt.domain.DO.xnjcpt_net_state xnjcpt_net_state);
+
+	int getCountAlamrMessage();
+
+	void getAlarmMessageByPage(AlarmMessageVO alarmMessageVO);
+
+	boolean updateStatus(String message_id);
+
+	boolean deleteMessage(String message_id);
 
 }

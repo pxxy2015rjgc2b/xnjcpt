@@ -11,49 +11,61 @@
 <head>
 <link rel="stylesheet" href="<%=basePath%>css/alarm/cloudList.css" />
 <style type="text/css">
-	.pageOperation{
+	.updateStatus,.pageOperation{
 		cursor: pointer;
 	}
 </style>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>进程管理</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>设置警报</title>
 </head>
 <body>
 	<div class="wrapper">
 		<!--导航条放在下面-->
 		<s:action name="skip_intoNavbar" namespace="/skip"
 			executeResult="true"></s:action>
-		<div class="manage">
+		<div class="manage" style="margin-top: 90px;">
 			<!--侧边栏放在下面-->
-			<s:action name="skip_intoSilderForComputer" namespace="/skip"
-				executeResult="true"></s:action>
-			<div class="show_box">
+			<div class="" id="show_box">
 				<div class="show_content" id="allContent">
-					<div id="head">
-						<h3>进程管理</h3>
+					<div>
+						<h3>设置警报</h3>
 					</div>
 					<div id="loadingLayer" style="margin: 0 auto; width: 45px;">
 						<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
 					</div>
 					<div id="showContent" style="margin-top: 20px;">
 						<table class="table table-hover" style="text-align: center;">
-							<tr>
-								<td>pid</td>
-								<td>进程名</td>
-								<td>操作</td>
-							</tr>
-							<template v-for="progress in progressPageVO.list">
+							<thead>
 								<tr>
-									<td>{{ progress.progress_pid }}</td>
-									<td>{{ progress.progress_name }}</td>
-									<td><button class="btn btn-danger" :id=" progress.progress_pid" onclick="clossProgress(this)">关闭</button></td>
+									<td>通知内容</td>
+									<td>通知时间</td>
+									<td>通知状态</td>
+									<td>操作</td>
 								</tr>
-							</template>
+							</thead>
+							<tbody>
+								<template v-for="alarmMessage in alarmMessagePageVO.list">
+									<tr>
+										<td>{{ alarmMessage.message_info }}</td>
+										<td>{{ alarmMessage.message_gmt_create }}</td>
+										<td class="updateStatus">
+											<template v-if="alarmMessage.message_status=='0'">
+												<img src="<%=basePath %>img/envelope.png" :id="alarmMessage.message_id" onclick="updateStatus(this)"/>
+											</template>
+											<template v-else>
+												<img src="<%=basePath %>img/openEnvelope.png"/>
+											</template>
+										</td>
+										<td><button class="btn btn-danger" :id="alarmMessage.message_id" onclick="deleteMessage(this)">删除</button></td>
+									</tr>
+								</template>
+							</tbody>
 						</table>
 					</div>
 					<div id="bottomPage" style="padding: 20px;">
-						<span>当前页数:<span id="currPage">{{ progressPageVO.currPage }}</span></span> <span>共:<span
-							id="totalPage">{{ progressPageVO.totalPage }}</span>页
+						<span>当前页数:<span id="currPage">{{ alarmMessagePageVO.currPage
+								}}</span></span> <span>共:<span id="totalPage">{{
+								alarmMessagePageVO.totalPage }}</span>页
 						</span> <span onclick="skipToIndexPage()" id="indexPage"
 							class="pageOperation">首页</span> <span
 							onclick="skipToPrimaryPage()" id="previousPage"
@@ -71,6 +83,7 @@
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript" src="<%=basePath %>js/progress/showProgress.js"></script>
+	<script type="text/javascript" src="<%=basePath %>js/alarmMessage/alarmMessage.js"></script>
+		<script type="text/javascript" src="<%=basePath %>js/alarmMessage/managerMessage.js"></script>
 </body>
 </html>

@@ -349,7 +349,8 @@ public class ComputerDaoImpl implements ComputerDao {
 	@Override
 	public int getProgressCount(String computer_id) {
 		// TODO Auto-generated method stub
-		String hql = "select count(*) from xnjcpt_progress where progress_computer = '" + computer_id + "'";
+		String hql = "select count(*) from xnjcpt_progress where progress_computer = '" + computer_id
+				+ "' and progress_name != 'java'";
 		long count = (long) this.getSession().createQuery(hql).uniqueResult();
 		return (int) count;
 	}
@@ -358,7 +359,8 @@ public class ComputerDaoImpl implements ComputerDao {
 	public List<xnjcpt_progress> getProgressByPage(String computer_id, ProgressPageVO progressPageVO) {
 		// TODO Auto-generated method stub
 
-		String hql = "from xnjcpt_progress where progress_computer = '" + computer_id + "'";
+		String hql = "from xnjcpt_progress where progress_computer = '" + computer_id
+				+ "' and progress_name != 'java' order by progress_pid asc";
 		List<xnjcpt_progress> list = this.getSession().createQuery(hql)
 				.setFirstResult((progressPageVO.getCurrPage() - 1) * progressPageVO.getPageSize())
 				.setMaxResults(progressPageVO.getPageSize()).list();

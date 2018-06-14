@@ -1,8 +1,7 @@
 /**
  * 
  */
-$(TcpNumber())
-function TcpNumber() {
+function TcpNumber(startTime,endTime) {
 	var computer_id = getId();
 	getStartTime();
 	var myChart = echarts.init(document.getElementById('TcpNumber'));
@@ -13,9 +12,9 @@ function TcpNumber() {
 				url : '/xnjcpt/monitor/monitor_getTcpNumber?monitorPageVO.computer_id='
 						+ computer_id
 						+ '&monitorPageVO.time_start='
-						+ getStartTime()
+						+ startTime
 						+ '&monitorPageVO.time_end='
-						+ getEndTime(),
+						+ endTime,
 				type : 'GET',
 				async : false,
 				success : function(datas) {

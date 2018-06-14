@@ -1,8 +1,7 @@
 /**
  * 
  */
-$(OutPackage())
-function OutPackage() {
+function OutPackage(startTime,endTime) {
 	var computer_id = getId();
 	getStartTime();
 	var myChart = echarts.init(document.getElementById('OutPackage'));
@@ -13,9 +12,9 @@ function OutPackage() {
 				url : '/xnjcpt/monitor/monitor_getOutPackageState?monitorPageVO.computer_id='
 						+ computer_id
 						+ '&monitorPageVO.time_start='
-						+ getStartTime()
+						+ startTime
 						+ '&monitorPageVO.time_end='
-						+ getEndTime(),
+						+ endTime,
 				type : 'GET',
 				async : false,
 				success : function(datas) {

@@ -1,8 +1,7 @@
 /**
  * 
  */
-$(OutBandwidth())
-function OutBandwidth() {
+function OutBandwidth(startTime,endTime) {
 	var computer_id = getId();
 	getStartTime();
 	var myChart = echarts.init(document.getElementById('OutBandwidth'));
@@ -13,9 +12,9 @@ function OutBandwidth() {
 				url : '/xnjcpt/monitor/monitor_getOutBandwidthState?monitorPageVO.computer_id='
 						+ computer_id
 						+ '&monitorPageVO.time_start='
-						+ getStartTime()
+						+ startTime
 						+ '&monitorPageVO.time_end='
-						+ getEndTime(),
+						+ endTime,
 				type : 'GET',
 				async : false,
 				success : function(datas) {

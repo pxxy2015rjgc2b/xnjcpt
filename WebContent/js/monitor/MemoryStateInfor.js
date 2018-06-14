@@ -1,8 +1,7 @@
 /**
  * 
  */
-$(MemoryInfor())
-function MemoryInfor() {
+function MemoryInfor(startTime,endTime) {
 	var computer_id = getId();
 	getStartTime();
 	var myChart = echarts.init(document.getElementById('memoryState'));
@@ -13,9 +12,9 @@ function MemoryInfor() {
 				url : '/xnjcpt/monitor/monitor_getMemoryState?monitorPageVO.computer_id='
 						+ computer_id
 						+ '&monitorPageVO.time_start='
-						+ getStartTime()
+						+ startTime
 						+ '&monitorPageVO.time_end='
-						+ getEndTime(),
+						+ endTime,
 				type : 'GET',
 				async : false,
 				success : function(datas) {

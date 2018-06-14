@@ -10,6 +10,11 @@
 <html>
 <head>
 <link rel="stylesheet" href="<%=basePath%>css/alarm/cloudList.css" />
+<style type="text/css">
+.pageOperation {
+	cursor: pointer;
+}
+</style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>主机管理</title>
 </head>
@@ -54,21 +59,25 @@
 								<template v-for="computer in computerVO.list">
 								<tr>
 									<template v-if="computer.computer_status ==  '1'">
-									<td><span class="pageOperation" style="color:blue;" onclick="intoMonitor(this,'1')" :id="computer.computer_id">{{ computer.computer_ip }}</span></td>
+									<td><span class="pageOperation" style="color: blue;"
+										onclick="intoMonitor(this,'1')" :id="computer.computer_id">{{
+											computer.computer_ip }}</span></td>
 									<td>{{ computer.computer_cpu_model }}</td>
 									<td>{{ computer.computer_disk_size }}</td>
 									<td>{{ computer.computer_memory_size }}KB</td>
 									</template>
 									<template v-else>
-									<td><span class="pageOperation" style="color:blue;" onclick="intoMonitor(this,'0')" :id="computer.computer_id">{{ computer.computer_ip }}</span></td>
+									<td><span class="pageOperation" style="color: blue;"
+										onclick="intoMonitor(this,'0')" :id="computer.computer_id">{{
+											computer.computer_ip }}</span></td>
 									<td>暂无</td>
 									<td>暂无</td>
 									<td>暂无</td>
 									</template>
 									<td><template v-if="computer.computer_status ==  '0'">未安装客户端</template>
 										<template v-else>已安装客户端</template></td>
-									<td><button class="btn btn-danger" onclick="deleteComputer(this)"
-											:id="computer.computer_id">删除</button></td>
+									<td><button class="btn btn-danger"
+											onclick="deleteComputer(this)" :id="computer.computer_id">删除</button></td>
 								</tr>
 								</template>
 							</tbody>

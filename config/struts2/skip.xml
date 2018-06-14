@@ -19,11 +19,14 @@
 			<result name="intoSlider">/WEB-INF/view/slider.jsp</result>
 			<result name="intoSilderForComputer">/WEB-INF/view/sliderForComputer.jsp</result>
 			<result name="intoAlarm">/WEB-INF/view/alarm/alarmList.jsp</result>
+			<result name="intoAlarmMessage">/WEB-INF/view/alarm/alarmMessage.jsp</result>
 			<result name="intoUser">/WEB-INF/view/user/userList.jsp</result>
 			<result name="intoUserInfo">/WEB-INF/view/user/personInfor.jsp</result>
 			<result name="intoComputer">/WEB-INF/view/computer/computerList.jsp</result>
 			<result name="intoMonitor">/WEB-INF/view/monitor/monitor.jsp</result>
 			<result name="intoPerson">/WEB-INF/view/user/personInfor.jsp</result>
+			<result name="intoProgress">/WEB-INF/view/computer/progressManagerList.jsp</result>
+			<result name="intoControl">/WEB-INF/view/computer/controlManager.jsp</result>
 			<result name="login">/index.jsp</result>
 			<interceptor-ref name="mystackHttp" />
 		</action>
