@@ -17,6 +17,7 @@
 			method="{1}">
 			<result name="intoNavbar">/WEB-INF/view/navbar.jsp</result>
 			<result name="intoSlider">/WEB-INF/view/slider.jsp</result>
+			<result name="intoSilderForComputer">/WEB-INF/view/sliderForComputer.jsp</result>
 			<result name="intoAlarm">/WEB-INF/view/alarm/alarmList.jsp</result>
 			<result name="intoUser">/WEB-INF/view/user/userList.jsp</result>
 			<result name="intoComputer">/WEB-INF/view/computer/computerList.jsp</result>

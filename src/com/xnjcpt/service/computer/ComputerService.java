@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.xnjcpt.domain.DO.xnjcpt_computer;
 import com.xnjcpt.domain.VO.ComputerPageVO;
+import com.xnjcpt.domain.VO.ProgressPageVO;
 
 public interface ComputerService {
 
@@ -20,5 +21,7 @@ public interface ComputerService {
 	com.xnjcpt.domain.DO.xnjcpt_computer getComputerById(String id);
 
 	void deleteProgressByIdAndPid(String id, String pid);
+
+	void getProgressByPage(String computer_id, ProgressPageVO progresPageVO);
 
 }

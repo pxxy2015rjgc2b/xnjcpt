@@ -6,8 +6,10 @@ import com.xnjcpt.domain.DO.xnjcpt_computer;
 import com.xnjcpt.domain.DO.xnjcpt_cpu;
 import com.xnjcpt.domain.DO.xnjcpt_disk;
 import com.xnjcpt.domain.DO.xnjcpt_memory;
+import com.xnjcpt.domain.DO.xnjcpt_progress;
 import com.xnjcpt.domain.DO.xnjcpt_user_computer;
 import com.xnjcpt.domain.VO.ComputerPageVO;
+import com.xnjcpt.domain.VO.ProgressPageVO;
 
 public interface ComputerDao {
 
@@ -56,5 +58,11 @@ public interface ComputerDao {
 	xnjcpt_computer getComputerById(String id);
 
 	void deleteProgress(String id, String pid);
+
+	int getProgressCount(String computer_id);
+
+	List<xnjcpt_progress> getProgressByPage(String computer_id, ProgressPageVO progressPageVO);
+
+	boolean deleteProgress(String computer_id);
 
 }

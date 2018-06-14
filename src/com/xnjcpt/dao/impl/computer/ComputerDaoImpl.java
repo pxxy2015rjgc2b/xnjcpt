@@ -13,9 +13,11 @@ import com.xnjcpt.domain.DO.xnjcpt_computer;
 import com.xnjcpt.domain.DO.xnjcpt_cpu;
 import com.xnjcpt.domain.DO.xnjcpt_disk;
 import com.xnjcpt.domain.DO.xnjcpt_memory;
+import com.xnjcpt.domain.DO.xnjcpt_progress;
 import com.xnjcpt.domain.DO.xnjcpt_user_computer;
 import com.xnjcpt.domain.DTO.ComputerPageDTO;
 import com.xnjcpt.domain.VO.ComputerPageVO;
+import com.xnjcpt.domain.VO.ProgressPageVO;
 
 public class ComputerDaoImpl implements ComputerDao {
 	private SessionFactory sessionFactory;
@@ -343,4 +345,32 @@ public class ComputerDaoImpl implements ComputerDao {
 				+ "'";
 		this.getSession().createQuery(hql).executeUpdate();
 	}
+
+	@Override
+	public int getProgressCount(String computer_id) {
+		// TODO Auto-generated method stub
+		String hql = "select count(*) from xnjcpt_progress where progress_computer = '" + computer_id + "'";
+		long count = (long) this.getSession().createQuery(hql).uniqueResult();
+		return (int) count;
+	}
+
+	@Override
+	public List<xnjcpt_progress> getProgressByPage(String computer_id, ProgressPageVO progressPageVO) {
+		// TODO Auto-generated method stub
+
+		String hql = "from xnjcpt_progress where progress_computer = '" + computer_id + "'";
+		List<xnjcpt_progress> list = this.getSession().createQuery(hql)
+				.setFirstResult((progressPageVO.getCurrPage() - 1) * progressPageVO.getPageSize())
+				.setMaxResults(progressPageVO.getPageSize()).list();
+		return list;
+	}
+
+	@Override
+	public boolean deleteProgress(String computer_id) {
+		// TODO Auto-generated method stub
+		String hql = "delete from xnjcpt_progress where progress_computer = '" + computer_id + "'";
+		this.getSession().createQuery(hql).executeUpdate();
+		return true;
+	}
+
 }

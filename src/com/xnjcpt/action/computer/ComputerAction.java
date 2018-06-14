@@ -16,6 +16,7 @@ import com.google.gson.Gson;
 import com.opensymphony.xwork2.ActionContext;
 import com.xnjcpt.domain.DO.xnjcpt_computer;
 import com.xnjcpt.domain.VO.ComputerPageVO;
+import com.xnjcpt.domain.VO.ProgressPageVO;
 import com.xnjcpt.service.computer.ComputerService;
 
 public class ComputerAction {
@@ -24,6 +25,8 @@ public class ComputerAction {
 	private ComputerPageVO computerPageVO;
 	private String id;
 	private String pid;
+	private String computer_id;
+	private ProgressPageVO progressPageVO;
 
 	public void setComputerService(ComputerService computerService) {
 		this.computerService = computerService;
@@ -172,6 +175,25 @@ public class ComputerAction {
 		}
 	}
 
+	// 分页获得所有进程
+	public void getProgressByPage() {
+		computerService.getProgressByPage(computer_id, progressPageVO);
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setContentType("text/html;charset=utf-8");
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Access-Control-Allow-Methods", "GET,POST");
+		try {
+			PrintWriter pw = response.getWriter();
+			Gson gson = new Gson();
+			pw.write(gson.toJson(progressPageVO));
+			pw.flush();
+			pw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 	public String getId() {
 		return id;
 	}
@@ -206,6 +228,22 @@ public class ComputerAction {
 
 	public void setComputerPageVO(ComputerPageVO computerPageVO) {
 		this.computerPageVO = computerPageVO;
+	}
+
+	public ProgressPageVO getProgressPageVO() {
+		return progressPageVO;
+	}
+
+	public void setProgressPageVO(ProgressPageVO progressPageVO) {
+		this.progressPageVO = progressPageVO;
+	}
+
+	public String getComputer_id() {
+		return computer_id;
+	}
+
+	public void setComputer_id(String computer_id) {
+		this.computer_id = computer_id;
 	}
 
 }

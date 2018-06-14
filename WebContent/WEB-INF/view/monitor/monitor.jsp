@@ -20,7 +20,7 @@
 			executeResult="true"></s:action>
 		<div class="manage">
 			<!--侧边栏放在下面-->
-			<s:action name="skip_intoSlider" namespace="/skip"
+			<s:action name="skip_intoSilderForComputer" namespace="/skip"
 				executeResult="true"></s:action>
 			<div class="show_box">
 				<div class="show_content">
@@ -107,8 +107,6 @@
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript"
-		src="<%=basePath%>js/monitor/fomaterData.js"></script>
 	<script type="text/javascript"
 		src="<%=basePath%>js/monitor/CpuUserInfor.js"></script>
 	<script type="text/javascript"

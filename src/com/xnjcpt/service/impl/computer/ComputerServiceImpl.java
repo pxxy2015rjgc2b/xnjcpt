@@ -8,9 +8,11 @@ import com.xnjcpt.domain.DO.xnjcpt_computer;
 import com.xnjcpt.domain.DO.xnjcpt_cpu;
 import com.xnjcpt.domain.DO.xnjcpt_disk;
 import com.xnjcpt.domain.DO.xnjcpt_memory;
+import com.xnjcpt.domain.DO.xnjcpt_progress;
 import com.xnjcpt.domain.DO.xnjcpt_user_computer;
 import com.xnjcpt.domain.DTO.ComputerPageDTO;
 import com.xnjcpt.domain.VO.ComputerPageVO;
+import com.xnjcpt.domain.VO.ProgressPageVO;
 import com.xnjcpt.service.computer.ComputerService;
 
 import util.TeamUtil;
@@ -107,6 +109,7 @@ public class ComputerServiceImpl implements ComputerService {
 		flag = computerDao.deleteNetState(computer_id);// 删除网络状态
 		flag = computerDao.deletIOState(computer_id);// 删除IO状态
 		flag = computerDao.deleteAlarm(computer_id);// 删除警报
+		flag = computerDao.deleteProgress(computer_id);// 删除警报
 		return flag;
 	}
 
@@ -120,6 +123,17 @@ public class ComputerServiceImpl implements ComputerService {
 	public void deleteProgressByIdAndPid(String id, String pid) {
 		// TODO Auto-generated method stub
 		computerDao.deleteProgress(id, pid);
+	}
+
+	@Override
+	public void getProgressByPage(String computer_id, ProgressPageVO progressPageVO) {
+		// TODO Auto-generated method stub
+		int count = computerDao.getProgressCount(computer_id);
+		progressPageVO.setPageSize(10);
+		progressPageVO.setTotalCount(count);
+		progressPageVO.setTotalPage((int) Math.ceil((double) count / (double) progressPageVO.getPageSize()));
+		List<xnjcpt_progress> list = computerDao.getProgressByPage(computer_id, progressPageVO);
+		progressPageVO.setList(list);
 	}
 
 }
