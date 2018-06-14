@@ -12,7 +12,7 @@ public interface UserDao {
 	public void resetPassword(String user_id, String newPassword);//找回密码
 	public void updateuser(xnjcpt_user user);//更新用户
 	public void deleteuser(String user_id);	//根据id删除用户
-	
+	void updatePassword(String user_id, String newPassword);//修改密码
 	
 	public xnjcpt_user getUserByUsername(String user_name);
 	//得到用户名（去比对）

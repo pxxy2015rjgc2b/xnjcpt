@@ -2,6 +2,7 @@ package com.xnjcpt.action.skip;
 
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.xnjcpt.service.user.UserService;
 
 /**
  * 
@@ -9,6 +10,14 @@ import com.opensymphony.xwork2.ActionSupport;
  *用于页面跳转
  */
 public class SkipAction extends ActionSupport{	 
+	
+	private UserService userService;
+	
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
+	
+	
 	public String intoNavbar(){
 		return "intoNavbar";
 	}
@@ -42,5 +51,4 @@ public class SkipAction extends ActionSupport{
 	public String intoPerson(){
 		return "intoPerson";
 	}
-
 }
