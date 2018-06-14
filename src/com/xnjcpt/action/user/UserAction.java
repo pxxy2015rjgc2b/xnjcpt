@@ -41,7 +41,7 @@ public class UserAction{
 		this.userService = userService;
 	}
 
-	//用户登陆
+	/*//用户登陆
 	public void login() throws IOException{
 		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setHeader("Access-Control-Allow-Origin", "*");
@@ -62,7 +62,7 @@ public class UserAction{
 				if(sst.equals("1")){
 				System.out.println("密码输入正确");
 				pw.write("success");	
-				session.setAttribute("user_name", xu.getUser_name());
+				session.setAttribute("user_username", xu.getUser_username());
 				session.setAttribute("user_role", xu.getUser_role());//存用户角色状态
 				session.setAttribute("user_id", xu.getUser_id());//session存user_id
 			}else{
@@ -81,7 +81,7 @@ public class UserAction{
 				System.out.println("密码输入正确");
 				String st="0";
 				xu.setUser_status(st);
-				session.setAttribute("user_name", xu2.getUser_name());
+				session.setAttribute("user_username", xu2.getUser_username());
 				session.setAttribute("user_role", xu.getUser_role());//存用户角色状态
 				session.setAttribute("user_id", xu2.getUser_id());  //session存user_id
 			}else{
@@ -98,10 +98,10 @@ public class UserAction{
 		pw.flush();
 		pw.close();
 	}
+	*/
 	
 	
-	
-/*	//用户登陆
+	//用户登陆
 		public void login() throws IOException{
 			HttpServletResponse response = ServletActionContext.getResponse();
 			response.setHeader("Access-Control-Allow-Origin", "*");
@@ -123,12 +123,12 @@ public class UserAction{
 						if(xu.getUser_role().equals("1")){
 					System.out.println("管理员登录! 密码输入正确");
 					pw.write("manager_success");	
-					session.setAttribute("user_name", xu.getUser_name());//保存管理员账户名
+					session.setAttribute("user_username", xu.getUser_username());//保存管理员账户名
 					session.setAttribute("user_role", xu.getUser_role());//存管理员角色状态
 					session.setAttribute("user_id", xu.getUser_id());//session存user_id
 						}else{
 							pw.write("user_success");	
-							session.setAttribute("user_name", xu.getUser_name());//保存普通用户账户名
+							session.setAttribute("user_username", xu.getUser_username());//保存普通用户账户名
 							session.setAttribute("user_role", xu.getUser_role());//存用户角色状态
 							session.setAttribute("user_id", xu.getUser_id());//session存user_id
 						}
@@ -147,12 +147,12 @@ public class UserAction{
 						if(xu2.getUser_role().equals("1")){
 							System.out.println("管理员登录! 密码输入正确");
 							pw.write("manager_success");	
-							session.setAttribute("user_email", xu2.getUser_email());//存管理员
+							session.setAttribute("user_username", xu2.getUser_username());//存管理员
 							session.setAttribute("user_role", xu2.getUser_role());//存用户角色状态
 							session.setAttribute("user_id", xu2.getUser_id());//session存user_id
 								}else{
 									pw.write("user_success");	
-									session.setAttribute("user_email", xu2.getUser_email());//存普通用户
+									session.setAttribute("user_username", xu2.getUser_username());//存普通用户
 									session.setAttribute("user_role", xu2.getUser_role());//存用户角色状态
 									session.setAttribute("user_id", xu2.getUser_id());//session存user_id
 								}
@@ -170,10 +170,6 @@ public class UserAction{
 			pw.flush();
 			pw.close();
 		}
-	
-	*/
-	
-	
 	
 	
 	
@@ -199,6 +195,8 @@ public class UserAction{
 			}else{
 			System.out.println("该邮箱可用！");
 			xnjcpt_user xu = new xnjcpt_user();
+			xu.setUser_username(user.getUser_username());
+			xu.setUser_phone(user.getUser_phone());
 			xu.setUser_email(user.getUser_email());
 			xu.setUser_name(user.getUser_name());
 			xu.setUser_role("0");
@@ -207,7 +205,7 @@ public class UserAction{
 			xu.setUser_id(UUID.randomUUID().toString());
 			st="0";
 			xu.setUser_status(st);
-			System.out.println(user.getUser_name());
+			//System.out.println(user.getUser_name());
 			userService.register(xu);
 			pw.write("register_success");
 		
