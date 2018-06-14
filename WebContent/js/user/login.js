@@ -21,7 +21,7 @@ function login_ajax(){
 	        contentType: false,
 	        success: function(result){
 	        	 if(result=="该账户已被封禁"){
-	        		 
+	        		 console.log("该账户已被封禁，请到邮箱点击激活链接!");
 	        	 }else{
 	        	    if(result=="success"){
 	  			       console.log("登录成功！");

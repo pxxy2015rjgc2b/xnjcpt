@@ -147,10 +147,10 @@ public class UserAction{
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpSession session = request.getSession();
 		PrintWriter pw = response.getWriter();
-		String receiveEmailAccount = user.getUser_email();// 用户邮箱
-		xnjcpt_user ux=userService.getUserByUserEmail(receiveEmailAccount);
-		
+		xnjcpt_user ux=userService.getUserByUserEmail(user.getUser_email());
+
 		if(ux!=null){
+		String receiveEmailAccount = ux.getUser_email();// 用户邮箱
 		String verifyCode=ux.getUser_id();
 		String username=ux.getUser_name();
 		SendEmail.sendEmail(receiveEmailAccount, username, verifyCode);
@@ -212,7 +212,7 @@ public class UserAction{
 		return "logoutSuccess";
 	}
 
-	
+
 	// --------------------------------------------------------�������--------------------------------------------------------------
 		/*
 		 *

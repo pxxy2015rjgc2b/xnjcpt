@@ -70,7 +70,9 @@ public class UserManagerAction {
 			System.out.println("修改密码失败");
 			pw.write("findpassword_error");
 		}else{
+			String user_id=existuser.getUser_id();
 			userManagerService.updatePassword(user_id, newPassword);
+			System.out.println(newPassword);
 			pw.write("updatesuccess");
 		}
 	}
