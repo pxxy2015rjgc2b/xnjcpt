@@ -1,39 +1,38 @@
 package com.xnjcpt.action.skip;
 
-
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
  * 
- * @author 瀛欐瘏
- *鐢ㄤ簬椤甸潰璺宠浆
+ * @author 孙毅
+ *用于跳转页面
  */
-public class SkipAction extends ActionSupport{	 
+public class SkipAction extends ActionSupport{
+
 	public String intoNavbar(){
 		return "intoNavbar";
 	}
 	public String intoSlider(){
 		return "intoSlider";
 	}
-	//杩涘叆璀︽姤
+	//进入警告管理
 	public String intoAlarm(){
 		return "intoAlarm";
 	}
-	//杩涘叆鐢ㄦ埛
+	//进入用户
 	public String intoUser(){
 		return "intoUser";
 	}
-	//杩涘叆涓绘満
+	//进入主机管理
 	public String intoComputer(){
 		return "intoComputer";
 	}
-	//杩涘叆鎬ц兘鐩戞祴
+	//进入性能监测
 	public String intoMonitor(){
 		return "intoMonitor";
 	}
-	//杩涘叆涓汉淇℃伅绠＄悊
+	//进入个人信息管理
 	public String intoPerson(){
 		return "intoPerson";
 	}
-
 }
