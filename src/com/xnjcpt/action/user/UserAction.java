@@ -44,8 +44,8 @@ public class UserAction{
 	//用户登陆
 	public void login() throws IOException{
 		HttpServletResponse response = ServletActionContext.getResponse();
-		/*response.setHeader("Access-Control-Allow-Origin", "*");
-		response.setHeader("Access-Control-Allow-Methods", "GET,POST");*/
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Access-Control-Allow-Methods", "GET,POST");
 		response.setContentType("text/html;charset=utf-8");
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpSession session = request.getSession();
@@ -79,8 +79,8 @@ public class UserAction{
 				if(sst.equals("1")){
 				pw.write("success");
 				System.out.println("密码输入正确");
-				/*String st="0";
-				xu.setUser_status(st);*/
+				String st="0";
+				xu.setUser_status(st);
 				session.setAttribute("user_name", xu2.getUser_name());
 				session.setAttribute("user_role", xu.getUser_role());//存用户角色状态
 				session.setAttribute("user_id", xu2.getUser_id());  //session存user_id
@@ -98,6 +98,84 @@ public class UserAction{
 		pw.flush();
 		pw.close();
 	}
+	
+	
+	
+/*	//用户登陆
+		public void login() throws IOException{
+			HttpServletResponse response = ServletActionContext.getResponse();
+			response.setHeader("Access-Control-Allow-Origin", "*");
+			response.setHeader("Access-Control-Allow-Methods", "GET,POST");
+			response.setContentType("text/html;charset=utf-8");
+			HttpServletRequest request = ServletActionContext.getRequest();
+			HttpSession session = request.getSession();
+			PrintWriter pw = response.getWriter();
+			xnjcpt_user xu = userService.login(user);
+			xnjcpt_user xu2=userService.getUserByUserEmail(user.getUser_email());
+			//System.out.println(xu);
+			System.out.println(xu);
+			System.out.println(xu2);
+			if(xu != null ){
+				if (xu.getUser_password().equals(user.getUser_password())){
+					String sst=xu.getUser_status();
+					System.out.println(sst);
+					if(sst.equals("1")){
+						if(xu.getUser_role().equals("1")){
+					System.out.println("管理员登录! 密码输入正确");
+					pw.write("manager_success");	
+					session.setAttribute("user_name", xu.getUser_name());//保存管理员账户名
+					session.setAttribute("user_role", xu.getUser_role());//存管理员角色状态
+					session.setAttribute("user_id", xu.getUser_id());//session存user_id
+						}else{
+							pw.write("user_success");	
+							session.setAttribute("user_name", xu.getUser_name());//保存普通用户账户名
+							session.setAttribute("user_role", xu.getUser_role());//存用户角色状态
+							session.setAttribute("user_id", xu.getUser_id());//session存user_id
+						}
+						}else{
+				pw.write("该账户已被封禁");
+					}}else{
+					pw.write("password_error");
+				}			
+			}
+				
+			else if (xu2!=null) {
+				if (xu2.getUser_password().equals(user.getUser_password())){
+					String sst=xu.getUser_status();
+					System.out.println(sst);
+					if(sst.equals("1")){
+						if(xu2.getUser_role().equals("1")){
+							System.out.println("管理员登录! 密码输入正确");
+							pw.write("manager_success");	
+							session.setAttribute("user_email", xu2.getUser_email());//存管理员
+							session.setAttribute("user_role", xu2.getUser_role());//存用户角色状态
+							session.setAttribute("user_id", xu2.getUser_id());//session存user_id
+								}else{
+									pw.write("user_success");	
+									session.setAttribute("user_email", xu2.getUser_email());//存普通用户
+									session.setAttribute("user_role", xu2.getUser_role());//存用户角色状态
+									session.setAttribute("user_id", xu2.getUser_id());//session存user_id
+								}
+								}else{
+					pw.write("该账户已被封禁");
+				}
+				}else{
+					pw.write("password_error");
+					System.out.println("密码输入错误");	
+				}}
+			else {
+				pw.write("用户名或邮箱账户输入错误");
+				System.out.println("用户名或邮箱账户输入错误");
+			}
+			pw.flush();
+			pw.close();
+		}
+	
+	*/
+	
+	
+	
+	
 	
 	//用户注册
 	public void register() throws IOException{

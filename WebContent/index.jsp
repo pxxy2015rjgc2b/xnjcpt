@@ -51,8 +51,8 @@
 				  		  <input class="usename" type="text" placeholder="邮箱/用户名" name="user_name"/>
 				  	      <input class="password" type="password" placeholder="登录密码" name="user_password"/>
 				 		  <div class="login_button">登录</div>
-				 		  <a>免费注册</a>
-				 		  <a>忘记密码</a>
+				 		  <a href="/xnjcpt/forgetPassword.jsp">忘记密码</a>
+				 		  <a href="/xnjcpt/register.jsp">免费注册</a>
 				 		</div>
 				  	</form>
 				</div>
@@ -65,7 +65,6 @@
 			</div>
 		</div>
 		<script type="text/javascript" src="<%=basePath %>/js/jquery-3.1.1.min.js"></script>
-	<script type="text/javascript" src="<%=basePath %>/js/toastr.js/"></script>
 	    <script type="text/javascript" src="<%=basePath %>js/user/login.js"></script>
 </body>
 </html>
