@@ -110,7 +110,7 @@ public class UserAction{
 			HttpServletRequest request = ServletActionContext.getRequest();
 			HttpSession session = request.getSession();
 			PrintWriter pw = response.getWriter();
-			xnjcpt_user xu = userService.login(user);
+			xnjcpt_user xu = userService.getUserByUsername(user.getUser_username());
 			xnjcpt_user xu2=userService.getUserByUserEmail(user.getUser_email());
 			//System.out.println(xu);
 			System.out.println(xu);
