@@ -1,5 +1,4 @@
 package com.xnjcpt.action.user;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
@@ -12,34 +11,21 @@ import javax.servlet.http.HttpSession;
 import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionContext;
-import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.ModelDriven;
 import com.xnjcpt.domain.DO.xnjcpt_user;
 import com.xnjcpt.service.user.UserService;
 
 import util.SendEmail;
 import util.SendEmailUpdatePassword;
 import util.TeamUtil;
-import util.md5;
 
-
-
-public class UserAction{
-	
+public class UserAction {
+	//ע��ҵ������
 	private UserService userService;
-	private xnjcpt_user user;		//域模型
-	String st=null;
-	public xnjcpt_user getUser() {
-		return user;
-	}
-
-	public void setUser(xnjcpt_user user) {
-		this.user = user;
-	}
 
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
+	String st;
 
 	/*//用户登陆
 	public void login() throws IOException{
@@ -310,6 +296,8 @@ public class UserAction{
 	private String user_role;
 	private String user_gmt_creat;
 	private String user_gmt_modified;
+	private xnjcpt_user user;
+	
 
 	public String getUser_id() {
 		return user_id;
@@ -391,7 +379,15 @@ public class UserAction{
 		this.user_gmt_modified = user_gmt_modified;
 	}
 
-	
-	
-	
+
+	private xnjcpt_user getUser() {
+		return user;
+	}
+
+
+	private void setUser(xnjcpt_user user) {
+		this.user = user;
+	}
+
+
 }

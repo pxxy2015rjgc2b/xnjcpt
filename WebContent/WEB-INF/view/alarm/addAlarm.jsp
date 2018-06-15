@@ -9,7 +9,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="stylesheet" href="<%=basePath%>css/alarm/cloudList.css" />
+<link rel="stylesheet" href="<%=basePath%>css/alarm/List.css" />
+<link rel="stylesheet" href="<%=basePath%>css/confirm_style.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>设置警报</title>
 </head>
@@ -28,14 +29,11 @@
 						<h3>设置警报</h3>
 					</div>
 					<div id="searchContent">
-						<button class="btn btn-primary" onclick="createAlarm()">
+						<button class="btn btn-primary" onclick="add_alarm()">
 							<i class="fa fa-plus"></i>添加警报
 						</button>
 						<input style="width: 250px; float: right;" type="text"
 							class="form-control" placeholder="请输入搜索内容">
-					</div>
-					<div id="loadingLayer" style="margin: 0 auto; width: 45px;">
-						<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
 					</div>
 					<div id="showContent" style="margin-top: 20px;">
 						<table class="table table-hover alarmList_table" style="text-align: center;">

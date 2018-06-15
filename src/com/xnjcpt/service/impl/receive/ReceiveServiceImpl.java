@@ -14,7 +14,7 @@ import com.xnjcpt.domain.DO.xnjcpt_net_state;
 import com.xnjcpt.service.receive.ReceiveService;
 
 public class ReceiveServiceImpl implements ReceiveService {
-	//×¢ï¿½ï¿½daoï¿½ï¿½ï¿½ï¿½ï¿½
+	//×¢Èëdao²ãµÄÀà
 	private ReceiveDao receiveDao;
 
 	public void setReceiveDao(ReceiveDao receiveDao) {
@@ -22,7 +22,7 @@ public class ReceiveServiceImpl implements ReceiveService {
 	}
 	
 	/**
-	 * serviceï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½Ä·ï¿½ï¿½ï¿½
+	 * service²ã¸ü¸ÄÖ÷»úÐÅÏ¢µÄ·½·¨
 	 */
 	@Override
 	public void updateComputerInfor(xnjcpt_computer xnjcpt_computer) {
@@ -31,7 +31,7 @@ public class ReceiveServiceImpl implements ReceiveService {
 	}
 	
 	/**
-	 * serviceï¿½ï¿½ï¿½ï¿½ï¿½cpuï¿½ï¿½Ï¢ï¿½Ä·ï¿½ï¿½ï¿½
+	 * service²ã¸ü¸ÄcpuÐÅÏ¢µÄ·½·¨
 	 */
 	@Override
 	public void updateCpuInfor(String ip,xnjcpt_cpu xnjcpt_cpu) {
@@ -40,7 +40,7 @@ public class ReceiveServiceImpl implements ReceiveService {
 	}
 	
 	/**
-	 * serviceï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½ï¿½ï¿½Ï¢ï¿½Ä·ï¿½ï¿½ï¿½
+	 * service²ã¸ü¸ÄÄÚ´æÐÅÏ¢µÄ·½·¨
 	 */
 	@Override
 	public void updateMemoryInfor(String ip, xnjcpt_memory xnjcpt_memory) {
@@ -49,7 +49,7 @@ public class ReceiveServiceImpl implements ReceiveService {
 	}
 
 	/**
-	 * serviceï¿½ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½Ä·ï¿½ï¿½ï¿½
+	 * service²ã¸ü¸Ä´ÅÅÌÐÅÏ¢µÄ·½·¨
 	 */
 	@Override
 	public void updateDiskInfor(String ip, xnjcpt_disk xnjcpt_disk) {
@@ -58,7 +58,7 @@ public class ReceiveServiceImpl implements ReceiveService {
 	}
 
 	/**
-	 * serviceï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½Ä·ï¿½ï¿½ï¿½
+	 * service²ã¸ü¸ÄÍøÂçÐÅÏ¢µÄ·½·¨
 	 */
 	@Override
 	public void updateNetInfor(String ip, xnjcpt_net xnjcpt_net) {
@@ -67,7 +67,7 @@ public class ReceiveServiceImpl implements ReceiveService {
 	}
 
 	/**
-	 * serviceï¿½ã±£ï¿½ï¿½cpu×´Ì¬ï¿½Ä·ï¿½ï¿½ï¿½
+	 * service²ã±£´æcpu×´Ì¬µÄ·½·¨
 	 */
 	@Override
 	public void saveCpuStateInfor(String ip, xnjcpt_cpu_state xnjcpt_cpu_state) {
@@ -76,7 +76,7 @@ public class ReceiveServiceImpl implements ReceiveService {
 	}
 
 	/**
-	 * serviceï¿½ã±£ï¿½ï¿½ï¿½Ú´ï¿½×´Ì¬ï¿½Ä·ï¿½ï¿½ï¿½
+	 * service²ã±£´æÄÚ´æ×´Ì¬µÄ·½·¨
 	 */
 	@Override
 	public void saveMemoryStateInfor(String ip, xnjcpt_memory_state xnjcpt_memory_state) {
@@ -85,7 +85,7 @@ public class ReceiveServiceImpl implements ReceiveService {
 	}
 
 	/**
-	 * serviceï¿½ã±£ï¿½ï¿½io×´Ì¬ï¿½Ä·ï¿½ï¿½ï¿½
+	 * service²ã±£´æio×´Ì¬µÄ·½·¨
 	 */
 	@Override
 	public void saveIoStateInfor(String ip, xnjcpt_io_state xnjcpt_io_state) {
@@ -94,7 +94,7 @@ public class ReceiveServiceImpl implements ReceiveService {
 	}
 
 	/**
-	 * serviceï¿½ã±£ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½Ï¢ï¿½Ä·ï¿½ï¿½ï¿½
+	 * service²ã±£´æ´ÅÅÌ×´Ì¬ÐÅÏ¢µÄ·½·¨
 	 */
 	@Override
 	public void saveDiskInfor(String ip, xnjcpt_disk_state xnjcpt_disk_state) {
@@ -103,7 +103,7 @@ public class ReceiveServiceImpl implements ReceiveService {
 	}
 
 	/**
-	 * serviceï¿½ã±£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½Ï¢ï¿½Ä·ï¿½ï¿½ï¿½
+	 * service²ã±£´æÍøÂç×´Ì¬ÐÅÏ¢µÄ·½·¨
 	 */
 	@Override
 	public void saveNetStateInfor(String ip, xnjcpt_net_state xnjcpt_net_state) {
@@ -111,6 +111,10 @@ public class ReceiveServiceImpl implements ReceiveService {
 		receiveDao.saveNetInfor(ip,xnjcpt_net_state);
 	}
 
+	
+
+	
+	
 	
 	
 

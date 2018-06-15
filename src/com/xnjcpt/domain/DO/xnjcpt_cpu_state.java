@@ -1,16 +1,16 @@
 package com.xnjcpt.domain.DO;
-/*cpu×´Ì¬ï¿½ï¿½*/
+/*cpu×´Ì¬±í*/
 public class xnjcpt_cpu_state {
-	private String cpu_state_id;//cpu×´Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½	
-	private String cpu_state_computer;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½	
-	private String cpu_state_time;//Ê±ï¿½ï¿½	
-	private String cpu_state_user;//ï¿½Ã»ï¿½ï¿½Õ¼ï¿½Õ¼ï¿½ï¿½cpuï¿½Ù·Ö±ï¿½	
-	private String cpu_state_nice;//ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ì¿Õ¼ï¿½ï¿½Ú¸Ä±ï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½ï¿½Ù·Ö±ï¿½	
-	private String cpu_state_system;//ï¿½ÚºÍ¿Õ¼ï¿½Õ¼ï¿½ï¿½cpuï¿½Ù·Ö±ï¿½	
-	private String cpu_state_iowait;//ï¿½È´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½cpuÊ±ï¿½ï¿½Ù·Ö±ï¿½	
-	private String cpu_state_idle;//ï¿½ï¿½ï¿½ï¿½cpuï¿½Ù·Ö±ï¿½	
-	private String cpu_state_gmt_create;//ï¿½Ö¶Î´ï¿½ï¿½ï¿½Ê±ï¿½ï¿½		
-	private String cpu_state_gmt_modified;//ï¿½Ö¶ï¿½ï¿½Þ¸ï¿½Ê±ï¿½ï¿½		
+	private String cpu_state_id;//cpu×´Ì¬±íÖ÷¼ü	
+	private String cpu_state_computer;//Ö÷»ú±íÖ÷¼ü	
+	private String cpu_state_time;//Ê±¼ä	
+	private String cpu_state_user;//ÓÃ»§¿Õ¼äÕ¼ÓÃcpu°Ù·Ö±È	
+	private String cpu_state_nice;//ÓÃ»§½ø³Ì¿Õ¼äÄÚ¸Ä±ä¹ýÓÅÏÈ¼¶°Ù·Ö±È	
+	private String cpu_state_system;//ÄÚºÍ¿Õ¼äÕ¼ÓÃcpu°Ù·Ö±È	
+	private String cpu_state_iowait;//µÈ´ýÊäÈëÊä³öµÄcpuÊ±¼ä°Ù·Ö±È	
+	private String cpu_state_idle;//¿ÕÏÐcpu°Ù·Ö±È	
+	private String cpu_state_gmt_create;//×Ö¶Î´´½¨Ê±¼ä		
+	private String cpu_state_gmt_modified;//×Ö¶ÎÐÞ¸ÄÊ±¼ä		
 	public String getCpu_state_id() {
 		return cpu_state_id;
 	}

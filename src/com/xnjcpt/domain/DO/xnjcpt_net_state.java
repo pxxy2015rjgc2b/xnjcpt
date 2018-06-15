@@ -1,17 +1,17 @@
 package com.xnjcpt.domain.DO;
-/*ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½*/
+/*ÍøÂç×´Ì¬±í*/
 public class xnjcpt_net_state {
-	private String net_state_id;//ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½	
-	private String disk_state_computer;	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½	
-	private String disk_state_time;//Ê±ï¿½ï¿½	
-	private String net_state_obandwidth;	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½		
-	private String net_state_ibandwidth;	//ï¿½ï¿½ï¿½ï¿½ï¿½		
-	private String net_state_opackage;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½	
-	private String net_state_ipackage;//ï¿½ï¿½ï¿½ï¿½ï¿½	
-	private String net_state_tcp_number;//tcpï¿½ï¿½ï¿½Ó¸ï¿½ï¿½ï¿½
-	private String net_state_otraffic;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½	
-	private String net_state_gmt_create;//ï¿½Ö¶Î´ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
-	private String net_state_gmt_modified;//ï¿½Ö¶ï¿½ï¿½Þ¸ï¿½Ê±ï¿½ï¿½
+	private String net_state_id;//ÍøÂç×´Ì¬±íÖ÷¼ü	
+	private String disk_state_computer;	//Ö÷»ú±íÖ÷¼ü	
+	private String disk_state_time;//Ê±¼ä	
+	private String net_state_obandwidth;	//³ö´ø¿í		
+	private String net_state_ibandwidth;	//Èë´ø¿í		
+	private String net_state_opackage;//³ö°üÁ¿	
+	private String net_state_ipackage;//Èë°üÁ¿	
+	private String net_state_tcp_number;//tcpÁ¬½Ó¸öÊý
+	private String net_state_otraffic;//³öÁ÷Á¿	
+	private String net_state_gmt_create;//×Ö¶Î´´½¨Ê±¼ä
+	private String net_state_gmt_modified;//×Ö¶ÎÐÞ¸ÄÊ±¼ä
 	public String getNet_state_id() {
 		return net_state_id;
 	}

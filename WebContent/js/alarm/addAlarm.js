@@ -22,13 +22,15 @@ window.onload=function(){
 function add_alarm() {
 	$.confirm({
 		title: '添加警报',
-		content: '<div class="comfirm_box"><input placeholder="要添加的主机IP" name="alarm_computer" class="comfirm_input alarm_computer" type="text"/></div><div class="comfirm_box"><select class="comfirm_select alarm_type" name="alarm_type"  placeholder="警报类型"><option>CPU利用率</option><option>CPU利用率</option><option>内存利用率</option><option>出带宽</option><option>入带宽</option><option>出包量</option><option>入包量</option></select></div><div class="comfirm_box"><input class="comfirm_input alarm_threshold_value"  placeholder="警报阈值" name="alarm_threshold_value" type="text"/></div><div class="comfirm_box"><select class="comfirm_select alarm_state" name="alarm_state"  placeholder="是否启用"><option>启用</option><option>不启用</option></select></div>',
+		content: '<div class="comfirm_box"><input placeholder="要添加的主机IP" name="alarm_computer" class="comfirm_input alarm_computer" type="text"/></div><div class="comfirm_box"><select class="comfirm_select alarm_type" name="alarm_type"  placeholder="警报类型"><option>CPU利用率</option><option>CPU利用率</option><option>内存利用率</option><option>出带宽</option><option>入带宽</option><option>出包量</option><option>入包量</option></select></div><div class="comfirm_box"><input class="comfirm_input alarm_threshold_value"  placeholder="警报阈值" name="alarm_threshold_value" type="text"/></div><div class="comfirm_box"><select class="comfirm_select alarm_state" name="alarm_state"  placeholder="是否启用"><option value="0">启用</option><option value="1">不启用</option></select></div>',
 		type: 'yellow',
 		buttons: {
 			确认: {
 				btnClass: ' btn-blue',
 				type: "blue",
-				action: function() {}
+				action: function() {
+					add_alarmAjax();
+				}
 			},
 			取消: {
 				btnClass: 'btn-red',
@@ -42,12 +44,11 @@ function add_alarm() {
 function add_alarmAjax(){
 	var formData=new FormData();
 	formData.append("alarm_computer",$("input[name='alarm_computer']").val());
-	formData.append("alarm_state",$("input[name='alarm_state']").val());
-	formData.append("alarm_type",$("input[name='alarm_type']").val());
-	formData.append("alarm_threshold_value",$("input[name='alarm_threshold_value']").val());
-	
+	formData.append("alarm_state",$(".alarm_state option:selected").val());
+	formData.append("alarm_type",$(".alarm_type option:selected").text());
+	formData.append("alarm_threshold_value",$("input[name='alarm_threshold_value']").val());	
 	$.ajax({
-		    url: "/xnjcpt/receive/receive_saveAlarmInfor",
+		    url: "/xnjcpt/alarm/alarm_saveAlarmInfor",
 	        type: "post",
 	        data:formData,
 	        //报错请加入以下三行，则ajax提交无问题
@@ -71,7 +72,9 @@ function edit_alarm(){
 			确认: {
 				btnClass: ' btn-blue',
 				type: "blue",
-				action: function() {}
+				action: function() {
+					edit_alarmAjax();
+				}
 			},
 			取消: {
 				btnClass: 'btn-red',
@@ -88,7 +91,7 @@ function edit_alarmAjax(){
 	formData.append("alarm_type",$("input[name='alarm_type']").val());
 	formData.append("alarm_threshold_value",$("input[name='alarm_threshold_value']").val());
 	$.ajax({
-	    url: "/xnjcpt/receive/receive_updateAlarmInfor",
+	    url: "/xnjcpt/alarm/alarm_updateAlarmInfor",
         type: "post",
         data:formData,
         //报错请加入以下三行，则ajax提交无问题
@@ -125,7 +128,7 @@ function delete_alarm() {
 	if (HaveDate) {
 		$
 			.ajax({
-				url : "/xnjcpt/receive/receive_deleteAlarmInfors",
+				url : "/xnjcpt/alarm/alarm_deleteAlarmInfors",
 				type : "POST",
 				contentType : false,
 				processData : false,
@@ -170,7 +173,7 @@ function show_alarmList(){
 			"saiv.pageSize":alarm_paginationQuery.pageCount,
 	}
 	$.ajax({
-	    url: "/xnjcpt/receive/receive_getAlarmInfor",
+	    url: "/xnjcpt/alarm/alarm_getAlarmInfor",
         type: "post",
         data:alarm_data,
         success: function(result){

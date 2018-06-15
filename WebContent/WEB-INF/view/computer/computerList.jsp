@@ -20,7 +20,7 @@
 			executeResult="true"></s:action>
 		<div class="manage">
 			<!--侧边栏放在下面-->
-			<s:action name="skip_intoSlider2" namespace="/skip"
+			<s:action name="skip_intoSlider" namespace="/skip"
 				executeResult="true"></s:action>
 			<div class="show_box">
 				<div class="show_content">
