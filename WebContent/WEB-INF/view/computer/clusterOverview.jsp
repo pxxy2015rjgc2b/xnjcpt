@@ -29,11 +29,12 @@
 				executeResult="true"></s:action>
 			<div class="show_box">
 				<div class="show_content" id="show_content">
-					<div>
-						<h3>集群总览</h3>
+					<div class="show_title">
+						<span>云服务器概览</span>
+					</div>
+					<div class="show_content1">
 					</div>
 				</div>
 			</div>
-		</div>
 </body>
 </html>

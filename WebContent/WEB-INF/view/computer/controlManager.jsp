@@ -29,8 +29,8 @@
 				executeResult="true"></s:action>
 			<div class="show_box">
 				<div class="show_content" id="allContent">
-					<div id="head">
-						<h3>远程控制</h3>
+					<div class="show_title">
+						<span>远程控制</span>
 					</div>
 					<div style="width: 800px; margin: 0 auto;">
 						<textarea id="terminal" rows="20" cols="125" style="background-color:  black; color: white;"></textarea>

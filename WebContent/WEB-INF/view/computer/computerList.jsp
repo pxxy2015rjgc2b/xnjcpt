@@ -29,12 +29,12 @@
 				executeResult="true"></s:action>
 			<div class="show_box">
 				<div class="show_content" id="show_content">
-					<div>
-						<h3>主机管理</h3>
+					<div class="show_title">
+						<span>主机管理</span>
 					</div>
 					<div id="searchContent">
 						<button class="btn btn-primary" onclick="createComputer()">
-							<i class="fa fa-plus"></i>添加主机
+							<i class="fa fa-plus"></i>申请主机
 						</button>
 						<input oninput="changeQuery()" id="searchContentSort"
 							style="width: 250px; float: right;" type="text"

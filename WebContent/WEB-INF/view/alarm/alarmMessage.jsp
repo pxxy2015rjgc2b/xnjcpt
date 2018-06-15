@@ -16,7 +16,7 @@
 	}
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>设置警报</title>
+<title>警报通知</title>
 </head>
 <body>
 	<div class="wrapper">
@@ -27,8 +27,8 @@
 			<!--侧边栏放在下面-->
 			<div class="" id="show_box">
 				<div class="show_content" id="allContent">
-					<div>
-						<h3>设置警报</h3>
+					<div class="show_title">
+						<span>警报通知</span>
 					</div>
 					<div id="loadingLayer" style="margin: 0 auto; width: 45px;">
 						<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>

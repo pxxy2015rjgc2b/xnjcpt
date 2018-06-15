@@ -59,4 +59,9 @@ public class SkipAction extends ActionSupport {
 	public String intoSilderForComputer() {
 		return "intoSilderForComputer";
 	}
+
+	// 进入集群总览
+	public String intoOverview() {
+		return "intoOverview";
+	}
 }

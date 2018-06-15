@@ -24,8 +24,8 @@
 				executeResult="true"></s:action>
 			<div class="show_box" id="show_box">
 				<div class="show_content">
-					<div>
-						<h3>设置警报</h3>
+					<div class="show_title">
+						<span>设置警报</span>
 					</div>
 					<div id="searchContent">
 						<button class="btn btn-primary" onclick="createAlarm()">

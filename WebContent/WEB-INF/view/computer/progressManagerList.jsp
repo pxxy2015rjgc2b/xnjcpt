@@ -29,8 +29,8 @@
 				executeResult="true"></s:action>
 			<div class="show_box">
 				<div class="show_content" id="allContent">
-					<div id="head">
-						<h3>进程管理</h3>
+					<div class="show_title">
+						<span>进程管理</span>
 					</div>
 					<div id="loadingLayer" style="margin: 0 auto; width: 45px;">
 						<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
