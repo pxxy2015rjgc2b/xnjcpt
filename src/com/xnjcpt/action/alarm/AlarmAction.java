@@ -20,7 +20,7 @@ import com.xnjcpt.domain.DO.*;
 import com.xnjcpt.domain.VO.showAlarmInforVo;;
 
 public class AlarmAction {
-	//в╒хКр╣нЯ╡Ц╣дюЮ
+	//в╒О©╫О©╫р╣О©╫О©╫О©╫О©╫О©╫О©╫
 	private AlarmService alarmService;
 
 	public void setAlarmService(AlarmService alarmService) {
@@ -40,11 +40,11 @@ public class AlarmAction {
 	private xnjcpt_alarm xnjcpt_alarm;
 	
 	/**
-	 * ╩Ях║╬╞╠╗пео╒ё╛╢Ф╢╒╬╞╠╗пео╒
+	 * О©╫О©╫х║О©╫О©╫О©╫О©╫О©╫О©╫о╒О©╫О©╫О©╫Ф╢╒О©╫О©╫О©╫О©╫О©╫О©╫о╒
 	 * @throws IOException 
 	 */
 	public void saveAlarmInfor() throws IOException{
-		System.out.println("getAlarmInforж╢ппё║");
+		System.out.println("saveAlarmInfor");
 		xnjcpt_alarm xnjcpt_alarm=new xnjcpt_alarm();
 		xnjcpt_alarm.setAlarm_computer(alarm_computer);
 		xnjcpt_alarm.setAlarm_state(alarm_state);
@@ -53,8 +53,8 @@ public class AlarmAction {
 		xnjcpt_alarm.setAlarm_gmt_create(TeamUtil.getStringSecond());
 		xnjcpt_alarm.setAlarm_gmt_modified(TeamUtil.getStringSecond());
 		xnjcpt_alarm.setAlarm_id(TeamUtil.getUuid());
-		/**сц╩╖╣гб╪╨Сё╛session╩А╠ё╢Ф╤тс╕╣дсц╩╖пео╒
-		 * ╢сsession╤тоСжп╩Ях║╤тс╕╣дсц╩╖id
+		/**О©╫ц╩О©╫О©╫О©╫б╪О©╫О©╫sessionО©╫А╠ёО©╫О©╫О©╫с╕О©╫О©╫О©╫ц╩О©╫О©╫О©╫о╒
+		 * О©╫О©╫sessionО©╫О©╫О©╫О©╫О©╫п╩О©╫х║О©╫О©╫с╕О©╫О©╫О©╫ц╩О©╫id
 		 */
 		//String user_id = (String) ActionContext.getContext().getSession().get("user_id");
 		String alarm_user = (String) ActionContext.getContext().getSession().get("user_id");
@@ -68,12 +68,12 @@ public class AlarmAction {
 		 alarmService.saveAlarmInfor(xnjcpt_alarm);
 		 
 		 PrintWriter pw = response.getWriter();
-		 pw.write("╬╞╠╗пео╒╢Ф╢╒Ёи╧╕ё║");
+		 pw.write("Х╜╕Ф┼╔Д©║Ф│╞Д©²Е╜≤Ф┬░Е┼÷");
 		
 		
 	}
 //	/**
-//	 * ╦Э╦д╬╞╠╗в╢л╛ё╛фТсц╩Р╬╞сц
+//	 * О©╫О©╫О©╫д╬О©╫О©╫О©╫в╢л╛О©╫О©╫О©╫О©╫О©╫ц╩О©╫О©╫О©╫
 //	 * @return
 //	 * @throws IOException 
 //	 */
@@ -81,46 +81,46 @@ public class AlarmAction {
 //		HttpServletResponse response = ServletActionContext.getResponse();
 //		response.setContentType("text/html;charset=utf-8");
 //		PrintWriter pw = response.getWriter();
-//		//╦Ы╬щ╬╞╠╗╣дidпч╦д╬╞╠╗пео╒
+//		//О©╫О©╫О©╫щ╬О©╫О©╫О©╫О©╫О©╫idО©╫ч╦д╬О©╫О©╫О©╫О©╫О©╫о╒
 //		if(alarm_id=="" ||alarm_id==null){		
 //			pw.write("Error!");
 //		}else{
 //			//System.out.println(alarm_id);
 //			//pw.write(alarm_id);
-//			//╡Ия╞╤тс╕жВ╩Зid╣д╬╞╠╗пео╒
+//			//О©╫О©╫я╞О©╫О©╫с╕О©╫О©╫О©╫О©╫idО©╫д╬О©╫О©╫О©╫О©╫О©╫о╒
 //			xnjcpt_alarm xa=alarmService.getAlarmInforByAlarmComputer(alarm_id);
-//			//еп╤о╬╞╠╗в╢л╛йг╥ЯоЮм╛
+//			//О©╫п╤о╬О©╫О©╫О©╫в╢л╛О©╫г╥О©╫О©╫О©╫м╛
 //			if(xa.getAlarm_state().equals(alarm_state)){
 //				pw.write(alarm_state+"       "+xa.getAlarm_state());
-//				pw.write("гКя║тЯпХр╙╦Э╦д╣дв╢л╛ё║");
+//				pw.write("О©╫О©╫я║О©╫О©╫О©╫О©╫р╙О©╫О©╫О©╫д╣О©╫в╢л╛О©╫О©╫");
 //			}else{
 //				//pw.write("ok");
 //				pw.write(alarm_state+"   else    "+xa.getAlarm_state());
-//				pw.write("╬╞╠╗в╢л╛╦Э╦дЁи╧╕ё║");
+//				pw.write("О©╫О©╫О©╫О©╫в╢л╛О©╫О©╫О©╫дЁи╧О©╫О©╫О©╫");
 //				alarmService.updateAlarmState(alarm_id,alarm_state);
 //			}
 //		}
 //	}
 	
 	/**
-	 * и╬ЁЩ╬╞╠╗пео╒
+	 * и╬О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫о╒
 	 * @return
 	 * @throws IOException 
 	 */
 	public void deleteAlarmInfor() throws IOException{
-		//╦Ы╬щ╬╞╠╗╣дidи╬ЁЩ╬╞╠╗пео╒
+		//О©╫О©╫О©╫щ╬О©╫О©╫О©╫О©╫О©╫idи╬О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫о╒
 		alarmService.deleteAlarmInfor(alarm_id);
 		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter pw = response.getWriter();
-		pw.write("и╬ЁЩЁи╧╕");
+		pw.write("Х╜╕Ф┼╔Д©║Ф│╞Е┬═И≥╓Ф┬░Е┼÷О╪│");
 		pw.flush();
 		pw.close();
 		
 	}
 	
 	/**
-	 * ╥жрЁотй╬кЫсп╣д╬╞╠╗пео╒
+	 * О©╫О©╫рЁО©╫О©╫й╬О©╫О©╫О©╫п╣д╬О©╫О©╫О©╫О©╫О©╫о╒
 	 * @return
 	 * @throws IOException 
 	 */
@@ -137,7 +137,7 @@ public class AlarmAction {
 	}
 	
 	/**
-	 * ╣Ц╩ВоЙо╦пео╒ё╛╩Я╣ц╬╞╠╗╣доЙо╦пео╒тзрЁцФотй╬
+	 * О©╫О©╫О©╫О©╫О©╫о╦О©╫О©╫о╒О©╫О©╫О©╫О©╫ц╬О©╫О©╫О©╫О©╫О©╫О©╫О©╫о╦О©╫О©╫о╒О©╫О©╫рЁО©╫О©╫О©╫О©╫й╬
 	 * @return
 	 * @throws IOException 
 	 */
@@ -156,7 +156,7 @@ public class AlarmAction {
 	}
 	
 	/**
-	 * ╣Ц╩Впч╦дё╛╦Э╦д╬╞╠╗пео╒
+	 * О©╫О©╫О©╫О©╫ч╦дёО©╫О©╫О©╫О©╫д╬О©╫О©╫О©╫О©╫О©╫о╒
 	 * @return
 	 * @throws IOException 
 	 */
@@ -169,12 +169,12 @@ public class AlarmAction {
 		response.setHeader("Access-Control-Allow-Methods", "GET,POST");
 		
 		PrintWriter pw = response.getWriter();
-		pw.write("╬╞╠╗пео╒╦Э╦дЁи╧╕ё║");
+		pw.write("О©╫О©╫О©╫О©╫О©╫О©╫о╒О©╫О©╫О©╫дЁи╧О©╫О©╫О©╫");
 		
 	}
 	
 	/**
-	 * еЗа©и╬ЁЩ╤Ю╦Ж╬╞╠╗пео╒
+	 * О©╫О©╫О©╫О©╫и╬О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫о╒
 	 * @return
 	 * @throws IOException 
 	 */
@@ -189,7 +189,7 @@ public class AlarmAction {
 		 response.setHeader("Access-Control-Allow-Methods", "GET,POST");
 		 
 		 PrintWriter pw = response.getWriter();
-		 pw.write("╬╞╠╗и╬ЁЩЁи╧╕ё║");
+		 pw.write("О©╫О©╫О©╫О©╫и╬О©╫О©╫О©╫и╧О©╫О©╫О©╫");
 	}
 	
 
