@@ -23,7 +23,7 @@
 			<s:action name="skip_intoSlider" namespace="/skip"
 				executeResult="true"></s:action>
 			<div class="show_box">
-				<div class="show_content">
+				<div class="show_content alarmList">
 					<div>
 						<h3>设置警报</h3>
 					</div>
@@ -38,23 +38,31 @@
 						<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
 					</div>
 					<div id="showContent" style="margin-top: 20px;">
-						<table class="table table-hover" style="text-align: center;">
-							<tbody>
-								<tr>
-									<td>主机ip</td>
-									<td>警报类型</td>
-									<td>警报阈值</td>
-									<td>操作</td>
-								</tr>
-							</tbody>
+						<table class="table table-hover alarmList_table" style="text-align: center;">
 							<thead>
-
+								<tr>
+							        <th><input type="checkbox" style="text-align: center;" name="checkAll"/></th>
+									<th>主机ip</th>
+									<th>警报类型</th>
+									<th>警报阈值</th>
+									<th>操作</th>
+								</tr>
 							</thead>
+							<tbody>
+							<tr v-for="alarm in alarms">
+                                  <td><input type="checkbox" style="text-align: center;" name="delete_check"/></td>
+                                  <td style="display:none;" :id="alarm.alarm_id"></td>
+                                  <td>{{ alarm.alarm_computer }}</td>
+                                  <td>{{ alarm.alarm_type }}</td>
+                                  <td>{{ alarm.alarm_threshold_value }}</td>
+                                  <td><i class="fa fa-pencil-square-o" onclick="edit_alarm()" style="margin-left: 7px;" aria-hidden="true"></i></td>
+                                 </tr>
+							</tbody>
 						</table>
 					</div>
 					<div id="bottomPage" style="padding: 20px;">
-						<span>当前页数:<span id="currPage">1</span></span> <span>共:<span
-							id="totalPage">2</span>页
+						<span>当前页数:<span id="currPage">{{ currPage }}</span></span> <span>共:<span
+							id="totalPage">{{ totalPage }}</span>页
 						</span> <span onclick="skipToIndexPage()" id="indexPage"
 							class="pageOperation">首页</span> <span
 							onclick="skipToPrimaryPage()" id="previousPage"

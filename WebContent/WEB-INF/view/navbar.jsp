@@ -57,7 +57,7 @@
 			<span style="color: white; font-size:26px; vertical-align:middle;"">云栖性能监测平台</span>
 		</div>
 		<div class="header_center">
-			<a href="/xnjcpt/skip/skip_intoComputer">云主机</a> <a class="enter_user">个人信息</a> <a class="enter_userList" href="/xnjcpt/skip/skip_intoUser">后台管理</a>
+			<a href="/xnjcpt/skip/skip_intoComputer">云主机</a> <a class="enter_user" onclick="enter_userAjax()">个人信息</a> <a class="enter_userList" href="/xnjcpt/skip/skip_intoUser">后台管理</a>
 		</div>
 		<div class="header_right">
 			<a><img class="search" align="absmiddle" src="<%=basePath %>img/search.png" /> <img

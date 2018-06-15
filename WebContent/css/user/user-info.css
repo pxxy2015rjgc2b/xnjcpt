@@ -13,11 +13,9 @@
 }
 /*右边展示的盒子*/
 .show_box{
-    width: 85%;
-	height: auto;
+	width:100%;
+	height: 600px;
 	display: inline-block;
-	position: absolute;
-	left: 200px;
 	background:#f5f5fa;
 }
 .show_content{
@@ -28,7 +26,7 @@
     font-weight: 300;
 }
 .show_content>.uesr_info{
-	width: 1000px;
+	width:95%;
 	height: 400px;
 	margin-bottom: 50px;
 }

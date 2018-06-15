@@ -39,7 +39,4 @@ public class AjaxUserLogin extends AbstractInterceptor{
 
 
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> f1f3757c1190e6cff017b6f6ff3e8b59cba8f998
