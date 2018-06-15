@@ -9,7 +9,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="stylesheet" href="<%=basePath%>css/alarm/cloudList.css" />
+<link rel="stylesheet" href="<%=basePath%>css/alarm/List.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>用户管理</title>
 </head>
@@ -20,7 +20,7 @@
 			executeResult="true"></s:action>
 		<div class="manage">
 			<!--侧边栏放在下面-->
-			<s:action name="skip_intoSlider" namespace="/skip"
+			<s:action name="skip_intoSlider2" namespace="/skip"
 				executeResult="true"></s:action>
 			<div class="show_box" id="userVue">
 				<div class="show_content">
@@ -45,19 +45,19 @@
 									<th>用户名</th>
 									<th>用户邮箱</th>
 									<th>手机号码</th>
-									<th>用户状态</th>
+									<th>用户操作</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr v-for="user in users">
-									<td><input name="delete_check" :id="user.user_id" onclick="cancle_all()" type="checkbox" /></td>
+									<td   style="text-align:center;"  ><input name="delete_check" :id="user.user_id" onclick="cancle_all()" type="checkbox" /></td>
 									<td style="display: none;"><a :id="user.user_id"></a></td>
-									<td><a>{{ user.user_name }}</a></td>
 									<td>{{ user.user_username }}</td>
+									<td>{{ user.user_name }}</td>
 									<td>{{ user.user_email }}</td>
 									<td>{{ user.user_phone }}</td>
-									<td v-if="user.user_status==0"><a class="chang_status" :id="user.user_id" onClick="openSure(this)">封禁</a></td>
-									<td v-if="user.user_status==1"><a class="chang_status" :id="user.user_id" onClick="cloSure(this)">解禁</a></td>
+									<td v-if="user.user_status==0"><a class="chang_status" :id="user.user_id" onClick="openSure(this)">解禁</a></td>
+									<td v-if="user.user_status==1"><a class="chang_status" :id="user.user_id" onClick="cloSure(this)">封禁</a></td>
 								</tr>
 							</tbody>
 						</table>

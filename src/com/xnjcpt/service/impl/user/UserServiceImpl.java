@@ -24,11 +24,7 @@ public class UserServiceImpl implements UserService {
 		userDao.register(user);
 	}
 
-	@Override
-	public void resetPassword( String user_id, String newPassword) {
-		// TODO Auto-generated method stub
-		userDao.resetPassword(user_id, newPassword);
-	}
+	
 
 	@Override
 	public xnjcpt_user getUserByUsername(String user_name) {
@@ -72,5 +68,10 @@ public class UserServiceImpl implements UserService {
 		userDao.deleteuser(user_id);
 	}
 	
+	@Override
+	public void updatePassword(String user_id, String newPassword) {
+		// TODO Auto-generated method stub
+		userDao.updatePassword(user_id, newPassword);
+	}
 
 }

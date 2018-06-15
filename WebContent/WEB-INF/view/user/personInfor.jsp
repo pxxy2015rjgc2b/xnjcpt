@@ -21,8 +21,6 @@
 			executeResult="true"></s:action>
 		<div class="manage">
 			<!--侧边栏放在下面-->
-			<s:action name="skip_intoSlider" namespace="/skip"
-				executeResult="true"></s:action>
 			<div class="show_box" id="user_info">
 				<div class="show_content">
 				<div class="uesr_infoTitle">帐户信息</div>

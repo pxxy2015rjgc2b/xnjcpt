@@ -19,7 +19,6 @@ public class AjaxUserLogin extends AbstractInterceptor {
 		HttpServletResponse response = (HttpServletResponse) actionContext.get(StrutsStatics.HTTP_RESPONSE);
 		HttpServletRequest request = (HttpServletRequest) actionContext.get(StrutsStatics.HTTP_REQUEST);
 		HttpSession session = request.getSession();
-		session.setAttribute("user_id", "1");
 		String user_id = (String) session.getAttribute("user_id");
 		response.setContentType("text/html;charset=utf-8");
 		response.setHeader("Access-Control-Allow-Origin", "*");

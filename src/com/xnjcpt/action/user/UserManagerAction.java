@@ -58,7 +58,7 @@ public class UserManagerAction {
 			pw.write("updateFail");
 		}
 	}
-	
+
 	//通过邮箱发送修改旧密码
 	public void updatePasswordbyverifyCode() throws IOException {
 		HttpServletResponse response = ServletActionContext.getResponse();
@@ -78,8 +78,12 @@ public class UserManagerAction {
 	}
 	
 	//得到用户搜索列表
+	
+	//得到用户搜索列表
 	public void getUsers() throws IOException {
+
 		PageBean_user<xnjcpt_user> pb = (PageBean_user<xnjcpt_user>) userManagerService.findPageByKeyword(currentPage, pageSize, keyword);
+
 		Gson gson = new Gson();//用来转换JSON数据类型的
 		String result = gson.toJson(pb);
 		System.out.println(result);

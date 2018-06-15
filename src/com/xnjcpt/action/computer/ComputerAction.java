@@ -240,13 +240,13 @@ public class ComputerAction {
 			bw.close();
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
-			pw.write("客户端未开启");
+			pw.write("客户端未开启\n");
 			pw.write("$：");
 			pw.flush();
 			pw.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			pw.write("客户端未开启");
+			pw.write("客户端未开启\n");
 			pw.write("$：");
 			pw.flush();
 			pw.close();
