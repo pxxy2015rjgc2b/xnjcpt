@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.ServletActionContext;
@@ -19,7 +20,7 @@ import util.TeamUtil;
 public class UserManagerAction {
 	
 	/*
-	 * author：叶凯
+	 * @author：叶凯
 	 * 
 	 * */
 	
@@ -57,26 +58,32 @@ public class UserManagerAction {
 			pw.write("updateFail");
 		}
 	}
-	
+
 	//通过邮箱发送修改旧密码
-	public void updatePasswordbyemail() throws IOException {
+	public void updatePasswordbyverifyCode() throws IOException {
 		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter pw = response.getWriter();
 		xnjcpt_user existuser=new xnjcpt_user();
-		existuser=userManagerService.getUserByUserId(user_id);
+		existuser=userManagerService.getUserByUserEmail(user_email);
 		if(existuser==null){
 			System.out.println("修改密码失败");
 			pw.write("findpassword_error");
 		}else{
+			String user_id=existuser.getUser_id();
 			userManagerService.updatePassword(user_id, newPassword);
+			System.out.println(newPassword);
 			pw.write("updatesuccess");
 		}
 	}
 	
 	//得到用户搜索列表
-	public void getUser() throws IOException {
-		PageBean_user<xnjcpt_user> pb = userManagerService.findPageByKeyword(currentPage, pageSize, keyword);
+	
+	//得到用户搜索列表
+	public void getUsers() throws IOException {
+
+		PageBean_user<xnjcpt_user> pb = (PageBean_user<xnjcpt_user>) userManagerService.findPageByKeyword(currentPage, pageSize, keyword);
+
 		Gson gson = new Gson();//用来转换JSON数据类型的
 		String result = gson.toJson(pb);
 		System.out.println(result);
@@ -118,29 +125,46 @@ public class UserManagerAction {
 	
 	//修改用户信息
 		public void updateUser() throws IOException {
-			String user_id = (String) ActionContext.getContext().getSession().get("user_id");
-			xnjcpt_user user=userManagerService.getUserByUserId(user_id);
-			user.setUser_name(user_name);
-			user.setUser_username(user_username);
-			user.setUser_phone(user_phone);
-			user.setUser_gmt_create(TeamUtil.getStringSecond());//保存修改时间信息
-			userManagerService.updateuser(user);
 			HttpServletResponse response = ServletActionContext.getResponse();
 			response.setContentType("text/html;charset=utf-8");
 			PrintWriter pw = response.getWriter();
-			pw.write("修改用户");
+			String user_id = (String) ActionContext.getContext().getSession().get("user_id");
+			System.out.println(user_id);
+			xnjcpt_user user=userManagerService.getUserByUserId(user_id);		
+			if(user_username!=null){		
+			user.setUser_username(user_username);
+			user.setUser_gmt_modified(TeamUtil.getStringSecond());//保存修改时间信息
+			userManagerService.updateuser(user);
+			pw.write("修改用户姓名成功");
 			pw.flush();
 			pw.close();
+			}else if(user_phone!=null){
+				user.setUser_phone(user_phone);
+				user.setUser_gmt_modified(TeamUtil.getStringSecond());//保存修改时间信息
+				userManagerService.updateuser(user);
+				pw.write("修改用户电话成功");
+				pw.flush();
+				pw.close();
+			}
+			else{
+				pw.write("修改用户信息失败");
+				pw.flush();
+				pw.close();
+			}
+			
 		}
 
 	//删除用户
 	public void deleteUser() throws IOException {
 		HttpServletResponse response = ServletActionContext.getResponse();
+		 HttpServletRequest request = ServletActionContext.getRequest();
 		response.setContentType("text/html;charset=utf-8");
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Access-Control-Allow-Methods", "GET,POST");
 		PrintWriter pw = response.getWriter();
-		xnjcpt_user user=userManagerService.getUserByUserId(user_id);
-		if(user.getUser_id()!=null){
-		userManagerService.deleteuser(user_id);
+		String[] user_ids = request.getParameterValues("user_id");
+		if(user_ids!=null){
+			userManagerService.deleteuser(user_ids);
 		pw.write("删除用户");
 		pw.flush();
 		pw.close();
@@ -166,6 +190,7 @@ public class UserManagerAction {
 	
 	//解禁用户
 		public void liftUser() throws IOException{
+			System.out.println("p");
 			xnjcpt_user user=userManagerService.getUserByUserId(user_id);
 			user.setUser_status("1");
 			user.setUser_gmt_modified(TeamUtil.getStringSecond());
@@ -185,6 +210,7 @@ public class UserManagerAction {
 	private String keyword;
 	private String user_name;
 	private String user_id;
+	private String user_email;
 	private String user_username;
 	private String user_phone;
 	private PageBean_user<xnjcpt_user> pb2;
@@ -266,6 +292,14 @@ public class UserManagerAction {
 
 	public void setUser_username(String user_username) {
 		this.user_username = user_username;
+	}
+
+	public String getUser_email() {
+		return user_email;
+	}
+
+	public void setUser_email(String user_email) {
+		this.user_email = user_email;
 	}
 	
 	

@@ -3,7 +3,10 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-
+	<bean id="skipAction" class="com.xnjcpt.action.skip.SkipAction"
+		scope="prototype">
+		<property name="userService" ref="userService"></property>
+	</bean>
 	<bean id="userAction" class="com.xnjcpt.action.user.UserAction"
 		scope="prototype">
 		<property name="userService" ref="userService"></property>

@@ -28,7 +28,7 @@ public class UserManagerServiceImpl implements UserManagerService {
 	}
 
 	@Override
-	public void deleteuser(String user_id) {
+	public void deleteuser(String[] user_id) {
 		// TODO Auto-generated method stub
 		userManagerDao.deleteuser(user_id);
 	}

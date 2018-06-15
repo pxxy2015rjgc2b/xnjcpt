@@ -6,7 +6,7 @@ import com.xnjcpt.domain.DO.xnjcpt_user;
 
 public interface UserManagerDao {
 	void adduser(xnjcpt_user user);//增加用户
-	void deleteuser(String user_id);	//根据id删除用户
+	void deleteuser(String[] user_ids);	//根据id删除用户
 	void updateuser(xnjcpt_user user);//更新用户
 	void updatePassword(String user_id, String newPassword);//修改密码
 	

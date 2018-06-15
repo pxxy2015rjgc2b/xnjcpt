@@ -1,3 +1,4 @@
+
 package com.xnjcpt.interceptor;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +10,7 @@ import org.apache.struts2.StrutsStatics;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
+
 
 public class AjaxUserLogin extends AbstractInterceptor{
 
@@ -37,3 +39,4 @@ public class AjaxUserLogin extends AbstractInterceptor{
 
 
 }
+

@@ -24,19 +24,17 @@
 		</div>
 		<div class="register_box">
 			<div class="email_title">
-				<i class="fa fa-envelope-o fa-3x" aria-hidden="true"></i> <span>使用邮箱注册</span>
+				<i class="fa fa-envelope-o fa-3x" aria-hidden="true"></i> <span>使用邮箱找回密码</span>
 				<div class="title_right">
-					<span>已有账户？</span> <a href="index.jsp">立即登陆</a>
+					<span>记起密码？</span> <a href="/xnjcpt/index.jsp">立即登陆</a>
 				</div>
 			</div>
-			<form id="register" class="register_content">
-				    <input type="text" placeholder="用户名" name="user_username"/>
-				       <input type="text" placeholder="用户性名" name="user_name"/>
-				          <input type="text" placeholder="用户号码" name="user_phone"/>
-				   <input type="text" placeholder="邮箱地址" name="user_email"/>
-					<input type="password" placeholder="密码" name="user_password"/>
-					<input type="password" placeholder="确认密码" />
-					<div class="register_button">注册</div>
+			<form id="register" class="register_content">   
+		        	<input type="text" placeholder="邮箱地址" name="user_email"/>
+				    <input type="text" placeholder="新密码" name="user_password"/>
+				    <input type="text" placeholder="确认密码"/><span></span>
+				    <input type="text" placeholder="验证码" class="identify_codeInput"/><div class="identify_code" onclick="sendEmail()">验证码</div>
+					<div class="forgetPassword_button" onclick="forgetPassword()">通过邮箱找回密码</div>
 			</form>
 		</div>
 		<div class="reg_footer">Copyright @ 2018-2019 PingXiangXueYuan

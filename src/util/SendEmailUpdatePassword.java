@@ -15,13 +15,13 @@ public class SendEmailUpdatePassword {
 		// PS: 某些邮箱服务器为了增加邮箱本身密码的安全性，给 SMTP 客户端设置了独立密码（有的邮箱称为“授权码”）,
 		// 对于开启了独立密码的邮箱, 这里的邮箱密码必需使用这个独立密码（授权码）。
 		private static final String myEmailAccount = "3288894476@qq.com";
-		private static final String myEmailPassword = "hyjtsmfieoledbga";
+		private static final String myEmailPassword = "ieplvmipqhwzchce";
 
 		// 发件人邮箱的 SMTP 服务器地址, 必须准确, 不同邮件服务器地址不同, 一般(只是一般, 绝非绝对)格式为: smtp.xxx.com
 		// 网易163邮箱的 SMTP 服务器地址为: smtp.163.com
 		private final static String myEmailSMTPHost = "smtp.qq.com";
 
-		public static String sendEmail(String receiveMailAccount, String username,String verifyCode) throws Exception {
+		public static String sendEmail(String receiveMailAccount, String username) throws Exception {
 			// 1. 创建参数配置, 用于连接邮件服务器的参数配置
 			Properties props = new Properties(); // 参数配置
 			props.setProperty("mail.transport.protocol", "smtp"); // 使用的协议（JavaMail规范要求）
@@ -51,7 +51,7 @@ public class SendEmailUpdatePassword {
 			// 3. 创建一封邮件
 			MimeMessage message = new MimeMessage(session);
 
-			//String verifyCode = String.valueOf(new Random().nextInt(899999) + 100000);// 生成短信验证码
+			String verifyCode = String.valueOf(new Random().nextInt(899999) + 100000);// 生成短信验证码
 			// System.out.println("sadasdasdasdasd:"+verifyCode);
 			// 4 From: 发件人（昵称有广告嫌疑，避免被邮件服务器误认为是滥发广告以至返回失败，请修改昵称）
 			message.setFrom(new InternetAddress(myEmailAccount, "性能监测系统管理员", "UTF-8"));
@@ -64,7 +64,7 @@ public class SendEmailUpdatePassword {
 
 			// 7. Content: 邮件正文（可以使用html标签）（内容有广告嫌疑，避免被邮件服务器误认为是滥发广告以至返回失败，请修改发送内容）
 			//message.setContent(username + "用户你好,您的提供操作的验证码是" + verifyCode, "text/html;charset=UTF-8");
-			message.setContent(username + "<H1>用户你好,云栖系统激活邮件！点击以下链接进行密码</H1> <h3><a href='http://192.168.233.1:8080/xnjcpt/user/userManager_updatePasswordbyemail?user.user_id="+verifyCode+"'>http://192.168.233.1:8080/xnjcpt/user/userManager_updatePasswordbyemail?user.user_id="+verifyCode+"</a></h3>", "text/html;charset=UTF-8");
+			message.setContent(username + "<H1>用户你好,云栖系统修改密码邮件！你的验证码是:</H1>" +verifyCode, "text/html;charset=UTF-8");
 			// 8. 设置发件时间
 			message.setSentDate(new Date());
 
