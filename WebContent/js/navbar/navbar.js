@@ -1,10 +1,9 @@
-window.onload=function(){
-	console.log("详情");
-	$(".enter_user").click(function(){
-		console.log("点击详情");
-		enter_userAjax();
-	});
-}
+$(".usre_info,.user_infoBox").mouseover(function(){
+	$(".user_infoBox").css("display","block");
+});
+$(".usre_info,.user_infoBox").mouseout(function(){
+	$(".user_infoBox").css("display","none");
+});
 function enter_userAjax(){
 	$.ajax({
 		url: "/xnjcpt/userManager/userManager_getUserById",

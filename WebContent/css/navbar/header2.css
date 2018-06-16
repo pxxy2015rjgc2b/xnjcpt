@@ -10,7 +10,7 @@ li ,input{
 	padding: 0px;
 }
 a{
-	
+	text-decoration: none;
 }
 a:hover{
 	color:#3d91ff;
@@ -20,7 +20,6 @@ a:hover{
 .header_box{
 	width:100%;
 	height: 70px;
-	overflow: hidden;
 	position: fixed;
 	background:black;
 	color: #566374;
@@ -51,13 +50,73 @@ a:hover{
 }
 /*瀵艰埅鏉″彸杈�*/
 .header_right{
+    float: right;
+    text-align: right;
+    display: inline-block;
+    margin-right: 20px;
+    color: white;
+}
+
+/*用户信息*/
+.header_right .usre_info{
+	float: right;
+	font: 12px/70px "微软雅黑";
+}
+.header_right .usre_info:hover{
+	color: #3d91ff;
+}
+.header_right .usre_info i{
+	color: white;
+	margin-left: 10px;
+}
+/*下拉*/
+.header_right .user_infoBox{
 	width: 100px;
-float: right;
-text-align: right;
-display: inline-block;
-margin: 20px 30px;
+	height: 100px;
+	display: none;
+	background: #000000;
+	overflow: hidden;
+	list-style: none;
+	position: relative;
+	top: -4px;
+    left: -10px;
+}
+.header_right .user_infoBox li{
+ text-align: left;
+ margin-left: 20px;
+}
+.usre_info :hover{
+	cursor: pointer;
+}
+.header_right .user_infoBox li a{
+	color: white;
+	font:12px/50px "微软雅黑";
+}
+
+.header_right .user_infoBox li a:hover{
+	color: #3d91ff;
+}
+/*通知*/
+.header_right .inform{
+	float: right;
+	margin:25px 0px;
+	margin-left: 10px;
+}
+.header_right .inform span{
+	    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #F44336;
+    color: white;
+    display: inline-block;
+    font: 12px/18px "微软雅黑";
+    text-align: center;
+    position: relative;
+    top: -13px;
+    left: -9px;
 }
 .search{
 	display: inline-block;
-margin-right: 10px;
+    margin-right: 10px;
 }
+

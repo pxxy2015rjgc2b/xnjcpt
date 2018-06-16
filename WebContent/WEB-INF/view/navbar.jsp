@@ -15,7 +15,8 @@
 
 <!-- 所有页面共用js -->
 <script type="text/javascript" src="<%=basePath%>js/jquery-3.1.1.min.js"></script>
-<script type="text/javascript" src="<%=basePath%>js/login/loginInterceptor.js"></script>
+<script type="text/javascript"
+	src="<%=basePath%>js/login/loginInterceptor.js"></script>
 <script type="text/javascript" src="<%=basePath%>js/bootstrap-select.js"></script>
 <script type="text/javascript" src="<%=basePath%>js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>js/icheck.js"></script>
@@ -29,19 +30,20 @@
 	src="<%=basePath%>js/jquery.multi-select.js"></script>
 <script type="text/javascript"
 	src="<%=basePath%>js/jquery.slimscroll.min.js"></script>
-<script type="text/javascript" src="<%=basePath %>js/klorofil-common.js"></script>
-<script type="text/javascript" src="<%=basePath %>js/toastr.js"></script>
-<script type="text/javascript" src="<%=basePath %>js/vue.js"></script>
-<script type="text/javascript" src="<%=basePath %>js/echarts.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>js/klorofil-common.js"></script>
+<script type="text/javascript" src="<%=basePath%>js/toastr.js"></script>
+<script type="text/javascript" src="<%=basePath%>js/vue.js"></script>
+<script type="text/javascript" src="<%=basePath%>js/echarts.min.js"></script>
 <!-- 所有页面共用css -->
-<link rel="stylesheet" href="<%=basePath %>css/bootstrap-select.min.css">
-<link rel="stylesheet" href="<%=basePath %>css/bootstrap.min.css">
-<link rel="stylesheet" href="<%=basePath %>css/jquery-confirm.css">
-<link rel="stylesheet" href="<%=basePath %>css/jquery.datetimepicker.css">
-<link rel="stylesheet" href="<%=basePath %>css/multi-select.css">
-<link rel="stylesheet" href="<%=basePath %>css/toastr.css">
-<link rel="stylesheet" href="<%=basePath %>css/chartist-custom.css">
-<link rel="stylesheet" href="<%=basePath %>css/navbar/font-awesome.min.css">
+<link rel="stylesheet" href="<%=basePath%>css/bootstrap-select.min.css">
+<link rel="stylesheet" href="<%=basePath%>css/bootstrap.min.css">
+<link rel="stylesheet" href="<%=basePath%>css/jquery-confirm.css">
+<link rel="stylesheet" href="<%=basePath%>css/jquery.datetimepicker.css">
+<link rel="stylesheet" href="<%=basePath%>css/multi-select.css">
+<link rel="stylesheet" href="<%=basePath%>css/toastr.css">
+<link rel="stylesheet" href="<%=basePath%>css/chartist-custom.css">
+<link rel="stylesheet"
+	href="<%=basePath%>css/navbar/font-awesome.min.css">
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <%-- <link rel="stylesheet" href="<%=basePath%>css/main.css"> --%>
 <!-- 暂时不知道需不需要 -->
@@ -49,40 +51,53 @@
 <!-- 暂时不知道需不需要 -->
 <!-- 导航专用js -->
 <!-- 导航专用css -->
-<link rel="stylesheet" href="<%=basePath %>css/navbar/header2.css" />
+<link rel="stylesheet" href="<%=basePath%>css/navbar/header2.css" />
 </head>
 <body>
 	<div class="header_box">
 		<div class="header_left">
-			<img class="logo" src="<%=basePath %>img/logo.png">
-			<span style="color: white; font-size:26px; vertical-align:middle;"">云栖性能监测平台</span>
+			<img class="logo" src="<%=basePath%>img/logo.png"> <span
+				style="color: white; font-size: 26px; vertical-align: middle;"">云栖性能监测平台</span>
 		</div>
 		<div class="header_center">
-			<a href="/xnjcpt/skip/skip_intoComputer">云主机</a> 
-			<a class="enter_user" href="/xnjcpt/skip/skip_intoPerson?user_id=<s:property value="#session.user_id"/>" >个人信息</a> 
+			<a href="/xnjcpt/skip/skip_intoComputer">云主机</a>
 			<a class="enter_userList" href="/xnjcpt/skip/skip_intoUser">后台管理</a>
 		</div>
 		<div class="header_right">
-			<a href="/xnjcpt/skip/skip_intoAlarmMessage"><img src="<%=basePath %>img/message.png" align="absmiddle"/><span class="badge" id="messageCount" style="background-color: red; position:relative; left:-12px; top:-12px;">4</span></a>
-			<a><img	class="user" src="<%=basePath %>img/user.png" align="absmiddle" /></a>
+			<div class="inform">
+				<a href="/xnjcpt/skip/skip_intoAlarmMessage"> <img
+					src="<%=basePath%>img/inform.png" align="absmiddle" />
+					<span id="messageCount">2</span>
+				</a>
+			</div>
+			<div class="usre_info">
+				<span><s:property value="#session.user_username"/></span><i class="fa fa-caret-down" aria-hidden="true"></i>
+			</div>
+			<div>
+				<ul class="user_infoBox">
+					<li><a href="/xnjcpt/skip/skip_intoPerson?user_id=<s:property value="#session.user_id"/>">账户信息</a></li>
+					<li><a href="/xnjcpt/skip/skip_logout">退出登录</a></li>
+				</ul>
+			</div>
 		</div>
 
 	</div>
 	<script type="text/javascript" src="<%=basePath%>js/navbar/navbar.js"></script>
 	<script type="text/javascript">
-	function getCountMessage(){
-		$.ajax({
-			url:'/xnjcpt/alarm/alarm_getCountAlamrMessage',
-			type:'GET',
-			success:function(data){
-				if(data!="noLogin"){
-					$('#messageCount').html(data);
-				}else{
-					loginIntercptor();
+		function getCountMessage() {
+			$.ajax({
+				url : '/xnjcpt/alarm/alarm_getCountAlamrMessage',
+				type : 'GET',
+				success : function(data) {
+					if (data != "noLogin") {
+						$('#messageCount').html(data);
+					} else {
+						loginIntercptor();
+					}
 				}
-			}
-		})}
-	getCountMessage();
+			})
+		}
+		getCountMessage();
 	</script>
 </body>
 </html>

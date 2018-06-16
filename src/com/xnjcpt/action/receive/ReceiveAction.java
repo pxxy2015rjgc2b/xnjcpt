@@ -162,7 +162,6 @@ public class ReceiveAction {
 	 */
 
 	public void getProgressInfor() {
-		System.out.println(progressList.size());
 		receiveService.saveProgressInfor(ip, progressList);
 	}
 

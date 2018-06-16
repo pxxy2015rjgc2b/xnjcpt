@@ -24,8 +24,7 @@
 						<span>云栖</span>
 					</div>
 					<div class="header_right">
-						<img class="search" src="<%=basePath %>img/search.png" />
-						<a>注册</a>
+						<a href="/xnjcpt/register.jsp" style="color: white;">注册</a>
 						<img class="user" src="<%=basePath %>img/user.png" />
 					</div>
 					<div>
@@ -43,7 +42,6 @@
 					<div class="center_word">
 					    <div >“云栖”应用云平台</div>
 				     	<div>的性能监控与应用管理系统</div>
-				     	<div class="enter_button"><a>立即监测</a></div>
 				  	</div>
 				  	<form id="login_box" class="login_box">
 				  		<div class="login_content">

@@ -29,6 +29,7 @@
 			<result name="intoControl">/WEB-INF/view/computer/controlManager.jsp</result>
 			<result name="intoOverview">/WEB-INF/view/computer/clusterOverview.jsp</result>
 			<result name="login">/index.jsp</result>
+			<result name="index">/index.jsp</result>
 			<interceptor-ref name="mystackHttp" />
 		</action>
 	</package>

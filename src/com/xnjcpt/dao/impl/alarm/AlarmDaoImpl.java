@@ -201,4 +201,13 @@ public class AlarmDaoImpl implements AlarmDao {
 		}
 
 	}
+
+	@Override
+	public int getCountAllAlamrMessage() {
+		// TODO Auto-generated method stub
+		String user_id = (String) ActionContext.getContext().getSession().get("user_id");
+		String hql = "select count(*) from xnjcpt_alarm_message where message_user='" + user_id + "'";
+		long count = (long) this.getSession().createQuery(hql).uniqueResult();
+		return (int) count;
+	}
 }

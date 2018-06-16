@@ -1,5 +1,10 @@
 package com.xnjcpt.action.skip;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.apache.struts2.ServletActionContext;
+
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
@@ -63,5 +68,16 @@ public class SkipAction extends ActionSupport {
 	// 进入集群总览
 	public String intoOverview() {
 		return "intoOverview";
+	}
+
+	// 登出
+	public String logout() {
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpSession session = request.getSession();
+		session.removeAttribute("user_id");
+		session.removeAttribute("user_username");
+		session.removeAttribute("user_role");
+		session.removeAttribute("user_name");
+		return "index";
 	}
 }

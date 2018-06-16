@@ -233,7 +233,7 @@ public class AlarmServiceImpl implements AlarmService {
 	@Override
 	public void getAlarmMessageByPage(AlarmMessageVO alarmMessageVO) {
 		// TODO Auto-generated method stub
-		int count = alarmDao.getCountAlamrMessage();
+		int count = alarmDao.getCountAllAlamrMessage();
 		alarmMessageVO.setPageSize(10);
 		alarmMessageVO.setTotalCount(count);
 		alarmMessageVO.setTotalPage((int) Math.ceil((double) count / alarmMessageVO.getPageSize()));

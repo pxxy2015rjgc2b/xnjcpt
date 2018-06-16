@@ -39,4 +39,6 @@ public interface AlarmDao {
 
 	boolean deleteMessage(String message_id);
 
+	int getCountAllAlamrMessage();
+
 }
