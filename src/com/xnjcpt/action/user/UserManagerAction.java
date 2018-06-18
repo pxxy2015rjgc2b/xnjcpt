@@ -127,8 +127,8 @@ public class UserManagerAction {
 			String user_id = (String) ActionContext.getContext().getSession().get("user_id");
 			System.out.println(user_id);
 			xnjcpt_user user=userManagerService.getUserByUserId(user_id);		
-			if(user_username!=null){		
-			user.setUser_username(user_username);
+			if(user_name!=null){		
+			user.setUser_name(user_name);
 			user.setUser_gmt_modified(TeamUtil.getStringSecond());//保存修改时间信息
 			userManagerService.updateuser(user);
 			pw.write("修改用户姓名成功");

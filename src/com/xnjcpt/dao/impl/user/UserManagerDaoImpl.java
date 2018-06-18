@@ -118,9 +118,9 @@ public class UserManagerDaoImpl implements UserManagerDao {
 	}
 
 	@Override
-	public xnjcpt_user getUserByuser_name(String user_name) {
+	public xnjcpt_user getUserByuser_name(String user_username) {
 		// TODO Auto-generated method stub
-		String hql = "from xnjcpt_user where user_name = '" + user_name + "'";
+		String hql = "from xnjcpt_user where user_username = '" + user_username + "'";
 		Query query = getSession().createQuery(hql);
 		xnjcpt_user user = (xnjcpt_user) query.uniqueResult();
 		return user;

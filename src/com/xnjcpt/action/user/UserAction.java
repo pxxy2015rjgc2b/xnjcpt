@@ -184,7 +184,7 @@ public class UserAction{
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpSession session = request.getSession();
 		PrintWriter pw = response.getWriter();
-		if(userService.judgeUserByUsername(user.getUser_name())){
+		if(userService.judgeUserByUsername(user.getUser_username())){
 			pw.write("name_error");
 			System.out.println("用户名已存在!");
 		}else{
@@ -283,6 +283,24 @@ public class UserAction{
 		}
 		return ac;
 	}
+	//判断账户激活
+	public void judgeactivate() throws IOException{
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Access-Control-Allow-Methods", "GET,POST");
+		response.setContentType("text/html;charset=utf-8");
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpSession session = request.getSession();
+		PrintWriter pw = response.getWriter();
+		xnjcpt_user judgeuser=userService.getUserByUserEmail(user.getUser_email());
+		if(judgeuser.getUser_status().equals("1")){
+			pw.write("activate_1");
+		}else{
+			pw.write("activate_0");
+		}
+	}
+	
+	
 	
 	//注销用户
 	public String logout() {
