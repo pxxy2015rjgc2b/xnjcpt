@@ -9,8 +9,6 @@ import org.hibernate.SessionFactory;
 import com.xnjcpt.dao.user.UserDao;
 import com.xnjcpt.domain.DO.xnjcpt_user;
 
-
-
 public class UserDaoImpl implements UserDao {
 	private SessionFactory sessionFactory;
 
@@ -25,6 +23,7 @@ public class UserDaoImpl implements UserDao {
 	public Session getSession(){
 		return sessionFactory.getCurrentSession();
 	}
+
 
 	@Override
 	public xnjcpt_user login(xnjcpt_user user) {
@@ -119,4 +118,5 @@ public class UserDaoImpl implements UserDao {
 		String hql = "update xnjcpt_user set user_password ='" + newPassword + "' where user_id = '" + user_id + "'";
 		getSession().createQuery(hql).executeUpdate();
 	}
+
 }

@@ -9,7 +9,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="stylesheet" href="<%=basePath%>css/alarm/cloudList.css" />
+<link rel="stylesheet" href="<%=basePath%>css/alarm/List.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>用户管理</title>
 </head>
@@ -19,10 +19,7 @@
 		<s:action name="skip_intoNavbar" namespace="/skip"
 			executeResult="true"></s:action>
 		<div class="manage">
-			<!--侧边栏放在下面-->
-			<s:action name="skip_intoSlider" namespace="/skip"
-				executeResult="true"></s:action>
-			<div class="show_box" id="userVue">
+			<div class="show_box show_boxNoSlider" id="userVue">
 				<div class="show_content">
 					<div class="show_title">
 						<span>用户管理</span>
@@ -50,7 +47,7 @@
 							</thead>
 							<tbody>
 								<tr v-for="user in users">
-									<td><input name="delete_check" :id="user.user_id" onclick="cancle_all()" type="checkbox" /></td>
+									<td  style="text-align: center;"><input name="delete_check" :id="user.user_id" onclick="cancle_all()" type="checkbox" /></td>
 									<td style="display: none;"><a :id="user.user_id"></a></td>
 									<td><a>{{ user.user_name }}</a></td>
 									<td>{{ user.user_username }}</td>

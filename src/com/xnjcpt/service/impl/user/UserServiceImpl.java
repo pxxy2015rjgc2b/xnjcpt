@@ -67,6 +67,7 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		userDao.deleteuser(user_id);
 	}
+
 	
 	@Override
 	public void updatePassword(String user_id, String newPassword) {

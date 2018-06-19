@@ -20,4 +20,5 @@ public interface UserService {
 	//根据邮箱是否已注册
 	xnjcpt_user getUserByUserId(String user_id);
 	//根据id查找用户
+
 }

@@ -1,9 +1,6 @@
 package com.xnjcpt.dao.user;
 
-import java.util.List;
-
 import com.xnjcpt.domain.DO.xnjcpt_user;
-
 
 public interface UserDao {
 	
@@ -24,6 +21,5 @@ public interface UserDao {
 	//根据邮箱查找用户
 	xnjcpt_user getUserByUserId(String user_id);
 	//根据id查找用户
-	
-	
+
 }

@@ -1,37 +1,29 @@
 package com.xnjcpt.action.skip;
 
-
 import com.opensymphony.xwork2.ActionSupport;
 import com.xnjcpt.service.user.UserService;
 
 /**
  * 
- * @author 孙毅
- *用于页面跳转
+ * @author ����
+ *������תҳ��
  */
-public class SkipAction extends ActionSupport{	 
-	
-	private UserService userService;
-	
-	public void setUserService(UserService userService) {
-		this.userService = userService;
-	}
-	
-	
+
+public class SkipAction extends ActionSupport{
 	public String intoNavbar(){
 		return "intoNavbar";
 	}
-	public String intoNavbar2(){
-		return "intoNavbar2";
+	public String intoSlider2(){
+		return "intoSlider2";
 	}
 	public String intoSlider(){
 		return "intoSlider";
 	}
-	//进入警报
+	//���뾯�����
 	public String intoAlarm(){
 		return "intoAlarm";
 	}
-	//进入用户
+	//�����û�
 	public String intoUser(){
 		return "intoUser";
 	}
@@ -43,11 +35,11 @@ public class SkipAction extends ActionSupport{
 	public String intoComputer(){
 		return "intoComputer";
 	}
-	//进入性能监测
+	//�������ܼ��
 	public String intoMonitor(){
 		return "intoMonitor";
 	}
-	//进入个人信息管理
+	//���������Ϣ����
 	public String intoPerson(){
 		return "intoPerson";
 	}

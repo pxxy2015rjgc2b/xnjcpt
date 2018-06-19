@@ -1,26 +1,26 @@
 package com.xnjcpt.domain.DO;
 
 /**
- * cpuï¿½ï¿½Ï¢ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½
+ * cpuÐÅÏ¢µÄÊµÌåÀà
  *
  */
 public class xnjcpt_cpu {
 	
-	//cpuï¿½ï¿½ï¿½ï¿½
+	//cpuÖ÷¼ü
 	private String cpu_id;
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//Ö÷»úÖ÷¼ü
 	private String cpu_computer;
-	//ï¿½Íºï¿½
+	//ÐÍºÅ
 	private String cpu_model;
-	//ï¿½ï¿½Æµ
+	//Ö÷Æµ
 	private String cpu_basic_frequency;
-	//cpuï¿½ï¿½ï¿½ï¿½ï¿½Ð¡
+	//cpu»º´æ´óÐ¡
 	private String cpu_catch_size;
-	//ï¿½ï¿½ï¿½ï¿½
+	//ºËÊý
 	private String cpu_cores;
-	//ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
+	//´´½¨Ê±¼ä
 	private String cpu_gmt_create;
-	//ï¿½Þ¸ï¿½Ê±ï¿½ï¿½
+	//ÐÞ¸ÄÊ±¼ä
 	private String cpu_gmt_modified;
 	public String getCpu_id() {
 		return cpu_id;

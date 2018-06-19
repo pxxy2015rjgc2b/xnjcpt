@@ -4,7 +4,7 @@ import com.xnjcpt.domain.DO.*;
 import com.xnjcpt.service.receive.ReceiveService;
 
 public class ReceiveAction {
-	//×¢ï¿½ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//×¢ÈëÒµÎñ²ãµÄÀà
 	private ReceiveService receiveService;
 
 	public void setReceiveService(ReceiveService receiveService) {
@@ -24,7 +24,7 @@ public class ReceiveAction {
 	
 	
 	/**
-	 * ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½
+	 * »ñÈ¡Ö÷»úÐÅÏ¢£¬´æÈëÊý¾Ý¿â
 	 */
 	public void getComputerInfor(){
 		System.out.println(xnjcpt_computer.getComputer_name()+"sunyi");
@@ -33,88 +33,88 @@ public class ReceiveAction {
 	
 	/**
 	 * 
-	 * ï¿½ï¿½È¡CPUï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½Ä»ï¿½æ´¢cpuï¿½ï¿½Ï¢
+	 * »ñÈ¡CPUÐÅÏ¢£¬¸ü¸Ä»ò´æ´¢cpuÐÅÏ¢
 	 */
 	public void getCpuInfo(){
-		System.out.println("getCpuInfoÖ´ï¿½Ð£ï¿½");
+		System.out.println("getCpuInfoÖ´ÐÐ£¡");
 		String ip = xnjcpt_computer.getComputer_ip();
 		receiveService.updateCpuInfor(ip,xnjcpt_cpu);
 		
 	}
 	
 	/**
-	 * ï¿½ï¿½È¡ï¿½Ú´ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½Ä»ï¿½æ´¢ï¿½Ú´ï¿½ï¿½ï¿½Ï¢
+	 * »ñÈ¡ÄÚ´æÐÅÏ¢£¬¸ü¸Ä»ò´æ´¢ÄÚ´æÐÅÏ¢
 	 * @return
 	 */
 	public void getMemoryInfor(){
-		System.out.println("getMemoryInfoÖ´ï¿½Ð£ï¿½");
+		System.out.println("getMemoryInfoÖ´ÐÐ£¡");
 		String ip = xnjcpt_computer.getComputer_ip();
 		receiveService.updateMemoryInfor(ip,xnjcpt_memory);
 	}
 	
 	/**
-	 * ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½Ä»ï¿½æ´¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+	 * »ñÈ¡´ÅÅÌÐÅÏ¢£¬¸ü¸Ä»ò´æ´¢´ÅÅÌÐÅÏ¢
 	 * @return
 	 */
 	public void getDiskInfor(){
-		System.out.println("getDiskInforÖ´ï¿½Ð£ï¿½");
+		System.out.println("getDiskInforÖ´ÐÐ£¡");
 		String ip = xnjcpt_computer.getComputer_ip();
 		receiveService.updateDiskInfor(ip,xnjcpt_disk);
 	}
 	
 	/**
-	 * ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½Ä»ï¿½æ´¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+	 * »ñÈ¡ÍøÂçÐÅÏ¢£¬¸ü¸Ä»ò´æ´¢ÍøÂçÐÅÏ¢
 	 * @return
 	 */
 	public void getNetInfor(){
-		System.out.println("getNetInforÖ´ï¿½Ð£ï¿½");
+		System.out.println("getNetInforÖ´ÐÐ£¡");
 		String ip = xnjcpt_computer.getComputer_ip();
 		receiveService.updateNetInfor(ip,xnjcpt_net);
 	}
 	
 	/**
-	 * ï¿½ï¿½È¡cpuï¿½ï¿½×´Ì¬ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½æ´¢cpu×´Ì¬ï¿½ï¿½Ï¢
+	 * »ñÈ¡cpuµÄ×´Ì¬ÐÅÏ¢£¬´æ´¢cpu×´Ì¬ÐÅÏ¢
 	 * @return
 	 */
 	public void getCpuStateInfor(){
-		System.out.println("getCpuStateInforÖ´ï¿½Ð£ï¿½");
+		System.out.println("getCpuStateInforÖ´ÐÐ£¡");
 		String ip=xnjcpt_computer.getComputer_ip();
 		receiveService.saveCpuStateInfor(ip,xnjcpt_cpu_state);
 	}
 	/**
-	 * ï¿½ï¿½È¡ï¿½Ú´ï¿½ï¿½ï¿½Ï¢×´Ì¬ï¿½ï¿½ï¿½æ´¢ï¿½Ú´ï¿½×´Ì¬ï¿½ï¿½Ï¢
+	 * »ñÈ¡ÄÚ´æÐÅÏ¢×´Ì¬£¬´æ´¢ÄÚ´æ×´Ì¬ÐÅÏ¢
 	 * @return
 	 */
 	public void getMemoryStateInfor(){
-		System.out.println("getMemoryInforÖ´ï¿½Ð£ï¿½");
+		System.out.println("getMemoryInforÖ´ÐÐ£¡");
 		String ip=xnjcpt_computer.getComputer_ip();
 		receiveService.saveMemoryStateInfor(ip,xnjcpt_memory_state);
 	}
 	/**
-	 * ï¿½ï¿½È¡io×´Ì¬ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½æ´¢io×´Ì¬ï¿½ï¿½Ï¢
+	 * »ñÈ¡io×´Ì¬ÐÅÏ¢£¬´æ´¢io×´Ì¬ÐÅÏ¢
 	 * @return
 	 */
 	public void getIoStateInfor(){
-		System.out.println("getIoStateInforÖ´ï¿½Ð£ï¿½");
+		System.out.println("getIoStateInforÖ´ÐÐ£¡");
 		String ip=xnjcpt_computer.getComputer_ip();
 		receiveService.saveIoStateInfor(ip,xnjcpt_io_state);
 	}
 	/**
-	 * ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½æ´¢ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½Ï¢
+	 * »ñÈ¡´ÅÅÌ×´Ì¬ÐÅÏ¢£¬´æ´¢´ÅÅÌ×´Ì¬ÐÅÏ¢
 	 * @return
 	 */
 	public void getDiskStateInfor(){
-		System.out.println("getDiskStateInforÖ´ï¿½Ð£ï¿½");
+		System.out.println("getDiskStateInforÖ´ÐÐ£¡");
 		String ip=xnjcpt_computer.getComputer_ip();
 		receiveService.saveDiskInfor(ip,xnjcpt_disk_state);
 	}
 	
 	/**
-	 * ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½Ï¢
+	 * »ñÈ¡ÍøÂç×´Ì¬ÐÅÏ¢£¬±£´æÍøÂç×´Ì¬ÐÅÏ¢
 	 * @return
 	 */
 	public void getNetStateInfor(){
-		System.out.println("getNetStateInforÖ´ï¿½Ð£ï¿½");
+		System.out.println("getNetStateInforÖ´ÐÐ£¡");
 		String ip=xnjcpt_computer.getComputer_ip();
 		receiveService.saveNetStateInfor(ip,xnjcpt_net_state);
 	}
@@ -202,6 +202,10 @@ public class ReceiveAction {
 	public void setXnjcpt_net_state(xnjcpt_net_state xnjcpt_net_state) {
 		this.xnjcpt_net_state = xnjcpt_net_state;
 	}
+	
+	
+	
+	
 	
 
 }

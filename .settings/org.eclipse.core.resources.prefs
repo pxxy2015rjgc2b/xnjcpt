@@ -2,10 +2,10 @@
 <<<<<<<=HEAD
 >>>>>>>=origin/SY
 eclipse.preferences.version=1
-encoding//WebContent/WEB-INF/view/alarm/alarmList.jsp=UTF-8
 encoding//WebContent/css/alarm/List.css=UTF-8
 encoding//WebContent/css/navbar/header2.css=UTF-8
 encoding//WebContent/css/slider/sideNav.css=UTF-8
 encoding//WebContent/index.jsp=UTF-8
+encoding//src/com/xnjcpt/action/alarm/AlarmAction.java=UTF-8
 encoding//src/com/xnjcpt/domain/DO/\u5360\u4F4D\u6587\u4EF6.txt=UTF-8
 encoding/<project>=UTF-8

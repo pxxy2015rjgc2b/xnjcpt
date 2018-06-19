@@ -1,29 +1,29 @@
 package com.xnjcpt.domain.DO;
 
 /**
- * 锟矫伙拷锟斤拷息锟斤拷实锟斤拷锟斤拷
+ * 用户信息的实体类
  *
  */
 public class xnjcpt_user {
-	//锟矫伙拷锟斤拷锟斤拷
+	//用户主键
 	private String user_id;
-	//锟矫伙拷锟斤拷锟斤拷
+	//用户姓名
 	private String user_name;
-	//锟矫伙拷锟斤拷
+	//用户名
 	private String user_username;
-	//锟矫伙拷锟斤拷锟斤拷
+	//用户邮箱
 	private String user_email;
-	//锟矫伙拷锟斤拷锟斤拷
+	//用户密码
 	private String user_password;
-	//锟矫伙拷锟街伙拷锟斤拷锟斤拷
+	//用户手机号码
 	private String user_phone;
-	//锟矫伙拷状态
+	//用户状态
 	private String user_status;
-	//锟矫伙拷锟斤拷色
+	//用户角色
 	private String user_role;
-	//锟斤拷锟斤拷时锟斤拷
+	//创建时间
 	private String user_gmt_create;
-	//锟睫革拷时锟斤拷
+	//修改时间
 	private String user_gmt_modified;
 	public String getUser_id() {
 		return user_id;
