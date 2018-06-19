@@ -1,4 +1,3 @@
-
 window.onload=function(){
 	$(".login_button").click(function(){
 		console.log("login");
@@ -22,19 +21,23 @@ function login_ajax(){
 	        contentType: false,
 	        success: function(result){
 	        	 if(result=="该账户已被封禁"){
-	        		 console.log("该账户已被封禁，请到邮箱点击激活链接!");
+	        		 toastr.error("该账户已被封禁，请到邮箱点击激活链接!");
 	        	 }else{
 	        	    if(result=="user_success"){
-	  			       console.log("用户登录成功！");
+	  			     toastr.success("用户登录成功！");
 	  			        //登录成功跳到云主机页面
-	  			       window.location.href="/xnjcpt/skip/skip_intoComputer"
-	  		         }else if("manage_success"){
-	  		        	  console.log("管理员成功！");
-	  		        	  window.location.href="/xnjcpt/skip/skip_intoComputer"
+	  			        setTimeout(function() {
+	  			        	location.href="/xnjcpt/skip/skip_intoComputer";
+	  			        }, 1000);
 	  		         }else if(result=="manage_success"){
-	  			         console.log("密码输入错误！");
+	  		        	toastr.success("管理员成功!");
+	  		        	setTimeout(function(){
+		                  location.href="/xnjcpt/skip/skip_intoComputer"
+						}, 1000);
+	  		         }else if(result=="manage_success"){
+	  		        	 toastr.error("密码输入错误！");
 	  		         }else if(result=="password_error"){
-	  			         console.log("用户名或邮箱账户输入错误！");
+	  		        	toastr.error("用户名或邮箱账户输入错误！");
 	  		         }
 	             }
 	        }

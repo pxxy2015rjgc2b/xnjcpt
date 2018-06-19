@@ -10,7 +10,7 @@ import com.xnjcpt.service.alarm.AlarmService;
 import util.TeamUtil;
 
 public class AlarmServiceImpl implements AlarmService {
-	//×¢Èëdao²ãµÄÀà
+	//×¢ï¿½ï¿½daoï¿½ï¿½ï¿½ï¿½ï¿½
 	private AlarmDao alarmDao;
 
 	public void setAlarmDao(AlarmDao alarmDao) {
@@ -18,7 +18,7 @@ public class AlarmServiceImpl implements AlarmService {
 	}
 
 	/**
-	 * service²ã±£´æ¾¯±¨ÐÅÏ¢µÄ·½·¨
+	 * serviceï¿½ã±£ï¿½æ¾¯ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½Ä·ï¿½ï¿½ï¿½
 	 */
 	
 	@Override
@@ -28,7 +28,7 @@ public class AlarmServiceImpl implements AlarmService {
 	}
 	
 	/**
-	 * ¸ù¾ÝÖ÷»úip²éÑ¯¶ÔÓ¦µÄ¾¯±¨ÐÅÏ¢
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ipï¿½ï¿½Ñ¯ï¿½ï¿½Ó¦ï¿½Ä¾ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	 */
 	@Override
 	public xnjcpt_alarm getAlarmInforByAlarmComputer(String alarm_id) {
@@ -38,7 +38,7 @@ public class AlarmServiceImpl implements AlarmService {
 	}
 	
 	/**
-	 * service²ã¸ü¸Ä¾¯±¨×´Ì¬µÄ·½·¨
+	 * serviceï¿½ï¿½ï¿½ï¿½Ä¾ï¿½ï¿½ï¿½×´Ì¬ï¿½Ä·ï¿½ï¿½ï¿½
 	 */
 	@Override
 	public void updateAlarmState(String alarm_id, String alarm_state) {
@@ -47,7 +47,7 @@ public class AlarmServiceImpl implements AlarmService {
 	}
 	
 	/**
-	 * service²ãÉ¾³ý¾¯±¨ÐÅÏ¢µÄ·½·¨
+	 * serviceï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½Ä·ï¿½ï¿½ï¿½
 	 */
 
 	@Override
@@ -57,30 +57,30 @@ public class AlarmServiceImpl implements AlarmService {
 	}
 	
 	/**
-	 * ·ÖÒ³ÏÔÊ¾ËùÓÐµÄ¾¯±¨ÐÅÏ¢
+	 * ï¿½ï¿½Ò³ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ÐµÄ¾ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	 */
 	@Override
 	public showAlarmInforVo getAlarmInfor(String queryString, int currPage) {
 		// TODO Auto-generated method stub
-		//·ÖÒ³ÊµÀý»¯¶ÔÏó
+		//ï¿½ï¿½Ò³Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		showAlarmInforVo alarm_infor=new showAlarmInforVo();
-		//µ±Ç°µÄÒ³Âë
+		//ï¿½ï¿½Ç°ï¿½ï¿½Ò³ï¿½ï¿½
 		alarm_infor.setCurrPage(currPage);
-		//²éÑ¯µÄÌõ¼þ
+		//ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		alarm_infor.setQueryString(queryString);
-		//×ÜµÄ¼ÇÂ¼ÌõÊý
+		//ï¿½ÜµÄ¼ï¿½Â¼ï¿½ï¿½ï¿½ï¿½
 		int count=alarmDao.getAlarmInforCount(queryString);
 		alarm_infor.setCount(count);
 		
-		//Ã¿Ò³ÏÔÊ¾µÄ¼ÇÂ¼ÌõÊý
-		alarm_infor.setPageSize(10);
+		//Ã¿Ò³ï¿½ï¿½Ê¾ï¿½Ä¼ï¿½Â¼ï¿½ï¿½ï¿½ï¿½
+		alarm_infor.setPageSize(6);
 		
-		//×ÜÒ³Êý
+		//ï¿½ï¿½Ò³ï¿½ï¿½
 		double cou=count;
-		int totalPage = (int) Math.ceil(cou / 10);
+		int totalPage = (int) Math.ceil(cou / 6);
 		alarm_infor.setTotalPage(totalPage);
 		
-		//ÐèÒªÏÔÊ¾µÄÊý¾Ý
+		//ï¿½ï¿½Òªï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		List<xnjcpt_alarm> alarm_list=alarmDao.getAlarmInforList(queryString,currPage);
 		alarm_infor.setAlarm_list(alarm_list);
 		
@@ -88,7 +88,7 @@ public class AlarmServiceImpl implements AlarmService {
 	}
 
 	/**
-	 * µã»÷ÏêÏ¸ÐÅÏ¢»ñÈ¡¶ÔÓ¦µÄ¾¯±¨ÐÅÏ¢
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½Ï¢ï¿½ï¿½È¡ï¿½ï¿½Ó¦ï¿½Ä¾ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	 */
 	@Override
 	public xnjcpt_alarm getAlarmInforById(String alarm_id) {
@@ -97,11 +97,12 @@ public class AlarmServiceImpl implements AlarmService {
 	}
 
 	/**
-	 * ÐÞ¸Ä¾¯±¨ÐÅÏ¢
+	 * ï¿½Þ¸Ä¾ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	 */
 	@Override
 	public void updateAlarmInfor(xnjcpt_alarm xnjcpt_alarm) {
 		// TODO Auto-generated method stub
+		System.out.println("alarm_id="+xnjcpt_alarm.getAlarm_id());
 		xnjcpt_alarm xa=alarmDao.getAlarmInforById(xnjcpt_alarm.getAlarm_id());
 		xnjcpt_alarm.setAlarm_computer(xa.getAlarm_computer());
 		xnjcpt_alarm.setAlarm_gmt_create(xa.getAlarm_gmt_create());
@@ -113,7 +114,7 @@ public class AlarmServiceImpl implements AlarmService {
 	}
 
 	/**
-	 * ÅúÁ¿É¾³ý¾¯±¨ÐÅÏ¢µÄ·½·¨
+	 * ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½Ä·ï¿½ï¿½ï¿½
 	 */
 	@Override
 	public void deleteAlarmInfors(String[] strAlarmIds) {

@@ -11,6 +11,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>首页</title>
+
+<link rel="stylesheet" href="<%=basePath %>css/toastr.css">
 <link rel="stylesheet" href="<%=basePath%>css/index/index.css" />
 <link rel="stylesheet" href="<%=basePath%>css/index/footer.css" />
 <link rel="stylesheet" href="<%=basePath%>css/index/header.css" />
@@ -65,6 +67,7 @@
 			</div>
 		</div>
 		<script type="text/javascript" src="<%=basePath %>/js/jquery-3.1.1.min.js"></script>
+		<script type="text/javascript" src="<%=basePath %>js/toastr.js"></script>
 	    <script type="text/javascript" src="<%=basePath %>js/user/login.js"></script>
 </body>
 </html>
