@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="<%=basePath%>css/index/index.css" />
 <link rel="stylesheet" href="<%=basePath%>css/index/footer.css" />
 <link rel="stylesheet" href="<%=basePath%>css/index/header.css" />
+<link rel="stylesheet" href="<%=basePath%>css/toastr.css">
 </head>
 <body>
 <div class="wrapper">
@@ -63,6 +64,7 @@
 			</div>
 		</div>
 		<script type="text/javascript" src="<%=basePath %>/js/jquery-3.1.1.min.js"></script>
+		<script type="text/javascript" src="<%=basePath %>js/toastr.js"></script>
 	    <script type="text/javascript" src="<%=basePath %>js/user/login.js"></script>
 </body>
 </html>

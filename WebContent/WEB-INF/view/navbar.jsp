@@ -71,7 +71,7 @@
 				</a>
 			</div>
 			<div class="usre_info">
-				<span><s:property value="#session.user_username"/></span><i class="fa fa-caret-down" aria-hidden="true"></i>
+				<span><s:property value="#session.user_name"/></span><i class="fa fa-caret-down" aria-hidden="true"></i>
 			</div>
 			<div>
 				<ul class="user_infoBox">

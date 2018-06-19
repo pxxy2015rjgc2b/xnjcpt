@@ -20,16 +20,15 @@
 		<s:action name="skip_intoNavbar" namespace="/skip"
 			executeResult="true"></s:action>
 		<div class="manage">
-			<!--侧边栏放在下面-->
 			<div class="show_box" id="user_info">
 				<div class="show_content">
 				<div class="uesr_infoTitle">帐户信息</div>
 						<div class="panel panel-default uesr_info">
 							<div class="panel-body">
 								<ul >
-									<li><label>账号昵称：</label><span>{{ userInfo.user_name }}</span></li>
-									<li><label>用户姓名：</label><span class="user_name">{{ userInfo.user_username }}</span><div class="edit_nameBox"><input name="user_username" type="text" /> <a class="user_nameSave" onclick="editName_ajax()">保存</a><a class="user_nameCancle" onclick="user_nameCancle()">取消</a></div><i class="fa fa-pencil editName" onclick="editName()" aria-hidden="true"></i></li>
-									<li><label>用户密码：</label><span>{{ userInfo.user_password }}</span><i class="fa fa-pencil editName" onclick="editPassword()" aria-hidden="true"></i></li>
+									<li><label>用户账号：</label><span>{{ userInfo.user_username }}</span></li>
+									<li><label>用户姓名：</label><span class="user_name">{{ userInfo.user_name }}</span><div class="edit_nameBox"><input name="user_name" type="text" /> <a class="user_nameSave" onclick="editName_ajax()">保存</a><a class="user_nameCancle" onclick="user_nameCancle()">取消</a></div><i class="fa fa-pencil editName" onclick="editName()" aria-hidden="true"></i></li>
+									<li><label>用户密码：</label><span></span><i class="fa fa-pencil editName" onclick="editPassword()" aria-hidden="true"></i></li>
 									<li><label>邮箱地址：</label><span>{{ userInfo.user_email }}</span></li>
 									<li><label>手机号码：</label><span class="user_photo">{{ userInfo.user_phone }}</span><div class="edit_photoBox"><input name="user_photo" type="text" class="editPhoto_input"/><a onclick="editPhoto_ajax()" class="user_photoSave">保存</a><a class="user_photoCancle" onclick="user_photoCancle()">取消</a></div><i class="fa fa-pencil editPhoto"  onclick="editPhoto()" aria-hidden="true"></i></li>
 									<li><label>用户状态：</label><span>{{ userInfo.user_status }}</span></li>

@@ -44,7 +44,7 @@ function editPhoto(){
 //修改用户姓名
 function editName_ajax(){
 	var formData=new FormData();
-	formData.append("user_username",$("input[name=user_username]").val());
+	formData.append("user_name",$("input[name=user_name]").val());
 	$.ajax({
 		url:"/xnjcpt/userManager/userManager_updateUser",
 		type:"POST",

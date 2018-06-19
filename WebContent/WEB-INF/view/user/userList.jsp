@@ -19,10 +19,7 @@
 		<s:action name="skip_intoNavbar" namespace="/skip"
 			executeResult="true"></s:action>
 		<div class="manage">
-			<!--侧边栏放在下面-->
-			<s:action name="skip_intoSlider2" namespace="/skip"
-				executeResult="true"></s:action>
-			<div class="show_box" id="userVue">
+			<div class="show_box show_boxNoSlider" id="userVue">
 				<div class="show_content">
 					<div class="show_title">
 						<span>用户管理</span>
@@ -41,23 +38,23 @@
 							<thead>
 								<tr>
 									<th style="text-align: center;"><input name="delete_checkAll" onclick="allcheck()" id="checkAll" type="checkbox" /></th>
-									<th>用户姓名</th>
 									<th>用户名</th>
+									<th>用户姓名</th>
 									<th>用户邮箱</th>
 									<th>手机号码</th>
-									<th>用户操作</th>
+									<th>用户状态</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr v-for="user in users">
-									<td   style="text-align:center;"  ><input name="delete_check" :id="user.user_id" onclick="cancle_all()" type="checkbox" /></td>
+									<td  style="text-align: center;"><input name="delete_check" :id="user.user_id" onclick="cancle_all()" type="checkbox" /></td>
 									<td style="display: none;"><a :id="user.user_id"></a></td>
-									<td>{{ user.user_username }}</td>
+									<td><a>{{ user.user_username }}</a></td>
 									<td>{{ user.user_name }}</td>
 									<td>{{ user.user_email }}</td>
 									<td>{{ user.user_phone }}</td>
-									<td v-if="user.user_status==0"><a class="chang_status" :id="user.user_id" onClick="openSure(this)">解禁</a></td>
-									<td v-if="user.user_status==1"><a class="chang_status" :id="user.user_id" onClick="cloSure(this)">封禁</a></td>
+									<td v-if="user.user_status==0"><a class="chang_status" :id="user.user_id" onClick="openSure(this)">封禁</a></td>
+									<td v-if="user.user_status==1"><a class="chang_status" :id="user.user_id" onClick="cloSure(this)">解禁</a></td>
 								</tr>
 							</tbody>
 						</table>

@@ -160,7 +160,7 @@ function delete_user() {
 				success : function(data) {
 					console.log(data);
 					if (data == '删除用户') {
-						toastr.info('删除成功');
+						toastr.success('删除成功');
 						show_userList();
 					} else {
 						toastr.error('删除失败');

@@ -80,6 +80,9 @@ public class UserAction {
 		PrintWriter pw = response.getWriter();
 		xnjcpt_user xu = userService.getUserByUsername(user.getUser_username());
 		xnjcpt_user xu2 = userService.getUserByUserEmail(user.getUser_email());
+		// System.out.println(xu);
+		System.out.println(xu);
+		System.out.println(xu2);
 		if (xu != null) {
 			if (xu.getUser_password().equals(user.getUser_password())) {
 				String sst = xu.getUser_status();
@@ -88,16 +91,16 @@ public class UserAction {
 					if (xu.getUser_role().equals("1")) {
 						System.out.println("管理员登录! 密码输入正确");
 						pw.write("manager_success");
-						session.setAttribute("user_username", xu.getUser_username());// 保存管理员名
+						session.setAttribute("user_username", xu.getUser_username());// 保存管理员账户名
 						session.setAttribute("user_role", xu.getUser_role());// 存管理员角色状态
 						session.setAttribute("user_id", xu.getUser_id());// session存user_id
-						session.setAttribute("user_name", xu.getUser_name());// session存user_name
+						session.setAttribute("user_name", xu.getUser_name());
 					} else {
 						pw.write("user_success");
-						session.setAttribute("user_username", xu.getUser_username());// 保存普通用户名
+						session.setAttribute("user_username", xu.getUser_username());// 保存普通用户账户名
 						session.setAttribute("user_role", xu.getUser_role());// 存用户角色状态
 						session.setAttribute("user_id", xu.getUser_id());// session存user_id
-						session.setAttribute("user_name", xu.getUser_name());// session存user_name
+						session.setAttribute("user_name", xu.getUser_name());
 					}
 				} else {
 					pw.write("该账户已被封禁");
@@ -118,11 +121,13 @@ public class UserAction {
 						session.setAttribute("user_username", xu2.getUser_username());// 存管理员
 						session.setAttribute("user_role", xu2.getUser_role());// 存用户角色状态
 						session.setAttribute("user_id", xu2.getUser_id());// session存user_id
+						session.setAttribute("user_name", xu2.getUser_name());
 					} else {
 						pw.write("user_success");
 						session.setAttribute("user_username", xu2.getUser_username());// 存普通用户
 						session.setAttribute("user_role", xu2.getUser_role());// 存用户角色状态
 						session.setAttribute("user_id", xu2.getUser_id());// session存user_id
+						session.setAttribute("user_name", xu2.getUser_name());
 					}
 				} else {
 					pw.write("该账户已被封禁");
@@ -153,7 +158,7 @@ public class UserAction {
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpSession session = request.getSession();
 		PrintWriter pw = response.getWriter();
-		if (userService.judgeUserByUsername(user.getUser_name())) {
+		if (userService.judgeUserByUsername(user.getUser_username())) {
 			pw.write("name_error");
 			System.out.println("用户名已存在!");
 		} else {

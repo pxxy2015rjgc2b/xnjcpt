@@ -12,15 +12,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>注册</title>
-<link rel="stylesheet" href="<%=basePath %>css/register/register.css" />
-<link rel="stylesheet" href="<%=basePath %>css/bootstrap.min.css" />
+<link rel="stylesheet" href="<%=basePath%>css/register/register.css" />
+<link rel="stylesheet" href="<%=basePath%>css/bootstrap.min.css" />
+<link rel="stylesheet" href="<%=basePath%>css/toastr.css">
 <link rel="stylesheet"
-	href="<%=basePath %>css/navbar/font-awesome.min.css" />
+	href="<%=basePath%>css/navbar/font-awesome.min.css" />
 </head>
 <body>
 	<div class="wrapper">
 		<div class="register_logo">
-			<img align="top" src="<%=basePath %>img/logo_blue.png" /><span>云栖</span>
+			<img align="top" src="<%=basePath%>img/logo_blue.png" /><span>云栖</span>
 		</div>
 		<div class="register_box">
 			<div class="email_title">
@@ -30,19 +31,21 @@
 				</div>
 			</div>
 			<form id="register" class="register_content">
-				    <input type="text" placeholder="用户名" name="user_username"/>
-				       <input type="text" placeholder="用户性名" name="user_name"/>
-				          <input type="text" placeholder="用户号码" name="user_phone"/>
-				   <input type="text" placeholder="邮箱地址" name="user_email"/>
-					<input type="password" placeholder="密码" name="user_password"/>
-					<input type="password" placeholder="确认密码" />
-					<div class="register_button">注册</div>
+				<input type="text" placeholder="用户账号" name="user_username" /> <input
+					type="text" placeholder="用户姓名" name="user_name" /> <input
+					type="text" placeholder="手机号码" name="user_phone" /> <input
+					type="text" placeholder="邮箱地址" name="user_email" /> <input
+					type="password" placeholder="密码" name="user_password" /> <input
+					type="password" placeholder="确认密码" />
+				<div class="register_button">注册</div>
 			</form>
 		</div>
 		<div class="reg_footer">Copyright @ 2018-2019 PingXiangXueYuan
 			All Right Reserve 萍乡学院版权所有</div>
 	</div>
-	<script type="text/javascript" src="<%=basePath %>/js/jquery-3.1.1.min.js"></script>
-	<script type="text/javascript" src="<%=basePath %>js/user/register.js"></script>
+	<script type="text/javascript"
+		src="<%=basePath%>/js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="<%=basePath%>js/toastr.js"></script>
+	<script type="text/javascript" src="<%=basePath%>js/user/register.js"></script>
 </body>
 </html>
