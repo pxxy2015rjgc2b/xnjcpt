@@ -30,7 +30,9 @@
 				</div>
 			</div>
 			<form id="register" class="register_content">
-				    <input type="text" placeholder="用户名" name="user_name"/>
+				    <input type="text" placeholder="用户名" name="user_username"/>
+				       <input type="text" placeholder="用户性名" name="user_name"/>
+				          <input type="text" placeholder="用户号码" name="user_photo"/>
 				   <input type="text" placeholder="邮箱地址" name="user_email"/>
 					<input type="password" placeholder="密码" name="user_password"/>
 					<input type="password" placeholder="确认密码" />

@@ -10,18 +10,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="<%=basePath %>css/slider/sideNav.css" />
+<link rel="stylesheet" href="<%=basePath%>css/slider/sideNav.css" />
 <title>Insert title here</title>
 </head>
 <body>
-		<div class="side_navBox">
-			<div class="side_navTitle">云主机</div>
-			<ul class="side_nav">
-				<li><a href="<%=basePath %>skip/skip_intoComputer">主机管理</a></li>
-				<li><a>集群总揽</a></li>
-				<li><a>性能检测</a></li>
-				<li><a href="<%=basePath %>skip/skip_intoAlarm">设置警报</a></li>
-			</ul>
-		</div>	
+	<div class="side_navBox">
+		<div class="side_navTitle">主机管理</div>
+		<ul class="side_nav">
+			<li><a href="process_management.html">进程管理</a></li>
+			<li><a href="teleControl.html">远程控制</a></li>
+		</ul>
+	</div>
 </body>
 </html>

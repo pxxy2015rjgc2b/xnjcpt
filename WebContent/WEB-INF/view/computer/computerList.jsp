@@ -16,7 +16,7 @@
 <body>
 	<div class="wrapper">
 		<!--导航条放在下面-->
-		<s:action name="skip_intoNavbar" namespace="/skip"
+		<s:action name="skip_intoNavbar2" namespace="/skip"
 			executeResult="true"></s:action>
 		<div class="manage">
 			<!--侧边栏放在下面-->

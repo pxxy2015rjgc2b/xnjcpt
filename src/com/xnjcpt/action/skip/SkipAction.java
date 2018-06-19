@@ -21,6 +21,9 @@ public class SkipAction extends ActionSupport{
 	public String intoNavbar(){
 		return "intoNavbar";
 	}
+	public String intoNavbar2(){
+		return "intoNavbar2";
+	}
 	public String intoSlider(){
 		return "intoSlider";
 	}
