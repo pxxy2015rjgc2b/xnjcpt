@@ -28,7 +28,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public xnjcpt_user login(xnjcpt_user user) {
 		// TODO Auto-generated method stub
-		String hql = "from xnjcpt_user where user_name = '" + user.getUser_name() + "'";
+		String hql = "from xnjcpt_user where user_username = '" + user.getUser_username() + "'";
 		Query query = getSession().createQuery(hql);
 		xnjcpt_user list = (xnjcpt_user) query.uniqueResult();
 		return  list;
@@ -43,8 +43,8 @@ public class UserDaoImpl implements UserDao {
 	
 
 	@Override
-	public xnjcpt_user getUserByUsername(String user_name) {
-		String hql = "from xnjcpt_user where user_name = '" + user_name + "'";
+	public xnjcpt_user getUserByUsername(String user_username) {
+		String hql = "from xnjcpt_user where user_username = '" + user_username + "'";
 		Query query = getSession().createQuery(hql);
 		List<xnjcpt_user> list = query.list();
 		if(list.size()>0){
@@ -53,9 +53,9 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public boolean judgeUserByUsername(String user_name) {
+	public boolean judgeUserByUsername(String user_username) {
 		// TODO Auto-generated method stub
-		String hql = "from xnjcpt_user where user_name = '" + user_name + "'";
+		String hql = "from xnjcpt_user where user_username = '" + user_username + "'";
 		Query query = getSession().createQuery(hql);
 		List<xnjcpt_user> list = query.list();
 		if (list.size() <= 0) {
