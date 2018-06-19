@@ -26,7 +26,7 @@ public class AlarmDaoImpl implements AlarmDao {
 	}
 
 	/**
-	 * ±£´æ¾¯±¨ÐÅÏ¢µÄÊµÏÖ·½·¨
+	 * ï¿½ï¿½ï¿½æ¾¯ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½Êµï¿½Ö·ï¿½ï¿½ï¿½
 	 */
 	@Override
 	public void saveAlarmInfor(xnjcpt_alarm xnjcpt_alarm) {
@@ -35,7 +35,7 @@ public class AlarmDaoImpl implements AlarmDao {
 	}
 
 	/**
-	 * ¸ù¾ÝÖ÷»úid²éÑ¯¶ÔÓ¦¾¯±¨ÐÅÏ¢µÄÊµÏÖ·½·¨
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½idï¿½ï¿½Ñ¯ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½Êµï¿½Ö·ï¿½ï¿½ï¿½
 	 */
 	@Override
 	public xnjcpt_alarm getAlarmInforByAlarmInfor(String alarm_id) {
@@ -47,7 +47,7 @@ public class AlarmDaoImpl implements AlarmDao {
 	}
 
 	/**
-	 * ¸ü¸Ä×´Ì¬ÐÅÏ¢µÄÊµÏÖ·½·¨
+	 * ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½Ï¢ï¿½ï¿½Êµï¿½Ö·ï¿½ï¿½ï¿½
 	 */
 	@Override
 	public void updateAlarmState(String alarm_id, String alarm_state) {
@@ -57,7 +57,7 @@ public class AlarmDaoImpl implements AlarmDao {
 	}
 
 	/**
-	 * É¾³ý¾¯±¨ÐÅÏ¢µÄÊµÏÖ·½·¨
+	 * É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½Êµï¿½Ö·ï¿½ï¿½ï¿½
 	 */
 	@Override
 	public void deleteAlarmInfor(String alarm_id) {
@@ -67,12 +67,12 @@ public class AlarmDaoImpl implements AlarmDao {
 	}
 
 	/**
-	 * »ñÈ¡×ÜµÄ¼ÇÂ¼ÌõÊý
+	 * ï¿½ï¿½È¡ï¿½ÜµÄ¼ï¿½Â¼ï¿½ï¿½ï¿½ï¿½
 	 */
 	@Override
 	public int getAlarmInforCount(String queryString) {
 		// TODO Auto-generated method stub
-		System.out.println("query²ÎÊýµÄÖµÊÇ"+queryString);
+		System.out.println("queryï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½"+queryString);
 		String hql;
 		if(queryString==""||queryString==null){
 			hql="select count(*)from xnjcpt_alarm";
@@ -82,20 +82,20 @@ public class AlarmDaoImpl implements AlarmDao {
 				"' or alarm_threshold_value like '"+query+"' or alarm_type like '"+
 					query+"' or alarm_state like '"+query+"')";
 		}
-		System.out.println("»ñÈ¡×ÜµÄ¼ÇÂ¼ÌõÊý£º"+hql);
+		System.out.println("ï¿½ï¿½È¡ï¿½ÜµÄ¼ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"+hql);
 		int count = ((Number) getSession().createQuery(hql).uniqueResult()).intValue();	
 		return count;
 	}
 
 	/**
-	 * »ñÈ¡ÐèÒªÏÔÊ¾µÄÐÅÏ¢¼¯ºÏ
+	 * ï¿½ï¿½È¡ï¿½ï¿½Òªï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½
 	 */
 	@Override
 	public List<xnjcpt_alarm> getAlarmInforList(String queryString, int currPage) {
 		// TODO Auto-generated method stub
 		String hql;
 		if(queryString==""||queryString==null){
-			//System.out.println("queryµÄÖµÊÇ£º"+queryString);
+			//System.out.println("queryï¿½ï¿½Öµï¿½Ç£ï¿½"+queryString);
 			hql="from xnjcpt_alarm";
 		}else{
 			String query="%"+queryString+"%";
@@ -103,16 +103,16 @@ public class AlarmDaoImpl implements AlarmDao {
 					"' or alarm_threshold_value like '"+query+"' or alarm_type like '"+
 					query+"' or alarm_state like '"+query+"')";
 		}
-		//System.out.println("queryµÄÖµÊÇ£º"+query);
+		//System.out.println("queryï¿½ï¿½Öµï¿½Ç£ï¿½"+query);
 		//System.out.println(hql);
-		List<xnjcpt_alarm> list = getSession().createQuery(hql).setFirstResult((currPage - 1) * 10).setMaxResults(10)
+		List<xnjcpt_alarm> list = getSession().createQuery(hql).setFirstResult((currPage - 1) * 6).setMaxResults(6)
 				.list();
-		System.out.println("»ñµÃµÄ¼¯ºÏÊÇ"+list);
+		System.out.println("ï¿½ï¿½ÃµÄ¼ï¿½ï¿½ï¿½ï¿½ï¿½"+list);
 		return list;
 	}
 
 	/**
-	 * µã»÷ÏêÏ¸ÐÅÏ¢»ñÈ¡ÏàÓ¦µÄ¾¯±¨ÐÅÏ¢
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½Ï¢ï¿½ï¿½È¡ï¿½ï¿½Ó¦ï¿½Ä¾ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	 */
 	@Override
 	public xnjcpt_alarm getAlarmInforById(String alarm_id) {
@@ -123,7 +123,7 @@ public class AlarmDaoImpl implements AlarmDao {
 	}
 
 	/**
-	 * ¸ü¸Ä¾¯±¨ÐÅÏ¢
+	 * ï¿½ï¿½ï¿½Ä¾ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	 */
 	@Override
 	public void updateAlarmInfor(xnjcpt_alarm xnjcpt_alarm) {
@@ -132,7 +132,7 @@ public class AlarmDaoImpl implements AlarmDao {
 	}
 
 	/**
-	 * ÅúÁ¿É¾³ý¾¯±¨ÐÅÏ¢
+	 * ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	 */
 	@Override
 	public void deleteAlarmInfors(String[] strAlarmIds) {

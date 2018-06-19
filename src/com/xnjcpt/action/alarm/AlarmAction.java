@@ -68,7 +68,7 @@ public class AlarmAction {
 		 alarmService.saveAlarmInfor(xnjcpt_alarm);
 		 
 		 PrintWriter pw = response.getWriter();
-		 pw.write("sgfdgfd");
+		 pw.write("警报信息存储成功");
 		
 		
 	}
@@ -148,7 +148,8 @@ public class AlarmAction {
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		response.setHeader("Access-Control-Allow-Methods", "GET,POST");
 		Gson gson=new Gson();
-		String result=gson.toJson(gson);
+		String result=gson.toJson(xnjcpt_alarm);
+		System.out.println(result);
 		PrintWriter pw = response.getWriter();
 		pw.write(result);
 		pw.flush();
@@ -161,7 +162,7 @@ public class AlarmAction {
 	 * @throws IOException 
 	 */
 	public void updateAlarmInfor() throws IOException{
-		
+		System.out.println("中午会死"+xnjcpt_alarm);
 		alarmService.updateAlarmInfor(xnjcpt_alarm);
 		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setContentType("text/html;charset=utf-8");
@@ -169,7 +170,7 @@ public class AlarmAction {
 		response.setHeader("Access-Control-Allow-Methods", "GET,POST");
 		
 		PrintWriter pw = response.getWriter();
-		pw.write("������Ϣ���ĳɹ���");
+		pw.write("警报信息更改成功");
 		
 	}
 	
