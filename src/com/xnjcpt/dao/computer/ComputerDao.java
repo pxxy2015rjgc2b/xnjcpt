@@ -8,6 +8,7 @@ import com.xnjcpt.domain.DO.xnjcpt_disk;
 import com.xnjcpt.domain.DO.xnjcpt_memory;
 import com.xnjcpt.domain.DO.xnjcpt_progress;
 import com.xnjcpt.domain.DO.xnjcpt_user_computer;
+import com.xnjcpt.domain.VO.ComputerManagerVO;
 import com.xnjcpt.domain.VO.ComputerPageVO;
 import com.xnjcpt.domain.VO.ProgressPageVO;
 
@@ -66,5 +67,9 @@ public interface ComputerDao {
 	boolean deleteProgress(String computer_id);
 
 	void cleanData();
+
+	int getComputerCount(ComputerManagerVO computerManagerVO);
+
+	void getComputerByConditionAndPage(ComputerManagerVO computerManagerVO);
 
 }

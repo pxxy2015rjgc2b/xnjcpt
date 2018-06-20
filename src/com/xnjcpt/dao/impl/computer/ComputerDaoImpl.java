@@ -17,7 +17,9 @@ import com.xnjcpt.domain.DO.xnjcpt_disk;
 import com.xnjcpt.domain.DO.xnjcpt_memory;
 import com.xnjcpt.domain.DO.xnjcpt_progress;
 import com.xnjcpt.domain.DO.xnjcpt_user_computer;
+import com.xnjcpt.domain.DTO.ComputerManagerPageDTO;
 import com.xnjcpt.domain.DTO.ComputerPageDTO;
+import com.xnjcpt.domain.VO.ComputerManagerVO;
 import com.xnjcpt.domain.VO.ComputerPageVO;
 import com.xnjcpt.domain.VO.ProgressPageVO;
 
@@ -134,7 +136,6 @@ public class ComputerDaoImpl implements ComputerDao {
 		Query query = this.getSession().createQuery(hql)
 				.setFirstResult((computerPageVO.getCurrPage() - 1) * computerPageVO.getPageSize())
 				.setMaxResults(computerPageVO.getPageSize());
-		System.out.println(hql);
 		List<ComputerPageDTO> list = query.list();
 		computerPageVO.setList(list);
 	}
@@ -397,6 +398,51 @@ public class ComputerDaoImpl implements ComputerDao {
 		session.createQuery(hql_memory).executeUpdate();
 		session.createQuery(hql_net).executeUpdate();
 
+	}
+
+	@Override
+	public int getComputerCount(ComputerManagerVO computerManagerVO) {
+		// TODO Auto-generated method stub
+
+		String hql = "select count(*) from xnjcpt_computer c,xnjcpt_user_computer uc,xnjcpt_user u where c.computer_id=uc.user_computer_computer and uc.user_computer_user = u.user_id";
+		if (computerManagerVO.getSearchContent() != null && !"".equals(computerManagerVO.getSearchContent().trim())) {
+			hql = hql + " and (u.user_name like '%" + computerManagerVO.getSearchContent()
+					+ "%' or u.user_username like '%" + computerManagerVO.getSearchContent()
+					+ "%' or c.computer_ip like '%" + computerManagerVO.getSearchContent() + "%')";
+		}
+		if (computerManagerVO.getSearchStatus() != null && !"".equals(computerManagerVO.getSearchStatus().trim())) {
+			if (computerManagerVO.getSearchStatus() == "use") {
+				hql = hql + " and c.computer_name is not null";
+			} else {
+				hql = hql + " and c.computer_name is null";
+			}
+		}
+		long count = (long) this.getSession().createQuery(hql).uniqueResult();
+
+		return (int) count;
+	}
+
+	@Override
+	public void getComputerByConditionAndPage(ComputerManagerVO computerManagerVO) {
+		// TODO Auto-generated method stub
+		String hql = "select new com.xnjcpt.domain.DTO.ComputerManagerPageDTO(c.computer_id,u.user_name,u.user_username,c.computer_ip,c.computer_name) from xnjcpt_computer c,xnjcpt_user_computer uc,xnjcpt_user u where c.computer_id=uc.user_computer_computer and uc.user_computer_user = u.user_id";
+		if (computerManagerVO.getSearchContent() != null && !"".equals(computerManagerVO.getSearchContent().trim())) {
+			hql = hql + " and (u.user_name like '%" + computerManagerVO.getSearchContent()
+					+ "%' or u.user_username like '%" + computerManagerVO.getSearchContent()
+					+ "%' or c.computer_ip like '%" + computerManagerVO.getSearchContent() + "%')";
+		}
+		if (computerManagerVO.getSearchStatus() != null && !"".equals(computerManagerVO.getSearchStatus().trim())) {
+			if (computerManagerVO.getSearchStatus().trim().equals("use")) {
+				hql = hql + " and c.computer_name is not null";
+			} else {
+				hql = hql + " and c.computer_name is null";
+			}
+		}
+		Query query = this.getSession().createQuery(hql)
+				.setFirstResult((computerManagerVO.getCurrPage() - 1) * computerManagerVO.getPageSize())
+				.setMaxResults(computerManagerVO.getPageSize());
+		List<ComputerManagerPageDTO> list = query.list();
+		computerManagerVO.setList(list);
 	}
 
 }

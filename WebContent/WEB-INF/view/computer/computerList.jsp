@@ -84,8 +84,8 @@
 						</table>
 					</div>
 					<div id="bottomPage" style="padding: 20px;">
-						<span>当前页数:<span id="currPage">1</span></span> <span>共:<span
-							id="totalPage">1</span>页
+						<span>当前页数:<span id="currPage">{{ computerVO.currPage }}</span></span> <span>共:<span
+							id="totalPage">{{ computerVO.totalPage }}</span>页
 						</span> <span onclick="skipToIndexPage()" id="indexPage"
 							class="pageOperation">首页</span> <span
 							onclick="skipToPrimaryPage()" id="previousPage"

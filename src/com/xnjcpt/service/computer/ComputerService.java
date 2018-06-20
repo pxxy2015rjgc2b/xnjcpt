@@ -3,6 +3,7 @@ package com.xnjcpt.service.computer;
 import java.util.List;
 
 import com.xnjcpt.domain.DO.xnjcpt_computer;
+import com.xnjcpt.domain.VO.ComputerManagerVO;
 import com.xnjcpt.domain.VO.ComputerPageVO;
 import com.xnjcpt.domain.VO.ProgressPageVO;
 
@@ -25,5 +26,7 @@ public interface ComputerService {
 	void getProgressByPage(String computer_id, ProgressPageVO progresPageVO);
 
 	void cleanData();
+
+	void getComputerByConditionAndPage(ComputerManagerVO computerManagerVO);
 
 }

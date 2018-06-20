@@ -10,7 +10,9 @@ import com.xnjcpt.domain.DO.xnjcpt_disk;
 import com.xnjcpt.domain.DO.xnjcpt_memory;
 import com.xnjcpt.domain.DO.xnjcpt_progress;
 import com.xnjcpt.domain.DO.xnjcpt_user_computer;
+import com.xnjcpt.domain.DTO.ComputerManagerPageDTO;
 import com.xnjcpt.domain.DTO.ComputerPageDTO;
+import com.xnjcpt.domain.VO.ComputerManagerVO;
 import com.xnjcpt.domain.VO.ComputerPageVO;
 import com.xnjcpt.domain.VO.ProgressPageVO;
 import com.xnjcpt.service.computer.ComputerService;
@@ -140,6 +142,25 @@ public class ComputerServiceImpl implements ComputerService {
 	public void cleanData() {
 		// TODO Auto-generated method stub
 		computerDao.cleanData();
+	}
+
+	@Override
+	public void getComputerByConditionAndPage(ComputerManagerVO computerManagerVO) {
+		// TODO Auto-generated method stub
+		int count = computerDao.getComputerCount(computerManagerVO);
+		computerManagerVO.setPageSize(10);
+		computerManagerVO.setTotalCount(count);
+		computerManagerVO.setTotalPage((int) Math.ceil((double) count / computerManagerVO.getPageSize()));
+		computerDao.getComputerByConditionAndPage(computerManagerVO);
+		for (ComputerManagerPageDTO computerManagerPageDTO : computerManagerVO.getList()) {
+			if (computerManagerPageDTO.getComputer_name() != null
+					&& !"".equals(computerManagerPageDTO.getComputer_name())) {
+				computerManagerPageDTO.setComputer_status("use");
+			} else {
+				computerManagerPageDTO.setComputer_status("noUse");
+			}
+		}
+
 	}
 
 }

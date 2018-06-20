@@ -17,6 +17,7 @@ import org.apache.struts2.ServletActionContext;
 import com.google.gson.Gson;
 import com.opensymphony.xwork2.ActionContext;
 import com.xnjcpt.domain.DO.xnjcpt_computer;
+import com.xnjcpt.domain.VO.ComputerManagerVO;
 import com.xnjcpt.domain.VO.ComputerPageVO;
 import com.xnjcpt.domain.VO.ProgressPageVO;
 import com.xnjcpt.service.computer.ComputerService;
@@ -30,6 +31,7 @@ public class ComputerAction {
 	private String computer_id;
 	private ProgressPageVO progressPageVO;
 	private String command;
+	private ComputerManagerVO computerManagerVO;
 
 	public void setComputerService(ComputerService computerService) {
 		this.computerService = computerService;
@@ -253,6 +255,26 @@ public class ComputerAction {
 		}
 	}
 
+	// 获得所有主机
+	public void getComputerByConditionAndPage() {
+		computerService.getComputerByConditionAndPage(computerManagerVO);
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setContentType("text/html;charset=utf-8");
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Access-Control-Allow-Methods", "GET,POST");
+		try {
+			PrintWriter pw = response.getWriter();
+			Gson gson = new Gson();
+			String result = gson.toJson(computerManagerVO);
+			pw.write(result);
+			pw.flush();
+			pw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 	public String getId() {
 		return id;
 	}
@@ -311,6 +333,14 @@ public class ComputerAction {
 
 	public void setCommand(String command) {
 		this.command = command;
+	}
+
+	public ComputerManagerVO getComputerManagerVO() {
+		return computerManagerVO;
+	}
+
+	public void setComputerManagerVO(ComputerManagerVO computerManagerVO) {
+		this.computerManagerVO = computerManagerVO;
 	}
 
 }

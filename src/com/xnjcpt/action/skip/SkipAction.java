@@ -80,4 +80,13 @@ public class SkipAction extends ActionSupport {
 		session.removeAttribute("user_name");
 		return "index";
 	}
+
+	// 进入后台管理侧边栏
+	public String skipIntoManagerSlider() {
+		return "skipIntoManagerSlider";
+	}
+
+	public String intoApply() {
+		return "intoApply";
+	}
 }

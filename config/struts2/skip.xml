@@ -30,6 +30,8 @@
 			<result name="intoOverview">/WEB-INF/view/computer/clusterOverview.jsp</result>
 			<result name="login">/index.jsp</result>
 			<result name="index">/index.jsp</result>
+			<result name="skipIntoManagerSlider">/WEB-INF/view/systemManager.jsp</result>
+			<result name="intoApply">/WEB-INF/view/computer/computerUserManager.jsp</result>
 			<interceptor-ref name="mystackHttp" />
 		</action>
 	</package>

@@ -10,18 +10,21 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="<%=basePath %>css/slider/sideNav.css" />
+<link rel="stylesheet" href="<%=basePath%>css/slider/sideNav.css" />
+<script type="text/javascript"
+	src="<%=basePath%>js/monitor/fomaterData.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
-		<div class="side_navBox">
-			<div class="side_navTitle">云主机</div>
-			<ul class="side_nav">
-				<li><a href="<%=basePath %>skip/skip_intoComputer">主机管理</a></li>
-				<%-- <li><a href="<%=basePath %>skip/skip_intoOverview">集群总揽</a></li> --%>
-<!-- 				<li><a>性能检测</a></li> -->
-				<li><a href="<%=basePath %>skip/skip_intoAlarm">设置警报</a></li>
-			</ul>
-		</div>	
+	<div class="side_navBox">
+		<div class="side_navTitle">后台管理</div>
+		<ul class="side_nav">
+			<li><a href="/xnjcpt/skip/skip_intoUser">用户管理</a></li>
+			<li><a href="/xnjcpt/skip/skip_intoApply">云主机申请管理</a></li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+	</script>
+
 </body>
 </html>
