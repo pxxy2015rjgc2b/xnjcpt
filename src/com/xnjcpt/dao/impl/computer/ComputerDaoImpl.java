@@ -1,5 +1,7 @@
 package com.xnjcpt.dao.impl.computer;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -373,6 +375,28 @@ public class ComputerDaoImpl implements ComputerDao {
 		String hql = "delete from xnjcpt_progress where progress_computer = '" + computer_id + "'";
 		this.getSession().createQuery(hql).executeUpdate();
 		return true;
+	}
+
+	@Override
+	public void cleanData() {
+		// TODO Auto-generated method stub
+		Calendar c = Calendar.getInstance();
+		c.set(Calendar.DAY_OF_YEAR, c.get(Calendar.DAY_OF_YEAR) - 7);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		String time = sdf.format(c.getTime());
+		c.clear();
+		String hql_cpu = "delete from xnjcpt_cpu_state where cpu_state_time <='" + time + "'";
+		String hql_disk = "delete from xnjcpt_disk_state where disk_state_time <='" + time + "'";
+		String hql_io = "delete from xnjcpt_io_state where io_state_time <='" + time + "'";
+		String hql_memory = "delete from xnjcpt_memory_state where memory_state_time <='" + time + "'";
+		String hql_net = "delete from xnjcpt_net_state where disk_state_time <='" + time + "'";
+		Session session = this.getSession();
+		session.createQuery(hql_cpu).executeUpdate();
+		session.createQuery(hql_disk).executeUpdate();
+		session.createQuery(hql_io).executeUpdate();
+		session.createQuery(hql_memory).executeUpdate();
+		session.createQuery(hql_net).executeUpdate();
+
 	}
 
 }

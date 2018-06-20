@@ -22,15 +22,15 @@ function login_ajax(){
 	        contentType: false,
 	        success: function(result){
 	        	 if(result=="该账户已被封禁"){
-	        		 console.log("该账户已被封禁，请到邮箱点击激活链接!");
+	        		 toastr.error("该账户已被封禁，请到邮箱点击激活链接!");
 	        	 }else{
 	        	    if(result=="user_success"){
 	  			       toastr.success("用户登录成功！");
 	  			        //登录成功跳到云主机页面
 	  			       window.location.href="/xnjcpt/skip/skip_intoComputer"
-	  		         }else if(result=="manage_success"){
-	  		        	  toastr.success("管理员成功！");
-	  		        	  window.location.href="/xnjcpt/skip/skip_intoComputer"
+	  		         }else if(result=="manager_success"){
+	  		        	 toastr.success("管理员成功！");
+	  		        	 window.location.href="/xnjcpt/skip/skip_intoComputer"
 	  		         }else if(result=="password_error"){
 	  			         toastr.error("密码输入错误！");
 	  		         }else if(result=="用户名或邮箱账户输入错误"){

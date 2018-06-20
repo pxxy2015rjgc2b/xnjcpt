@@ -51,11 +51,11 @@ public class ReceiveDaoImpl implements ReceiveDao {
 					+ "'where computer_ip = '" + xnjcpt_computer.getComputer_ip() + "'";
 			getSession().createQuery(hql2).executeUpdate();
 		} else {
-			System.out.println("执行保存");
-			xnjcpt_computer.setComputer_gmt_create(TeamUtil.getStringSecond());
-			xnjcpt_computer.setComputer_gmt_modified(TeamUtil.getStringSecond());
-			xnjcpt_computer.setComputer_id(TeamUtil.getUuid());
-			this.getSession().save(xnjcpt_computer);
+			System.out.println("没有该主机");
+			// xnjcpt_computer.setComputer_gmt_create(TeamUtil.getStringSecond());
+			// xnjcpt_computer.setComputer_gmt_modified(TeamUtil.getStringSecond());
+			// xnjcpt_computer.setComputer_id(TeamUtil.getUuid());
+			// this.getSession().save(xnjcpt_computer);
 		}
 
 	}

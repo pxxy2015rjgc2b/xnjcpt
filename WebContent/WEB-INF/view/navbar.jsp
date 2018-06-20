@@ -61,7 +61,9 @@
 		</div>
 		<div class="header_center">
 			<a href="/xnjcpt/skip/skip_intoComputer">云主机</a>
+			<s:if test="#session.user_role == 1">
 			<a class="enter_userList" href="/xnjcpt/skip/skip_intoUser">后台管理</a>
+			</s:if>
 		</div>
 		<div class="header_right">
 			<div class="inform">

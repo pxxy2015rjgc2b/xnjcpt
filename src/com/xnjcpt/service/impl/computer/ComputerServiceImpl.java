@@ -136,4 +136,10 @@ public class ComputerServiceImpl implements ComputerService {
 		progressPageVO.setList(list);
 	}
 
+	@Override
+	public void cleanData() {
+		// TODO Auto-generated method stub
+		computerDao.cleanData();
+	}
+
 }

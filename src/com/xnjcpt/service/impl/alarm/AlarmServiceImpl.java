@@ -82,7 +82,7 @@ public class AlarmServiceImpl implements AlarmService {
 			List<xnjcpt_alarm> list = alarmDao.getAlarm(xc.getComputer_id(), "CPU利用率");
 			if (list != null && list.size() > 0) {
 				for (xnjcpt_alarm xnjcpt_alarm : list) {
-					if ((1 - Float.parseFloat(xnjcpt_cpu_state.getCpu_state_idle())) > Float
+					if ((100 - (Float.parseFloat(xnjcpt_cpu_state.getCpu_state_idle()) * 100)) > Float
 							.parseFloat(xnjcpt_alarm.getAlarm_threshold_value())) {
 						xnjcpt_alarm_message xam = new xnjcpt_alarm_message();
 						xam.setMessage_id(TeamUtil.getUuid());
@@ -90,7 +90,8 @@ public class AlarmServiceImpl implements AlarmService {
 						xam.setMessage_gmt_modified(TeamUtil.getStringSecond());
 						xam.setMessage_status("0");
 						xam.setMessage_user(xuc.getUser_computer_user());
-						xam.setMessage_info("您ip为" + ip + "的主机CPU利用率超过了您设定的警告值！请注意！");
+						xam.setMessage_info("您ip为" + ip + "的主机CPU利用率（" + xnjcpt_alarm.getAlarm_threshold_value()
+								+ "）超过了您设定的警告值！请注意！");
 						alarmDao.saveMessage(xam);
 					}
 				}
@@ -108,7 +109,7 @@ public class AlarmServiceImpl implements AlarmService {
 			List<xnjcpt_alarm> list = alarmDao.getAlarm(xc.getComputer_id(), "内存利用率");
 			if (list != null && list.size() > 0) {
 				for (xnjcpt_alarm xnjcpt_alarm : list) {
-					if ((Float.parseFloat(xnjcpt_memory_state.getMemory_state_mem_rate())) > Float
+					if ((Float.parseFloat(xnjcpt_memory_state.getMemory_state_mem_rate()) * 100) > Float
 							.parseFloat(xnjcpt_alarm.getAlarm_threshold_value())) {
 						xnjcpt_alarm_message xam = new xnjcpt_alarm_message();
 						xam.setMessage_id(TeamUtil.getUuid());
@@ -116,7 +117,8 @@ public class AlarmServiceImpl implements AlarmService {
 						xam.setMessage_gmt_modified(TeamUtil.getStringSecond());
 						xam.setMessage_status("0");
 						xam.setMessage_user(xuc.getUser_computer_user());
-						xam.setMessage_info("您ip为" + ip + "的主机内存使用率超过了您设定的警告值！请注意！");
+						xam.setMessage_info("您ip为" + ip + "的主机内存使用率（" + xnjcpt_alarm.getAlarm_threshold_value()
+								+ "）超过了您设定的警告值！请注意！");
 						alarmDao.saveMessage(xam);
 					}
 				}
@@ -141,7 +143,8 @@ public class AlarmServiceImpl implements AlarmService {
 						xam.setMessage_gmt_modified(TeamUtil.getStringSecond());
 						xam.setMessage_status("0");
 						xam.setMessage_user(xuc.getUser_computer_user());
-						xam.setMessage_info("您ip为" + ip + "的主机出带宽超过了您设定的警告值！请注意！");
+						xam.setMessage_info(
+								"您ip为" + ip + "的主机出带宽（" + xnjcpt_alarm.getAlarm_threshold_value() + "）超过了您设定的警告值！请注意！");
 						alarmDao.saveMessage(xam);
 					}
 				}
@@ -166,7 +169,8 @@ public class AlarmServiceImpl implements AlarmService {
 						xam.setMessage_gmt_modified(TeamUtil.getStringSecond());
 						xam.setMessage_status("0");
 						xam.setMessage_user(xuc.getUser_computer_user());
-						xam.setMessage_info("您ip为" + ip + "的主机入带宽超过了您设定的警告值！请注意！");
+						xam.setMessage_info(
+								"您ip为" + ip + "的主机入带宽（" + xnjcpt_alarm.getAlarm_threshold_value() + "）超过了您设定的警告值！请注意！");
 						alarmDao.saveMessage(xam);
 					}
 				}
@@ -191,7 +195,8 @@ public class AlarmServiceImpl implements AlarmService {
 						xam.setMessage_gmt_modified(TeamUtil.getStringSecond());
 						xam.setMessage_status("0");
 						xam.setMessage_user(xuc.getUser_computer_user());
-						xam.setMessage_info("您ip为" + ip + "的主机出包量超过了您设定的警告值！请注意！");
+						xam.setMessage_info(
+								"您ip为" + ip + "的主机出包量（" + xnjcpt_alarm.getAlarm_threshold_value() + "）超过了您设定的警告值！请注意！");
 						alarmDao.saveMessage(xam);
 					}
 				}
@@ -216,7 +221,8 @@ public class AlarmServiceImpl implements AlarmService {
 						xam.setMessage_gmt_modified(TeamUtil.getStringSecond());
 						xam.setMessage_status("0");
 						xam.setMessage_user(xuc.getUser_computer_user());
-						xam.setMessage_info("您ip为" + ip + "的主机入包量超过了您设定的警告值！请注意！");
+						xam.setMessage_info(
+								"您ip为" + ip + "的主机入包量（" + xnjcpt_alarm.getAlarm_threshold_value() + "）超过了您设定的警告值！请注意！");
 						alarmDao.saveMessage(xam);
 					}
 				}

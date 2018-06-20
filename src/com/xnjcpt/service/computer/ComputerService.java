@@ -24,4 +24,6 @@ public interface ComputerService {
 
 	void getProgressByPage(String computer_id, ProgressPageVO progresPageVO);
 
+	void cleanData();
+
 }

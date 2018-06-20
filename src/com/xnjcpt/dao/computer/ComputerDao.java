@@ -65,4 +65,6 @@ public interface ComputerDao {
 
 	boolean deleteProgress(String computer_id);
 
+	void cleanData();
+
 }
