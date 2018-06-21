@@ -15,15 +15,14 @@ public class ComputerInformationVO {
 	public void setTotalPage(int totalPage) {
 		this.totalPage = totalPage;
 	}
+	
+	
 	public int getCurrPage() {
 		return currPage;
 	}
-	public void setCurrPage(int currPage) {
-		if(currPage>totalPage)
-		{this.currPage =totalPage+1;}
-		else{this.currPage = currPage;}
+	private void setCurrPage(int currPage) {
+		this.currPage = currPage;
 	}
-	
 	public int getCount() {
 		return Count;
 	}

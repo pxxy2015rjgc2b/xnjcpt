@@ -26,7 +26,7 @@ public class ComputerServiceImpl implements ComputerService {
 	}
 	public ComputerInformationVO getComputerInformationByPage(ComputerInformationVO cv) {
 		int count = computerDao.getComputerCount();
-		cv.setPageSize(10);
+		cv.setPageSize(1);
 		cv.setCount(count);
 		cv.setTotalPage((int) Math.ceil((double) count / cv.getPageSize()));
 		return computerDao.getComputerInformationByPage(cv);

@@ -1,9 +1,9 @@
-var computer_editVue;//编辑显示vue
+var computerVue;//编辑显示vue
 var computer_paginationQuery = {
 		"currPage":'1',
 		"totalPage" : '',
 		"pageCount" : '',
-		"totalCount " : ''
+		"totalCount" : ''
 	}
 
 window.onload=function(){
@@ -14,7 +14,6 @@ window.onload=function(){
 		data:{
 			"currPage" : '1',
 			"totalPage" : '1',
-			"pageCount" : '0',
 			"totalCount" : '0',
 			"computers" : ""
 		},
@@ -47,9 +46,9 @@ function add_computer() {
 //添加主机ajax
 function add_computerAjax(){
 	var formData=new FormData();
-	formData.append("computer_ip",$("input[name='computer_ip']").val());
+	formData.append("xc.computer_ip",$("input[name='computer_ip']").val());
 	$.ajax({
-		    url: "/xnjcpt/computer/computer_addComputer",
+		    url: "/xnjcpt/computer/computer_saveComputer",
 	        type: "post",
 	        data:formData,
 	        //报错请加入以下三行，则ajax提交无问题
@@ -63,71 +62,6 @@ function add_computerAjax(){
 	        	}
 	        }
 	});
-}
-//点击修改按钮
-$(document).on('click',".edit_computer",function(event){
-	 var input_id=$(event.target).parent().siblings('.computer_id').attr('id'); 
-	 var formData=new FormData();
-	 formData.append("computer_id",input_id);
-	 //获取要修改的数据
-	 $.ajax({
-		    url: "/xnjcpt/computer/computer_getcomputerInforById",
-	        type: "post",
-	        data:formData,
-	        //报错请加入以下三行，则ajax提交无问题
-	        cache: false,  
-	        processData: false,  
-	        contentType: false,
-	        success: function(result){
-	        	var result=JSON.parse(result);
-	        	$("input[name='computer_computer']").val(result.computer_computer);
-	        	$("input[name='computer_threshold_value']").val(result.computer_threshold_value);
-	        	$(".computer_type").val(result.computer_type);
-	        	$(".computer_state").val(result.computer_state);
-	        }
-	});
-	 $.confirm({
-			title: '编辑警报',
-			content:'<div class="comfirm_box"><input placeholder="要添加的主机IP" disabled="true" name="computer_computer" class="comfirm_input computer_computer" type="text"/></div><div class="comfirm_box"><select class="comfirm_select computer_type" name="computer_type"  placeholder="警报类型"><option>CPU利用率</option><option>CPU利用率</option><option>内存利用率</option><option>出带宽</option><option>入带宽</option><option>出包量</option><option>入包量</option></select></div><div class="comfirm_box"><input class="comfirm_input computer_threshold_value"  placeholder="警报阈值" name="computer_threshold_value" type="text"/></div><div class="comfirm_box"><select class="comfirm_select computer_state" name="computer_state"  placeholder="是否启用"><option value="0">启用</option><option value="1">不启用</option></select></div>',
-			type: 'yellow',
-			buttons: {
-				确认: {
-					btnClass: ' btn-blue',
-					type: "blue",
-					action: function() {
-						edit_computerAjax(input_id);
-					}
-				},
-				取消: {
-					btnClass: 'btn-red',
-					type: "red",
-				}
-			}
-	 });
-});
-//编辑主机Ajax
-function edit_computerAjax(input_id){
-	var formData=new FormData();
-	formData.append("xnjcpt_computer.computer_computer",$("input[name='computer_computer']").val());
-	formData.append("xnjcpt_computer.computer_state",$(".computer_state").val());
-	formData.append("xnjcpt_computer.computer_type",$(".computer_type").val());
-	formData.append("xnjcpt_computer.computer_threshold_value",$("input[name='computer_threshold_value']").val());
-	formData.append("xnjcpt_computer.computer_id",input_id);
-	$.ajax({
-	    url: "/xnjcpt/computer/computer_updatecomputerInfor",
-        type: "post",
-        data:formData,
-        //报错请加入以下三行，则ajax提交无问题
-        cache: false,  
-        processData: false,  
-        contentType: false,
-        success: function(result){
-        	if(result=="警报信息更改成功"){
-        		toastr.success("警报信息更改成功");
-        		show_computerList();
-        	}
-        }
-});
 }
 //多选删除主机
 function delete_computer() {
@@ -151,7 +85,7 @@ function delete_computer() {
 	if (HaveDate) {
 		$
 			.ajax({
-				url : "/xnjcpt/computer/computer_deleteComputerById",
+				url : "/xnjcpt/computer/computer_removeComputerById",
 				type : "POST",
 				contentType : false,
 				processData : false,
@@ -191,28 +125,30 @@ function cancle_all() {
 function show_computerList(){
     console.log(computer_paginationQuery);
 	var computer_data={
-			"currPage":computer_paginationQuery.currPage,
-			"totalPage":computer_paginationQuery.totalPage,
-			"count":computer_paginationQuery.totalCount,
-			"pageSize":computer_paginationQuery.pageCount,
+			"cv.currPage":computer_paginationQuery.currPage,
+			"cv.totalPage":computer_paginationQuery.totalPage,
+			"cv.count":computer_paginationQuery.totalCount,
+			"cv.pageSize":computer_paginationQuery.pageCount,
 	}
 	$.ajax({
-	    url: "/xnjcpt/computer/computer_getComputerIds",
+	    url: "/xnjcpt/computer/computer_getComputerInformationByPage",
         type: "post",
         data:computer_data,
         success: function(result){
         	var result=JSON.parse(result);
+        	console.log(result);
 			//存入vue对象
-        	computerVue.computers = result.computer_list;
+        	computerVue.computers = result.list;
         	computerVue.currPage = result.currPage;
 			computerVue.totalPage = result.totalPage;
 			computerVue.pageCount = result.pageSize;
-			computerVue.totalCount = result.count;
+			computerVue.totalCount = result.Count;
 			//存入分页查询
 			computer_paginationQuery.currPage = result.currPage;
 			computer_paginationQuery.totalPage = result.totalPage;
 			computer_paginationQuery.pageCount = result.pageSize;
-			computer_paginationQuery.totalCount = result.count;
+			computer_paginationQuery.totalCount = result.Count;
+			console.log(computer_paginationQuery);
         }
 });
 }
@@ -222,17 +158,17 @@ function iquery_computerList() {
 	var keyword = $(".search_input").val();
 	console.log("按关键字搜索");
 	var iquery_keyword = {
-		"queryString" : keyword,
+		"cv.searchContent" : keyword,
 	}
 	$.ajax({
-		url : "/xnjcpt/computer/computer_getcomputerInfor",
+		url : "/xnjcpt/computer/computer_getComputerInformationByPage",
 		type : "post",
 		data : iquery_keyword,
 		//报错请加入以下三行，则ajax提交无问题
 		success : function(result) {
 			var result=JSON.parse(result);
 			//存入vue对象
-        	computerVue.computers = result.computer_list;
+        	computerVue.computers = result.list;
         	computerVue.currPage = result.currPage;
 			computerVue.totalPage = result.totalPage;
 			computerVue.pageCount = result.pageSize;

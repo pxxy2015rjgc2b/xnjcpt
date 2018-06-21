@@ -97,6 +97,7 @@ return true;}
 		if (cv.getSearchContent() != null && !"".equals(cv.getSearchContent().trim())) {
 			hql = hql + " and xc.computer_ip like '%" + cv.getSearchContent().trim() + "%'";
 		}
+		
 		hql = hql + " order by xc.computer_gmt_create desc";
 		List<UserComputerPageDTO> result=getSession().createQuery(hql).setFirstResult((cv.getCurrPage() - 1) * cv.getPageSize()).setMaxResults(cv.getPageSize()).list();
 		 cv.setList(result);

@@ -53,10 +53,10 @@
 							<tr v-for="computer in computers" >
                                   <td><input type="checkbox" :id="computer.computer_id" name="delete_check" onclick="cancle_all()"/></td>
                                   <td style="display:none;" class="computer_id" :id="computer.computer_id"></td>
-                                  <td>{{ computer.computer_computer }}</td>
-                                  <td>{{ computer.computer_type }}</td>
-                                  <td>{{ computer.computer_threshold_value }}</td>
-                                  <td>{{ computer.computer_type }}</td>
+                                  <td>{{ computer.computer_ip }}</td>
+                                  <td>{{ computer.cpu_model}}</td>
+                                  <td>{{ computer.disk_size }}</td>
+                                  <td>{{ computer.memory_size }}</td>
                                   <td>{{ computer.computer_threshold_value }}</td>
                                   
                                  </tr>
