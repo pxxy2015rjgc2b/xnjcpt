@@ -18,10 +18,15 @@ function userShow_ajax(){
 		url:"/xnjcpt/userManager/userManager_getUserById",
 		type:"POST",
 		success:function(data){
-			console.log("用户列表显示");
-			console.log(data);
 			var userData= JSON.parse(data);
+			var user_password=userData.user_password;
+			//把密码星号显示
+			var re = /1|2|3|4|5|6|7|8|9|0/gi;
+			userData.user_password =user_password.replace(re, function(sMatch){
+			 return sMatch.replace(/./g,"*");
+			});
 			user.userInfo=userData;
+			
 			
 			
 		}
@@ -114,13 +119,17 @@ function editPassword(){
 				action: function() {
 					$.confirm({
 						title: '修改密码',
-						content: '<div class="comfirm_box"><input placeholder="旧密码" class="comfirm_input oldPassword" type="text"/></div><div class="comfirm_box"><input class="comfirm_input newPassword"  placeholder="新密码" type="text"/></div>',
+						content: '<div class="comfirm_box"><input placeholder="旧密码" class="comfirm_input oldPassword" type="text"/></div><div class="comfirm_box"><input class="comfirm_input newPassword"  placeholder="新密码" type="text"/></div><div class="comfirm_box"><input class="comfirm_input confirmPassword"  placeholder="确认密码" type="text"/></div>',
 		                type: "blue",
 						buttons: {
 							确认: {
 								btnClass: ' btn-green',
 								action:function(){
-									editPassword_ajax();
+									if($(".newPassword").val()==$(".confirmPassword").val()){
+										editPassword_ajax();
+									}else{
+									  $.alert('二次密码不一致，请重新输入！');
+									}
 								}
 							},
 							取消: {
@@ -156,7 +165,7 @@ function editPassword_ajax(){
 			console.log(data);
 			if(data=="updateSuccess"){
 				userShow_ajax();
-				toastr.suceess("修改密码成功!");
+				toastr.success("修改密码成功!");
 			}		
 			else{
 				toastr.error("修改密码失败！");

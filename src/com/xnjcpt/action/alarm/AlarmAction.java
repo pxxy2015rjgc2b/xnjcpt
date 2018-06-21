@@ -20,7 +20,7 @@ import com.xnjcpt.domain.DO.*;
 import com.xnjcpt.domain.VO.showAlarmInforVo;;
 
 public class AlarmAction {
-	//ע��ҵ������
+	//注入service
 	private AlarmService alarmService;
 
 	public void setAlarmService(AlarmService alarmService) {
@@ -40,11 +40,12 @@ public class AlarmAction {
 	private xnjcpt_alarm xnjcpt_alarm;
 	
 	/**
-	 * ��ȡ������Ϣ���洢������Ϣ
+	 * 添加警报信息
 	 * @throws IOException 
 	 */
 	public void saveAlarmInfor() throws IOException{
-		System.out.println("getAlarmInforִ�У�");
+
+		System.out.println("saveAlarmInfor");
 		xnjcpt_alarm xnjcpt_alarm=new xnjcpt_alarm();
 		xnjcpt_alarm.setAlarm_computer(alarm_computer);
 		xnjcpt_alarm.setAlarm_state(alarm_state);
@@ -53,8 +54,8 @@ public class AlarmAction {
 		xnjcpt_alarm.setAlarm_gmt_create(TeamUtil.getStringSecond());
 		xnjcpt_alarm.setAlarm_gmt_modified(TeamUtil.getStringSecond());
 		xnjcpt_alarm.setAlarm_id(TeamUtil.getUuid());
-		/**�û���¼��session�ᱣ���Ӧ���û���Ϣ
-		 * ��session�����л�ȡ��Ӧ���û�id
+		/**
+		 * 获取session对象中的user_id
 		 */
 		//String user_id = (String) ActionContext.getContext().getSession().get("user_id");
 		String alarm_user = (String) ActionContext.getContext().getSession().get("user_id");
@@ -68,12 +69,14 @@ public class AlarmAction {
 		 alarmService.saveAlarmInfor(xnjcpt_alarm);
 		 
 		 PrintWriter pw = response.getWriter();
+
 		 pw.write("警报信息存储成功");
+
 		
 		
 	}
 //	/**
-//	 * ���ľ���״̬�����û���
+//	 * 更改警报的状态
 //	 * @return
 //	 * @throws IOException 
 //	 */
@@ -81,46 +84,48 @@ public class AlarmAction {
 //		HttpServletResponse response = ServletActionContext.getResponse();
 //		response.setContentType("text/html;charset=utf-8");
 //		PrintWriter pw = response.getWriter();
-//		//���ݾ�����id�޸ľ�����Ϣ
+//判断alarm_id是否为空
 //		if(alarm_id=="" ||alarm_id==null){		
 //			pw.write("Error!");
 //		}else{
 //			//System.out.println(alarm_id);
 //			//pw.write(alarm_id);
-//			//��ѯ��Ӧ����id�ľ�����Ϣ
+//			//获取警报的详细信息
 //			xnjcpt_alarm xa=alarmService.getAlarmInforByAlarmComputer(alarm_id);
-//			//�жϾ���״̬�Ƿ���ͬ
+//			//判断警报的状态是否变更
 //			if(xa.getAlarm_state().equals(alarm_state)){
 //				pw.write(alarm_state+"       "+xa.getAlarm_state());
-//				pw.write("��ѡ����Ҫ���ĵ�״̬��");
+//				pw.write("请选择需要更改的状态");
 //			}else{
 //				//pw.write("ok");
 //				pw.write(alarm_state+"   else    "+xa.getAlarm_state());
-//				pw.write("����״̬���ĳɹ���");
+//				pw.write("警报状态更改成功");
 //				alarmService.updateAlarmState(alarm_id,alarm_state);
 //			}
 //		}
 //	}
 	
 	/**
-	 * ɾ��������Ϣ
+	 * 删除单个警报信息
 	 * @return
 	 * @throws IOException 
 	 */
 	public void deleteAlarmInfor() throws IOException{
-		//���ݾ�����idɾ��������Ϣ
+		//根据id删除警报信息
 		alarmService.deleteAlarmInfor(alarm_id);
 		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter pw = response.getWriter();
-		pw.write("ɾ���ɹ�");
+
+		pw.write("警报信息删除成功！");
+
 		pw.flush();
 		pw.close();
 		
 	}
 	
 	/**
-	 * ��ҳ��ʾ���еľ�����Ϣ
+	 * 分页显示警报信息
 	 * @return
 	 * @throws IOException 
 	 */
@@ -137,7 +142,7 @@ public class AlarmAction {
 	}
 	
 	/**
-	 * �����ϸ��Ϣ����þ�������ϸ��Ϣ��ҳ����ʾ
+	 * 获得一条警报信息ʾ
 	 * @return
 	 * @throws IOException 
 	 */
@@ -148,8 +153,7 @@ public class AlarmAction {
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		response.setHeader("Access-Control-Allow-Methods", "GET,POST");
 		Gson gson=new Gson();
-		String result=gson.toJson(xnjcpt_alarm);
-		System.out.println(result);
+		String result=gson.toJson(gson);
 		PrintWriter pw = response.getWriter();
 		pw.write(result);
 		pw.flush();
@@ -157,12 +161,12 @@ public class AlarmAction {
 	}
 	
 	/**
-	 * ����޸ģ����ľ�����Ϣ
+	 * 修改警报信息
 	 * @return
 	 * @throws IOException 
 	 */
 	public void updateAlarmInfor() throws IOException{
-		System.out.println("中午会死"+xnjcpt_alarm);
+		
 		alarmService.updateAlarmInfor(xnjcpt_alarm);
 		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setContentType("text/html;charset=utf-8");
@@ -170,27 +174,31 @@ public class AlarmAction {
 		response.setHeader("Access-Control-Allow-Methods", "GET,POST");
 		
 		PrintWriter pw = response.getWriter();
-		pw.write("警报信息更改成功");
+		pw.write("警报信息修改成功");
 		
 	}
 	
 	/**
-	 * ����ɾ�����������Ϣ
+	 * 批量删除警报信息
 	 * @return
 	 * @throws IOException 
 	 */
 	public void deleteAlarmInfors() throws IOException{
-		 HttpServletRequest request = ServletActionContext.getRequest();
-		 String[] strAlarmIds = request.getParameterValues("alarm_id");
-		 alarmService.deleteAlarmInfors(strAlarmIds);
-		 
 		 HttpServletResponse response = ServletActionContext.getResponse();
 		 response.setContentType("text/html;charset=utf-8");
 		 response.setHeader("Access-Control-Allow-Origin", "*");
 		 response.setHeader("Access-Control-Allow-Methods", "GET,POST");
 		 
 		 PrintWriter pw = response.getWriter();
-		 pw.write("����ɾ���ɹ���");
+		 
+		 HttpServletRequest request = ServletActionContext.getRequest();
+		 String[] strAlarmIds = request.getParameterValues("alarm_id");
+		 if(strAlarmIds.length>0){
+		 alarmService.deleteAlarmInfors(strAlarmIds);	 
+		 pw.write("警报信息删除成功");
+		 }else{
+			 pw.write("请选择需要删除的警报信息");
+		 }
 	}
 	
 
