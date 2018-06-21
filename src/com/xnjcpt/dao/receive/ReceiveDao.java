@@ -8,6 +8,7 @@ import com.xnjcpt.domain.DO.xnjcpt_disk_state;
 import com.xnjcpt.domain.DO.xnjcpt_io_state;
 import com.xnjcpt.domain.DO.xnjcpt_memory;
 import com.xnjcpt.domain.DO.xnjcpt_memory_state;
+import com.xnjcpt.domain.DO.xnjcpt_mysql;
 import com.xnjcpt.domain.DO.xnjcpt_net;
 import com.xnjcpt.domain.DO.xnjcpt_net_state;
 import com.xnjcpt.domain.DO.xnjcpt_progress;
@@ -39,5 +40,9 @@ public interface ReceiveDao {
 	void deleteProgressByComputer(String id);
 
 	void savePorgress(xnjcpt_progress xnjcpt_progress);
+
+	void updateMysql(xnjcpt_computer computer);
+
+	void saveMysqlStatus(xnjcpt_mysql xnjcpt_mysql);
 
 }

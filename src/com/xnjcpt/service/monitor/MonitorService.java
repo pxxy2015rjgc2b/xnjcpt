@@ -34,4 +34,8 @@ public interface MonitorService {
 
 	List<CpuUserStateRadioDTO> getIoDealTime(MonitorPageVO monitorPageVO);
 
+	List<CpuUserStateRadioDTO> getMysqlQPSData(MonitorPageVO monitorPageVO);
+
+	List<CpuUserStateRadioDTO> getMysqlTPSData(MonitorPageVO monitorPageVO);
+
 }

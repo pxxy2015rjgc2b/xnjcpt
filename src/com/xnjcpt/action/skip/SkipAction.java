@@ -40,6 +40,11 @@ public class SkipAction extends ActionSupport {
 		return "intoMonitor";
 	}
 
+	// 进入数据库性能指标查询
+	public String intoMysql() {
+		return "intoMysql";
+	}
+
 	// 进入进程管理
 	public String intoProgress() {
 		return "intoProgress";

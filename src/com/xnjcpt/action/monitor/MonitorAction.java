@@ -264,6 +264,42 @@ public class MonitorAction {
 		}
 	}
 
+	// 获取数据库QPS监控数据
+	public void getMysqlQPSData() {
+		List<CpuUserStateRadioDTO> list = monitorService.getMysqlQPSData(monitorPageVO);
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setContentType("text/html;charset=utf-8");
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Access-Control-Allow-Methods", "GET,POST");
+		try {
+			PrintWriter pw = response.getWriter();
+			pw.write(new Gson().toJson(list));
+			pw.flush();
+			pw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	// 获取数据库TPS监控数据
+	public void getMysqlTPSData() {
+		List<CpuUserStateRadioDTO> list = monitorService.getMysqlTPSData(monitorPageVO);
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setContentType("text/html;charset=utf-8");
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Access-Control-Allow-Methods", "GET,POST");
+		try {
+			PrintWriter pw = response.getWriter();
+			pw.write(new Gson().toJson(list));
+			pw.flush();
+			pw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 	public void setMonitorService(MonitorService monitorService) {
 		this.monitorService = monitorService;
 	}

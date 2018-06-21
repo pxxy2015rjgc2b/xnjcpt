@@ -23,6 +23,7 @@
 			<li><a href="<%=basePath%>skip/skip_intoProgress"
 				id="progress_a">进程管理</a></li>
 			<li><a href="<%=basePath%>skip/skip_intoControl" id="control_a">远程控制</a></li>
+			<li><a onclick="inotMysql()">数据库性能</a></li>
 		</ul>
 	</div>
 	<script type="text/javascript">
@@ -38,6 +39,24 @@
 					.getElementById("control_a").href
 					+ "?computer_id=" + id;
 		})
+		function inotMysql(){
+			$.ajax({
+				url:'/xnjcpt/computer/computer_getComputerByComputerId?computer_id='+getId(),
+				type:'get',
+				success:function(data){
+					if(data!="noLogin"){
+						var computer = JSON.parse(data);
+						if(computer.computer_isopen_mysql=="0"){
+							toastr.error("当前主机未安装数据库");
+						}else{
+							window.location.href="/xnjcpt/skip/skip_intoMysql?computer_id="+getId();
+						}
+					}else{
+						loginIntercptor();
+					}
+				}
+			})
+		}
 	</script>
 
 </body>

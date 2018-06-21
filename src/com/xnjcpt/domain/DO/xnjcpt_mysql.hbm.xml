@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-6-21 12:03:00 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.xnjcpt.domain.DO.xnjcpt_mysql" table="XNJCPT_MYSQL">
+        <id name="mysql_id" type="java.lang.String">
+            <column name="MYSQL_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="mysql_computer" type="java.lang.String">
+            <column name="MYSQL_COMPUTER" />
+        </property>
+        <property name="mysql_time" type="java.lang.String">
+            <column name="MYSQL_TIME" />
+        </property>
+        <property name="mysql_qps" type="float">
+            <column name="MYSQL_QPS" />
+        </property>
+        <property name="mysql_tps" type="float">
+            <column name="MYSQL_TPS" />
+        </property>
+        <property name="mysql_gmt_create" type="java.lang.String">
+            <column name="MYSQL_GMT_CREATE" />
+        </property>
+        <property name="mysql_gmt_modified" type="java.lang.String">
+            <column name="MYSQL_GMT_MODIFIED" />
+        </property>
+    </class>
+</hibernate-mapping>

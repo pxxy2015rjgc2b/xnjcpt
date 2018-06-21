@@ -112,6 +112,7 @@ public class ComputerServiceImpl implements ComputerService {
 		flag = computerDao.deletIOState(computer_id);// 删除IO状态
 		flag = computerDao.deleteAlarm(computer_id);// 删除警报
 		flag = computerDao.deleteProgress(computer_id);// 删除警报
+		flag = computerDao.deleteMysqlStauts(computer_id);
 		return flag;
 	}
 

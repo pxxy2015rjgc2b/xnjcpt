@@ -15,6 +15,7 @@ import com.xnjcpt.domain.DO.xnjcpt_disk_state;
 import com.xnjcpt.domain.DO.xnjcpt_io_state;
 import com.xnjcpt.domain.DO.xnjcpt_memory;
 import com.xnjcpt.domain.DO.xnjcpt_memory_state;
+import com.xnjcpt.domain.DO.xnjcpt_mysql;
 import com.xnjcpt.domain.DO.xnjcpt_net;
 import com.xnjcpt.domain.DO.xnjcpt_net_state;
 import com.xnjcpt.domain.DO.xnjcpt_progress;
@@ -359,5 +360,20 @@ public class ReceiveDaoImpl implements ReceiveDao {
 	public void savePorgress(xnjcpt_progress xnjcpt_progress) {
 		// TODO Auto-generated method stub
 		this.getSession().save(xnjcpt_progress);
+	}
+
+	@Override
+	public void updateMysql(xnjcpt_computer computer) {
+		// TODO Auto-generated method stub
+		computer.setComputer_gmt_modified(TeamUtil.getStringSecond());
+		this.getSession().saveOrUpdate(computer);
+	}
+
+	@Override
+	public void saveMysqlStatus(xnjcpt_mysql xnjcpt_mysql) {
+		// TODO Auto-generated method stub
+		System.out.println(xnjcpt_mysql.getMysql_qps());
+		this.getSession().saveOrUpdate(xnjcpt_mysql);
+		this.getSession().flush();
 	}
 }

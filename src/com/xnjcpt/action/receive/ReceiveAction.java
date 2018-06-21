@@ -10,6 +10,7 @@ import com.xnjcpt.domain.DO.xnjcpt_disk_state;
 import com.xnjcpt.domain.DO.xnjcpt_io_state;
 import com.xnjcpt.domain.DO.xnjcpt_memory;
 import com.xnjcpt.domain.DO.xnjcpt_memory_state;
+import com.xnjcpt.domain.DO.xnjcpt_mysql;
 import com.xnjcpt.domain.DO.xnjcpt_net;
 import com.xnjcpt.domain.DO.xnjcpt_net_state;
 import com.xnjcpt.domain.DO.xnjcpt_progress;
@@ -47,6 +48,7 @@ public class ReceiveAction {
 	private ProgressDTO progressDTO;
 	private String ip;
 	private List<xnjcpt_progress> progressList;
+	private xnjcpt_mysql xnjcpt_mysql;
 
 	/**
 	 * 获取主机信息，存入数据库
@@ -165,6 +167,25 @@ public class ReceiveAction {
 		receiveService.saveProgressInfor(ip, progressList);
 	}
 
+	/**
+	 * 接收mysql状态
+	 * 
+	 * @return
+	 */
+
+	public void getMysqlStatus() {
+		receiveService.addMysqlStatus(xnjcpt_computer.getComputer_ip(), xnjcpt_mysql);
+	}
+
+	/**
+	 * 更改主机修改数据库是否打开
+	 * 
+	 * @return
+	 */
+	public void updateComputerMysql() {
+		receiveService.updateComputerMysql(xnjcpt_computer);
+	}
+
 	public xnjcpt_computer getXnjcpt_computer() {
 		return xnjcpt_computer;
 	}
@@ -271,6 +292,14 @@ public class ReceiveAction {
 
 	public void setIp(String ip) {
 		this.ip = ip;
+	}
+
+	public xnjcpt_mysql getXnjcpt_mysql() {
+		return xnjcpt_mysql;
+	}
+
+	public void setXnjcpt_mysql(xnjcpt_mysql xnjcpt_mysql) {
+		this.xnjcpt_mysql = xnjcpt_mysql;
 	}
 
 }

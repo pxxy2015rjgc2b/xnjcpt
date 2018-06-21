@@ -85,6 +85,7 @@ public class ComputerAction {
 
 	// 保存主机
 	public void saveComputer() {
+		xnjcpt_computer.setComputer_isopen_mysql("0");
 		boolean flag = computerService.saveComputer(xnjcpt_computer);
 		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setContentType("text/html;charset=utf-8");
@@ -266,6 +267,26 @@ public class ComputerAction {
 			PrintWriter pw = response.getWriter();
 			Gson gson = new Gson();
 			String result = gson.toJson(computerManagerVO);
+			pw.write(result);
+			pw.flush();
+			pw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	// 通过主机id获得主机
+	public void getComputerByComputerId() {
+		xnjcpt_computer computer = computerService.getComputerById(computer_id);
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setContentType("text/html;charset=utf-8");
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Access-Control-Allow-Methods", "GET,POST");
+		try {
+			PrintWriter pw = response.getWriter();
+			Gson gson = new Gson();
+			String result = gson.toJson(computer);
 			pw.write(result);
 			pw.flush();
 			pw.close();

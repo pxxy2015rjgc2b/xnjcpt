@@ -391,12 +391,14 @@ public class ComputerDaoImpl implements ComputerDao {
 		String hql_io = "delete from xnjcpt_io_state where io_state_time <='" + time + "'";
 		String hql_memory = "delete from xnjcpt_memory_state where memory_state_time <='" + time + "'";
 		String hql_net = "delete from xnjcpt_net_state where disk_state_time <='" + time + "'";
+		String hql_mysql = "delete from xnjcpt_mysql where mysql_time <='" + time + "'";
 		Session session = this.getSession();
 		session.createQuery(hql_cpu).executeUpdate();
 		session.createQuery(hql_disk).executeUpdate();
 		session.createQuery(hql_io).executeUpdate();
 		session.createQuery(hql_memory).executeUpdate();
 		session.createQuery(hql_net).executeUpdate();
+		session.createQuery(hql_mysql).executeUpdate();
 
 	}
 
@@ -443,6 +445,20 @@ public class ComputerDaoImpl implements ComputerDao {
 				.setMaxResults(computerManagerVO.getPageSize());
 		List<ComputerManagerPageDTO> list = query.list();
 		computerManagerVO.setList(list);
+	}
+
+	@Override
+	public boolean deleteMysqlStauts(String computer_id) {
+		// TODO Auto-generated method stub
+
+		try {
+			String hql = "delete from xnjcpt_mysql where mysql_computer = '" + computer_id + "'";
+			this.getSession().createQuery(hql).executeUpdate();
+			return true;
+		} catch (HibernateException e) {
+			// TODO: handle exception
+			return false;
+		}
 	}
 
 }

@@ -109,4 +109,16 @@ public class MonitorServiceImpl implements MonitorService {
 		return monitorDao.getIoDealTime(monitorPageVO);
 	}
 
+	@Override
+	public List<CpuUserStateRadioDTO> getMysqlQPSData(MonitorPageVO monitorPageVO) {
+		// TODO Auto-generated method stub
+		return monitorDao.getMysqlQPSData(monitorPageVO);
+	}
+
+	@Override
+	public List<CpuUserStateRadioDTO> getMysqlTPSData(MonitorPageVO monitorPageVO) {
+		// TODO Auto-generated method stub
+		return monitorDao.getMysqlTPSData(monitorPageVO);
+	}
+
 }

@@ -2,6 +2,7 @@ package com.xnjcpt.service.receive;
 
 import java.util.List;
 
+import com.xnjcpt.domain.DO.xnjcpt_mysql;
 import com.xnjcpt.domain.DO.xnjcpt_progress;
 
 public interface ReceiveService {
@@ -27,5 +28,9 @@ public interface ReceiveService {
 	void saveNetStateInfor(String ip, com.xnjcpt.domain.DO.xnjcpt_net_state xnjcpt_net_state);
 
 	void saveProgressInfor(String ip, List<xnjcpt_progress> progressList);
+
+	void updateComputerMysql(com.xnjcpt.domain.DO.xnjcpt_computer xnjcpt_computer);
+
+	void addMysqlStatus(String computer_ip, xnjcpt_mysql xnjcpt_mysql);
 
 }

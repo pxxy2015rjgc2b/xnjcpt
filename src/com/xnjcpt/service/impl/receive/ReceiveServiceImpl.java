@@ -11,6 +11,7 @@ import com.xnjcpt.domain.DO.xnjcpt_disk_state;
 import com.xnjcpt.domain.DO.xnjcpt_io_state;
 import com.xnjcpt.domain.DO.xnjcpt_memory;
 import com.xnjcpt.domain.DO.xnjcpt_memory_state;
+import com.xnjcpt.domain.DO.xnjcpt_mysql;
 import com.xnjcpt.domain.DO.xnjcpt_net;
 import com.xnjcpt.domain.DO.xnjcpt_net_state;
 import com.xnjcpt.domain.DO.xnjcpt_progress;
@@ -130,6 +131,29 @@ public class ReceiveServiceImpl implements ReceiveService {
 				xnjcpt_progress.setProgress_id(TeamUtil.getUuid());
 				receiveDao.savePorgress(xnjcpt_progress);
 			}
+		}
+	}
+
+	@Override
+	public void updateComputerMysql(xnjcpt_computer xnjcpt_computer) {
+		// TODO Auto-generated method stub
+		xnjcpt_computer computer = receiveDao.getComputerByIp(xnjcpt_computer.getComputer_ip());
+		if (computer != null) {
+			computer.setComputer_isopen_mysql(xnjcpt_computer.getComputer_isopen_mysql());
+			receiveDao.updateMysql(computer);
+		}
+	}
+
+	@Override
+	public void addMysqlStatus(String computer_ip, xnjcpt_mysql xnjcpt_mysql) {
+		// TODO Auto-generated method stub
+		xnjcpt_computer computer = receiveDao.getComputerByIp(computer_ip);
+		if (computer != null) {
+			xnjcpt_mysql.setMysql_id(TeamUtil.getUuid());
+			xnjcpt_mysql.setMysql_computer(computer.getComputer_id());
+			xnjcpt_mysql.setMysql_gmt_create(TeamUtil.getStringSecond());
+			xnjcpt_mysql.setMysql_gmt_modified(TeamUtil.getStringSecond());
+			receiveDao.saveMysqlStatus(xnjcpt_mysql);
 		}
 	}
 

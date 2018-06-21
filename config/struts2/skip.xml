@@ -32,6 +32,7 @@
 			<result name="index">/index.jsp</result>
 			<result name="skipIntoManagerSlider">/WEB-INF/view/systemManager.jsp</result>
 			<result name="intoApply">/WEB-INF/view/computer/computerUserManager.jsp</result>
+			<result name="intoMysql">/WEB-INF/view/monitor/mysqlMonitor.jsp</result>
 			<interceptor-ref name="mystackHttp" />
 		</action>
 	</package>

@@ -1,7 +1,6 @@
 /**
  * 
  */
-$(CpuIdleInfor())
 function CpuIdleInfor(startTime,endTime) {
 	var computer_id = getId();
 	getStartTime();

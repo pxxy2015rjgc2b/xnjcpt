@@ -172,4 +172,24 @@ public class MonitorDaoImpl implements MonitorDao {
 		List<CpuUserStateRadioDTO> list = this.getSession().createQuery(hql).list();
 		return list;
 	}
+
+	@Override
+	public List<CpuUserStateRadioDTO> getMysqlQPSData(MonitorPageVO monitorPageVO) {
+		// TODO Auto-generated method stub
+		String hql = "select new com.xnjcpt.domain.DTO.MysqlStatusDTO(mysql_time,mysql_qps) from xnjcpt_mysql where mysql_computer = '"
+				+ monitorPageVO.getComputer_id() + "' and mysql_time >= '" + monitorPageVO.getTime_start()
+				+ "' and mysql_time <= '" + monitorPageVO.getTime_end() + "' order by mysql_time asc";
+		List<CpuUserStateRadioDTO> list = this.getSession().createQuery(hql).list();
+		return list;
+	}
+
+	@Override
+	public List<CpuUserStateRadioDTO> getMysqlTPSData(MonitorPageVO monitorPageVO) {
+		// TODO Auto-generated method stub
+		String hql = "select new com.xnjcpt.domain.DTO.MysqlStatusDTO(mysql_time,mysql_tps) from xnjcpt_mysql where mysql_computer = '"
+				+ monitorPageVO.getComputer_id() + "' and mysql_time >= '" + monitorPageVO.getTime_start()
+				+ "' and mysql_time <= '" + monitorPageVO.getTime_end() + "' order by mysql_time asc";
+		List<CpuUserStateRadioDTO> list = this.getSession().createQuery(hql).list();
+		return list;
+	}
 }

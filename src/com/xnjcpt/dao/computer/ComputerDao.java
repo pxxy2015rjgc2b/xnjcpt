@@ -72,4 +72,6 @@ public interface ComputerDao {
 
 	void getComputerByConditionAndPage(ComputerManagerVO computerManagerVO);
 
+	boolean deleteMysqlStauts(String computer_id);
+
 }

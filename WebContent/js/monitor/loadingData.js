@@ -3,7 +3,6 @@
  */
 $(function(){
 	today();
-	console.log(getSevenStartTime());
 })
 function today(){
 	var startTime  = getStartTime();
