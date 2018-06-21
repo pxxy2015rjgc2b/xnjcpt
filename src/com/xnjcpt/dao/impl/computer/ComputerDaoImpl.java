@@ -9,7 +9,7 @@ import com.xnjcpt.dao.computer.ComputerDao;
 import com.xnjcpt.domain.DO.xnjcpt_computer;
 import com.xnjcpt.domain.DO.xnjcpt_user_computer;
 import com.xnjcpt.domain.DTO.UserComputerPageDTO;
-import com.xnjcpt.domain.VO.computerInformationVO;
+import com.xnjcpt.domain.VO.ComputerInformationVO;
 import util.TeamUtil;
 public class ComputerDaoImpl implements ComputerDao {
 	private SessionFactory sessionFactory;
@@ -26,7 +26,7 @@ public class ComputerDaoImpl implements ComputerDao {
 		return sessionFactory.getCurrentSession();
 	}
 	@Override
-	public boolean addComputer(xnjcpt_computer xc) {
+	public boolean saveComputer(xnjcpt_computer xc) {
 		String hql = "from xnjcpt_computer where computer_ip like '" + xc.getComputer_ip() + "'";
 		System.out.println(hql);
 		List<xnjcpt_computer> list = getSession().createQuery(hql).list();
@@ -47,7 +47,7 @@ getSession().save(xuc);
 return true;}
 	}
 	@Override
-	public void deleteComputerById(String[] strComputerIds) {
+	public void removeComputerById(String[] strComputerIds) {
 		for(int i=0;i<strComputerIds.length;i++){
 		Query query=this.getSession().createQuery("delete from xnjcpt_computer where computer_id in  ('"+strComputerIds[i]+"')");
 		query.executeUpdate();
@@ -71,33 +71,53 @@ return true;}
 		query9.executeUpdate();
 		Query query10=this.getSession().createQuery("delete from xnjcpt_io_state where io_state_computer in  ('"+strComputerIds[i]+"')");
 		query10.executeUpdate();
+		Query query11=this.getSession().createQuery("delete from xnjcpt_alarm where alarm_computer in  ('"+strComputerIds[i]+"')");
+		query11.executeUpdate();
+		
 		}}
 	@Override
 	public int getComputerCount() {
 		String user_id = (String) ActionContext.getContext().getSession().get("user_id");
 		String hql = "select user_computer_computer from xnjcpt_user_computer where user_computer_user ='"+user_id+"'";
-		System.out.println(hql+"我");
+		
 		List<T>  list = getSession().createQuery(hql).list();
 		int count=list.size();
 		return count;
 		}
 	@Override
-	public computerInformationVO getComputerInformation(computerInformationVO cv) {
+	public ComputerInformationVO getComputerInformationByPage(ComputerInformationVO cv) {
 		String user_id = (String) ActionContext.getContext().getSession().get("user_id");
-		String hql = "select xc.computer_name,xc.computer_ip,cpu.cpu_model,memory.memory_size,disk.disk_size "
+		String hql = "select new com.xnjcpt.domain.DTO.UserComputerPageDTO (xc.computer_name,xc.computer_ip,cpu.cpu_model,memory.memory_size,disk.disk_size)"
 				+ "from xnjcpt_cpu as cpu,xnjcpt_memory as memory,xnjcpt_disk as disk,xnjcpt_user_computer as xuc,xnjcpt_computer as xc "
 				+ "where cpu.cpu_computer = xc.computer_id "
 				+ "and memory.memory_computer= xc.computer_id"
 				+ " and disk.disk_computer=xc.computer_id"
 				+ " and xc.computer_id=xuc.user_computer_computer"
 				+ " and xuc.user_computer_user='"+user_id+"'"; 
+		if (cv.getSearchContent() != null && !"".equals(cv.getSearchContent().trim())) {
+			hql = hql + " and xc.computer_ip like '%" + cv.getSearchContent().trim() + "%'";
+		}
+		hql = hql + " order by xc.computer_gmt_create desc";
 		List<UserComputerPageDTO> result=getSession().createQuery(hql).setFirstResult((cv.getCurrPage() - 1) * cv.getPageSize()).setMaxResults(cv.getPageSize()).list();
 		 cv.setList(result);
 		 return cv;
 		} 
+	@Override
+	public List<UserComputerPageDTO> getComputerDetials(xnjcpt_computer xc) {
+		String hql = "select  new com.xnjcpt.domain.DTO.UserComputerPageDTO"
+				+ "(cpu.cpu_model,cpu.cpu_basic_frequency,cpu.cpu_catch_size,cpu.cpu_cores,memory.memory_size,memory.memory_swap,disk.disk_size,net.net_mac,net.net_ipv6 )"
+				+ "from xnjcpt_cpu as cpu,xnjcpt_memory as memory,xnjcpt_disk as disk,xnjcpt_net as net"
+				+ " where cpu.cpu_computer = '"+xc.getComputer_id()+"' "
+				+ "and memory.memory_computer= '"+xc.getComputer_id()+"' "
+				+ "and disk.disk_computer='"+xc.getComputer_id()+"' "
+				+ "and net.net_computer='"+xc.getComputer_id()+"' "; 
+		List<UserComputerPageDTO> result=getSession().createQuery(hql).list();
+		return result;
+	}	
 	public xnjcpt_computer getXc() {
 		return xc;
 	}
+	
 	public void setXc(xnjcpt_computer xc) {
 		this.xc = xc;
 	}
@@ -112,5 +132,6 @@ return true;}
 	}
 	public void setUser_id(String user_id) {
 		this.user_id = user_id;
-	}	
+	}
+	
 }
