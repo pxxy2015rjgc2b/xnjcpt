@@ -49,9 +49,13 @@ a:hover {
 
 .header_right a {
 	position: relative;
-	right: -70px;
+	right: -80px;
+	color:white;
+	text-decoration:none;
 }
-
+.header_right a:hover{
+	color: #00a4ff;
+}
 .header_right .search {
 	right: 90px;
 }

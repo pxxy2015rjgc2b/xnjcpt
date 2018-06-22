@@ -27,7 +27,7 @@
 					</div>
 					<div class="header_right">
 						<img class="search" src="<%=basePath %>img/search.png" />
-						<a>注册</a>
+						<a href="/xnjcpt/register.jsp">注册</a>
 						<img class="user" src="<%=basePath %>img/user.png" />
 					</div>
 					<div>

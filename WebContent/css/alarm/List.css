@@ -15,17 +15,23 @@
 .show_content{
 	margin: 0px 0px 0px 20px;
 }
+.show_content table{
+	width:98.5%;
+}
+#table_trTh>th{
+	border-bottom:0px;
+}
 .show_title{
 	font: 18px/60px "寰蒋闆呴粦";
     font-weight: 300;
 }
 /*鎿嶄綔鎸夐挳*/
 .operation_button{
-	margin:0px 0px 20px 0px;
+	margin:10px 0px 20px 0px;
 }
 .operation_button button{
 	margin-right: 10px;
-	border-radius: 0px;
+	border-radius: 3px;
 }
 /*alarmlist page style*/
 .alarm_delete{
@@ -48,6 +54,16 @@
 .search_button{
 	position: relative;
     right: 30px;
+}
+/* 页脚 */
+.page-footer .footer_info{
+	width: 300px;
+	height: 70px;
+	margin: 0px auto;
+	text-align: center;
+}
+.page-footer .footer_info span{
+	margin-right:5px;
 }
 /*alarmList page  mystyle*/
 .alarm_manage{
