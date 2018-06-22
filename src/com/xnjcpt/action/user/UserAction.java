@@ -12,6 +12,7 @@ import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.xnjcpt.domain.DO.xnjcpt_user;
+import com.xnjcpt.service.user.UserManagerService;
 import com.xnjcpt.service.user.UserService;
 
 import util.SendEmail;
@@ -21,6 +22,7 @@ import util.TeamUtil;
 public class UserAction {
 
 	private UserService userService;
+	private UserManagerService userManagerService;
 	private xnjcpt_user user; // 域模型
 	String st = null;
 
@@ -260,12 +262,70 @@ public class UserAction {
 		return ac;
 	}
 
+	// 添加管理员
+	public void addmanager() throws IOException {
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Access-Control-Allow-Methods", "GET,POST");
+		response.setContentType("text/html;charset=utf-8");
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpSession session = request.getSession();
+		PrintWriter pw = response.getWriter();
+		if (userService.judgeUserByUsername(user.getUser_username())) {
+			pw.write("name_error");
+			System.out.println("用户名已存在!");
+		} else {
+			System.out.println("用户名不存在，恭喜您可以注册!");
+			if (userService.judgeUserByUserEmail(user.getUser_email())) {
+				System.out.println("该邮箱已注册，请重新输入");
+				pw.write("email_error");
+			} else {
+				System.out.println("该邮箱可用！");
+				xnjcpt_user xu = new xnjcpt_user();
+				xu.setUser_username(user.getUser_username());
+				xu.setUser_phone(user.getUser_phone());
+				xu.setUser_email(user.getUser_email());
+				xu.setUser_name(user.getUser_name());
+				xu.setUser_role("1");
+				xu.setUser_password(user.getUser_password());
+				xu.setUser_gmt_create(TeamUtil.getStringSecond());
+				xu.setUser_id(UUID.randomUUID().toString());
+				st = "1";
+				xu.setUser_status(st);
+				// System.out.println(user.getUser_name());
+				userService.register(xu);
+				pw.write("register_success");
+
+			}
+		}
+		pw.flush();
+		pw.close();
+	}
+
 	// 注销用户
 	public String logout() {
 		ActionContext.getContext().getSession().remove("user_id");
 		ActionContext.getContext().getSession().remove("user_name");
 		ActionContext.getContext().getSession().remove("user_role");
 		return "logoutSuccess";
+	}
+
+	// 通过邮箱发送修改旧密码
+	public void updatePasswordbyverifyCode() throws IOException {
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter pw = response.getWriter();
+		xnjcpt_user existuser = new xnjcpt_user();
+		existuser = userManagerService.getUserByUserEmail(user_email);
+		if (existuser == null) {
+			System.out.println("修改密码失败");
+			pw.write("findpassword_error");
+		} else {
+			String user_id = existuser.getUser_id();
+			userManagerService.updatePassword(user_id, newPassword);
+			System.out.println(newPassword);
+			pw.write("updatesuccess");
+		}
 	}
 
 	// --------------------------------------------------------�������--------------------------------------------------------------
@@ -285,6 +345,27 @@ public class UserAction {
 	private String user_role;
 	private String user_gmt_creat;
 	private String user_gmt_modified;
+	private String newPassword;
+
+	public String getSt() {
+		return st;
+	}
+
+	public void setSt(String st) {
+		this.st = st;
+	}
+
+	public String getNewPassword() {
+		return newPassword;
+	}
+
+	public void setNewPassword(String newPassword) {
+		this.newPassword = newPassword;
+	}
+
+	public UserService getUserService() {
+		return userService;
+	}
 
 	public String getUser_id() {
 		return user_id;
@@ -366,4 +447,11 @@ public class UserAction {
 		this.user_gmt_modified = user_gmt_modified;
 	}
 
+	public UserManagerService getUserManagerService() {
+		return userManagerService;
+	}
+
+	public void setUserManagerService(UserManagerService userManagerService) {
+		this.userManagerService = userManagerService;
+	}
 }

@@ -10,6 +10,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="<%=basePath%>css/alarm/cloudList.css" />
+<link rel="stylesheet" href="<%=basePath%>css/confirm_style.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>用户管理</title>
 </head>
@@ -28,6 +29,10 @@
 						<span>用户管理</span>
 					</div>
 					<div class="operation_button">
+						<button class="btn btn-primary add_button" onclick="add_user()"
+							type="submit">
+							<i class="fa fa-trash-o" aria-hidden="true"></i> 新建用户
+						</button>
 						<button class="btn btn-danger delete_button"
 							onclick="delete_user()" type="submit">
 							<i class="fa fa-trash-o" aria-hidden="true"></i> 删除
@@ -57,7 +62,7 @@
 									<td style="text-align: center;"><input name="delete_check"
 										:id="user.user_id" onclick="cancle_all()" type="checkbox" /></td>
 									<td style="display: none;"><a :id="user.user_id"></a></td>
-									<td><a>{{ user.user_username }}</a></td>
+									<td>{{ user.user_username }}</td>
 									<td>{{ user.user_name }}</td>
 									<td>{{ user.user_email }}</td>
 									<td>{{ user.user_phone }}</td>

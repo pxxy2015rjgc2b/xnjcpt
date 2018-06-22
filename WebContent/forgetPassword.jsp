@@ -14,6 +14,9 @@
 <title>注册</title>
 <link rel="stylesheet" href="<%=basePath %>css/register/register.css" />
 <link rel="stylesheet" href="<%=basePath %>css/bootstrap.min.css" />
+<script type="text/javascript" src="<%=basePath %>/js/jquery-3.1.1.min.js"></script>
+<link rel="stylesheet" href="<%=basePath%>css/toastr.css">
+<script type="text/javascript" src="<%=basePath%>js/toastr.js"></script>
 <link rel="stylesheet"
 	href="<%=basePath %>css/navbar/font-awesome.min.css" />
 </head>
@@ -40,7 +43,7 @@
 		<div class="reg_footer">Copyright @ 2018-2019 PingXiangXueYuan
 			All Right Reserve 萍乡学院版权所有</div>
 	</div>
-	<script type="text/javascript" src="<%=basePath %>/js/jquery-3.1.1.min.js"></script>
+
 	<script type="text/javascript" src="<%=basePath %>js/user/register.js"></script>
 </body>
 </html>

@@ -92,7 +92,7 @@ function sendEmail(){
 	var formData=new FormData();
 	formData.append("user.user_email",$("input[name='user_email']").val());
 	 $.ajax({
-		    url: "user/user_sendEmailtoUpdatePassword",
+		    url: "/xnjcpt/user/user_sendEmailtoUpdatePassword",
 	        type: "post",
 	        data:formData,
 	        //报错请加入以下三行，则ajax提交无问题
@@ -100,15 +100,11 @@ function sendEmail(){
 	        processData: false,  
 	        contentType: false,
 	        success: function(result){	
-	        console.log("发送邮箱");
-	        console.log("邮箱发送"+result);
 	       	 if(result!="验证码发送失败"){
-	            	// toastr.success("验证码发送失败，请检查邮箱地址！");
+	            	toastr.success("验证码发送成功!");
 	  			    verifyCode=result;
-	  			    //注册完后跳到首页
-                     window.location.href="/xnjcpt/index.jsp"
 	  		   }else{
-	  			 // toastr.success("验证码发送成功！");
+	  			    toastr.error("验证码发送失败，请检查邮箱是否填写正确！");
 	  			    verifyCode=result;
 	  		   }
 	        }
@@ -126,7 +122,7 @@ function forgetPassword(){
 		formData.append("user_email",$("input[name='user_email']").val());
 		formData.append("newPassword",$("input[name='user_password']").val());
 		 $.ajax({
-			    url: "/xnjcpt/userManager/userManager_updatePasswordbyverifyCode",
+			    url: "/xnjcpt/user/user_updatePasswordbyverifyCode",
 		        type: "post",
 		        data:formData,
 		        //报错请加入以下三行，则ajax提交无问题

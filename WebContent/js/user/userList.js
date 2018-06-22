@@ -24,6 +24,55 @@ window.onload = function() {
 		iquery_userList(keyword);
 	});
 }
+
+//增加用户
+function add_user() {
+	$.confirm({
+		title: '添加用户（默认为管理员！）',
+		content: '<div class="comfirm_box"><input placeholder="用户名" name="user_username" class="comfirm_input computer_ip" type="text"/></div><div class="comfirm_box"><input placeholder="用户姓名" name="user_name" class="comfirm_input computer_ip" type="text"/></div><div class="comfirm_box"><input placeholder="邮箱地址" name="user_email" class="comfirm_input computer_ip" type="text"/></div><div class="comfirm_box"><input placeholder="用户密码" name="user_password" class="comfirm_input computer_ip" type="text"/></div><div class="comfirm_box"><input placeholder="确认密码" name="comfirm_password" class="comfirm_input computer_ip" type="text"/></div>',
+		type: 'yellow',
+		buttons: {
+			确认: {
+				btnClass: ' btn-blue',
+				type: "blue",
+				action: function() {
+					add_computerAjax();
+				}
+			},
+			取消: {
+				btnClass: 'btn-red',
+				type: "red",
+				
+			}
+		}
+	});
+}
+//添加用户ajax
+function add_computerAjax(){
+	var formData=new FormData();
+	formData.append("user.user_username",$("input[name='user_username']").val());
+	formData.append("user.user_name",$("input[name='user_name']").val());
+	formData.append("user.user_password",$("input[name='user_password']").val());
+	formData.append("user.user_email",$("input[name='user_email']").val());
+	$.ajax({
+		    url: "/xnjcpt/user/user_addmanager",
+	        type: "post",
+	        data:formData,
+	        //报错请加入以下三行，则ajax提交无问题
+	        cache: false,  
+	        processData: false,  
+	        contentType: false,
+	        success: function(result){
+	        	if(result=="register_success"){
+	        		toastr.success("添加管理员成功！");
+	        		show_userList();
+	        	}else{
+	        		toastr.error("添加管理员失败！");
+	        	}
+	        }
+	});
+}
+
 //show_userList_ajax
 function show_userList() {
 	var user_paginationQueryAjax = {

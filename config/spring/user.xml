@@ -7,6 +7,7 @@
 	<bean id="userAction" class="com.xnjcpt.action.user.UserAction"
 		scope="prototype">
 		<property name="userService" ref="userService"></property>
+		<property name="userManagerService" ref="userManagerService"></property>
 	</bean>
 	<bean id="userService" class="com.xnjcpt.service.impl.user.UserServiceImpl">
 		<property name="userDao" ref="userDao"></property>

@@ -58,24 +58,6 @@ public class UserManagerAction {
 		}
 	}
 
-	// 通过邮箱发送修改旧密码
-	public void updatePasswordbyverifyCode() throws IOException {
-		HttpServletResponse response = ServletActionContext.getResponse();
-		response.setContentType("text/html;charset=utf-8");
-		PrintWriter pw = response.getWriter();
-		xnjcpt_user existuser = new xnjcpt_user();
-		existuser = userManagerService.getUserByUserEmail(user_email);
-		if (existuser == null) {
-			System.out.println("修改密码失败");
-			pw.write("findpassword_error");
-		} else {
-			String user_id = existuser.getUser_id();
-			userManagerService.updatePassword(user_id, newPassword);
-			System.out.println(newPassword);
-			pw.write("updatesuccess");
-		}
-	}
-
 	// 得到用户搜索列表
 	public void getUsers() throws IOException {
 		PageBean_user<xnjcpt_user> pb = (PageBean_user<xnjcpt_user>) userManagerService.findPageByKeyword(currentPage,
