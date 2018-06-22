@@ -24,9 +24,11 @@ window.onload=function(){
 //添加警报
 function add_computer() {
 	$.confirm({
-		title: '添加主机',
+		title: '添加管理员',
 		content: '<div class="comfirm_box"><input placeholder="要添加的主机IP" name="computer_ip" class="comfirm_input computer_ip" type="text"/></div>',
 		type: 'yellow',
+		theme: 'light',
+		
 		buttons: {
 			确认: {
 				btnClass: ' btn-blue',
@@ -65,45 +67,64 @@ function add_computerAjax(){
 }
 //多选删除主机
 function delete_computer() {
-	console.log("多选删除");
-	var formData = new FormData;
-	var HaveDate = false;
-	var index = 0;
-	$('.computerList_table tbody').find(
-		'input[name="delete_check"]').each(
-		function(i) {
-			if ($(this).is(':checked')) {
-				formData.append(
-					'computer_id', $(this)
-						.attr('id'));
-				console.log( "要删除的id"+$(this)
-						.attr('id'));
-				HaveDate = true;
-				index++;
-			}
-		});
-	if (HaveDate) {
-		$
-			.ajax({
-				url : "/xnjcpt/computer/computer_removeComputerById",
-				type : "POST",
-				contentType : false,
-				processData : false,
-				data : formData,
-				dataType : 'text',
-				success : function(data) {
-					console.log(data);
-					if (data == '删除成功') {
-						toastr.info('主机删除成功');
-						show_userList();
+	$.confirm({
+		content: '确认要删除么？',
+		type: 'yellow',
+		theme: 'light',
+		buttons: {
+			确认: {
+				btnClass: ' btn-blue',
+				type: "blue",
+				action: function() {
+					console.log("多选删除");
+					var formData = new FormData;
+					var HaveDate = false;
+					var index = 0;
+					$('.computerList_table tbody').find(
+						'input[name="delete_check"]').each(
+						function(i) {
+							if ($(this).is(':checked')) {
+								formData.append(
+									'computer_id', $(this)
+										.attr('id'));
+								console.log( "要删除的id"+$(this)
+										.attr('id'));
+								HaveDate = true;
+								index++;
+							}
+						});
+					if (HaveDate) {
+						$
+							.ajax({
+								url : "/xnjcpt/computer/computer_removeComputerById",
+								type : "POST",
+								contentType : false,
+								processData : false,
+								data : formData,
+								dataType : 'text',
+								success : function(data) {
+									console.log(data);
+									if (data == '删除成功') {
+										toastr.info('主机删除成功');
+										show_userList();
+									} else {
+										toastr.error('主机删除失败');
+									}
+								}
+							});
 					} else {
-						toastr.error('主机删除失败');
+						toastr.info('未选择数据');
 					}
 				}
-			});
-	} else {
-		toastr.info('未选择数据');
-	}
+			},
+			取消: {
+				btnClass: 'btn-red',
+				type: "red",
+				
+			}
+		}
+	});
+	
 }
 
 //全选，取消全选

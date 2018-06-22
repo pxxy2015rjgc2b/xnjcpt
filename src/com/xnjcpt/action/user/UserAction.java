@@ -302,6 +302,44 @@ public class UserAction{
 		}
 	}
 	
+	//添加管理员
+	public void addmanager() throws IOException{
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Access-Control-Allow-Methods", "GET,POST");
+		response.setContentType("text/html;charset=utf-8");
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpSession session = request.getSession();
+		PrintWriter pw = response.getWriter();
+		if(userService.judgeUserByUsername(user.getUser_username())){
+			pw.write("name_error");
+			System.out.println("用户名已存在!");
+		}else{
+			System.out.println("用户名不存在，恭喜您可以注册!");
+			if(userService.judgeUserByUserEmail(user.getUser_email())){
+				System.out.println("该邮箱已注册，请重新输入");
+				pw.write("email_error");
+			}else{
+			System.out.println("该邮箱可用！");
+			xnjcpt_user xu = new xnjcpt_user();
+			xu.setUser_username(user.getUser_username());
+			xu.setUser_phone(user.getUser_phone());
+			xu.setUser_email(user.getUser_email());
+			xu.setUser_name(user.getUser_name());
+			xu.setUser_role("1");
+			xu.setUser_password(user.getUser_password());
+			xu.setUser_gmt_create(TeamUtil.getStringSecond());
+			xu.setUser_id(UUID.randomUUID().toString());
+			st="1";
+			xu.setUser_status(st);
+			//System.out.println(user.getUser_name());
+			userService.register(xu);
+			pw.write("register_success");
+		
+		}}
+		pw.flush();
+		pw.close();	
+	}
 	
 	
 	//注销用户
