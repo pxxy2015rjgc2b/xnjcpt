@@ -198,6 +198,7 @@ public class UserManagerAction {
 			pw.flush();
 			pw.close();
 		}
+		
 	
 	private String oldPassword;
 	private String newPassword;
