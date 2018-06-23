@@ -153,7 +153,7 @@ public class AlarmAction {
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		response.setHeader("Access-Control-Allow-Methods", "GET,POST");
 		Gson gson=new Gson();
-		String result=gson.toJson(gson);
+		String result=gson.toJson(xnjcpt_alarm);
 		PrintWriter pw = response.getWriter();
 		pw.write(result);
 		pw.flush();

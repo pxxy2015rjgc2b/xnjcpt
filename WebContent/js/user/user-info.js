@@ -111,9 +111,8 @@ function editPassword(){
     $.confirm({
         title: '是否修改密码',
         content: '是否通过旧密码修改密码',
-        theme: 'light',
-        type:'yellow',
-        buttons: {
+        type: 'red',
+        buttons:{
             确认:{
             	btnClass: ' btn-blue',
 				action: function() {
@@ -125,10 +124,14 @@ function editPassword(){
 							确认: {
 								btnClass: ' btn-green',
 								action:function(){
-									if($(".newPassword").val()==$(".confirmPassword").val()){
+									if($(".newPassword").val()==$(".confirmPassword").val()&&$(".oldPassword").val()!=""){
 										editPassword_ajax();
+									}else if($(".oldPassword").val()==""||$(".newPassword").val()==""){
+										$.alert('有选项为空，请完整输入！');
+										  return false;
 									}else{
 									  $.alert('二次密码不一致，请重新输入！');
+									  return false;
 									}
 								}
 							},

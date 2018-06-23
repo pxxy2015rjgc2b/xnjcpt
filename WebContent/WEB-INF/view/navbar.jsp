@@ -67,7 +67,7 @@
 					<div>
 						<ul class="user_infoBox">
 							<li onclick="enter_userAjax()"><a >账户信息</a></li>
-							<li><a>退出登录</a></li>
+							<li><a onclick="login_out()">退出登录</a></li>
 						</ul>
 					</div>
 				</div>

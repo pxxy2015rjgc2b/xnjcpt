@@ -64,6 +64,7 @@ public class ComputerAction {
 			}
 			//分页显示主机信息
 			public void getComputerInformationByPage() {
+				
 				computerService.getComputerInformationByPage(cv);
 				HttpServletResponse response = ServletActionContext.getResponse();
 				response.setContentType("text/html;charset=utf-8");

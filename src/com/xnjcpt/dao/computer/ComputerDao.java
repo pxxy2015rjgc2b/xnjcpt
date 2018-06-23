@@ -12,4 +12,5 @@ public void removeComputerById(String[] strComputerIds);
 public int getComputerCount();
 ComputerInformationVO getComputerInformationByPage(ComputerInformationVO cv);
 public List<UserComputerPageDTO> getComputerDetials(xnjcpt_computer xc);
+
 }

@@ -21,20 +21,23 @@ window.onload=function(){
 	show_computerList();
 }
 
-//添加警报
+//添加主机
 function add_computer() {
 	$.confirm({
 		title: '添加管理员',
 		content: '<div class="comfirm_box"><input placeholder="要添加的主机IP" name="computer_ip" class="comfirm_input computer_ip" type="text"/></div>',
-		type: 'yellow',
-		theme: 'light',
-		
+		type: 'blue',
 		buttons: {
 			确认: {
 				btnClass: ' btn-blue',
 				type: "blue",
 				action: function() {
-					add_computerAjax();
+					if($("input[name='computer_ip']").val()!=""){
+						add_computerAjax();
+					}else{
+						$.alert("所有项为必填项，请完整填写！");
+						return false;
+					}
 				}
 			},
 			取消: {
@@ -69,8 +72,7 @@ function add_computerAjax(){
 function delete_computer() {
 	$.confirm({
 		content: '确认要删除么？',
-		type: 'yellow',
-		theme: 'light',
+		type: 'red',
 		buttons: {
 			确认: {
 				btnClass: ' btn-blue',
@@ -106,7 +108,7 @@ function delete_computer() {
 									console.log(data);
 									if (data == '删除成功') {
 										toastr.info('主机删除成功');
-										show_userList();
+										show_computerList();
 									} else {
 										toastr.error('主机删除失败');
 									}
