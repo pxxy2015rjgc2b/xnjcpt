@@ -24,7 +24,7 @@ window.onload=function(){
 //添加主机
 function add_computer() {
 	$.confirm({
-		title: '添加管理员',
+		title: '添加主机',
 		content: '<div class="comfirm_box"><input placeholder="要添加的主机IP" name="computer_ip" class="comfirm_input computer_ip" type="text"/></div>',
 		type: 'blue',
 		buttons: {
