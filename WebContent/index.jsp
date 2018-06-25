@@ -11,10 +11,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>首页</title>
+
+<link rel="stylesheet" href="<%=basePath %>css/toastr.css">
 <link rel="stylesheet" href="<%=basePath%>css/index/index.css" />
 <link rel="stylesheet" href="<%=basePath%>css/index/footer.css" />
 <link rel="stylesheet" href="<%=basePath%>css/index/header.css" />
-<link rel="stylesheet" href="<%=basePath%>css/toastr.css">
 </head>
 <body>
 <div class="wrapper">
@@ -25,7 +26,8 @@
 						<span>云栖</span>
 					</div>
 					<div class="header_right">
-						<a href="/xnjcpt/register.jsp" style="color: white;">注册</a>
+						<img class="search" src="<%=basePath %>img/search.png" />
+						<a href="/xnjcpt/register.jsp">注册</a>
 						<img class="user" src="<%=basePath %>img/user.png" />
 					</div>
 					<div>
@@ -43,6 +45,7 @@
 					<div class="center_word">
 					    <div >“云栖”应用云平台</div>
 				     	<div>的性能监控与应用管理系统</div>
+				     	<div class="enter_button"><a>立即监测</a></div>
 				  	</div>
 				  	<form id="login_box" class="login_box">
 				  		<div class="login_content">

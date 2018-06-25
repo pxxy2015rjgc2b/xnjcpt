@@ -10,6 +10,12 @@ li ,input{
 	padding: 0px;
 	vertical-align:top;
 }
+a:hover{
+	cursor: pointer;	
+}
+input[readonly]{
+	cursor: not-allowed !important;
+}
 .wrapper{
 	background:#eeeeee;
 	overflow: hidden;
@@ -61,27 +67,94 @@ li ,input{
 /*center centers*/
 .register_content{
 	width: 420px;
-	margin: 30px auto;
+	display: inline-block;
+	margin: 30px 0px;
+	margin-left: 30%;
 	font: 14px/45px "微软雅黑";
 }
-.register_content input{
+.register_input{
 	width:100%;
 	text-indent: 20px;
 	display: inline-block;
-	height: 45px;margin: 10px 0px;
+	height: 45px;
+	margin: 10px 0px;
 	border: 1px solid #ddd;
 }
+/*表单验证成功的input*/
+.form_inputSuccessCheck{
+	width:100%;
+	text-indent: 20px;
+	display: inline-block;
+	height: 45px;
+	margin: 10px 0px;
+	border: 1px solid #7fe561;
+	background: url(../../img/success.png) 380px no-repeat;
+}
+/*input聚焦*/
+.form_inputFocus{
+	width:100%;
+	text-indent: 20px;
+	display: inline-block;
+	height: 45px;
+	margin: 10px 0px;
+	border: 1px solid #00a4ff;
+}
+/*表单验证失败的input*/
+.form_inputErrorCheck{
+	width:100%;
+	text-indent: 20px;
+	display: inline-block;
+	height: 45px;
+	margin: 10px 0px;
+	border: 1px solid #ed4a35;
+	background: url(../../img/error.png) 380px no-repeat;
+}
+.font_hintBox{
+	display: inline-block;
+    margin-top: 40px;
+}
+/*表单验证成功的span*/
+/*邮箱验证成功后出现发送链接*/
+.show_emailA{
+	font:14px/45px "微软雅黑";
+	display: none;
+	position: relative;
+    top: -65px;
+    left: 20px;
+}
+.form_spanSucessCheck{
+	display: block;
+	visibility: hidden;
+    margin-bottom: 20px;
+    line-height: 45px;
+    height: 45px;
+    margin-left: 20px;
+    color: red;
+}
+/*表单验证错误的span*/
+.form_spanErrorCheck{
+	display: block;
+	visibility: visible;
+    margin-bottom: 20px;
+    line-height: 45px;
+    height: 45px;
+    margin-left: 20px;
+    color: red;
+}
 .register_content .identify_codeInput{
-	width:200px;
+	width:205px;
 	height:45px;
+	text-indent: 20px;
+	margin: 10px 0px;
+	border:1px solid #ddd;
 }
 .register_content .identify_code{
-	width: 200px;
+	width: 205px;
 	height: 45px;
 	float: right;
-	margin-left:20px;
-	border:1px solid #d1d2d4;
 	margin: 10px 0px;
+	margin-left:10px;
+	border:1px solid #d1d2d4;
     text-align: center;
 	background: #f4f4f4;
 }
