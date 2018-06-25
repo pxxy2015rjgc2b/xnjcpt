@@ -41,4 +41,6 @@ public interface AlarmDao {
 
 	int getCountAllAlamrMessage();
 
+	List<xnjcpt_alarm_message> getALarmMessageByAlarmId(String alarm_id);
+
 }

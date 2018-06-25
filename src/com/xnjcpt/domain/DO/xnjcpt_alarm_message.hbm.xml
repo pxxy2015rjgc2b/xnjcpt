@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2018-6-7 0:44:34 by Hibernate Tools 3.5.0.Final -->
+<!-- Generated 2018-6-25 22:25:47 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
     <class name="com.xnjcpt.domain.DO.xnjcpt_alarm_message" table="XNJCPT_ALARM_MESSAGE">
         <id name="message_id" type="java.lang.String">
@@ -22,6 +22,9 @@
         </property>
         <property name="message_gmt_modified" type="java.lang.String">
             <column name="MESSAGE_GMT_MODIFIED" />
+        </property>
+        <property name="message_alarm" type="java.lang.String">
+            <column name="MESSAGE_ALARM" />
         </property>
     </class>
 </hibernate-mapping>

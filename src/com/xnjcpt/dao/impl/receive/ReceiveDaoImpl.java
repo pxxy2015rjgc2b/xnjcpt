@@ -374,6 +374,5 @@ public class ReceiveDaoImpl implements ReceiveDao {
 		// TODO Auto-generated method stub
 		System.out.println(xnjcpt_mysql.getMysql_qps());
 		this.getSession().saveOrUpdate(xnjcpt_mysql);
-		this.getSession().flush();
 	}
 }

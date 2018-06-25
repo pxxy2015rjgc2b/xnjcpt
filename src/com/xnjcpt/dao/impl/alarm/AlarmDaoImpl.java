@@ -1,5 +1,7 @@
 package com.xnjcpt.dao.impl.alarm;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -209,5 +211,18 @@ public class AlarmDaoImpl implements AlarmDao {
 		String hql = "select count(*) from xnjcpt_alarm_message where message_user='" + user_id + "'";
 		long count = (long) this.getSession().createQuery(hql).uniqueResult();
 		return (int) count;
+	}
+
+	@Override
+	public List<xnjcpt_alarm_message> getALarmMessageByAlarmId(String alarm_id) {
+		// TODO Auto-generated method stub
+		Calendar c = Calendar.getInstance();
+		c.set(Calendar.HOUR, c.get(Calendar.HOUR) - 1);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String date = sdf.format(c.getTime());
+		String hql = "from xnjcpt_alarm_message where message_alarm = '" + alarm_id + "' and message_gmt_create >='"
+				+ date + "'";
+		List<xnjcpt_alarm_message> list = this.getSession().createQuery(hql).list();
+		return list;
 	}
 }

@@ -76,7 +76,6 @@ public class AlarmServiceImpl implements AlarmService {
 	public void issueCpuUtilAlarm(String ip, xnjcpt_cpu_state xnjcpt_cpu_state) {
 		// TODO Auto-generated method stub
 		xnjcpt_computer xc = alarmDao.getComputerByIp(ip);
-
 		if (xc != null) {
 			xnjcpt_user_computer xuc = alarmDao.getUserById(xc.getComputer_id());
 			List<xnjcpt_alarm> list = alarmDao.getAlarm(xc.getComputer_id(), "CPU利用率");
@@ -84,15 +83,22 @@ public class AlarmServiceImpl implements AlarmService {
 				for (xnjcpt_alarm xnjcpt_alarm : list) {
 					if ((100 - (Float.parseFloat(xnjcpt_cpu_state.getCpu_state_idle()) * 100)) > Float
 							.parseFloat(xnjcpt_alarm.getAlarm_threshold_value())) {
-						xnjcpt_alarm_message xam = new xnjcpt_alarm_message();
-						xam.setMessage_id(TeamUtil.getUuid());
-						xam.setMessage_gmt_create(TeamUtil.getStringSecond());
-						xam.setMessage_gmt_modified(TeamUtil.getStringSecond());
-						xam.setMessage_status("0");
-						xam.setMessage_user(xuc.getUser_computer_user());
-						xam.setMessage_info("您ip为" + ip + "的主机CPU利用率（" + xnjcpt_alarm.getAlarm_threshold_value()
-								+ "）超过了您设定的警告值！请注意！");
-						alarmDao.saveMessage(xam);
+						List<xnjcpt_alarm_message> listMessage = alarmDao
+								.getALarmMessageByAlarmId(xnjcpt_alarm.getAlarm_id());
+						if (listMessage != null && listMessage.size() > 0) {
+
+						} else {
+							xnjcpt_alarm_message xam = new xnjcpt_alarm_message();
+							xam.setMessage_id(TeamUtil.getUuid());
+							xam.setMessage_gmt_create(TeamUtil.getStringSecond());
+							xam.setMessage_gmt_modified(TeamUtil.getStringSecond());
+							xam.setMessage_status("0");
+							xam.setMessage_user(xuc.getUser_computer_user());
+							xam.setMessage_alarm(xnjcpt_alarm.getAlarm_id());
+							xam.setMessage_info("您ip为" + ip + "的主机CPU利用率（" + xnjcpt_alarm.getAlarm_threshold_value()
+									+ "）超过了您设定的警告值！请注意！");
+							alarmDao.saveMessage(xam);
+						}
 					}
 				}
 			}
@@ -111,15 +117,22 @@ public class AlarmServiceImpl implements AlarmService {
 				for (xnjcpt_alarm xnjcpt_alarm : list) {
 					if ((Float.parseFloat(xnjcpt_memory_state.getMemory_state_mem_rate()) * 100) > Float
 							.parseFloat(xnjcpt_alarm.getAlarm_threshold_value())) {
-						xnjcpt_alarm_message xam = new xnjcpt_alarm_message();
-						xam.setMessage_id(TeamUtil.getUuid());
-						xam.setMessage_gmt_create(TeamUtil.getStringSecond());
-						xam.setMessage_gmt_modified(TeamUtil.getStringSecond());
-						xam.setMessage_status("0");
-						xam.setMessage_user(xuc.getUser_computer_user());
-						xam.setMessage_info("您ip为" + ip + "的主机内存使用率（" + xnjcpt_alarm.getAlarm_threshold_value()
-								+ "）超过了您设定的警告值！请注意！");
-						alarmDao.saveMessage(xam);
+						List<xnjcpt_alarm_message> listMessage = alarmDao
+								.getALarmMessageByAlarmId(xnjcpt_alarm.getAlarm_id());
+						if (listMessage != null && listMessage.size() > 0) {
+
+						} else {
+							xnjcpt_alarm_message xam = new xnjcpt_alarm_message();
+							xam.setMessage_id(TeamUtil.getUuid());
+							xam.setMessage_gmt_create(TeamUtil.getStringSecond());
+							xam.setMessage_gmt_modified(TeamUtil.getStringSecond());
+							xam.setMessage_status("0");
+							xam.setMessage_user(xuc.getUser_computer_user());
+							xam.setMessage_alarm(xnjcpt_alarm.getAlarm_id());
+							xam.setMessage_info("您ip为" + ip + "的主机内存使用率（" + xnjcpt_alarm.getAlarm_threshold_value()
+									+ "）超过了您设定的警告值！请注意！");
+							alarmDao.saveMessage(xam);
+						}
 					}
 				}
 			}
@@ -137,15 +150,22 @@ public class AlarmServiceImpl implements AlarmService {
 				for (xnjcpt_alarm xnjcpt_alarm : list) {
 					if ((Float.parseFloat(xnjcpt_net_state.getNet_state_obandwidth())) > Float
 							.parseFloat(xnjcpt_alarm.getAlarm_threshold_value())) {
-						xnjcpt_alarm_message xam = new xnjcpt_alarm_message();
-						xam.setMessage_id(TeamUtil.getUuid());
-						xam.setMessage_gmt_create(TeamUtil.getStringSecond());
-						xam.setMessage_gmt_modified(TeamUtil.getStringSecond());
-						xam.setMessage_status("0");
-						xam.setMessage_user(xuc.getUser_computer_user());
-						xam.setMessage_info(
-								"您ip为" + ip + "的主机出带宽（" + xnjcpt_alarm.getAlarm_threshold_value() + "）超过了您设定的警告值！请注意！");
-						alarmDao.saveMessage(xam);
+						List<xnjcpt_alarm_message> listMessage = alarmDao
+								.getALarmMessageByAlarmId(xnjcpt_alarm.getAlarm_id());
+						if (listMessage != null && listMessage.size() > 0) {
+
+						} else {
+							xnjcpt_alarm_message xam = new xnjcpt_alarm_message();
+							xam.setMessage_id(TeamUtil.getUuid());
+							xam.setMessage_gmt_create(TeamUtil.getStringSecond());
+							xam.setMessage_gmt_modified(TeamUtil.getStringSecond());
+							xam.setMessage_status("0");
+							xam.setMessage_user(xuc.getUser_computer_user());
+							xam.setMessage_alarm(xnjcpt_alarm.getAlarm_id());
+							xam.setMessage_info("您ip为" + ip + "的主机出带宽（" + xnjcpt_alarm.getAlarm_threshold_value()
+									+ "）超过了您设定的警告值！请注意！");
+							alarmDao.saveMessage(xam);
+						}
 					}
 				}
 			}
@@ -163,15 +183,22 @@ public class AlarmServiceImpl implements AlarmService {
 				for (xnjcpt_alarm xnjcpt_alarm : list) {
 					if ((Float.parseFloat(xnjcpt_net_state.getNet_state_ibandwidth())) > Float
 							.parseFloat(xnjcpt_alarm.getAlarm_threshold_value())) {
-						xnjcpt_alarm_message xam = new xnjcpt_alarm_message();
-						xam.setMessage_id(TeamUtil.getUuid());
-						xam.setMessage_gmt_create(TeamUtil.getStringSecond());
-						xam.setMessage_gmt_modified(TeamUtil.getStringSecond());
-						xam.setMessage_status("0");
-						xam.setMessage_user(xuc.getUser_computer_user());
-						xam.setMessage_info(
-								"您ip为" + ip + "的主机入带宽（" + xnjcpt_alarm.getAlarm_threshold_value() + "）超过了您设定的警告值！请注意！");
-						alarmDao.saveMessage(xam);
+						List<xnjcpt_alarm_message> listMessage = alarmDao
+								.getALarmMessageByAlarmId(xnjcpt_alarm.getAlarm_id());
+						if (listMessage != null && listMessage.size() > 0) {
+
+						} else {
+							xnjcpt_alarm_message xam = new xnjcpt_alarm_message();
+							xam.setMessage_id(TeamUtil.getUuid());
+							xam.setMessage_gmt_create(TeamUtil.getStringSecond());
+							xam.setMessage_gmt_modified(TeamUtil.getStringSecond());
+							xam.setMessage_status("0");
+							xam.setMessage_user(xuc.getUser_computer_user());
+							xam.setMessage_alarm(xnjcpt_alarm.getAlarm_id());
+							xam.setMessage_info("您ip为" + ip + "的主机入带宽（" + xnjcpt_alarm.getAlarm_threshold_value()
+									+ "）超过了您设定的警告值！请注意！");
+							alarmDao.saveMessage(xam);
+						}
 					}
 				}
 			}
@@ -189,15 +216,22 @@ public class AlarmServiceImpl implements AlarmService {
 				for (xnjcpt_alarm xnjcpt_alarm : list) {
 					if ((Float.parseFloat(xnjcpt_net_state.getNet_state_opackage())) > Float
 							.parseFloat(xnjcpt_alarm.getAlarm_threshold_value())) {
-						xnjcpt_alarm_message xam = new xnjcpt_alarm_message();
-						xam.setMessage_id(TeamUtil.getUuid());
-						xam.setMessage_gmt_create(TeamUtil.getStringSecond());
-						xam.setMessage_gmt_modified(TeamUtil.getStringSecond());
-						xam.setMessage_status("0");
-						xam.setMessage_user(xuc.getUser_computer_user());
-						xam.setMessage_info(
-								"您ip为" + ip + "的主机出包量（" + xnjcpt_alarm.getAlarm_threshold_value() + "）超过了您设定的警告值！请注意！");
-						alarmDao.saveMessage(xam);
+						List<xnjcpt_alarm_message> listMessage = alarmDao
+								.getALarmMessageByAlarmId(xnjcpt_alarm.getAlarm_id());
+						if (listMessage != null && listMessage.size() > 0) {
+
+						} else {
+							xnjcpt_alarm_message xam = new xnjcpt_alarm_message();
+							xam.setMessage_id(TeamUtil.getUuid());
+							xam.setMessage_gmt_create(TeamUtil.getStringSecond());
+							xam.setMessage_gmt_modified(TeamUtil.getStringSecond());
+							xam.setMessage_status("0");
+							xam.setMessage_user(xuc.getUser_computer_user());
+							xam.setMessage_alarm(xnjcpt_alarm.getAlarm_id());
+							xam.setMessage_info("您ip为" + ip + "的主机出包量（" + xnjcpt_alarm.getAlarm_threshold_value()
+									+ "）超过了您设定的警告值！请注意！");
+							alarmDao.saveMessage(xam);
+						}
 					}
 				}
 			}
@@ -215,15 +249,22 @@ public class AlarmServiceImpl implements AlarmService {
 				for (xnjcpt_alarm xnjcpt_alarm : list) {
 					if ((Float.parseFloat(xnjcpt_net_state.getNet_state_ipackage())) > Float
 							.parseFloat(xnjcpt_alarm.getAlarm_threshold_value())) {
-						xnjcpt_alarm_message xam = new xnjcpt_alarm_message();
-						xam.setMessage_id(TeamUtil.getUuid());
-						xam.setMessage_gmt_create(TeamUtil.getStringSecond());
-						xam.setMessage_gmt_modified(TeamUtil.getStringSecond());
-						xam.setMessage_status("0");
-						xam.setMessage_user(xuc.getUser_computer_user());
-						xam.setMessage_info(
-								"您ip为" + ip + "的主机入包量（" + xnjcpt_alarm.getAlarm_threshold_value() + "）超过了您设定的警告值！请注意！");
-						alarmDao.saveMessage(xam);
+						List<xnjcpt_alarm_message> listMessage = alarmDao
+								.getALarmMessageByAlarmId(xnjcpt_alarm.getAlarm_id());
+						if (listMessage != null && listMessage.size() > 0) {
+
+						} else {
+							xnjcpt_alarm_message xam = new xnjcpt_alarm_message();
+							xam.setMessage_id(TeamUtil.getUuid());
+							xam.setMessage_gmt_create(TeamUtil.getStringSecond());
+							xam.setMessage_gmt_modified(TeamUtil.getStringSecond());
+							xam.setMessage_status("0");
+							xam.setMessage_user(xuc.getUser_computer_user());
+							xam.setMessage_alarm(xnjcpt_alarm.getAlarm_id());
+							xam.setMessage_info("您ip为" + ip + "的主机入包量（" + xnjcpt_alarm.getAlarm_threshold_value()
+									+ "）超过了您设定的警告值！请注意！");
+							alarmDao.saveMessage(xam);
+						}
 					}
 				}
 			}

@@ -149,6 +149,7 @@ public class ReceiveServiceImpl implements ReceiveService {
 		// TODO Auto-generated method stub
 		xnjcpt_computer computer = receiveDao.getComputerByIp(computer_ip);
 		if (computer != null) {
+			System.out.println("数据库得到了保存");
 			xnjcpt_mysql.setMysql_id(TeamUtil.getUuid());
 			xnjcpt_mysql.setMysql_computer(computer.getComputer_id());
 			xnjcpt_mysql.setMysql_gmt_create(TeamUtil.getStringSecond());
