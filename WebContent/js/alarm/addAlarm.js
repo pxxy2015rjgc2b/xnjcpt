@@ -33,8 +33,15 @@ function add_alarm() {
 				btnClass: ' btn-blue',
 				type: "blue",
 				action: function() {
+					var reg = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/
 					if($("input[name='alarm_computer']").val()!=""&&$(".alarm_type option:selected").text()!=""&&$(".alarm_state option:selected").val()!=""&&$("input[name='alarm_threshold_value']").val()!=""){
-						add_alarmAjax();
+						if(reg.test($("input[name='alarm_computer']").val())){
+							add_alarmAjax();
+						}else{
+							$.alert("ip地址格式不正确，请重新输入！");
+							return false;
+						}
+						
 					}else{
 						$.alert("所有项为必填项，请完整填写！");
 						return false;

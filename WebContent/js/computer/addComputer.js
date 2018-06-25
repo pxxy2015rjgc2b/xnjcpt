@@ -32,10 +32,11 @@ function add_computer() {
 				btnClass: ' btn-blue',
 				type: "blue",
 				action: function() {
-					if($("input[name='computer_ip']").val()!=""){
+					var reg = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/
+					if(reg.test($("input[name='computer_ip']").val())){
 						add_computerAjax();
 					}else{
-						$.alert("所有项为必填项，请完整填写！");
+						$.alert("ip地址格式不正确，请正确填写！");
 						return false;
 					}
 				}
