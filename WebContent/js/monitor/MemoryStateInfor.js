@@ -2,6 +2,8 @@
  * 
  */
 function MemoryInfor(startTime,endTime) {
+	$('#memoryState').hide();
+	$('#memoryLoading').show();
 	var computer_id = getId();
 	getStartTime();
 	var myChart = echarts.init(document.getElementById('memoryState'));
@@ -21,6 +23,8 @@ function MemoryInfor(startTime,endTime) {
 					if (data != "noLogin") {
 						data = JSON.parse(datas);
 						data = fomatterDataLine(data);
+						$('#memoryLoading').hide();
+						$('#memoryState').show();
 					} else {
 						loginIntercptor();
 					}

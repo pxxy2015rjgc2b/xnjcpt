@@ -38,9 +38,15 @@
 						<hr>
 						<div style="height: 400px; width: 100%">
 							<div style="float: left;">
+								<div id="dpsLoading" style="margin: 150px auto; width: 45px;">
+									<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+								</div>
 								<div id="dps" style="width: 500px; height: 400px;"></div>
 							</div>
 							<div style="float: right;">
+								<div id="tpsLoading" style="margin: 150px auto; width: 45px;">
+									<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+								</div>
 								<div id="tps" style="width: 500px; height: 400px;"></div>
 							</div>
 						</div>

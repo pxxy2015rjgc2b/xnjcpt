@@ -2,6 +2,8 @@
  * 
  */
 function CpuSystemInfor(startTime,endTime) {
+	$('#cpuSystem').hide();
+	$('#systemLoading').show();
 	var computer_id = getId();
 	getStartTime();
 	var myChart = echarts.init(document.getElementById('cpuSystem'));
@@ -21,6 +23,8 @@ function CpuSystemInfor(startTime,endTime) {
 					if (data != "noLogin") {
 						data = JSON.parse(datas);
 						data = fomatterDataLine(data);
+						$('#systemLoading').hide();
+						$('#cpuSystem').show();
 					} else {
 						loginIntercptor();
 					}

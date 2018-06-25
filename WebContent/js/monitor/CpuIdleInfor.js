@@ -2,6 +2,8 @@
  * 
  */
 function CpuIdleInfor(startTime,endTime) {
+	$('#cpuIdle').hide();
+	$('#idleLoading').show();
 	var computer_id = getId();
 	getStartTime();
 	var myChart = echarts.init(document.getElementById('cpuIdle'));
@@ -21,6 +23,8 @@ function CpuIdleInfor(startTime,endTime) {
 					if (data != "noLogin") {
 						data = JSON.parse(datas);
 						data = fomatterDataLine(data);
+						$('#idleLoading').hide();
+						$('#cpuIdle').show();
 					} else {
 						loginIntercptor();
 					}

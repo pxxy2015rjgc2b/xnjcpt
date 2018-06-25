@@ -17,6 +17,8 @@ function sevenDay(){
 	tps(startTime,endTime);
 }
 function dps(startTime,endTime) {
+	$('#dps').hide();
+	$('#dpsLoading').show();
 	var computer_id = getId();
 	var myChart = echarts.init(document.getElementById('dps'));
 	var data;
@@ -34,6 +36,8 @@ function dps(startTime,endTime) {
 					if (data != "noLogin") {
 						data = JSON.parse(datas);
 						data = fomatterDataLine(data);
+						$('#dpsLoading').hide();
+						$('#dps').show();
 					} else {
 						loginIntercptor();
 					}
@@ -103,6 +107,8 @@ function dps(startTime,endTime) {
 	myChart.setOption(option);
 }
 function tps(startTime,endTime) {
+	$('#tps').hide();
+	$('#tpsLoading').show();
 	var computer_id = getId();
 	var myChart = echarts.init(document.getElementById('tps'));
 	var data;
@@ -120,7 +126,8 @@ function tps(startTime,endTime) {
 					if (data != "noLogin") {
 						data = JSON.parse(datas);
 						data = fomatterDataLine(data);
-						console.log(data);
+						$('#tpsLoading').hide();
+						$('#tps').show();
 					} else {
 						loginIntercptor();
 					}

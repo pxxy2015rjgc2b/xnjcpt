@@ -2,6 +2,8 @@
  * 
  */
 function IoUtil(startTime,endTime) {
+	$('#IoUtil').hide();
+	$('#ioLoading').show();
 	var computer_id = getId();
 	getStartTime();
 	var myChart = echarts.init(document.getElementById('IoUtil'));
@@ -21,6 +23,8 @@ function IoUtil(startTime,endTime) {
 					if (data != "noLogin") {
 						data = JSON.parse(datas);
 						data = fomatterDataLine(data);
+						$('#ioLoading').hide();
+						$('#IoUtil').show();
 					} else {
 						loginIntercptor();
 					}

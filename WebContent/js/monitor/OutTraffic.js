@@ -2,6 +2,8 @@
  * 
  */
 function OutTraffic(startTime,endTime) {
+	$('#OutTraffic').hide();
+	$('#trafficLoading').show();
 	var computer_id = getId();
 	getStartTime();
 	var myChart = echarts.init(document.getElementById('OutTraffic'));
@@ -21,6 +23,8 @@ function OutTraffic(startTime,endTime) {
 					if (data != "noLogin") {
 						data = JSON.parse(datas);
 						data = fomatterDataLine(data);
+						$('#trafficLoading').hide();
+						$('#OutTraffic').show();
 					} else {
 						loginIntercptor();
 					}

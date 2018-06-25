@@ -39,18 +39,30 @@
 						<hr>
 						<div style="height: 400px; width: 100%">
 							<div style="float: left;">
-								<div id="cpuUser" style="width: 500px; height: 400px;"></div>
+								<div id="userLoading" style="margin: 150px auto; width: 45px;">
+									<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+								</div>
+								<div id="cpuUser" style="width: 500px; height: 400px; display:none;"></div>
 							</div>
 							<div style="float: right;">
-								<div id="cpuSystem" style="width: 500px; height: 400px;"></div>
+								<div id="systemLoading" style="margin: 150px auto; width: 45px;">
+									<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+								</div>
+								<div id="cpuSystem" style="width: 500px; height: 400px; display:none;"></div>
 							</div>
 						</div>
 						<div style="height: 400px; width: 100%">
 							<div style="float: left;">
-								<div id="cpuIdle" style="width: 500px; height: 400px;"></div>
+								<div id="idleLoading" style="margin: 150px auto; width: 45px;">
+									<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+								</div>
+								<div id="cpuIdle" style="width: 500px; height: 400px; display:none;"></div>
 							</div>
 							<div style="float: right">
-								<div id="cpuIowait" style="width: 500px; height: 400px;"></div>
+								<div id="ioWaitLoading" style="margin: 150px auto; width: 45px;">
+									<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+								</div>
+								<div id="cpuIowait" style="width: 500px; height: 400px; display:none;"></div>
 							</div>
 						</div>
 					</div>
@@ -60,7 +72,10 @@
 						<hr>
 						<div style="height: 400px; width: 100%">
 							<div style="float: left;">
-								<div id="memoryState" style="width: 500px; height: 400px;"></div>
+								<div id="memoryLoading" style="margin: 150px auto; width: 45px;">
+									<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+								</div>
+								<div id="memoryState" style="width: 500px; height: 400px; display:none;"></div>
 							</div>
 						</div>
 					</div>
@@ -70,26 +85,45 @@
 						<hr>
 						<div style="height: 400px; width: 100%">
 							<div style="float: left;">
-								<div id="OutBandwidth" style="width: 500px; height: 400px;"></div>
+								<div id="outLoading" style="margin: 150px auto; width: 45px;">
+									<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+								</div>
+								<div id="OutBandwidth"
+									style="width: 500px; height: 400px; display: none;"></div>
 							</div>
 							<div style="float: right;">
-								<div id="InBandwidth" style="width: 500px; height: 400px;"></div>
+								<div id="inLoading" style="margin: 150px auto; width: 45px;">
+									<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+								</div>
+								<div id="InBandwidth" style="width: 500px; height: 400px; display:none;"></div>
 							</div>
 						</div>
 						<div style="height: 400px; width: 100%">
 							<div style="float: left;">
-								<div id="OutPackage" style="width: 500px; height: 400px;"></div>
+								<div id="outPackageLoading" style="margin: 150px auto; width: 45px;">
+									<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+								</div>
+								<div id="OutPackage" style="width: 500px; height: 400px; display:none;"></div>
 							</div>
 							<div style="float: right;">
-								<div id="InPackage" style="width: 500px; height: 400px;"></div>
+								<div id="inPackageLoading" style="margin: 150px auto; width: 45px;">
+									<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+								</div>
+								<div id="InPackage" style="width: 500px; height: 400px; display:none;"></div>
 							</div>
 						</div>
 						<div style="height: 400px; width: 100%">
 							<div style="float: left;">
-								<div id="TcpNumber" style="width: 500px; height: 400px;"></div>
+								<div id="tcpLoading" style="margin: 150px auto; width: 45px;">
+									<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+								</div>
+								<div id="TcpNumber" style="width: 500px; height: 400px; display:none;"></div>
 							</div>
 							<div style="float: right;">
-								<div id="OutTraffic" style="width: 500px; height: 400px;"></div>
+								<div id="trafficLoading" style="margin: 150px auto; width: 45px;">
+									<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+								</div>
+								<div id="OutTraffic" style="width: 500px; height: 400px; display:none;"></div>
 							</div>
 						</div>
 					</div>
@@ -99,10 +133,16 @@
 						<hr>
 						<div style="height: 400px; width: 100%">
 							<div style="float: left;">
-								<div id="DiskSize" style="width: 500px; height: 400px;"></div>
+								<div id="diskLoading" style="margin: 150px auto; width: 45px;">
+									<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+								</div>
+								<div id="DiskSize" style="width: 500px; height: 400px; display:none;"></div>
 							</div>
 							<div style="float: right;">
-								<div id="IoUtil" style="width: 500px; height: 400px;"></div>
+								<div id="ioLoading" style="margin: 150px auto; width: 45px;">
+									<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+								</div>
+								<div id="IoUtil" style="width: 500px; height: 400px; display:none;"></div>
 							</div>
 						</div>
 					</div>

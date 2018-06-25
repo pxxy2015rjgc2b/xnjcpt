@@ -2,6 +2,8 @@
  * 
  */
 function OutBandwidth(startTime,endTime) {
+	$('#OutBandwidth').hide();
+	$('#outLoading').show();
 	var computer_id = getId();
 	getStartTime();
 	var myChart = echarts.init(document.getElementById('OutBandwidth'));
@@ -21,6 +23,8 @@ function OutBandwidth(startTime,endTime) {
 					if (data != "noLogin") {
 						data = JSON.parse(datas);
 						data = fomatterDataLine(data);
+						$('#outLoading').hide();
+						$('#OutBandwidth').show();
 					} else {
 						loginIntercptor();
 					}

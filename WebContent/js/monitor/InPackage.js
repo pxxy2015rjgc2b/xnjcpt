@@ -2,6 +2,8 @@
  * 
  */
 function InPackage(startTime,endTime) {
+	$('#InPackage').hide();
+	$('#inPackageLoading').show();
 	var computer_id = getId();
 	getStartTime();
 	var myChart = echarts.init(document.getElementById('InPackage'));
@@ -21,6 +23,8 @@ function InPackage(startTime,endTime) {
 					if (data != "noLogin") {
 						data = JSON.parse(datas);
 						data = fomatterDataLine(data);
+						$('#inPackageLoading').hide();
+						$('#InPackage').show();			
 					} else {
 						loginIntercptor();
 					}

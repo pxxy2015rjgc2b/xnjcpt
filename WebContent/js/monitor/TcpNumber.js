@@ -2,6 +2,8 @@
  * 
  */
 function TcpNumber(startTime,endTime) {
+	$('#TcpNumber').hide();
+	$('#tcpLoading').show();
 	var computer_id = getId();
 	getStartTime();
 	var myChart = echarts.init(document.getElementById('TcpNumber'));
@@ -21,6 +23,8 @@ function TcpNumber(startTime,endTime) {
 					if (data != "noLogin") {
 						data = JSON.parse(datas);
 						data = fomatterDataLine(data);
+						$('#tcpLoading').hide();
+						$('#TcpNumber').show();			
 					} else {
 						loginIntercptor();
 					}

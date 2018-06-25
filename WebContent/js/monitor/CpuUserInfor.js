@@ -3,6 +3,8 @@
  */
 
 function CpuUserInfor(startTime,endTime) {
+	$('#cpuUser').hide();
+	$('#userLoading').show();
 	var computer_id = getId();
 	getStartTime();
 	var myChart = echarts.init(document.getElementById('cpuUser'));
@@ -22,6 +24,8 @@ function CpuUserInfor(startTime,endTime) {
 					if (data != "noLogin") {
 						data = JSON.parse(datas);
 						data = fomatterDataLine(data);
+						$('#userLoading').hide();
+						$('#cpuUser').show();
 					} else {
 						loginIntercptor();
 					}
