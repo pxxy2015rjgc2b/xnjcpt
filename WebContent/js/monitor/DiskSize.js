@@ -38,39 +38,51 @@ function DiskSize() {
 	    }
 	};
 	console.log(data);
-	option = {
-	    backgroundColor: 'white',
-	    title: {
-	        text: '内存占用情况（G）',
-	        textStyle: {
-	            color: '#235894'
-	        }
-	    },
-	    tooltip : {},
-	    series: [{
-	        name: '内存占用情况',
-	        type: 'pie',
-	        selectedMode: 'single',
-	        selectedOffset: 30,
-	        clockwise: true,
-	        label: {
-	            normal: {
-	                textStyle: {
-	                    fontSize: 18,
-	                    color: '#235894'
-	                }
-	            }
-	        },
-	        labelLine: {
-	            normal: {
-	                lineStyle: {
-	                    color: '#235894'
-	                }
-	            }
-	        },
-	        data:data,
-	        itemStyle: itemStyle
-	    }]
-	};
+
+option = {
+		color: ['#d87a80','#2ec7c9','#da70d6','#32cd32','#6495ed',
+            '#ff69b4','#ba55d3','#cd5c5c','#ffa500','#40e0d0',
+            '#1e90ff','#ff6347','#7b68ee','#00fa9a','#ffd700',
+            '#6699FF','#ff6666','#3cb371','#b8860b','#30e0e0'],
+            title : {
+    			text : 'CPU利用率',
+    			textStyle: {
+    		        fontSize: 18,
+    		        fontWeight: 'bolder',
+    		        color: '#008acd'          // 主标题文字颜色
+    		    },
+    		},
+    tooltip: {
+        trigger: 'item',
+        formatter: "{a} <br/>{b}: {c} ({d}%)"
+    },
+    series: [
+        {
+            name:'cpu占用率',
+            type:'pie',
+            radius: ['50%', '70%'],
+            avoidLabelOverlap: false,
+            label: {
+                normal: {
+                    show: false,
+                    position: 'center'
+                },
+                emphasis: {
+                    show: true,
+                    textStyle: {
+                        fontSize: '30',
+                        fontWeight: 'bold'
+                    }
+                }
+            },
+            labelLine: {
+                normal: {
+                    show: false
+                }
+            },
+            data:data
+        }
+    ]
+};
 	myChart.setOption(option);
 }
