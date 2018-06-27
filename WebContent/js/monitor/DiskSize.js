@@ -45,7 +45,7 @@ option = {
             '#1e90ff','#ff6347','#7b68ee','#00fa9a','#ffd700',
             '#6699FF','#ff6666','#3cb371','#b8860b','#30e0e0'],
             title : {
-    			text : 'CPU利用率',
+    			text : '硬盘使用情况',
     			textStyle: {
     		        fontSize: 18,
     		        fontWeight: 'bolder',
@@ -58,7 +58,7 @@ option = {
     },
     series: [
         {
-            name:'cpu占用率',
+            name:'硬盘使用情况',
             type:'pie',
             radius: ['50%', '70%'],
             avoidLabelOverlap: false,
