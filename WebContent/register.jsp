@@ -31,7 +31,7 @@
 			</div>
 			<form id="register" class="register_content">
 					<input  class="register_input"  type="text" placeholder="用户名" name="user_username" />
-					<input class="register_input"  type="text" placeholder="用户性名" name="user_name" />
+					<input class="register_input"  type="text" placeholder="用户姓名" name="user_name" />
 					<input class="register_input"  type="text" placeholder="用户手机号码" name="user_phone" />
 					<input class="register_input" type="password" placeholder="密码" name="user_password" />
 					<input class="register_input" type="password" placeholder="确认密码" name="user_confirmPassword"/>

@@ -52,19 +52,27 @@
 </head>
 <body>
 	<div class="header_box">
-		<div class="header_left">
-			<img class="logo" src="<%=basePath %>img/logo.png">
-			<span style="color: white; font-size:26px; vertical-align:middle;"">云栖性能监测平台</span>
-		</div>
-		<div class="header_center">
-			<a href="/xnjcpt/skip/skip_intoComputer">云主机</a> <a class="enter_user" onclick="enter_userAjax()">个人信息</a> <a class="enter_userList" href="/xnjcpt/skip/skip_intoUser">后台管理</a>
-		</div>
-		<div class="header_right">
-			<a><img class="search" align="absmiddle" src="<%=basePath %>img/search.png" /> <img
-				class="user" src="<%=basePath %>img/user.png" align="absmiddle" /></a>
-		</div>
+				<div class="header_left">
+					<img class="logo" src="<%=basePath %>img/logo.png">
+				</div>
+				<div class="header_center">
+					<a href="/xnjcpt/skip/skip_intoComputer">云主机</a>
+					<a class="enter_userList" href="/xnjcpt/skip/skip_intoUser">后台管理</a>
+				</div>
+				<div class="header_right">
+					<div class="inform"><img src="<%=basePath %>img/inform.png"/><span>2</span></div>
+					<div class="usre_info">
+						<span>巴拉巴拉</span><i class="fa fa-caret-down" aria-hidden="true"></i>
+					</div>
+					<div>
+						<ul class="user_infoBox">
+							<li onclick="enter_userAjax()"><a >账户信息</a></li>
+							<li><a>退出登录</a></li>
+						</ul>
+					</div>
+				</div>
 
-	</div>
+			</div>
 	<script type="text/javascript" src="<%=basePath%>js/navbar/navbar.js"></script>
 </body>
 </html>

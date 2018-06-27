@@ -11,3 +11,9 @@ function enter_userAjax(){
 		}
 	});
 }
+$(".usre_info,.user_infoBox").mouseover(function(){
+	$(".user_infoBox").css("display","block");
+});
+$(".usre_info,.user_infoBox").mouseout(function(){
+	$(".user_infoBox").css("display","none");
+});

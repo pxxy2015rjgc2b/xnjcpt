@@ -28,7 +28,7 @@
 					<div>
 						<h3>设置警报</h3>
 					</div>
-					<div id="searchContent">
+					<div id="searchContent" class="operation_button">
 					    <button class="btn btn-primary add_button" type="submit" onclick="add_alarm()"><i class="fa fa-plus" aria-hidden="true"> </i> 添加警报</button>
 						<button class="btn btn-danger delete_button" type="submit" onclick="delete_alarm()"><i class="fa fa-trash-o" aria-hidden="true"></i> 删除警报</button>
 						<div class="search_cloud">
@@ -36,11 +36,11 @@
 							<a class="search_button" onclick="iquery_alarmList()"><img src="<%=basePath %>img/search.png"/></a>
 						</div>
 					</div>
-					<div id="showContent" style="margin-top: 20px;">
-						<table class="table table-hover alarmList_table" style="text-align: center;">
+					<div id="showContent" style="margin-top: 30px;">
+						<table class="table table-striped table-bordered table-hover alarmList_table" >
 							<thead>
-								<tr>
-							        <th><input type="checkbox" style="text-align: center;" onclick="allcheck()" id="checkAll" name="checkAll"/></th>
+								<tr id="table_trTh">
+							        <th style="text-align: center;"><input type="checkbox"  onclick="allcheck()" id="checkAll" name="checkAll"/></th>
 									<th>主机ip</th>
 									<th>警报类型</th>
 									<th>警报阈值</th>
@@ -49,7 +49,7 @@
 							</thead>
 							<tbody>
 							<tr v-for="alarm in alarms" >
-                                  <td><input type="checkbox" :id="alarm.alarm_id" name="delete_check" onclick="cancle_all()"/></td>
+                                  <td style="text-align: center;"><input type="checkbox" :id="alarm.alarm_id" name="delete_check" onclick="cancle_all()"/></td>
                                   <td style="display:none;" class="alarm_id" :id="alarm.alarm_id"></td>
                                   <td>{{ alarm.alarm_computer }}</td>
                                   <td>{{ alarm.alarm_type }}</td>
@@ -69,9 +69,9 @@
 								<input type="text" style="width: 50px;text-indent: 10px" id="goInput" />&nbsp;&nbsp;&nbsp;&nbsp;
 								<a onclick="goPage()">GO</a>
 							</div>
-							<div style="width: 100px;height: 70px;margin: 0px auto;text-align: center;">
-								<span>当前第{{ currPage }}页</span><br> <span>共{{
-									totalPage }}页</span><br> <span>共{{ totalCount }}条记录</span><br>
+							<div class="footer_info">
+								<span>当前第{{ currPage }}页</span><span>共{{
+									totalPage }}页</span><span>共{{ totalCount }}条记录</span>
 							</div>
 							<p class='page-infomation'></p>
 					</div>

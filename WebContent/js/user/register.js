@@ -119,22 +119,18 @@ function sendEmail(){
 	        console.log("发送邮箱");
 	        console.log("邮箱发送"+result);
 	       	 if(result!="验证码发送失败"){
-	            	toastr.success("验证码发送失败，请检查邮箱地址！");
+	            	toastr.success("验证码发送成功!");
 	  			    verifyCode=result;
 	  			    console.log(verifyCode);
-	  			    //注册完后跳到首页
-                    // window.location.href="/xnjcpt/index.jsp"
 	  		   }else{
-	  			 // toastr.success("验证码发送成功！");
+	  			    toastr.error("验证码发送失败，请检查邮箱是否填写正确！");
 	  			    verifyCode=result;
 	  			    console.log(verifyCode);
 	  		   }
 	        }
 	    });
 }
-//验证验证码
-function check_verifyCode(){
-}
+
 //找回密码
 function forgetPassword(){
 	console.log("邮箱发送的"+verifyCode);
@@ -152,20 +148,20 @@ function forgetPassword(){
 		        processData: false,  
 		        contentType: false,
 		        success: function(result){
-		        
 		        if(result=="updatesuccess"){
-		        	console.log("修改密码");
-		  			//toastr.success("修改密码成功！");
+		  			toastr.success("修改密码成功！2s后自动跳转登录界面！");
 		  			   //注册完后跳到首页
-	                 window.location.href="/xnjcpt/index.jsp"
+		  			setTimeout(function() {
+		  				window.location.href="/xnjcpt/index.jsp";
+		  			}, 2000)
+	                 
 		  		   }else{
 		  			 toastr.error("验证码错误！");
 		  		   }
 		        }
 		    });
 	}else{
-		//toastr.error("验证码填写错误，请重新填写！");
-		console.log("验证码错误");
+		toastr.error("验证码填写错误，请重新填写！");
 	}
 	
 }
