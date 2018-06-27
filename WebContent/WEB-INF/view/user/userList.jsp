@@ -36,7 +36,7 @@
 							<i class="fa fa-trash-o" aria-hidden="true"></i> 删除用户
 						</button>
 						<div class="search_cloud">
-							<input class="search_input" type="text" placeholder="搜索云主机名或IP地址" />
+							<input class="search_input" type="text" placeholder="请输入搜索内容" />
 							<a class="search_button"><img
 								src="<%=basePath%>img/search.png" /></a>
 						</div>
@@ -68,9 +68,9 @@
 									<td v-if="user.user_role==0">普通用户</td>
 									<td v-if="user.user_role==1">管理员</td>
 									<td v-if="user.user_status==1"><a class="chang_status"
-										:id="user.user_id" onClick="openSure(this)">封禁</a></td>
+										:id="user.user_id" onClick="cloSure(this)">封禁</a></td>
 									<td v-if="user.user_status==0"><a class="chang_status"
-										:id="user.user_id" onClick="cloSure(this)">解禁</a></td>
+										:id="user.user_id" onClick="openSure(this)">解禁</a></td>
 								</tr>
 							</tbody>
 						</table>

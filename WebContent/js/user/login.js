@@ -11,7 +11,13 @@ function login_ajax(){
 	var formData=new FormData();
 	formData.append("user.user_username",user_username);
 	formData.append("user.user_password",user_password);
-	$.ajax({
+	//非法字符验证
+	var pat=new RegExp("[^a-zA-Z0-9\_\u4e00-\u9fa5]","i"); 
+	  if(pat.test(user_username)==true||pat.test(user_password)==true) 
+	  { 
+		  toastr.error("输入的用户名或密码有非法字符，不能登录，请重新输入!");
+	  }else{
+        $.ajax({
 		    url: "/xnjcpt/user/user_login",
 	        type: "post",
 	        data:formData,
@@ -42,4 +48,5 @@ function login_ajax(){
 	             }
 	        }
 	    });
+	  }
 }
