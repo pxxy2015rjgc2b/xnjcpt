@@ -27,13 +27,26 @@ function add_alarm() {
 	$.confirm({
 		title: '添加警报',
 		content: '<div class="comfirm_box"><input placeholder="要添加的主机IP" name="alarm_computer" class="comfirm_input alarm_computer" type="text"/></div><div class="comfirm_box"><select class="comfirm_select alarm_type" name="alarm_type"  placeholder="警报类型"><option>CPU利用率</option><option>CPU利用率</option><option>内存利用率</option><option>出带宽</option><option>入带宽</option><option>出包量</option><option>入包量</option></select></div><div class="comfirm_box"><input class="comfirm_input alarm_threshold_value"  placeholder="警报阈值" name="alarm_threshold_value" type="text"/></div><div class="comfirm_box"><select class="comfirm_select alarm_state" name="alarm_state"  placeholder="是否启用"><option value="0">启用</option><option value="1">不启用</option></select></div>',
-		type: 'yellow',
+		type: 'blue',
 		buttons: {
 			确认: {
 				btnClass: ' btn-blue',
 				type: "blue",
 				action: function() {
-					add_alarmAjax();
+					var reg = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/
+					if($("input[name='alarm_computer']").val()!=""&&$(".alarm_type option:selected").text()!=""&&$(".alarm_state option:selected").val()!=""&&$("input[name='alarm_threshold_value']").val()!=""){
+						if(reg.test($("input[name='alarm_computer']").val())){
+							add_alarmAjax();
+						}else{
+							$.alert("ip地址格式不正确，请重新输入！");
+							return false;
+						}
+						
+					}else{
+						$.alert("所有项为必填项，请完整填写！");
+						return false;
+					}
+					
 				}
 			},
 			取消: {
@@ -92,18 +105,18 @@ $(document).on('click',".edit_alarm",function(event){
 	 $.confirm({
 			title: '编辑警报',
 			content:'<div class="comfirm_box"><input placeholder="要添加的主机IP" disabled="true" name="alarm_computer" class="comfirm_input alarm_computer" type="text"/></div><div class="comfirm_box"><select class="comfirm_select alarm_type" name="alarm_type"  placeholder="警报类型"><option>CPU利用率</option><option>CPU利用率</option><option>内存利用率</option><option>出带宽</option><option>入带宽</option><option>出包量</option><option>入包量</option></select></div><div class="comfirm_box"><input class="comfirm_input alarm_threshold_value"  placeholder="警报阈值" name="alarm_threshold_value" type="text"/></div><div class="comfirm_box"><select class="comfirm_select alarm_state" name="alarm_state"  placeholder="是否启用"><option value="0">启用</option><option value="1">不启用</option></select></div>',
-			type: 'yellow',
+			type: 'orange',
 			buttons: {
 				确认: {
-					btnClass: ' btn-blue',
-					type: "blue",
+					/*btnClass: ' btn-blue',
+					type: "blue",*/
 					action: function() {
 						edit_alarmAjax(input_id);
 					}
 				},
 				取消: {
-					btnClass: 'btn-red',
-					type: "red",
+					/*btnClass: 'btn-red',
+					type: "red",*/
 				}
 			}
 	 });
@@ -125,7 +138,7 @@ function edit_alarmAjax(input_id){
         processData: false,  
         contentType: false,
         success: function(result){
-        	if(result=="警报信息更改成功"){
+        	if(result=="警报信息修改成功"){
         		toastr.success("警报信息更改成功");
         		show_alarmList();
         	}
@@ -134,45 +147,63 @@ function edit_alarmAjax(input_id){
 }
 //多选删除警告
 function delete_alarm() {
-	console.log("多选删除");
-	var formData = new FormData;
-	var HaveDate = false;
-	var index = 0;
-	$('.alarmList_table tbody').find(
-		'input[name="delete_check"]').each(
-		function(i) {
-			if ($(this).is(':checked')) {
-				formData.append(
-					'alarm_id', $(this)
-						.attr('id'));
-				console.log( "要删除的id"+$(this)
-						.attr('id'));
-				HaveDate = true;
-				index++;
-			}
-		});
-	if (HaveDate) {
-		$
-			.ajax({
-				url : "/xnjcpt/alarm/alarm_deleteAlarmInfors",
-				type : "POST",
-				contentType : false,
-				processData : false,
-				data : formData,
-				dataType : 'text',
-				success : function(data) {
-					console.log(data);
-					if (data == '警报删除成功') {
-						toastr.info('警报删除成功');
-						show_userList();
+	$.confirm({
+		content: '确认要删除么？',
+		type: 'red',
+		buttons: {
+			确认: {
+				btnClass: ' btn-blue',
+				type: "blue",
+				action: function() {
+					console.log("多选删除");
+					var formData = new FormData;
+					var HaveDate = false;
+					var index = 0;
+					$('.alarmList_table tbody').find(
+						'input[name="delete_check"]').each(
+						function(i) {
+							if ($(this).is(':checked')) {
+								formData.append(
+									'alarm_id', $(this)
+										.attr('id'));
+								console.log( "要删除的id"+$(this)
+										.attr('id'));
+								HaveDate = true;
+								index++;
+							}
+						});
+					if (HaveDate) {
+						$.ajax({
+								url : "/xnjcpt/alarm/alarm_deleteAlarmInfors",
+								type : "POST",
+								contentType : false,
+								processData : false,
+								data : formData,
+								dataType : 'text',
+								success : function(data) {
+									console.log(data);
+									if (data == '警报信息删除成功') {
+										toastr.success('警报信息删除成功');
+										show_alarmList();
+									} else {
+										toastr.error('警报删除失败');
+									}
+								}
+							});
 					} else {
-						toastr.error('警报删除失败');
+						toastr.info('未选择数据');
 					}
 				}
-			});
-	} else {
-		toastr.info('未选择数据');
-	}
+			},
+			取消: {
+				btnClass: 'btn-red',
+				type: "red",
+				
+			}
+		}
+	});
+	
+	
 }
 
 //全选，取消全选

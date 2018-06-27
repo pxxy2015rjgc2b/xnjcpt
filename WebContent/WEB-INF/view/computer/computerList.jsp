@@ -57,8 +57,8 @@
                                   <td>{{ computer.cpu_model}}</td>
                                   <td>{{ computer.disk_size }}</td>
                                   <td>{{ computer.memory_size }}</td>
-                                  <td>{{ computer.computer_threshold_value }}</td>
-                                  
+                                  <td v-if="computer.computer_status==1">已安装客户端</td>
+                                  <td v-if="computer.computer_status==0">未安装客户端</td>
                                  </tr>
 							</tbody>
 						</table>

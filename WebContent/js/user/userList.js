@@ -73,7 +73,7 @@ function cloSure(obj){
 		contentType: false,
 		success:function(data){
 			console.log(data);
-			toastr.success("封禁用户");
+			toastr.success("封禁用户成功！");
 			show_userList();
 		}
 	});
@@ -93,7 +93,7 @@ function openSure(obj){
 		contentType: false,
 		success:function(data){
 			console.log(data);
-			toastr.success("解禁用户");
+			toastr.success("解禁用户成功！");
 			show_userList();
 		}
 	});
@@ -101,15 +101,27 @@ function openSure(obj){
 //增加用户
 function add_user() {
 	$.confirm({
-		title: '添加主机',
+		title: '添加用户',
 		content: '<div class="comfirm_box"><input placeholder="用户名" name="user_username" class="comfirm_input computer_ip" type="text"/></div><div class="comfirm_box"><input placeholder="用户姓名" name="user_name" class="comfirm_input computer_ip" type="text"/></div><div class="comfirm_box"><input placeholder="邮箱地址" name="user_email" class="comfirm_input computer_ip" type="text"/></div><div class="comfirm_box"><input placeholder="用户密码" name="user_password" class="comfirm_input computer_ip" type="text"/></div><div class="comfirm_box"><input placeholder="确认密码" name="comfirm_password" class="comfirm_input computer_ip" type="text"/></div>',
-		type: 'yellow',
+		type: 'blue',
 		buttons: {
 			确认: {
 				btnClass: ' btn-blue',
 				type: "blue",
 				action: function() {
-					add_computerAjax();
+					if($("input[name='user_username']").val()!="" && $("input[name='user_name']").val()!="" && $("input[name='user_password']").val()!="" && $("input[name='comfirm_password']").val()!="" && $("input[name='user_email']").val()){
+						if($("input[name='user_password']").val()==$("input[name='comfirm_password']").val()){
+							add_computerAjax();
+						}else{
+							$.alert("二次输入的密码不一致，请重新输入！");
+							return false;
+						}
+						
+					}else{
+						$.alert("所有项为必填项，请完整填写！");
+						return false;
+					}
+					
 				}
 			},
 			取消: {
@@ -127,7 +139,8 @@ function add_computerAjax(){
 	formData.append("user.user_name",$("input[name='user_name']").val());
 	formData.append("user.user_password",$("input[name='user_password']").val());
 	formData.append("user.user_email",$("input[name='user_email']").val());
-	$.ajax({
+	
+		$.ajax({
 		    url: "/xnjcpt/user/user_addmanager",
 	        type: "post",
 	        data:formData,
@@ -144,6 +157,7 @@ function add_computerAjax(){
 	        	}
 	        }
 	});
+	
 }
 //按关键字搜索列表
 function iquery_userList(keyword) {
@@ -178,45 +192,62 @@ function iquery_userList(keyword) {
 }
 //多选删除用户
 function delete_user() {
-	console.log("多选删除");
-	var formData = new FormData;
-	var HaveDate = false;
-	var index = 0;
-	$('.cloudList_tabel tbody').find(
-		'input[name="delete_check"]').each(
-		function(i) {
-			if ($(this).is(':checked')) {
-				formData.append(
-					'user_id', $(this)
-						.attr('id'));
-				console.log( "要删除的id"+$(this)
-						.attr('id'));
-				HaveDate = true;
-				index++;
-			}
-		});
-	if (HaveDate) {
-		$
-			.ajax({
-				url : "/xnjcpt/userManager/userManager_deleteUser",
-				type : "POST",
-				contentType : false,
-				processData : false,
-				data : formData,
-				dataType : 'text',
-				success : function(data) {
-					console.log(data);
-					if (data == '删除用户') {
-						toastr.info('删除成功');
-						show_userList();
+	$.confirm({
+		content:"确认要进行删除么？",
+		type: 'red',
+		buttons: {
+			确认: {
+				btnClass: ' btn-blue',
+				type: "blue",
+				action: function() {
+					console.log("多选删除");
+					var formData = new FormData;
+					var HaveDate = false;
+					var index = 0;
+					$('.cloudList_tabel tbody').find(
+						'input[name="delete_check"]').each(
+						function(i) {
+							if ($(this).is(':checked')) {
+								formData.append(
+									'user_id', $(this)
+										.attr('id'));
+								console.log( "要删除的id"+$(this)
+										.attr('id'));
+								HaveDate = true;
+								index++;
+							}
+						});
+					if (HaveDate) {
+						$
+							.ajax({
+								url : "/xnjcpt/userManager/userManager_deleteUser",
+								type : "POST",
+								contentType : false,
+								processData : false,
+								data : formData,
+								dataType : 'text',
+								success : function(data) {
+									console.log(data);
+									if (data == '删除用户') {
+										toastr.success('删除成功');
+										show_userList();
+									} else {
+										toastr.error('删除失败');
+									}
+								}
+							});
 					} else {
-						toastr.error('删除失败');
+						toastr.info('未选择数据');
 					}
 				}
-			});
-	} else {
-		toastr.info('未选择数据');
-	}
+			},
+			取消: {
+				btnClass: 'btn-red',
+				type: "red",
+			}
+		}
+	});
+	
 }
 
 //全选，取消全选

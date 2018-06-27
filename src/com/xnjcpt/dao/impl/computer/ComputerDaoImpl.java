@@ -78,6 +78,7 @@ return true;}
 	@Override
 	public int getComputerCount() {
 		String user_id = (String) ActionContext.getContext().getSession().get("user_id");
+		
 		String hql = "select user_computer_computer from xnjcpt_user_computer where user_computer_user ='"+user_id+"'";
 		
 		List<T>  list = getSession().createQuery(hql).list();
@@ -87,7 +88,8 @@ return true;}
 	@Override
 	public ComputerInformationVO getComputerInformationByPage(ComputerInformationVO cv) {
 		String user_id = (String) ActionContext.getContext().getSession().get("user_id");
-		String hql = "select new com.xnjcpt.domain.DTO.UserComputerPageDTO (xc.computer_name,xc.computer_ip,cpu.cpu_model,memory.memory_size,disk.disk_size)"
+		
+		String hql = "select new com.xnjcpt.domain.DTO.UserComputerPageDTO (xc.computer_id,xc.computer_ip,cpu.cpu_model,memory.memory_size,disk.disk_size)"
 				+ "from xnjcpt_cpu as cpu,xnjcpt_memory as memory,xnjcpt_disk as disk,xnjcpt_user_computer as xuc,xnjcpt_computer as xc "
 				+ "where cpu.cpu_computer = xc.computer_id "
 				+ "and memory.memory_computer= xc.computer_id"
@@ -97,10 +99,16 @@ return true;}
 		if (cv.getSearchContent() != null && !"".equals(cv.getSearchContent().trim())) {
 			hql = hql + " and xc.computer_ip like '%" + cv.getSearchContent().trim() + "%'";
 		}
-		
 		hql = hql + " order by xc.computer_gmt_create desc";
 		List<UserComputerPageDTO> result=getSession().createQuery(hql).setFirstResult((cv.getCurrPage() - 1) * cv.getPageSize()).setMaxResults(cv.getPageSize()).list();
-		 cv.setList(result);
+	for(int i=0;i<result.size();i++){
+if(result.get(i).getCpu_model()==null||result.get(i).getCpu_model().length()<=0){
+			result.get(i).setComputer_status("0");
+		}else{
+			result.get(i).setComputer_status("1");
+		}
+		}
+		cv.setList(result);
 		 return cv;
 		} 
 	@Override

@@ -34,9 +34,9 @@ function login_ajax(){
 	  		        	setTimeout(function(){
 		                  location.href="/xnjcpt/skip/skip_intoComputer"
 						}, 1000);
-	  		         }else if(result=="manage_success"){
-	  		        	 toastr.error("密码输入错误！");
 	  		         }else if(result=="password_error"){
+	  		        	 toastr.error("密码输入错误！");
+	  		         }else if(result=="用户名或邮箱账户输入错误"){
 	  		        	toastr.error("用户名或邮箱账户输入错误！");
 	  		         }
 	             }

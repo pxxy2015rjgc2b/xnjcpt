@@ -1,7 +1,7 @@
 package com.xnjcpt.domain.DTO;
 
 public class UserComputerPageDTO {
-
+	private String computer_id;
 	private String computer_name;
 	private String computer_ip;
 	private String cpu_model;
@@ -13,22 +13,27 @@ public class UserComputerPageDTO {
 	private String memory_swap;
 	private String net_mac;
 	private String net_ipv6;
+	private String computer_status;
+	
+	
 
-	public UserComputerPageDTO(String computer_name, String computer_ip, String cpu_model, String disk_size,
-			String memory_size) {
+	
+
+	
+	public UserComputerPageDTO(String computer_id,String computer_ip, String cpu_model, String disk_size, String memory_size) {
 		super();
-		
-		this.computer_name = computer_name;
+		this.computer_id = computer_id;
 		this.computer_ip = computer_ip;
 		this.cpu_model = cpu_model;
 		this.disk_size = disk_size;
 		this.memory_size = memory_size;
+		
 	}
-	
 
-	
 
-	
+
+
+
 	public UserComputerPageDTO(String computer_name, String computer_ip, String cpu_model, String cpu_basic_frequency,
 			String cpu_catch_size, String cpu_cores, String disk_size, String memory_size, String memory_swap,
 			String net_mac, String net_ipv6) {
@@ -106,6 +111,27 @@ public class UserComputerPageDTO {
 	public void setMemory_size(String memory_size) {
 		this.memory_size = memory_size;
 	}
+
+
+
+
+	
+
+
+
+
+	public String getComputer_status() {
+		return computer_status;
+	}
+
+
+
+
+
+	public void setComputer_status(String computer_status) {
+		this.computer_status = computer_status;
+	}
+
 
 
 

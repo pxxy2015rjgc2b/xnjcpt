@@ -17,3 +17,14 @@ $(".usre_info,.user_infoBox").mouseover(function(){
 $(".usre_info,.user_infoBox").mouseout(function(){
 	$(".user_infoBox").css("display","none");
 });
+function login_out(){
+		console.log("loginout_ajax");
+		$.ajax({
+			    url: "/xnjcpt/user/user_logout",
+		        type: "post",
+		        success: function(){
+		        	location.href="/xnjcpt/index.jsp";
+ 
+		        }
+		    });
+}
