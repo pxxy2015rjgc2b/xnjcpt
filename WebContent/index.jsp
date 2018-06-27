@@ -43,7 +43,6 @@
 					<div class="center_word">
 					    <div >“云栖”应用云平台</div>
 				     	<div>的性能监控与应用管理系统</div>
-				     	<div class="enter_button"><a>立即监测</a></div>
 				  	</div>
 				  	<form id="login_box" class="login_box">
 				  		<div class="login_content">
