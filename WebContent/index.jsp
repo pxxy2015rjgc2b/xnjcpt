@@ -26,7 +26,7 @@
 						<span>云栖</span>
 					</div>
 					<div class="header_right">
-						<img class="user" src="<%=basePath %>img/user.png" />
+						
 					</div>
 					<div>
 						<ul class="user_info">
