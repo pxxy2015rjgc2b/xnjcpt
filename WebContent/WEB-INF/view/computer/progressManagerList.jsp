@@ -36,7 +36,7 @@
 						<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
 					</div>
 					<div id="showContent" style="margin-top: 20px;">
-						<table class="table table-hover" style="text-align: center;">
+						<table class="table table-striped table-bordered cloudList_tabel" style="text-align: center;">
 							<tr>
 								<td>pid</td>
 								<td>进程名</td>
@@ -51,22 +51,22 @@
 							</template>
 						</table>
 					</div>
-					<div id="bottomPage" style="padding: 20px;">
-						<span>当前页数:<span id="currPage">{{ progressPageVO.currPage }}</span></span> <span>共:<span
-							id="totalPage">{{ progressPageVO.totalPage }}</span>页
-						</span> <span onclick="skipToIndexPage()" id="indexPage"
-							class="pageOperation">首页</span> <span
-							onclick="skipToPrimaryPage()" id="previousPage"
-							class="pageOperation">上一页</span> <span onclick="skipToNextPage()"
-							id="nextPage" class="pageOperation">下一页</span> <span
-							onclick="skipToLastPage()" id="lastPage" class="pageOperation">末页</span>
-						<span> <input id="skipPage" type="text"
-							style="text-align: center; width: 60px; height: 30px;"
-							class="queryInput">
-							<button onclick="skipToArbitrarilyPage()" class="btn btn-default"
-								style="height: 30px; vertical-align: middle; margin-bottom: 3px;">跳转</button>
-						</span>
-					</div>
+					<div class="page-footer" style="margin-top: 40px;">
+							<div class="page_info" style="text-align: center;">
+								&nbsp;&nbsp;&nbsp;&nbsp; <a onclick="skipToIndexPage()"><i
+									class="fa fa-angle-double-left">首页</i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+								<a onclick="skipToPrimaryPage()"><i class="fa fa-angle-left"></i>上一页</a>&nbsp;&nbsp;&nbsp;&nbsp;
+								<a onclick="skipToNextPage()">下一页<i class="fa fa-angle-right"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+								<a onclick="lastPage()">尾页<i
+									class="fa fa-angle-double-right"></i></a>&nbsp;&nbsp;&nbsp;&nbsp; <input
+									type="text" style="width: 50px; text-indent: 10px" id="skipPage" />&nbsp;&nbsp;&nbsp;&nbsp;
+								<a  onclick="skipToArbitrarilyPage()">GO</a>
+							</div>
+							<div class="footer_info" style="text-align: center;">
+								<span>当前第{{ progressPageVO.currPage }}页</span><span>共{{ progressPageVO.totalPage }}页</span>
+							</div>
+							<p class='page-infomation'></p>
+						</div>
 				</div>
 			</div>
 		</div>
