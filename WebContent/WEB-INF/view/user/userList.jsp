@@ -87,7 +87,7 @@
 									type="text" style="width: 50px; text-indent: 10px" id="goInput" />&nbsp;&nbsp;&nbsp;&nbsp;
 								<a onclick="goPage()">GO</a>
 							</div>
-							<div class="footer_info">
+							<div class="footer_info" style="text-align: center;">
 								<span>当前第{{ currPage }}页</span><span>共{{ totalPage }}页</span><span>共{{
 									totalCount }}条记录</span>
 							</div>

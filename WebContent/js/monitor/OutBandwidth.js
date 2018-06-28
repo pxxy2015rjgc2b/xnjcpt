@@ -138,6 +138,7 @@ option = {
 			name : '模拟数据uerinfo',
 			type : 'line',
 			showSymbol :false,
+			smooth:true,
 			areaStyle: {
 	                normal: {
 	                	color:"#aed4c3",

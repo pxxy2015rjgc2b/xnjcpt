@@ -7,7 +7,7 @@ var queryTemp = {
 }
 $(function(){
 	alarmMessageVue = new Vue({
-		el:'#allContent',
+		el:'.alarm_manage',
 		data:{
 			alarmMessagePageVO:''
 		}
