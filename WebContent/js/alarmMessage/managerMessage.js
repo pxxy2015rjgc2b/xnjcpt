@@ -38,11 +38,11 @@ function deleteMessage(event){
 						success:function(data){
 							if(data!="noLogin"){
 								if(data=="deleteSuccess"){
-									toastr.success("已读");
+									toastr.success("删除成功！");
 									loadData();
 									getCountMessage();
 								}else{
-									toastr.error("已读操作失败");
+									toastr.error("删除操作失败");
 								}
 							}else{
 								loginIntercptor();

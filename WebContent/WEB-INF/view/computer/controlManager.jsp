@@ -30,11 +30,12 @@
 			<div class="show_box">
 				<div class="show_content" id="allContent">
 					<div class="show_title">
-						<span>远程控制</span>
-					</div>
-					<div style="width: 800px; margin: 0 auto;">
-						<textarea id="terminal" rows="20" cols="125" style="background-color:  black; color: white;"></textarea>
-						<button class="btn btn-default" style="float: right;" onclick="cleanContent();">清空</button>
+							<span>使用命令行远程控制</span>
+						</div>
+					<div>
+						<textarea id="terminal" rows="23" cols="130" class="commend_box" ></textarea>
+						<button class="btn btn-default" style="float: right;float: right;
+margin: 20px 20px;" onclick="cleanContent();">清空</button>
 					</div>
 				</div>
 			</div>

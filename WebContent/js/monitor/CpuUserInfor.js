@@ -138,6 +138,8 @@ function CpuUserInfor(startTime,endTime) {
 			name : '模拟数据uerinfo',
 			type : 'line',
 			showSymbol :false,
+			smooth:true,
+			
 			areaStyle: {
 	                normal: {
 	                	color:"#8fdcdd",
