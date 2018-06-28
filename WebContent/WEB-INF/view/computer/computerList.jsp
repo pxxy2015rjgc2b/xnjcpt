@@ -28,56 +28,68 @@
 					<div>
 						<h3>主机管理</h3>
 					</div>
-					<div id="searchContent"  class="operation_button">
-					    <button class="btn btn-primary add_button" type="submit" onclick="add_computer()"><i class="fa fa-plus" aria-hidden="true"> </i> 添加主机</button>
-						<button class="btn btn-danger delete_button" type="submit" onclick="delete_computer()"><i class="fa fa-trash-o" aria-hidden="true"></i> 删除主机</button>
+					<div id="searchContent" class="operation_button">
+						<button class="btn btn-primary add_button" type="submit"
+							onclick="add_computer()">
+							<i class="fa fa-plus" aria-hidden="true"> </i> 添加主机
+						</button>
+						<button class="btn btn-danger delete_button" type="submit"
+							onclick="delete_computer()">
+							<i class="fa fa-trash-o" aria-hidden="true"></i> 删除主机
+						</button>
 						<div class="search_cloud">
 							<input class="search_input" type="text" placeholder="搜索云主机名或IP地址" />
-							<a class="search_button" onclick="iquery_computerList()"><img src="<%=basePath %>img/search.png"/></a>
+							<a class="search_button" onclick="iquery_computerList()"><img
+								src="<%=basePath%>img/search.png" /></a>
 						</div>
 					</div>
 					<div id="showContent" style="margin-top: 30px;">
-						<table class="table table-striped table-bordered table-hover computerList_table" >
+						<table
+							class="table table-striped table-bordered table-hover computerList_table">
 							<thead>
 								<tr id="table_trTh">
-							        <th style="text-align: center;"><input type="checkbox"  onclick="allcheck()" id="checkAll" name="checkAll"/></th>
+									<th style="text-align: center;"><input type="checkbox"
+										onclick="allcheck()" id="checkAll" name="checkAll" /></th>
 									<th>IP地址</th>
 									<th>CPU型号</th>
 									<th>硬盘大小</th>
 									<th>内存大小</th>
 									<th>状态</th>
-									
+
 								</tr>
 							</thead>
 							<tbody>
-							<tr v-for="computer in computers" >
-                                  <td style="text-align: center;"><input type="checkbox" :id="computer.computer_id" name="delete_check" onclick="cancle_all()"/></td>
-                                  <td style="display:none;" class="computer_id" :id="computer.computer_id"></td>
-                                  <td>{{ computer.computer_ip }}</td>
-                                  <td>{{ computer.cpu_model}}</td>
-                                  <td>{{ computer.disk_size }}</td>
-                                  <td>{{ computer.memory_size }}</td>
-                                  <td v-if="computer.computer_status==1">已安装客户端</td>
-                                  <td v-if="computer.computer_status==0">未安装客户端</td>
-                                 </tr>
+								<tr v-for="computer in computers">
+									<td style="text-align: center;"><input type="checkbox"
+										:id="computer.computer_id" name="delete_check"
+										onclick="cancle_all()" /></td>
+									<td style="display: none;" class="computer_id"
+										:id="computer.computer_id"></td>
+									<td>{{ computer.computer_ip }}</td>
+									<td>{{ computer.cpu_model }}</td>
+									<td>{{ computer.disk_size }}</td>
+									<td>{{ computer.memory_size }}</td>
+									<td v-if="computer.computer_status==1">已安装客户端</td>
+									<td v-if="computer.computer_status==0">未安装客户端</td>
+								</tr>
 							</tbody>
 						</table>
 					</div>
 					<div class="page-footer">
-							<div class="page_info" style="text-align: center;">
-								&nbsp;&nbsp;&nbsp;&nbsp; <a onclick="firstPage()"><i
-									class="fa fa-angle-double-left">首页</i></a>&nbsp;&nbsp;&nbsp;&nbsp;
-								<a onclick="prePage()"><i class="fa fa-angle-left"></i>上一页</a>&nbsp;&nbsp;&nbsp;&nbsp;
-								<a onclick="nextPage()">下一页<i class="fa fa-angle-right"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
-								<a onclick="lastPage()">尾页<i class="fa fa-angle-double-right"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
-								<input type="text" style="width: 50px;text-indent: 10px" id="goInput" />&nbsp;&nbsp;&nbsp;&nbsp;
-								<a onclick="goPage()">GO</a>
-							</div>
-							<div class="footer_info">
-								<span>当前第{{ currPage }}页</span><span>共{{
-									totalPage }}页</span><span>共{{ totalCount }}条记录</span>
-							</div>
-							<p class='page-infomation'></p>
+						<div class="page_info" style="text-align: center;">
+							&nbsp;&nbsp;&nbsp;&nbsp; <a onclick="firstPage()"><i
+								class="fa fa-angle-double-left">首页</i></a>&nbsp;&nbsp;&nbsp;&nbsp; <a
+								onclick="prePage()"><i class="fa fa-angle-left"></i>上一页</a>&nbsp;&nbsp;&nbsp;&nbsp;
+							<a onclick="nextPage()">下一页<i class="fa fa-angle-right"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+							<a onclick="lastPage()">尾页<i class="fa fa-angle-double-right"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="text" style="width: 50px; text-indent: 10px"
+								id="goInput" />&nbsp;&nbsp;&nbsp;&nbsp; <a onclick="goPage()">GO</a>
+						</div>
+						<div class="footer_info">
+							<span>当前第{{ currPage }}页</span><span>共{{ totalPage }}页</span><span>共{{
+								totalCount }}条记录</span>
+						</div>
+						<p class='page-infomation'></p>
 					</div>
 				</div>
 			</div>
