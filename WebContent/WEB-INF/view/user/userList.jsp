@@ -29,10 +29,12 @@
 						<span>用户管理</span>
 					</div>
 					<div class="operation_button">
-						<button class="btn btn-primary add_button" onclick="add_user()" type="submit">
+						<button class="btn btn-primary add_button" onclick="add_user()"
+							type="submit">
 							<i class="fa fa-trash-o" aria-hidden="true"></i> 新建用户
 						</button>
-						<button class="btn btn-danger delete_button" onclick="delete_user()" type="submit">
+						<button class="btn btn-danger delete_button"
+							onclick="delete_user()" type="submit">
 							<i class="fa fa-trash-o" aria-hidden="true"></i> 删除用户
 						</button>
 						<div class="search_cloud">
@@ -80,16 +82,17 @@
 									class="fa fa-angle-double-left">首页</i></a>&nbsp;&nbsp;&nbsp;&nbsp;
 								<a onclick="prePage()"><i class="fa fa-angle-left"></i>上一页</a>&nbsp;&nbsp;&nbsp;&nbsp;
 								<a onclick="nextPage()">下一页<i class="fa fa-angle-right"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
-								<a onclick="lastPage()">尾页<i class="fa fa-angle-double-right"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
-								<input type="text" style="width: 50px;text-indent: 10px" id="goInput" />&nbsp;&nbsp;&nbsp;&nbsp;
+								<a onclick="lastPage()">尾页<i
+									class="fa fa-angle-double-right"></i></a>&nbsp;&nbsp;&nbsp;&nbsp; <input
+									type="text" style="width: 50px; text-indent: 10px" id="goInput" />&nbsp;&nbsp;&nbsp;&nbsp;
 								<a onclick="goPage()">GO</a>
 							</div>
 							<div class="footer_info">
-								<span>当前第{{ currPage }}页</span><span>共{{
-									totalPage }}页</span><span>共{{ totalCount }}条记录</span>
+								<span>当前第{{ currPage }}页</span><span>共{{ totalPage }}页</span><span>共{{
+									totalCount }}条记录</span>
 							</div>
 							<p class='page-infomation'></p>
-					</div>
+						</div>
 					</div>
 
 				</div>

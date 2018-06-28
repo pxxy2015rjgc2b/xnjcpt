@@ -136,6 +136,7 @@ function CpuIowaitInfor(startTime,endTime) {
 		series : [ {
 			name : '模拟数据uerinfo',
 			type : 'line',
+			smooth:true,
 			showSymbol :false,
 			areaStyle: {
 	                normal: {
