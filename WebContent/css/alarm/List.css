@@ -4,28 +4,34 @@
 .manage{
 	margin-top: 70px;
 }
-/*閸欏疇绔熺仦鏇犮仛閻ㄥ嫮娲呯�涳拷*/
+/*鍙宠竟灞曠ず鐨勭洅瀛�*/
 .show_box{
-  width: 95%;
-height: auto;
-position: relative;
-top: 20px;
-margin: 0 auto;
+    width: 85%;
+	height: auto;
+	display: inline-block;
+	position: absolute;
+	left: 200px;
 }
 .show_content{
 	margin: 0px 0px 0px 20px;
 }
+.show_content table{
+	width:98.5%;
+}
+#table_trTh>th{
+	border-bottom:0px;
+}
 .show_title{
-	font: 18px/60px "瀵邦喛钂嬮梿鍛寸拨";
+	font: 18px/60px "寰蒋闆呴粦";
     font-weight: 300;
 }
-/*閹垮秳缍旈幐澶愭尦*/
+/*鎿嶄綔鎸夐挳*/
 .operation_button{
-	margin:0px 0px 20px 0px;
+	margin:10px 0px 20px 0px;
 }
 .operation_button button{
 	margin-right: 10px;
-	border-radius: 0px;
+	border-radius: 3px;
 }
 /*alarmlist page style*/
 .alarm_delete{
@@ -33,7 +39,7 @@ margin: 0 auto;
     height: 30px;
     border-radius: 0px;
 }
-/*閹兼粎鍌�*/
+/*鎼滅储*/
 .search_cloud{
 	float: right;
 }
@@ -48,6 +54,16 @@ margin: 0 auto;
 .search_button{
 	position: relative;
     right: 30px;
+}
+/* 页脚 */
+.page-footer .footer_info{
+	width: 300px;
+	height: 70px;
+	margin: 0px auto;
+	text-align: center;
+}
+.page-footer .footer_info span{
+	margin-right:5px;
 }
 /*alarmList page  mystyle*/
 .alarm_manage{
@@ -93,9 +109,9 @@ margin: 0 auto;
 	color: #575b5f;
 	margin-left: 20px;
 }
-/*澧炲姞alarm page*/
+/*增加alarm page*/
 
-/*閸掑棝銆�*/
+/*鍒嗛〉*/
 .pagination{
 	margin-right: 20px;
 	float: right;
@@ -103,12 +119,12 @@ margin: 0 auto;
 .alarm_pagination{
     margin-right: 0px;	
 }
-/*杩滅▼鎺у埗鍛戒护琛岀殑鏍峰紡*/
+/*远程控制命令行的样式*/
 .commend_box{
    background: black;
    color: white;
-   font:17px/30px "寰蒋闆呴粦";
+   font:17px/30px "微软雅黑";
    font-weight: 400;
-   caret-color:red;/*鏀瑰彉鍏夋爣鐨勯鑹�*/
+   caret-color:red;/*改变光标的颜色*/
    text-indent: 30px;
 }
