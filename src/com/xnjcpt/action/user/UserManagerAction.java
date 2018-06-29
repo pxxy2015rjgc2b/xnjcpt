@@ -60,8 +60,7 @@ public class UserManagerAction {
 
 	// 得到用户搜索列表
 	public void getUsers() throws IOException {
-		PageBean_user<xnjcpt_user> pb = (PageBean_user<xnjcpt_user>) userManagerService.findPageByKeyword(currentPage,
-				pageSize, keyword);
+		pb = userManagerService.findPageByKeyword(currentPage,pageSize, keyword);
 		Gson gson = new Gson();// 用来转换JSON数据类型的
 		String result = gson.toJson(pb);
 		System.out.println(result);
@@ -75,9 +74,9 @@ public class UserManagerAction {
 
 	// 用户列表
 	public void getUserlist() throws IOException {
-		PageBean_user<xnjcpt_user> pb = userManagerService.findPageBy(pb2.getCurrentPage(), pageSize);
+		PageBean_user<xnjcpt_user> pb1 = userManagerService.findPageBy(pb.getCurrentPage(), pageSize);
 		Gson gson = new Gson();// 用来转换JSON数据类型的
-		String result = gson.toJson(pb);
+		String result = gson.toJson(pb1);
 		System.out.println(result);
 		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setContentType("text/html;charset=utf-8");
@@ -191,7 +190,7 @@ public class UserManagerAction {
 	private String user_email;
 	private String user_username;
 	private String user_phone;
-	private PageBean_user<xnjcpt_user> pb2;
+	private PageBean_user<xnjcpt_user> pb;
 
 	public String getKeyword() {
 		return keyword;
@@ -250,11 +249,11 @@ public class UserManagerAction {
 	}
 
 	public PageBean_user<xnjcpt_user> getPb() {
-		return pb2;
+		return pb;
 	}
 
 	public void setPb(PageBean_user<xnjcpt_user> pb) {
-		this.pb2 = pb;
+		this.pb = pb;
 	}
 
 	public String getUser_name() {

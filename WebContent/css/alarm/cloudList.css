@@ -61,6 +61,7 @@
 .alarm_showContent{
 	width: 1120px;
 	margin: 0 auto;
+	overflow:hidden;
 }
 .show_alarmListBox .show_content1>ul{
    width:100%;
@@ -77,7 +78,7 @@
 }
 .show_alarmListBox .show_content1>ul>li>a{
 	color: #373d41;
-	font-size: 13px;
+	font-size: 14px;
     text-decoration: none;
     display: inline-block;
     clear: both;
@@ -88,7 +89,6 @@
 	line-height: 42px;
 	float:right;
 	color: #575b5f;
-	margin-left: 20px;
 }
 /*警告页面多选li样式*/
 #selectable .ui-selecting {
@@ -111,7 +111,7 @@
     white-space: nowrap;
     vertical-align: baseline;
     border-radius: .25em;
-    margin-left: 39%;
+    margin-left: 35%;
 }
 .word_warn{
 	background-color: #f0ad4e;

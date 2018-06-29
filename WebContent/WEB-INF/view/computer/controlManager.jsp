@@ -33,7 +33,7 @@
 						<span>使用命令行远程控制</span>
 					</div>
 					<div>
-						<textarea id="terminal" rows="23" cols="150" class="commend_box"></textarea>
+						<textarea id="terminal" rows="23" cols="130" class="commend_box"></textarea>
 						<button class="btn btn-default"
 							style="position: fixed; top: 500px; right: 25px; background: #428bca; color: white; border-radius: 50% 50%; border-top-left-radius: 50%; border-top-right-radius: 50%; border-bottom-right-radius: 50%; border-bottom-left-radius: 50%; width: 50px; height: 50px; border: none;"
 							onclick="cleanContent();">清空</button>

@@ -180,10 +180,10 @@ function iquery_userList(keyword) {
 			//存入vue对象
 			userPage.users = result.list;
 			console.log(userPage.users);
-			userPage.currPage = result.currPage;
-			userPage.totalPage = result.totalPage;
-			userPage.pageCount = result.pageCount;
-			userPage.totalCount = result.totalCount;
+			userPage.currPage = result.currentPage;
+			userPage.totalPage =  result.totalPage;
+			userPage.pageCount = result.pageSize;
+			userPage.totalCount = result.count;
 			//存入分页查询
 			user_paginationQuery.currPage = result.currentPage;
 			user_paginationQuery.totalPage = result.totalPage;

@@ -7,7 +7,7 @@
 			+ path + "/";
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html style="background:#f5f5f5;">
 <head>
 <link rel="stylesheet" href="<%=basePath%>css/alarm/cloudList.css" />
 <style type="text/css">
@@ -18,26 +18,24 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>警报通知</title>
 </head>
-<body>
-	<div class="wrapper">
+<body style="background:#f5f5f5;">
+	<div class="wrapper" style="background:#f5f5f5;">
 		<s:action name="skip_intoNavbar" namespace="/skip"
 			executeResult="true"></s:action>
 		<div class="manage alarm_manage">
 			<div class="show_alarmListBox">
 				<div class="show_content alarm_showContent">
-					<div class="show_title">
+					<div class="show_title" style="marign-top:20px;">
 						<span>警报通知</span>
 					</div>
-					<div class="operation_button">
-						
-					</div>
-					<div class="show_content1" style="margin-top: 50px;" >
+					<div class="show_content1" >
 						<ul id="selectable">
+						      <li style="background:#f5f5f5;"><span style="margin-left:10px;">通知内容</span><i style="margin-right: 70px;">通知时间</i></li>
 							  <li onclick="updateStatus(this)" v-for="alarmMessage in alarmMessagePageVO.list"><a class="alarm_a">{{ alarmMessage.message_info }}<i
 									class="fa fa-times " aria-hidden="true" :id="alarmMessage.message_id" onclick="deleteMessage(this)"></i>
 									<h5 v-if="alarmMessage.message_status=='0'" class="word word_warn">未读</h5>
 									<h5 v-if="alarmMessage.message_status=='1'" class="word word_success">已读</h5>
-									 <i>{{ alarmMessage.message_gmt_create }}</i></a>
+									 <i style="margin-right: 10px;">{{ alarmMessage.message_gmt_create }}</i></a>
 							  </li>
 						</ul>
 
