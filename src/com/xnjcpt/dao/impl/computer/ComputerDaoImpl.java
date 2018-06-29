@@ -383,7 +383,7 @@ public class ComputerDaoImpl implements ComputerDao {
 		// TODO Auto-generated method stub
 		Calendar c = Calendar.getInstance();
 		c.set(Calendar.DAY_OF_YEAR, c.get(Calendar.DAY_OF_YEAR) - 7);
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String time = sdf.format(c.getTime());
 		c.clear();
 		String hql_cpu = "delete from xnjcpt_cpu_state where cpu_state_time <='" + time + "'";
